@@ -1,0 +1,97 @@
+<!--
+  templateType: section
+  label: Kitchen Services - Need New Kitchen
+  isAvailableForNewContent: true
+-->
+
+{# Services section - Kitchen needs #}
+{% dnd_section
+  background_color="#943A18",
+  vertical_alignment="MIDDLE"
+%}
+  {% dnd_column
+    width=12,
+    offset=0
+  %}
+    {% dnd_module
+      path="@hubspot/rich_text",
+      html="<div class='services__content services__content--kitchen'>
+        <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1200px; margin: 0 auto;'>
+          <div>
+            <h2 class='services__title'>SERIOUSLY IN NEED OF A NEW KITCHEN?</h2>
+            <p class='services__description'>From outdated cabinets to inefficient layouts, we understand the frustration of a kitchen that doesn't work for your family. Our expert team specializes in complete kitchen transformations that combine beautiful design with practical functionality.</p>
+            <div class='services__features'>
+              <div class='services__feature'>✓ Custom Cabinet Design</div>
+              <div class='services__feature'>✓ Professional Installation</div>
+              <div class='services__feature'>✓ Quality Materials</div>
+              <div class='services__feature'>✓ Lifetime Warranty</div>
+            </div>
+            <a href='#consultation' class='btn btn-white services__cta'>Book A Cabinet Consultation</a>
+          </div>
+          <div>
+            <img src='../images/kitchen-renovation.jpg' alt='Professional kitchen renovation' style='width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.2);'>
+          </div>
+        </div>
+      </div>",
+      module_id="kitchen_services_content"
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+<style>
+.services__content--kitchen {
+  padding: 4rem 2rem;
+  color: white;
+}
+
+.services__title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.services__description {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+}
+
+.services__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.services__feature {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .services__content--kitchen > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center;
+  }
+  
+  .services__content--kitchen {
+    padding: 3rem 1.5rem;
+  }
+  
+  .services__features {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+</style>

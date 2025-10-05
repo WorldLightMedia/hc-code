@@ -1,0 +1,36 @@
+[
+  {
+    "name": "background_image",
+    "label": "Background Image",
+    "type": "image",
+    "required": false
+  },
+  {
+    "name": "hero_heading",
+    "label": "Hero Heading",
+    "type": "text",
+    "required": true,
+    "default": "THIS IS YOUR MAIN HEADLINE"
+  },
+  {
+    "name": "hero_subheading",
+    "label": "Hero Subheading",
+    "type": "text",
+    "required": false,
+    "default": "Use this space to tell everyone about what you have to offer."
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "type": "text",
+    "required": false,
+    "default": "Book A Call"
+  },
+  {
+    "name": "cta_link",
+    "label": "CTA Button Link",
+    "type": "link",
+    "required": false
+  }
+]
+

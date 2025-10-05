@@ -1,0 +1,155 @@
+<!--
+  templateType: section
+  label: Hero Banner - Honest Cabinets
+  isAvailableForNewContent: true
+-->
+
+{# Hero section with company branding #}
+{% dnd_section
+  background_color="#FFF3E0",
+  vertical_alignment="MIDDLE"
+%}
+  {% dnd_column
+    width=12,
+    offset=0
+  %}
+    {% dnd_module
+      path="@hubspot/rich_text",
+      html="<div class='hero__content'>
+        <div class='hero__text'>
+          <h1 class='hero__title'>CUSTOM KITCHEN CABINETS</h1>
+          <p class='hero__subtitle'>Transform your kitchen with premium custom cabinetry designed and built by Idaho's most trusted craftsmen</p>
+          <div class='hero__buttons'>
+            <a href='#quote' class='btn btn-primary hero__cta-primary'>Get Free Quote</a>
+            <a href='/portfolio' class='btn btn-secondary hero__cta-secondary'>View Our Work</a>
+          </div>
+        </div>
+        <div class='hero__features'>
+          <div class='hero__feature'>
+            <span class='hero__feature-icon'>🏆</span>
+            <span class='hero__feature-text'>15+ Years Experience</span>
+          </div>
+          <div class='hero__feature'>
+            <span class='hero__feature-icon'>✅</span>
+            <span class='hero__feature-text'>100% Custom Design</span>
+          </div>
+          <div class='hero__feature'>
+            <span class='hero__feature-icon'>🛡️</span>
+            <span class='hero__feature-text'>Lifetime Warranty</span>
+          </div>
+          <div class='hero__feature'>
+            <span class='hero__feature-icon'>📞</span>
+            <span class='hero__feature-text'>Local Idaho Company</span>
+          </div>
+        </div>
+      </div>",
+      module_id="hero_content"
+    %}
+    {% end_dnd_module %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
+
+<style>
+.hero__content {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero__title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #943A18;
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.hero__subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #106664;
+  border: 2px solid #106664;
+}
+
+.btn-secondary:hover {
+  background-color: #106664;
+  color: white;
+  text-decoration: none;
+}
+
+.hero__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.hero__feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.hero__feature:hover {
+  transform: translateY(-2px);
+}
+
+.hero__feature-icon {
+  font-size: 1.5rem;
+}
+
+.hero__feature-text {
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding: 4rem 1rem 3rem;
+  }
+  
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero__buttons .btn {
+    width: 280px;
+    max-width: 100%;
+  }
+  
+  .hero__features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+</style>

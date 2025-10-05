@@ -1,0 +1,32 @@
+[
+  {
+    "name": "button_text",
+    "label": "Button Text",
+    "type": "text",
+    "required": true,
+    "default": "Book A Call"
+  },
+  {
+    "name": "button_link",
+    "label": "Button Link",
+    "type": "link",
+    "required": true
+  },
+  {
+    "name": "primary",
+    "label": "Primary Button Style",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "button_alignment",
+    "label": "Button Alignment",
+    "type": "choice",
+    "choices": [
+      { "label": "Left", "value": " align-left" },
+      { "label": "Center", "value": " align-center" },
+      { "label": "Right", "value": " align-right" }
+    ],
+    "default": " align-center"
+  }
+]

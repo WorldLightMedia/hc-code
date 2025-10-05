@@ -1,0 +1,7 @@
+{
+  "label": "Hero Title",
+  "description": "Editable headline and subheading for hero section.",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "is_global": false,
+  "fields": "./fields.json"
+}

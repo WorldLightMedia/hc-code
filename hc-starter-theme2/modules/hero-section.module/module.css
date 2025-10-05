@@ -1,0 +1,20 @@
+.hero-section { background: var(--cream-base); position: relative; overflow: hidden; }
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  height: 100%;
+  width: 100%;
+}
+.hero-container { position: relative; z-index: 2; }
+.hero-content { text-align: center; padding: 3rem 1rem; max-width: 880px; margin: 0 auto; }
+.hero-title { font-size: 2.9rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.2rem; letter-spacing: -0.03em; }
+.hero-subheading { font-size: 1.15rem; font-weight: 400; color: var(--color-text-secondary); margin-bottom: 2.1rem; }
+.hero-cta { padding: 1.1rem 2.5rem; font-size: 1.14rem; font-weight: 700; }
+@media (max-width: 900px) {
+  .hero-title { font-size: 2.1rem; }
+  .hero-section, .hero-content { padding: 2rem 1rem; }
+}

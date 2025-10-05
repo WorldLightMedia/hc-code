@@ -1,0 +1,7 @@
+{
+  "label": "Call to Action Button",
+  "description": "Universal CTA for calls, quotes, or section prompts. Editor can set label, link, style.",
+  "is_global": false,
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL"],
+  "fields": "./fields.json"
+}
