@@ -1,0 +1,58 @@
+{% dnd_area "global_footer"
+    label="Website Footer (Editor Drag & Drop — required: Logo, Links, Company)"
+    class="global-footer-area"
+%}
+  {% dnd_section background_color="#943A18", vertical_alignment="MIDDLE" %}
+    {% dnd_column width=4, offset=0 %}
+      {% dnd_module path="@hubspot/linked_image",
+          module_id="footer_logo",
+          label="Footer Logo (required)",
+          help_text="Footer logo, should be brand mark or lockup."
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+    {% dnd_column width=4, offset=4 %}
+      {% dnd_module path="@hubspot/rich_text",
+          module_id="footer_links",
+          label="Footer Links (required)",
+          help_text="Quick links, services, or important navigation."
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+    {% dnd_column width=4, offset=8 %}
+      {% dnd_module path="@hubspot/rich_text",
+          module_id="footer_company",
+          label="Footer Company Info (required)",
+          help_text="Contact details, copyright, or social links."
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+{% end_dnd_area %}
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      {% include_dnd_partial path="global_footer" %}
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; {{ local_dt.year }} Honest Cabinets. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<style>
+.global-footer-area .dnd-section { display:flex!important; align-items:flex-start!important; width:100%!important; }
+.global-footer-area .dnd-column { display:flex!important; flex-direction:column; padding:1.5rem; }
+.global-footer-area .dnd-column > * { width:100%; }
+.global-footer-area .dnd-column:first-child { align-items:flex-start; }
+.global-footer-area .dnd-column:nth-child(2) { align-items:center;}
+.global-footer-area .dnd-column:last-child { align-items:flex-end;}
+.footer { background:#943A18;color:white;padding:3rem 0;}
+.footer__bottom {text-align:center;color:#fff9;font-size:.9rem;padding-top:1rem;}
+.global-footer-area a {color:#fff9;text-decoration:underline;}
+.global-footer-area h4 {margin-bottom:.75rem;font-size:1rem;color:rgba(255,255,255,0.85);}
+@media (max-width:900px) {
+  .global-footer-area .dnd-section { flex-direction:column!important; }
+  .global-footer-area .dnd-column {align-items:center!important;min-width:0;width:100%!important;}
+}
+</style>

@@ -1,0 +1,67 @@
+<!--
+  templateType: global_group
+  label: Global Header
+  isAvailableForNewContent: true
+-->
+
+{% dnd_area "global_header"
+  label="Global Header Content",
+  class="global-header-area"
+%}
+  {% dnd_section
+    background_color="transparent",
+    vertical_alignment="MIDDLE"
+  %}
+    {% dnd_column
+      width=4,
+      offset=0
+    %}
+      {% dnd_module
+        path="@hubspot/linked_image",
+        label="Header Logo",
+        img={
+          "alt": "Company Logo",
+          "loading": "eager",
+          "max_height": 60,
+          "max_width": 200,
+          "size_type": "auto_custom_max",
+          "src": get_asset_url("./images/honest-cabinets-logo-tag.png")
+        },
+        link={
+          "url": {
+            "href": site_root,
+            "type": "EXTERNAL"
+          }
+        },
+        module_id="header_logo"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+    
+    {% dnd_column
+      width=4,
+      offset=0
+    %}
+      {% dnd_module
+        path="@hubspot/menu",
+        label="Header Navigation",
+        site_menu_field="site_settings.main_menu",
+        module_id="header_navigation"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+    
+    {% dnd_column
+      width=4,
+      offset=0
+    %}
+      {% dnd_module
+        path="@hubspot/cta",
+        label="Header CTA Button",
+        button_text="BOOK A CALL",
+        module_id="header_cta"
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+{% end_dnd_area %}

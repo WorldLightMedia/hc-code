@@ -1,0 +1,126 @@
+{# Top Contact Bar #}
+<div class="header-top">
+  <div class="container">
+    <div class="header-top__content">
+      <span class="header-top__phone">Call Us: 208-717-1220</span>
+    </div>
+  </div>
+</div>
+
+{# Main Header with Global DND #}
+<header class="header" id="main-header">
+  <div class="container">
+    <div class="header__inner">
+      {% dnd_area "global_header"
+          label="Main Site Header (Logo, Navigation, CTA)",
+          class="global-header-area"
+      %}
+        {% dnd_section background_color="transparent", vertical_alignment="MIDDLE" %}
+          {% dnd_column width=3, offset=0 %}
+            {% dnd_module path="@hubspot/linked_image",
+                module_id="header_logo",
+                label="Logo (required)",
+                help_text="Main logo. Click to upload/update."
+            %}{% end_dnd_module %}
+          {% end_dnd_column %}
+          {% dnd_column width=6, offset=3 %}
+            {% dnd_module path="../modules/menu.module",
+                module_id="header_navigation",
+                label="Navigation Menu (required)",
+                help_text="Site menu. Click to edit or assign a menu."
+            %}{% end_dnd_module %}
+          {% end_dnd_column %}
+          {% dnd_column width=3, offset=9 %}
+            {% dnd_module path="@hubspot/cta",
+                module_id="header_cta",
+                label="Call to Action Button (required)",
+                help_text="Main CTA for site (e.g., Book a Call)."
+            %}{% end_dnd_module %}
+          {% end_dnd_column %}
+        {% end_dnd_section %}
+      {% end_dnd_area %}
+      <button class="header__mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="header__mobile-toggle-line"></span>
+        <span class="header__mobile-toggle-line"></span>
+        <span class="header__mobile-toggle-line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+{# Mobile Menu #}
+<div class="header__mobile-menu" aria-hidden="true">
+  <div class="header__mobile-menu-inner">
+    <div class="header__mobile-menu-header">
+      <button class="header__mobile-close" aria-label="Close mobile menu">×</button>
+    </div>
+    <nav class="header__mobile-nav" role="navigation" aria-label="Mobile navigation">
+      <ul class="header__mobile-menu-list">
+        <li><a href="/welcome" class="header__mobile-menu-link">Welcome</a></li>
+        <li><a href="/kitchen-cabinets" class="header__mobile-menu-link">Kitchen Cabinets</a></li>
+        <li><a href="/design-consultant" class="header__mobile-menu-link">Design Consultant</a></li>
+        <li><a href="/materials" class="header__mobile-menu-link">Materials</a></li>
+        <li><a href="/why-you-need-us" class="header__mobile-menu-link">Why You Need Us?</a></li>
+      </ul>
+    </nav>
+    <div class="header__mobile-cta">
+      <a href="tel:208-717-1220" class="header__mobile-phone">
+        <span class="header__phone-icon" aria-hidden="true">📞</span>
+        <span>208-717-1220</span>
+      </a>
+      <a href="#quote" class="btn btn-primary">BOOK A CALL</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const header = document.getElementById('main-header');
+  const headerTop = document.querySelector('.header-top');
+  const mobileToggle = document.querySelector('.header__mobile-toggle');
+  const mobileMenu = document.querySelector('.header__mobile-menu');
+  const mobileClose = document.querySelector('.header__mobile-close');
+  const body = document.body;
+  let isScrolled = false;
+  function handleScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > 80 && !isScrolled) {
+      header.classList.add('scrolled');
+      if(headerTop) headerTop.style.display = 'none';
+      isScrolled = true;
+      body.style.paddingTop = '80px';
+    } else if (scrollTop <= 80 && isScrolled) {
+      header.classList.remove('scrolled');
+      if(headerTop) headerTop.style.display = '';
+      isScrolled = false;
+      body.style.paddingTop = '120px';
+    }
+  }
+  window.addEventListener('scroll', function() { requestAnimationFrame(handleScroll); });
+  if (mobileToggle && mobileMenu) {
+    function toggleMobileMenu() {
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
+      mobileToggle.setAttribute('aria-expanded', newState);
+      mobileMenu.setAttribute('aria-hidden', !newState);
+      body.style.overflow = newState ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      body.style.overflow = '';
+    }
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMobileMenu);
+    mobileMenu.addEventListener('click', function(e) { if (e.target === mobileMenu) closeMobileMenu(); });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.getAttribute('aria-hidden') === 'false') closeMobileMenu();
+    });
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => { link.addEventListener('click', closeMobileMenu); });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && mobileMenu.getAttribute('aria-hidden') === 'false') closeMobileMenu();
+    });
+  }
+})();
+</script>
