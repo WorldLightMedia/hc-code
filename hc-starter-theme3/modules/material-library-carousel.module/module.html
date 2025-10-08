@@ -1,0 +1,198 @@
+{%- set module_css = "material-library-carousel-" ~ widget.id -%}
+
+<section class="material-library-section section-padding" id="{{ module_css }}">
+  <div class="container">
+    
+    <div class="material-library__header">
+      {%- if module.header_settings.title -%}
+      <h2 class="material-library__title">{{ module.header_settings.title }}</h2>
+      {%- endif -%}
+      {%- if module.header_settings.subtitle -%}
+      <p class="material-library__subtitle">{{ module.header_settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+    
+    <div class="material-library__carousel-container" 
+         data-items-desktop="{{ module.carousel_settings.items_per_view_desktop or 6 }}"
+         data-items-tablet="{{ module.carousel_settings.items_per_view_tablet or 4 }}"
+         data-items-mobile="{{ module.carousel_settings.items_per_view_mobile or 2 }}"
+         data-auto-scroll="{{ 'true' if module.carousel_settings.auto_scroll else 'false' }}"
+         data-scroll-delay="{{ module.carousel_settings.auto_scroll_delay or 3000 }}"
+         data-scroll-amount="{{ module.carousel_settings.scroll_amount or 1 }}">
+      
+      {%- if module.header_settings.show_navigation -%}
+      <button class="carousel__nav carousel__nav--prev" aria-label="Previous materials">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15,18 9,12 15,6"></polyline>
+        </svg>
+      </button>
+      {%- endif -%}
+      
+      <div class="material-library__carousel">
+        <div class="material-library__track">
+          {%- if module.materials and module.materials|length > 0 -%}
+            {%- for material in module.materials -%}
+            <div class="material-library__item" 
+                 data-material-color="{{ material.material_color.color or '#D4A574' }}"
+                 data-material-type="{{ material.material_type or 'door' }}">
+              
+              {%- set material_link = material.material_url.url.href if material.material_url.url.href else '' -%}
+              {%- if material_link -%}<a href="{{ material_link }}" class="material-sample__link">{%- endif -%}
+              
+              <div class="material-sample {{ 'material-sample--color' if material.material_type == 'color' else 'material-sample--door' }}">
+                {%- if material.trending -%}
+                <div class="material-sample__trending-badge">Trending</div>
+                {%- endif -%}
+                
+                <div class="material-sample__image-wrapper">
+                  {%- if material.material_type == 'color' -%}
+                    {# Color Swatch Display #}
+                    <div class="material-sample__color-display" 
+                         style="background-color: {{ material.material_color.color or '#D4A574' }};"></div>
+                  {%- else -%}
+                    {# Door Image Display #}
+                    {%- if material.material_thumb_image.src -%}
+                    <img class="material-sample__image" 
+                         src="{{ resize_image_url(material.material_thumb_image.src, 300, 300) }}" 
+                         srcset="{{ resize_image_url(material.material_thumb_image.src, 300, 300) }} 1x,
+                                 {{ resize_image_url(material.material_thumb_image.src, 600, 600) }} 2x"
+                         alt="{{ material.material_thumb_image.alt or material.material_name ~ ' Thumbnail' }}"
+                         loading="lazy"
+                         data-full-image="{{ material.material_full_image.src if material.material_full_image.src else material.material_thumb_image.src }}">
+                    {%- elif material.material_full_image.src -%}
+                    <img class="material-sample__image" 
+                         src="{{ resize_image_url(material.material_full_image.src, 300, 300) }}" 
+                         srcset="{{ resize_image_url(material.material_full_image.src, 300, 300) }} 1x,
+                                 {{ resize_image_url(material.material_full_image.src, 600, 600) }} 2x"
+                         alt="{{ material.material_full_image.alt or material.material_name }}"
+                         loading="lazy"
+                         data-full-image="{{ material.material_full_image.src }}">
+                    {%- else -%}
+                    <div class="material-sample__placeholder" 
+                         style="background-color: {{ material.material_color.color or '#D4A574' }};"></div>
+                    {%- endif -%}
+                  {%- endif -%}
+                  
+                  {%- if material.material_type != 'color' -%}
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" 
+                         style="background-color: {{ material.material_color.color or '#D4A574' }};"></div>
+                  </div>
+                  {%- endif -%}
+                </div>
+                
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">{{ material.material_name }}</h3>
+                  {%- if material.material_description -%}
+                  <p class="material-sample__description">{{ material.material_description }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+              
+              {%- if material_link -%}</a>{%- endif -%}
+            </div>
+            {%- endfor -%}
+          {%- else -%}
+            {# Default content when no materials are configured #}
+            <div class="material-library__item" data-material-type="door">
+              <div class="material-sample material-sample--door">
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__placeholder" style="background-color: #D4A574;"></div>
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" style="background-color: #D4A574;"></div>
+                  </div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Shaker Style Door</h3>
+                </div>
+              </div>
+            </div>
+            <div class="material-library__item" data-material-type="door">
+              <div class="material-sample material-sample--door">
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__placeholder" style="background-color: #E8E8E8;"></div>
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" style="background-color: #E8E8E8;"></div>
+                  </div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Modern Flat Panel Door</h3>
+                </div>
+              </div>
+            </div>
+            <div class="material-library__item" data-material-type="door">
+              <div class="material-sample material-sample--door">
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__placeholder" style="background-color: #C8A882;"></div>
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" style="background-color: #C8A882;"></div>
+                  </div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Recessed Panel Door</h3>
+                </div>
+              </div>
+            </div>
+            <div class="material-library__item" data-material-type="door">
+              <div class="material-sample material-sample--door">
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__placeholder" style="background-color: #A8B8C8;"></div>
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" style="background-color: #A8B8C8;"></div>
+                  </div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Glass Inset Door</h3>
+                </div>
+              </div>
+            </div>
+            <div class="material-library__item" data-material-type="color">
+              <div class="material-sample material-sample--color">
+                <div class="material-sample__trending-badge">Trending</div>
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__color-display" style="background-color: #2D9B8A;"></div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Teal Color Swatch</h3>
+                </div>
+              </div>
+            </div>
+            <div class="material-library__item" data-material-type="door">
+              <div class="material-sample material-sample--door">
+                <div class="material-sample__image-wrapper">
+                  <div class="material-sample__placeholder" style="background-color: #D2691E;"></div>
+                  <div class="material-sample__overlay">
+                    <div class="material-sample__color-swatch" style="background-color: #D2691E;"></div>
+                  </div>
+                </div>
+                <div class="material-sample__info">
+                  <h3 class="material-sample__name">Oak Door</h3>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+      
+      {%- if module.header_settings.show_navigation -%}
+      <button class="carousel__nav carousel__nav--next" aria-label="Next materials">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9,18 15,12 9,6"></polyline>
+        </svg>
+      </button>
+      {%- endif -%}
+    </div>
+    
+    {%- if module.header_settings.show_navigation -%}
+    <div class="carousel__indicators">
+      {%- set total_materials = module.materials|length if module.materials else 12 -%}
+      {%- set total_pages = (total_materials / (module.carousel_settings.items_per_view_desktop or 6))|round(0, 'ceil')|int -%}
+      {%- for i in range(total_pages) -%}
+      <button class="carousel__indicator {{ 'active' if i == 0 else '' }}" 
+              data-slide="{{ i }}" 
+              aria-label="Go to slide {{ i + 1 }}"></button>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</section>

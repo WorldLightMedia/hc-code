@@ -1,0 +1,366 @@
+[
+  {
+    "id": "header_settings",
+    "name": "header_settings",
+    "label": "Header Settings",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "children": [
+      {
+        "id": "title",
+        "name": "title", 
+        "label": "Section Title",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "EXPLORE OUR MATERIAL LIBRARY"
+      },
+      {
+        "id": "subtitle",
+        "name": "subtitle",
+        "label": "Section Subtitle",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Popular Door Styles, Stains & Paint Colors"
+      },
+      {
+        "id": "show_navigation",
+        "name": "show_navigation",
+        "label": "Show Navigation Controls",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": true
+      }
+    ]
+  },
+  {
+    "id": "carousel_settings",
+    "name": "carousel_settings",
+    "label": "Carousel Settings",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "children": [
+      {
+        "id": "auto_scroll",
+        "name": "auto_scroll",
+        "label": "Enable Auto Scroll",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "auto_scroll_delay",
+        "name": "auto_scroll_delay",
+        "label": "Auto Scroll Delay (milliseconds)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": 3000,
+        "min": 1000,
+        "max": 10000,
+        "step": 500,
+        "visibility": {
+          "controlling_field": "carousel_settings.auto_scroll",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "scroll_amount",
+        "name": "scroll_amount",
+        "label": "Number of Items to Scroll",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "id": "items_per_view_desktop",
+        "name": "items_per_view_desktop",
+        "label": "Items Per View (Desktop)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": 6,
+        "min": 4,
+        "max": 8
+      },
+      {
+        "id": "items_per_view_tablet",
+        "name": "items_per_view_tablet",
+        "label": "Items Per View (Tablet)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": 4,
+        "min": 2,
+        "max": 6
+      },
+      {
+        "id": "items_per_view_mobile",
+        "name": "items_per_view_mobile",
+        "label": "Items Per View (Mobile)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "default": 2,
+        "min": 1,
+        "max": 3
+      }
+    ]
+  },
+  {
+    "id": "materials",
+    "name": "materials",
+    "label": "Material Samples",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 50,
+      "default": 12
+    },
+    "default": [
+      {
+        "material_name": "Shaker Style Door",
+        "material_type": "door",
+        "material_full_image": {
+          "src": "https://23742086.fs1.hubspotusercontent-na1.net/hubfs/23742086/doors/full/YT_Osborn_RMaple_Natural_5PC.jpg",
+          "alt": "Shaker Style Door"
+        },
+        "material_thumb_image": {
+          "src": "https://23742086.fs1.hubspotusercontent-na1.net/hubfs/23742086/doors/thumbs/YT_Osborn_RMaple_Natural_5PC.jpg",
+          "alt": "Shaker Style Door Thumbnail"
+        },
+        "material_color": {
+          "color": "#D4A574"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Modern Flat Panel Door",
+        "material_type": "door",
+        "material_full_image": {
+          "src": "",
+          "alt": "Modern Flat Panel Door"
+        },
+        "material_thumb_image": {
+          "src": "",
+          "alt": "Modern Flat Panel Door Thumbnail"
+        },
+        "material_color": {
+          "color": "#E8E8E8"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Recessed Panel Door",
+        "material_type": "door",
+        "material_full_image": {
+          "src": "",
+          "alt": "Recessed Panel Door"
+        },
+        "material_thumb_image": {
+          "src": "",
+          "alt": "Recessed Panel Door Thumbnail"
+        },
+        "material_color": {
+          "color": "#C8A882"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Glass Inset Door",
+        "material_type": "door",
+        "material_full_image": {
+          "src": "",
+          "alt": "Glass Inset Door"
+        },
+        "material_thumb_image": {
+          "src": "",
+          "alt": "Glass Inset Door Thumbnail"
+        },
+        "material_color": {
+          "color": "#A8B8C8"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Teal Color Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#2D9B8A"
+        },
+        "trending": true,
+        "material_url": ""
+      },
+      {
+        "material_name": "Oak Door",
+        "material_type": "door",
+        "material_full_image": {
+          "src": "",
+          "alt": "Oak Door"
+        },
+        "material_thumb_image": {
+          "src": "",
+          "alt": "Oak Door Thumbnail"
+        },
+        "material_color": {
+          "color": "#D2691E"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Charcoal Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#4A4A4A"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Cream Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#FFF8E7"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Navy Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#2C3E50"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Forest Green Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#2E5B3E"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Burgundy Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#722F37"
+        },
+        "material_url": ""
+      },
+      {
+        "material_name": "Sage Green Swatch",
+        "material_type": "color",
+        "material_color": {
+          "color": "#9CAF88"
+        },
+        "material_url": ""
+      }
+    ],
+    "children": [
+      {
+        "id": "material_name",
+        "name": "material_name",
+        "label": "Material Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Material Name"
+      },
+      {
+        "id": "material_type",
+        "name": "material_type",
+        "label": "Material Type",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["door", "Door Image"],
+          ["color", "Color Swatch"]
+        ],
+        "default": "door"
+      },
+      {
+        "id": "material_full_image",
+        "name": "material_full_image",
+        "label": "Full Size Image",
+        "required": false,
+        "locked": false,
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": ""
+        },
+        "visibility": {
+          "controlling_field": "material_type",
+          "controlling_value_regex": "door",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "material_thumb_image",
+        "name": "material_thumb_image",
+        "label": "Thumbnail Image",
+        "required": false,
+        "locked": false,
+        "type": "image",
+        "default": {
+          "src": "",
+          "alt": ""
+        },
+        "visibility": {
+          "controlling_field": "material_type",
+          "controlling_value_regex": "door",
+          "operator": "EQUAL"
+        }
+      },
+      {
+        "id": "material_color",
+        "name": "material_color",
+        "label": "Primary Color/Swatch Color",
+        "required": false,
+        "locked": false,
+        "type": "color",
+        "default": {
+          "color": "#D4A574"
+        }
+      },
+      {
+        "id": "trending",
+        "name": "trending",
+        "label": "Show Trending Badge",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "id": "material_url",
+        "name": "material_url",
+        "label": "Click URL (optional)",
+        "required": false,
+        "locked": false,
+        "type": "url"
+      },
+      {
+        "id": "material_description",
+        "name": "material_description",
+        "label": "Material Description",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": ""
+      }
+    ]
+  }
+]

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="{{ html_lang }}"{% if html_lang_dir %} dir="{{ html_lang_dir }}"{% endif %}>
+  <head>
+    <meta charset="utf-8">
+    <title>{% if page_meta.html_title or pageTitle %}{{ page_meta.html_title or pageTitle }}{% endif %}</title>
+    {% if brand_settings.favicon.src %}<link rel="shortcut icon" href="{{ brand_settings.favicon.src }}" />{% endif %}
+    <meta name="description" content="{{ page_meta.meta_description }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    {{ require_css(get_asset_url("../../css/main.css")) }}
+    {# This is intended to be used if a template requires template specific style sheets #}
+    {% if template_css %}
+    {{ require_css(get_asset_url(template_css)) }}
+    {% endif %}
+    {{ require_css(get_asset_url("../../css/theme-overrides.css")) }}
+    {# To see a full list of what is included via standard_header_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_header_includes }}
+  </head>
+  
+  <body>
+    {% block header %}
+    {% global_partial path="../partials/header.html" %}
+    {% endblock header %}
+    
+    {# The main-content ID is used for the navigation skipper in the header.html file. More information on the navigation skipper can be found here: https://github.com/HubSpot/cms-theme-boilerplate/wiki/Accessibility #}
+    <main id="main-content">
+      {% block body %}
+      {% endblock body %}
+    </main>
+    
+    {% block footer %}
+    {% global_partial path="../partials/footer.html" %}
+    {% endblock footer %}
+    
+    {{ require_js(get_asset_url("../../js/main.js")) }}
+    {# To see a full list of what is included via standard_footer_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
+    {{ standard_footer_includes }}
+    
+    <style>
+    /* Base body styles */
+    body {
+      font-family: 'EB Garamond', serif;
+      background-color: #FFF3E0;
+      padding-top: 120px; /* Account for header height */
+    }
+    
+    main {
+      min-height: 50vh;
+    }
+    
+    /* Services Content Styles */
+    .services__content {
+      padding: 4rem 2rem;
+      color: white;
+      text-align: center;
+    }
+    
+    .services__title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    
+    .services__title--dark {
+      color: #333;
+    }
+    
+    .services__description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .services__description--dark {
+      color: #555;
+    }
+    
+    .btn-white {
+      background-color: white;
+      color: #943A18;
+      border: 2px solid white;
+    }
+    
+    .btn-white:hover {
+      background-color: #9FC7C0;
+      border-color: #9FC7C0;
+      color: white;
+      text-decoration: none;
+    }
+    
+    /* Experience Content */
+    .experience__content {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #333;
+    }
+    
+    .experience__title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    
+    .experience__subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+    
+    /* About Content */
+    .about__content {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    .about__title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #943A18;
+      margin-bottom: 0.5rem;
+    }
+    
+    .about__subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #106664;
+      margin-bottom: 2rem;
+    }
+    
+    .about__description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Contact Content */
+    .contact__content {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact__title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #943A18;
+      margin-bottom: 1rem;
+    }
+    
+    .contact__description {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 3rem;
+    }
+    
+    .contact__form {
+      display: grid;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact__input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 4px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .contact__input:focus {
+      outline: none;
+      border-color: #943A18;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 100px;
+      }
+    }
+    </style>
+  </body>
+</html>

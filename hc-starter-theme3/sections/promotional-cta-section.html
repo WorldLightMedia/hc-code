@@ -1,0 +1,58 @@
+<!--
+  templateType: section
+  label: Service CTA Blocks Section
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/cards.png
+  description: Multi-block promotional section with customizable CTAs, images, and layouts.
+-->
+{% dnd_section background_color="#FFF8E7", vertical_alignment="MIDDLE" %}
+  {% dnd_column %}
+    {# Block 1: Kitchen Consultation #}
+    {% dnd_row %}
+      {% dnd_module
+        path="hc-starter-theme2/modules/cta-block-module.module"
+        headline="SERIOUSLY IN NEED OF A NEW KITCHEN?"
+        description="Transform your kitchen into the heart of your home with our expert design consultation."
+        cta_text="BOOK A CABINET CONSULTATION"
+        cta_url={ "href": "#", "type": "EXTERNAL" }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# Block 2: Kitchen Layout Help #}
+    {% dnd_row %}
+      {% dnd_module
+        path="hc-starter-theme2/modules/cta-block-module.module"
+        headline="NEED HELP WITH YOUR KITCHEN LAYOUT?"
+        description="Our experienced designers will work with you to create the perfect kitchen layout."
+        cta_text="BOOK A DESIGN SESSION"
+        cta_url={ "href": "#", "type": "EXTERNAL" }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# Block 3: Mood Board Inspiration #}
+    {% dnd_row %}
+      {% dnd_module
+        path="hc-starter-theme2/modules/cta-block-module.module"
+        headline="NEED A MOOD BOARD TO BE INSPIRED?"
+        description="Get inspired by our designer's personalized mood board. We'll show you how different styles and colors work together in your space."
+        cta_text="BOOK A DESIGN SESSION"
+        cta_url={ "href": "#", "type": "EXTERNAL" }
+      %}
+      {% end_dnd_module %} 
+    {% end_dnd_row %}
+
+    {# Block 4: Free Samples #}
+    {% dnd_row %}
+      {% dnd_module
+        path="hc-starter-theme2/modules/cta-block-module.module"
+        headline="NEED SAMPLES? EXPERIENCE OUR QUALITY FIRSTHAND."
+        description="Feel textures and see colors in your home before you commit—order your samples and start planning with confidence."
+        cta_text="GET YOUR FREE SAMPLES"
+        cta_url={ "href": "#", "type": "EXTERNAL" }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}

@@ -1,0 +1,15 @@
+<div class="cta-btn-wrapper{{ module.button_alignment }}">
+  <a href="{{ module.button_link.url.href }}"
+    class="cta_button{{ ' btn-primary' if module.primary else '' }}"
+    target="{{ module.button_link.open_in_new_tab|ternary('_blank','_self') }}"
+    rel="{{ module.button_link.no_follow|ternary('nofollow','') }}">
+    {{ module.button_text|default('Book A Call') }}
+  </a> 
+</div>
+{
+  "label": "Call to Action Button",
+  "description": "Universal CTA for calls, quotes, or section prompts. Editor can set label, link, style.",
+  "is_global": false,
+  "host_template_types": [ "PAGE", "BLOG_POST", "BLOG_LISTING", "EMAIL", "SECTION" ],
+  "fields": "./fields.json"
+}

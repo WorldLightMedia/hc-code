@@ -1,0 +1,10 @@
+<div class="promo-block promo-block--custom">
+  {% if module.image.src %}
+    <img src="{{ module.image.src }}" alt="{{ module.image.alt }}" loading="lazy">
+  {% endif %}
+  <h2 class="promo-block__headline">{{ module.headline }}</h2>
+  <p class="promo-block__description">{{ module.description }}</p>
+  {% if module.cta_url.href %}
+    <a href="{{ module.cta_url.href }}" class="promo-block__cta btn btn--primary">{{ module.cta_text }}</a>
+  {% endif %}
+</div>

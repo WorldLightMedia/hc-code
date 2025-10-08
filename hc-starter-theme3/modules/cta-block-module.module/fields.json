@@ -1,0 +1,43 @@
+[
+  {
+    "name": "headline",
+    "label": "Headline",
+    "required": true,
+    "type": "text",
+    "default": "Test"
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "required": false,
+    "type": "text",
+    "default": "Default description"
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "required": true,
+    "type": "text",
+    "default": "Book Now"
+  },
+  {
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "required": true,
+    "type": "url",
+    "default": {
+      "href": "#",
+      "type": "EXTERNAL"
+    }
+  },
+  {
+    "name": "image",
+    "label": "Image (Optional)",
+    "required": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  }
+]

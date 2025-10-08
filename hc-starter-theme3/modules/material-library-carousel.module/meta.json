@@ -1,0 +1,19 @@
+{
+  "label": "Material Library Carousel",
+  "description": "Interactive carousel displaying material samples with navigation controls and customizable settings.",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "is_global": false,
+  "css_assets": [
+    {
+      "path": "./module.css"
+    }
+  ],
+  "js_assets": [
+    {
+      "path": "./module.js"
+    }
+  ],
+  "icon": "{{ get_asset_url('../../images/module-icons/table.svg') }}",
+  "is_available_for_new_content": true,
+  "fields": "./fields.json"
+}

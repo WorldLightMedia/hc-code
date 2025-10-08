@@ -1,0 +1,7 @@
+{
+  "label": "Hero Section",
+  "description": "Fully editable hero block for headlines, subheads, background image, and CTA.",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "is_global": false,
+  "fields": "./fields.json"
+}
