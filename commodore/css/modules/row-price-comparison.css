@@ -1,0 +1,160 @@
+
+.hhs-price-compare-mod .pre-text.strike {
+ text-decoration: line-through; 
+}
+
+.hhs-price-compare-mod  article {
+  width:100%;
+  margin:0 auto;
+  position:relative;
+}
+.hhs-price-compare-mod ul {
+  display:flex;
+  top:0px;
+  padding-left: 0px;
+  z-index:10;
+  padding-bottom:0px;
+}
+.hhs-price-compare-mod li {
+  list-style:none;
+  flex:1;
+}
+
+.hhs-price-compare-mod button {
+  width:100%;
+  border-right:0;
+  border-top:0;
+  padding: 10px;
+  font-size:14px;
+  font-weight:bold;
+  height:60px;
+}
+.hhs-price-compare-mod button:focus {outline: none;}
+.hhs-price-compare-mod li.active button {
+  color:#000;
+}
+.hhs-price-compare-mod table { border-collapse:collapse; table-layout:fixed; width:100%; }
+
+.hhs-price-compare-mod td, .hhs-price-compare-mod th {
+  height:53px
+}
+.hhs-price-compare-mod td, .hhs-price-compare-mod th { padding:10px; empty-cells:show; }
+.hhs-price-compare-mod td, .hhs-price-compare-mod th {
+  text-align:left;
+}
+.hhs-price-compare-mod td+td, .hhs-price-compare-mod th+th {
+  text-align:center;
+  display:none;
+}
+.hhs-price-compare-mod td.default {
+  display:table-cell;
+}
+
+.hhs-price-compare-mod th.hide-cell {background-color: transparent !important; border: none !important; display: none;}
+
+.sep {
+  font-weight:bold;
+}
+.txt-l { font-size:28px; font-weight:bold; }
+.txt-top { position:relative; top:-9px; left:4px; }
+.tick { font-size:18px;  }
+.hhs-price-compare-mod .hide-cell {
+  border:0;
+  background:none;
+}
+
+
+@media (min-width: 922px) {
+  .hhs-price-compare-mod ul {
+    display:none;
+  }
+  .hhs-price-compare-mod td, .hhs-price-compare-mod th {
+    display:table-cell !important;
+  }
+}
+
+
+.tooltip-wrapper {
+  display: inline-block;
+  cursor: help;
+  font-size: 14px;
+  position: relative;
+  -webkit-transform: translateZ(0); /* webkit flicker fix */
+  -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+}
+
+.tooltip-wrapper i {
+ font-size: 14px; 
+}
+
+.tooltip-wrapper .tooltip {
+  background: #fff;
+  bottom: 100%;
+  display: block;
+  left: -25px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid;
+  opacity: 0;
+  padding: 20px;
+  pointer-events: none;
+  position: absolute;
+  width: 250px;
+  -webkit-transform: translateY(10px);
+     -moz-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+       -o-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-transition: all .25s ease-out;
+     -moz-transition: all .25s ease-out;
+      -ms-transition: all .25s ease-out;
+       -o-transition: all .25s ease-out;
+          transition: all .25s ease-out;
+  -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+     -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+      -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+       -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+          box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+/* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.tooltip-wrapper .tooltip:before {
+  bottom: -20px;
+  content: " ";
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}  
+
+/* CSS Triangles - see Trevor's post */
+.tooltip-wrapper .tooltip:after {
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  bottom: -10px;
+  content: " ";
+  height: 0;
+  left: 36px;
+  margin-left: -13px;
+  position: absolute;
+  width: 0;
+}
+  
+.tooltip-wrapper:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateY(0px);
+     -moz-transform: translateY(0px);
+      -ms-transform: translateY(0px);
+       -o-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+/* IE can just show/hide with no transition */
+.lte8 .tooltip-wrapper .tooltip {
+  display: none;
+}
+
+.lte8 .tooltip-wrapper:hover .tooltip {
+  display: block;
+}

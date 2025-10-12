@@ -1,0 +1,138 @@
+
+{###########################################################################}
+{##############################   ROW - FLEXI CARDS   #############################}
+{###########################################################################}
+
+.hhs-img-text-mod {position: relative;}
+.hhs-flexi-card-mod {position: relative; z-index: 2;}
+.hhs-flexi-card-mod .row {position: relative; z-index: 3;}
+
+.hhs-form-con {
+ margin: 0 auto; 
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 575px){
+  .order-1-mobile .hhs-img {
+   margin-bottom: 25px; 
+  }
+}
+
+.hhs-flexi-card-mod {
+  position: relative;
+}
+.hhs-flexi-card-mod .row {
+  z-index: 2;
+  position: relative;
+}
+
+.hhs-flexi-card-mod .hhs-social-con {
+  position: absolute;
+  bottom: 25px;
+  display: inline-flex;
+}
+
+.hhs-flexi-card-mod .hhs-social-con a {
+ padding-left: 0px;
+}
+
+.hhs-flexi-card {
+ padding-bottom: 25px; 
+  flex-grow:1;
+}
+  
+.hhs-flexi-card-mod video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: initial;
+}
+
+.hhs-flexi-card-mod a.flexi-card-outer {
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  -ms-transition: all 100ms ease-in;
+  -o-transition: all 100ms ease-in;
+  transition: all 100ms ease-in; 
+  display: block;
+  height: 100%;
+}
+
+.hhs-flexi-card-mod a:hover {
+  -moz-transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+.hhs-flexi-card-mod p a {
+ display: inline; 
+}
+
+.hhs-arrow-down {
+	-webkit-animation: fade-in-top 2.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+	        animation: fade-in-top 2.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+  font-size: 14px;
+  display: none !important;
+}
+
+.hhs-flexi-card-mod a:hover .hhs-arrow-down{
+ display: inline-block !important; 
+  position: absolute !important;
+}
+
+@-webkit-keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .hhs-flexi-card-mod .hhs-flexi-card {
+   margin-bottom: 25px; 
+  }
+}
+
+@media (max-width: 922px) {
+  .hhs-flexi-card-mod .hhs-flexi-card{
+   margin-bottom: 25px; 
+  }
+}
+
+@media (max-width: 575px) {
+  .hhs-flexi-card-mod .hhs-flexi-card {
+   margin-bottom: 25px; 
+    height: auto;
+  }
+}
+

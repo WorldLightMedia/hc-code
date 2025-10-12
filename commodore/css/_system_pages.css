@@ -1,0 +1,190 @@
+.error-page-con {
+  padding: 20rem 0;
+  text-align: center;
+  position: relative;
+}
+.error-page:before {
+  content: attr(data-error);
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family:  {{ theme.typography.p.props.font_style.font }};
+  font-size: 40vw;
+  font-weight: bold;
+  z-index: 0;
+}
+
+.error-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.error-page h4 {
+  margin-bottom: 25px;
+}
+
+@media screen and (min-width: 1100px) {
+  .error-page:before {
+    font-size: 20rem;
+  }
+}
+.error-page_heading {
+  margin-bottom: 1rem;
+}
+.systems-page {
+  padding: 3rem 0px;
+}
+.systems-page .success {
+  display: inline-block;
+  margin: 2rem 0;
+  min-width: 650px;
+  background-color: #CDE3CC;
+  border: 1.5px solid #4F7D24;
+  border-radius: 6px;
+  font-size: .75rem;
+  color: #4F7D24;
+  padding: .1rem .75rem;
+}
+
+{#** SUBSCRIPTION PREFS **#}
+
+.sub-pre-header {
+  padding: 7rem 0 5rem;
+  position: relative;
+}
+
+.sub-pre-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.sub-pre-header h1,
+.sub-pre-header p {
+  text-align: center;
+}
+
+.sub-pref-full {
+  padding: 1rem 0;
+}
+.sub-pref-full form {
+  max-width: 100%;
+}
+
+#hs_cos_wrapper_subscriptions_confirmation h2,
+.sub-pref-full form h2 {
+  font-size: {{ theme.typography.h4.props.font_style.size.value }}{{ theme.typography.h4.props.font_style.size.units }};
+}
+
+.sub-pref-full form .checkbox-row span span {
+  font-weight: bold;
+}
+
+.sub-pref-full form .item-inner p {
+  font-size: 0.8em;
+  padding-left: 20px;
+}
+
+#email-prefs-form .page-header {
+  margin-bottom: 25px;
+}
+
+.sub-pref-full h1 {
+  display: none;
+}
+
+.sub-pref-full h3 {
+  font-size: {{ theme.typography.h5.props.font_style.size.value }}{{ theme.typography.h5.props.font_style.size.units }};
+}
+
+.head-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+#hs_cos_wrapper_password_prompt_ form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+{#** SEARCH RESULTS **#}
+
+.hs-search-results {
+  margin-top: 2rem;
+}
+ul.hs-search-results__listing li {
+  margin-bottom: 2rem;
+}
+.hs-search-results__title {
+  font-family: {{ theme.typography.h1.props.font_style.font }};
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+  font-size: {{ theme.typography.h4.props.font_style.size.value }}{{ theme.typography.h4.props.font_style.size.units }};
+}
+.hs-search-results__title:hover {
+  text-decoration: none;
+}
+.hs-search-results__description {
+  padding-top: .5rem;
+}
+.hs-search-highlight {
+  font-weight: bold;
+}
+.hs-search-results__pagination a {
+  color: {{ theme.typography.global_fonts.body_link_color.color }};
+}
+
+.results-pre-header {
+  padding: {{ theme.system_pages.search_results.padding_top_desktop }} 0 {{ theme.system_pages.search_results.padding_btm_desktop }};
+  position: relative;
+}
+
+@media (max-width: 922px) {
+  .results-pre-header {
+    padding: {{ theme.system_pages.search_results.padding_top_tablet }} 0 {{ theme.system_pages.search_results.padding_btm_tablet }};
+  }
+}
+@media (max-width: 575px) {
+  .results-pre-header {
+    padding: {{ theme.system_pages.search_results.padding_top_mobile }} 0 {{ theme.system_pages.search_results.padding_btm_mobile }};
+  }
+}
+
+.results-pre-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.results-pre-header h1,
+.results-pre-header h5 {
+  text-align: center;
+}
+
+ 
+ .hs-search-results__listing li {
+   padding-bottom: 20px;
+   margin-bottom: 30px;
+   border-bottom: 1px solid rgba(0,0,0,0.1);
+ }
+ 
+ .hs-search__no-results {
+   border: 1px solid rgba(0,0,0,0.1);
+   padding: 200px 60px;
+   text-align: center;
+ }
+ 
+ .hs-search__no-results p:first-child {
+   font-weight: bold; 
+   font-size: 18px;
+ }
+ 

@@ -1,0 +1,32 @@
+{###########################################################################}
+{##############################   ROW - ICON WITH TEXT   #############################}
+{###########################################################################}
+.hhs-icon-con i, .hhs-icon-con img, .hhs-icon-con svg {margin-bottom: 10px;}
+
+.hhs-icon-con h2,
+.hhs-icon-con h3,
+.hhs-icon-con h4,
+.hhs-icon-con h5,
+.hhs-icon-con h6 {margin-bottom: 5px;}
+
+.hhs-icon-con .hhs-text-content {
+ margin: 0; 
+}
+
+.icon-left-side.hhs-icon-con {
+  display: flex;
+}
+
+.icon-left-side .icon-con {
+ justify-content: start;
+  margin-right: 10px;
+}
+
+.icon-left-side.icon-align-center {
+  align-items: center;
+}
+
+@media (max-width: 575px) {
+  .hhs-icon-con {margin-bottom: 50px;} 
+  .hhs-icon-con.last {margin-bottom: 0px;} 
+}

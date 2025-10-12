@@ -1,0 +1,25 @@
+{###########################################################################}
+{##############################   ROW - MAP AND TEXT  #############################}
+{###########################################################################}
+
+.hhs-google-map{
+  position: relative;
+  padding-bottom: 0%;
+}
+
+.hhs-google-map iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hhs-google-map .hs-responsive-embed-wrapper {
+ height: 100% !important; 
+}
+
+.hhs-google-map .hs-responsive-embed-wrapper div {
+ padding-bottom: 0px !important;
+  position: initial !important;
+}

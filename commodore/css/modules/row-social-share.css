@@ -1,0 +1,14 @@
+.hhs-social-share-mod h6,
+.hhs-social-share-mod .hhs-share-icon {
+  display: inline-block; 
+}
+
+.hhs-social-share-mod .hhs-share-icon {
+ margin-right: 10px; 
+}
+
+.hhs-social-share-mod h6 {
+ font-size: 12px;
+  vertical-align: -webkit-baseline-middle;
+  margin-right: 10px;
+}

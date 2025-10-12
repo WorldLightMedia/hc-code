@@ -1,0 +1,309 @@
+
+{# Hides elements that are positioned off the page #}
+body {overflow-x: hidden;}
+
+.commodore-base {
+ display: flow-root; 
+}
+
+.commodore-base{
+ position: relative; 
+}
+
+.commodore-base .row,
+.commodore-base .c-col {
+  position: relative;
+  z-index: 2;
+}
+
+.commodore-base .custom {
+  width: 100%;
+  margin: auto;
+}
+.custom {
+  padding-right: var(--bs-gutter-x,.75rem);
+  padding-left: var(--bs-gutter-x,.75rem);
+}
+
+.c-content-con {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.c-col-inner {
+  position: relative;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-icon-con {display: inline-table;}
+.c-content-con svg {
+ width: 100%; 
+}
+
+.c-cta-con {
+  display: flex;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+.s-overlay,
+.r-overlay,
+.c-overlay  {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block; 
+}
+
+{# ALIGNMENT #}
+
+.c-align-center,
+.c-align-bottom,
+.c-justify-center,
+.c-justify-left,
+.c-justify-right {
+  display:flex;  
+  flex-flow: wrap;
+}
+
+.c-justify-center {
+ justify-content: center;
+}
+.c-justify-left {
+ justify-content: left;
+}
+.c-justify-right {
+ justify-content: right;
+}
+
+.c-align-center {
+ align-items: center; 
+ align-content: center;
+}
+.c-align-bottom {
+ align-items: flex-end; 
+ align-content: end;
+}
+
+.c-text-center {
+ text-align: center; 
+}
+.c-text-right {
+ text-align: right; 
+}
+.c-text-left {
+ text-align: left; 
+}
+
+.c-clearfix:before,
+.c-clearfix:after,
+.hhs-container:before,
+.hhs-container:after,
+.hhs-container-fluid:before,
+.hhs-container-fluid:after {
+  content: " ";
+  display: table;
+}
+.c-clearfix:after {
+  clear: both;
+}
+
+@media (max-width: 575px) {
+  .order-1-mobile {order: 1 !important;}
+  .order-2-mobile {order: 2 !important;}
+  .order-3-mobile {order: 3 !important;}
+  .order-4-mobile {order: 4 !important;}
+  .order-5-mobile {order: 5 !important;}
+  .order-6-mobile {order: 6 !important;}
+}
+
+{#### FULL SCREEN ####}
+
+.c-fullscreen {
+  height: 100vh;
+  width: 100%; 
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.c-fullscreen-outer {
+  display: table;
+  width: 100%;
+}
+
+
+{#### VIDEO BACKGROUND ####}
+
+.commodore-base video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.c-video-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  overflow: hidden;
+  z-index: 0;
+  background-size: auto;
+}
+
+.c-video-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+{#### PARALLAX ####}
+ 
+.parallax {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+  
+.para-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  transition: all 0.125s ease-in-out;
+}
+
+.para-background.simpleParallax,
+.para-background--show-mobile {
+  opacity: 1;
+}
+
+.para-background__image {
+  display: block;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+{#### RELLAX PARALLAX ####}
+.c-col.rellax {z-index: 3;}
+@media (max-width: 575px) { .rellax { transform: translate3d(0,0,0) !important; } }
+
+{#### WAVE ####}
+
+.c-wave-con-top,
+.c-wave-con-btm {
+  overflow: hidden;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+
+.c-wave-module svg,
+.c-wave-module {
+  display: block;
+  width: 103%;
+  min-width: 1366px;
+}
+
+.c-wave-module svg {
+  transform: scaleX(-1);
+}
+ 
+.c-wave-con-top .c-wave-module svg {
+  transform: scaleY(-1);
+}
+
+.c-wave-con-top .c-wave-module.flip-wave svg {
+  transform: scale(-1, -1) !important;
+}
+
+.c-wave-con-btm .c-wave-module.flip-wave svg {
+  transform: scale(1, 1) !important;
+}
+
+.c-wave-con-btm .c-wave-module {
+ margin-bottom: -1px;
+}
+
+.c-wave-con-top .c-wave-module {
+ margin-top: -2px;
+}
+
+.c-wave-module svg {
+  bottom: 0;
+}
+
+.c-scroll-down {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50px;
+  opacity: 0.4;
+}
+
+.c-scroll-down:before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 2px;
+  height: 10px;
+  background-color: white;
+  animation: scrollDown 2s infinite;
+}
+
+
+{#### ROTATING TEXT ####}
+
+.rotating-text {display: none;}
+
+.rotating-text.morphext,
+.morphext > .animate__animated {
+    display: inline-block;
+}
+
+{#### commodore INLINE HELPERS ####}
+
+.c-m-auto {margin: 0 auto;} 
+.c-dblock {display:block !important;}
+.c-rel {position: relative;}
+.c-w-100 {width: 100%;}
+.g-0 {padding-left: 0px; padding-right: 0px;}
+.c-fullscreen {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.c-hover-scale {
+  transition: transform 0.3s ease;
+  will-change: transform; 
+}
+
+.c-hover-scale:hover {
+  transform: scale(1.02);
+}
+{% include './keyframe-animations.css' %}
