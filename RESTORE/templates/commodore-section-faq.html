@@ -1,0 +1,175 @@
+<!--
+ templateType: section
+ label: FAQ
+ description: "Perfect for a simple FAQ section."
+ isAvailableForNewContent: true
+ screenshotPath: ../images/sections/faq.jpg
+-->
+ {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      
+      {% dnd_column 
+        offset=0
+      %}
+        {% dnd_row %}
+          {% dnd_module "multi_col_accordion_1"
+              path='../modules/commodore - Row - Multi-Column Accordion',
+              label="Multi-Column Accordion",
+              offset=0
+            %}
+              {% module_attribute "start" is_json=True %}
+                {
+                  "num_cols": "2",
+                  "two_col_arrangement": "opt1"
+                }
+              {% end_module_attribute %}
+              {% module_attribute "col_1" is_json=True %}
+                {
+                  "content": "<h4>Section Headline</h4>",
+                  "settings": {
+                    "show_divider": true
+                  },
+                  "accordions": [
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    },
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    },
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    }
+                  ]
+                }
+              {% end_module_attribute %}
+              {% module_attribute "col_2" is_json=True %}
+                {
+                  "content": "<h4>Section Headline</h4>",
+                  "settings": {
+                    "show_divider": true
+                  },
+                  "accordions": [
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    },
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    },
+                    {
+                      "title": "Question goes here.",
+                      "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                    }
+                  ]
+                }
+              {% end_module_attribute %}
+              {% module_attribute "row_settings" is_json=True %}
+                {
+                  "bg_type": "color",
+                  "bg_color": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                  },
+                  "content_width": "container",
+                  "adv_settings": {
+                    "padding_top": "50px",
+                    "padding_bottom": "50px",
+                    "padding_top_tablet": "50px",
+                    "padding_bottom_tablet": "50px",
+                    "padding_top_mobile": "25px",
+                    "padding_bottom_mobile": "25px"
+                  }
+                }
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "multi_col_accordion_2"
+            path='../modules/commodore - Row - Multi-Column Accordion',
+            label="Multi-Column Accordion",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "2",
+                "two_col_arrangement": "opt1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h4>Section Headline</h4>",
+                "settings": {
+                  "show_divider": true
+                },
+                "accordions": [
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  },
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  },
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  }
+                ]
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_2" is_json=True %}
+              {
+                "content": "<h4>Section Headline</h4>",
+                "settings": {
+                  "show_divider": true
+                },
+                "accordions": [
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  },
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  },
+                  {
+                    "title": "Question goes here.",
+                    "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+                  }
+                ]
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "100px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "50px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %} 
+    {% end_dnd_section %}

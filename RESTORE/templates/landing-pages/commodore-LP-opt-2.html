@@ -1,0 +1,1455 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/thumbnails/lp-opt-2.jpg
+  label: Landing Page - Opt 2 - Commodore
+-->
+{% extends "../layouts/base-lp.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+  <!----------------------- GLOBAL HEADER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_header"
+        path="../../modules/Global Header v2",
+        label="Global Header - Opt2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/CLEAN - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=true,
+        hide_nav=true,
+        hide_header_hat=true,
+        logo_center=true,
+        logo_mt='20',
+        hide_footer=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+   <!----------------------- Hero Area - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_1"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Hero Area (Magic Module - Pro)",
+        start={
+          "num_cols":2,
+          "two_col_arrangement":"opt5"
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h1>Awesome Landing Page Option 2</h1><h4>A nice looping video background can add that bit of special sauce to a web page that brings it to life. Just make sure the video is optimized and has a file size under 6MB.</h4><p>The use of background videos are awesome for pages you're optimizing for UX. If you are opitimizing a page for SEO it's best to skip this cool feature.</p>",
+              "content_mb":25
+            }
+          ]
+        },
+        col_2={
+          "content":[
+            {
+              "type":"text",
+              "content_name":"Text over form",
+              "rich_text":"<h3>Sign up today!</h3><p>Bruh roof party DSA tacos knausgaard everyday carry jean.</p>",
+              "content_mb":25
+            },
+            {
+              "type":"form",
+              "content_name":"Form"
+            }
+          ]
+        },
+        bg_video={
+          "row":{
+            "clip":"https://507386.fs1.hubspotusercontent-na1.net/hubfs/507386/new-vids/vid-1.mp4"
+          }
+        },
+        style={
+          "section":{
+          },
+          "row":{
+            "size":{
+              "content_width":"container-fluid"
+            },
+            "bg":{
+              "type":"video",
+              "add_overlay":"color",
+              "overlay_color":{
+                "color":"#eeeeee",
+                "opacity": 80
+              },
+              "add_blur":true,
+              "blur_amount":15
+            },
+            "extras":{
+              "add_rounded_corners":true
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 90,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 90,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "extras":{
+                "vert_align":"center"
+              }
+            },
+            "col_2":{
+              "bg":{
+                "type":"color",
+                "color":{
+                  "color":"#ffffff",
+                  "opacity":50
+                }
+              },
+              "extras":{
+                "border_radius":10
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+   <!----------------------- COUNT UP ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "count_up"
+        path='../../modules/CLEAN Pro - Count Up',
+        label="Social Proof Counters (Count Up - Pro)",
+        start={
+          "num_cols":4
+        },
+        number_cards=[
+          {
+            "card_label":"Reviews",
+            "num":1355,
+            "text_below":"<p style='text-align:center;'>5-Star Reviews</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Customers",
+            "num":2279,
+            "text_below":"<p style='text-align:center;'>Happy Customers</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Coffee",
+            "num":438,
+            "text_below":"<p style='text-align:center;'>Cups of Coffee</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"High-Fives",
+            "num":2190,
+            "text_below":"<p style='text-align:center;'>Virtual High-Fives</p>",
+            "apply_num_format":true
+          }
+        ],
+        style={
+          "cards":{
+            "number_format":{
+              "seperator_sign":","
+            }
+          },
+          "section":{
+          },
+          "row":{
+            "size":{
+              "content_width":"container"
+            },
+            "bg":{
+              "type":"none"
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    
+  <!----------------------- IMAGE AND TEXT - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_3"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Image and Text (Magic Module - Pro)",
+        start={
+          "num_cols":2,
+          "use_accordion":true
+        },
+        col_1={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Man with arms crossed",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/man-arms-crossed.jpg') }}"
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Chart",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/chart-biz-data.png') }}",
+                "width":250
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":100,
+                "align_horiz":1,
+                "start_right":true
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-05s",
+                "speed":"animate__slow",
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Swirl graphic",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/vector-swirl.svg') }}",
+                "width":80
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":60,
+                "align_horiz":0
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-1s",
+                "speed":"animate__slow",
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Line graphic",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/vector-lines.svg') }}",
+                "width":80
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":360,
+                "align_horiz":50,
+                "start_right":true
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-1-5s",
+                "speed":"animate__slow",
+              }
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2>Headline goes here.</h2><p>Vape typewriter umami DIY, iceland ascot 90's drinking vinegar tacos shabby chic. Blue bottle farm-to-table palo santo literally.</p>",
+              "content_mb":15
+            },
+            {
+              "type":"accordion",
+              "content_name":"Accordion content",
+              "accordions": [
+                {
+                  "title":"This is an accordion",
+                  "content":"<p>Grailed pitchfork quinoa, yuccie fingerstache big mood activated charcoal sustainable. You probably have heard of them forage lo-fi stumptown drinking vinegar. Unicorn kinfolk waistcoat plaid authentic lyft. Man bun put a bird on it coloring book lumbersexual pork belly cred, yuccie narwhal roof party keytar organic farm-to-table edison bulb normcore bodega boys.</p>"
+                },
+                {
+                  "title":"This is an accordion",
+                  "content":"<p>Grailed pitchfork quinoa, yuccie fingerstache big mood activated charcoal sustainable. You probably have heard of them forage lo-fi stumptown drinking vinegar. Unicorn kinfolk waistcoat plaid authentic lyft. Man bun put a bird on it coloring book lumbersexual pork belly cred, yuccie narwhal roof party keytar organic farm-to-table edison bulb normcore bodega boys.</p>"
+                },
+                {
+                  "title":"This is an accordion",
+                  "content":"<p>Grailed pitchfork quinoa, yuccie fingerstache big mood activated charcoal sustainable. You probably have heard of them forage lo-fi stumptown drinking vinegar. Unicorn kinfolk waistcoat plaid authentic lyft. Man bun put a bird on it coloring book lumbersexual pork belly cred, yuccie narwhal roof party keytar organic farm-to-table edison bulb normcore bodega boys.</p>"
+                }
+              ]
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#ffffff",
+                "opacity":100
+              }
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            },
+            "col_2":{
+              "bg": {
+                "type": "none"
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- CENTERED HEADLINE - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_3"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Centered Headline (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2 style='text-align:center;'>Testimonials Go Here</h2><p style='text-align:center;'>Thundercats hammock adaptogen literally crucifix hashtag drinking vinegar hot chicken live-edge banjo.</p>",
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %} 
+
+   
+<!----------------------- TESTIMONIALS - VERSA CARDS ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "versa_cards"
+        path='../../modules/CLEAN Pro - Versa Cards',
+        label="Testimonials (Versa Cards - Pro)",
+        start={
+          "card_style":"testimonial",
+          "num_cols":3
+        },
+        testimonial_cards=[
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          },
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          },
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          },
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          },
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          },
+          {
+            "photo":{
+              "src":"{{ get_asset_url('../../images/gfx/placeholder-profile-1x1.jpg') }}",
+              "width":80
+            },
+            "full_name":"John Smith",
+            "title":"Director of Marketing",
+            "quote":"Cupping chicharrones hexagon vaporware. Helvetica beard taiyaki, DIY drinking vinegar PBR&B tonx vape godard tofu. Meggings echo park taxidermy big mood asymmetrical next level.",
+            "show_stars":true,
+            "star_rating":5
+          }
+        ],
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+  <!----------------------- Image and Text 2 - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_5"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Image and Text (Magic Module - Pro)",
+        start={
+          "num_cols":2
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2>Headline goes here...</h2><p>Typewriter microdosing live-edge taiyaki wayfarers, before they sold out banh mi williamsburg single-origin coffee tofu pinterest. VHS try-hard shabby chic, schlitz semiotics neutra hoodie succulents.</p><p>Master cleanse enamel pin gorpcore neutra paleo, mixtape palo santo jianbing yuccie etsy prism. Retro fanny pack irony affogato cupping etsy kitsch vaporware cred tousled single-origin coffee.</p>",
+              "content_mb":25
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Woman with hands in pockets",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/woman-hands-in-pockets.jpg') }}"
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Graph image",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/chart-revenue-target.png') }}",
+                "width":280
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":180,
+                "align_horiz":0
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-05s",
+                "speed":"animate__slow",
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Swirl graphic",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/vector-swirl.svg') }}",
+                "width":80
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":200,
+                "align_horiz":10,
+                "start_right": true
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-1s",
+                "speed":"animate__slow",
+              }
+            },
+            {
+              "type":"image",
+              "content_name":"Line graphic",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/vector-lines.svg') }}",
+                "width":80
+              },
+              "pos":{
+                "align":"specific",
+                "align_vert":20,
+                "align_horiz":50
+              },
+              "animation": {
+                "type":"animate__animated animate__fadeIn",
+                "delay":"animate__delay-1-5s",
+                "speed":"animate__slow",
+              }
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#ffffff",
+                "opacity":100
+              }
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+<!----------------------- Logo Scroller ----------------------->  
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+    {% dnd_module "logo_scroller"
+        path='../../modules/CLEAN - Row - Logo Scroller',
+        label="Logo Scroller (Pro)",
+        start={
+          "num_logos":4
+        },
+        logo_group=[
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-1.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-2.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-3.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-4.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-5.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            }
+          ],
+         slider_options={
+          "section_title":true,
+          "auto_rotate":true,
+          "smooth_rotation":true,
+          "show_arrows":false,
+          "dots":false
+         },
+         title="<h5 style='text-align:center;'>Trusted by 1000+ companies worldwide.</h5>",
+         row_settings={
+          "adv_settings":{
+            "padding_bottom":"150px",
+            "padding_bottom_tablet":"150px",
+            "padding_bottom_mobile":"100px",
+          }
+         }
+     %}
+     {% end_dnd_module %}
+  
+  {% end_dnd_section %}
+
+  <!----------------------- Bottom CTA- MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_6"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Base Call to Action (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and button",
+              "rich_text":"<h2 style='text-align:center;'>Get started today!</h2><p style='text-align:center;'>It only takes a few moments to signup.</p>",
+              "content_mb":25
+            },
+            {
+              "type": "form",
+              "content_name":"Form"
+            }
+          ],
+          "animation": {
+            "type":"animate__animated animate__fadeInUp"
+          }
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#eeeeee",
+                "opacity":100
+              }
+            },
+          },
+          "row":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#ffffff",
+                "opacity":100
+              }
+            },
+            "extras": {
+              "add_drop_shadow": true,
+              "shadow_color": {
+                "color": "#000000",
+                "opacity": 25
+              },
+              "shadow_blur_radius": 25,
+              "add_rounded_corners": true
+            },
+            "size":{
+              "content_width":"container-slim"
+            },
+            "spacing":{
+              "desktop":{
+                "margin": {
+                  "top": {
+                    "value":-100,
+                    "units":"px"
+                  },
+                  "bottom": {
+                    "value":25,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin": {
+                  "top": {
+                    "value":-100,
+                    "units":"px"
+                  },
+                  "bottom": {
+                    "value":25,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin": {
+                  "top": {
+                    "value":-50,
+                    "units":"px"
+                  },
+                  "bottom": {
+                    "value":50,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %} 
+ 
+
+     <!----------------------- GLOBAL FOOTER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_footer"
+        path="../../modules/Global Footer",
+        label="Global Footer",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

@@ -1,0 +1,632 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/pricing-feature-compare-6-2.jpg
+  label: Pricing Feature Compare - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h1>Simple, Flexible Pricing</h1><h4>Easily create a comparison table to highlight the features included in your different packages.</h4>",
+            "style": {
+              "content_align": "center"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "bg_color_1": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "bg_color_2": {
+              "color": "#00bda5",
+              "opacity": 100
+            },
+            "bg_gradient_angle": "45deg",
+            "overlay_bg": "none",
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "200px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "150px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Totally customizable.</h2><p>With the commodore comparison table you have got loads of customization options. Easily select between 2, 3, 4 or 5 columns to show and add as many feature rows as you would like. Its pretty awesome!</p>",
+            "settings": {
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": true,
+              "content_bg_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              },
+              "pull_up_num_desktop": 100,
+              "pull_up_num_tablet": 0,
+              "pull_up_num_mobile": 50,
+              "con_padding": 25,
+              "con_padding_tablet": 15,
+              "con_padding_mobile": 25,
+              "no_padding_btm": true
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "price_comparison_table_1"
+        path='../modules/commodore - Row - Price Comparison Table',
+        label="Price Comparison Table",
+        offset=0,
+        feat_section_2_on=true
+      %}
+        {% module_attribute "start" is_json=True  %}
+          {
+            "num_cols": "4",
+            "currency": "$",
+            "price_row_title": "Pricing",
+            "price_toggle": true,
+            "toggle_1": "Billed Monthly",
+            "toggle_2": "Billed Annually"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True  %}
+          {
+            "package_1": {
+              "title": "Free-Trial",
+              "price_pre_text": "New",
+              "price": "0",
+              "price_2": "0",
+              "price_post_text": "per/mo",
+              "hightlight_color": {
+                "color": "#cccccc",
+                "opacity": 100
+              }
+            },
+            "package_2": {
+              "title": "Basic",
+              "price_pre_text": "New",
+              "price": "19",
+              "price_2": "7",
+              "price_post_text": "per/mo",
+              "hightlight_color": {
+                "color": "#cccccc",
+                "opacity": 100
+              }
+            },
+            "package_3": {
+              "title": "Pro",
+              "price_pre_text": "New",
+              "price": "49",
+              "price_2": "29",
+              "price_post_text": "per/mo",
+              "hightlight_color": {
+                "color": "#ff7a59",
+                "opacity": 100
+              }
+            },
+            "package_4": {
+              "title": "Enterprise",
+              "price_pre_text": "New",
+              "price": "129",
+              "price_2": "79",
+              "price_post_text": "per/mo",
+              "hightlight_color": {
+                "color": "#cccccc",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "feature_section_1" is_json=True  %}
+          {
+            "title": "Marketing",
+            "feature_row": [
+              {
+                "feature": "Forms",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "yes",
+                "package_2": "yes",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Contact Activity",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "no",
+                "package_2": "yes",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Team email",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "na",
+                "package_2": "no",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Contact Management",
+                "tooltip": false,
+                "package_1": "na",
+                "package_2": "na",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Ad Management",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "na",
+                "package_2": "no",
+                "package_3": "no",
+                "package_4": "yes"
+              }
+            ]
+          }
+        {% end_module_attribute %}
+        {% module_attribute "feature_section_2" is_json=True  %}
+          {
+            "title": "Sales",
+            "feature_row": [
+              {
+                "feature": "Gmail and Outlook Integration",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "yes",
+                "package_2": "yes",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Contact Management",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "na",
+                "package_2": "yes",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Company Records",
+                "tooltip": true,
+                "extra_info": "This is a great place to add a bit of extra information about the feature.",
+                "package_1": "no",
+                "package_2": "no",
+                "package_3": "yes",
+                "package_4": "yes"
+              },
+              {
+                "feature": "Email Scheduling",
+                "tooltip": false,
+                "package_1": "na",
+                "package_2": "no",
+                "package_3": "yes",
+                "package_4": "yes"
+              }
+            ]
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color:": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- LOGO SCROLLER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "logo_scroller"
+        path='../modules/commodore - Row - Logo Scroller',
+        label="Logo Scroller",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_logos": 5 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "logo_group" is_json=True %}
+          [
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-entrepreneur-mag.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-fast-company.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-forbes-logo.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-mashable@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-ny-times@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-techcrunch@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-wired@2x.png"
+                }
+              }
+          ]
+        {% end_module_attribute %}
+        {% module_attribute "slider_options" is_json=True %} 
+          {
+            "auto_rotate": true,
+            "dots": true,
+            "show_arrows": false,
+            "make_logos_links": false,
+            "section_title": true 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_2"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Frequently Asked Questions</h2><p>You have questions. I get it. I also have answers.</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "10px",
+              "padding_bottom": "10px",
+              "padding_top_tablet": "0px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN ACCORDION  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_accordion_1"
+        path='../modules/commodore - Row - Multi-Column Accordion',
+        label="Multi-Column Accordion",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "",
+            "settings": {
+              "show_divider": false
+            },
+            "accordions": [
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              },
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              },
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              }
+            ]
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "",
+            "settings": {
+              "show_divider": false
+            },
+            "accordions": [
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              },
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              },
+              {
+                "title": "Question goes here.",
+                "content": "<p>Schlitz bicycle rights polaroid lo-fi hell of chambray portland everyday carry pabst. Next level schlitz retro messenger bag synth, organic put a bird on it.</p>"
+              }
+            ]
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "10px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "10px",
+              "padding_bottom_mobile": "10px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h4>More questions?</h4><p>Do not hesitate to contact us at <a href='mailto:help@yourcompany.com' rel='noopener'>help@yourcompany.com</a></p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

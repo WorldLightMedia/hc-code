@@ -1,0 +1,831 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/resources-6-2.jpg
+  label: Resources - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h1>Awesome Resources</h1><h4>The perfect template to showcase the many resources that can provide value for your customers.</h4>",
+            "style": {
+              "content_align": "center"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "image",
+            "parallax": true,
+            "bg_image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/heros/laptop-glow-1.jpg"
+            },
+            "overlay_bg": "gradient",
+            "color_1": {
+              "color": "#33475b",
+              "opacity": 40
+            },
+            "color_2": {
+              "color": "#000000",
+              "opacity": 100
+            },
+            "gradient_angle": "45deg",
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "150px",
+              "padding_bottom": "150px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  <!----------------------- LEFT NAV AND MAIN CONTENT -----------------------> 
+    {% dnd_section
+      padding={
+        'top': 50,
+        'bottom': 50,
+        'left': 25,
+        'right': 25
+      },
+      background_color='#ffffff',
+      full_width='false',
+      max_width="1140",
+      vertical_alignment='TOP'
+    %}
+    <!--------- SIDENAV COLUMN -----------> 
+      {% dnd_column 
+        offset=0,
+        width=4,
+        vertical_alignment='TOP'
+      %}
+        {% dnd_row %}
+          {% dnd_module "accordion_menu_1"
+            path='../modules/commodore - Item - Accordion Menu',
+            label="Accordion Menu",
+            offset=0,
+            make_sticky=true
+          %}
+            {% module_attribute "accordion_menu" is_json=True  %} 
+              [
+                {
+                  "title": "Ebooks",
+                  "menu": [
+                     {
+                        "linkLabel": "Inbound Maketing",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "User Experience",
+                        "linkUrl": "#",
+                        "children": [
+                           {
+                              "linkUrl": "http://www.hubspot.com/company/management",
+                              "linkLabel": "Our Team"
+                           }
+                        ]
+                     },
+                     {
+                        "linkLabel": "Branding",
+                        "linkUrl": "#"
+                     }
+                  ]
+                },
+                {
+                  "title": "Video Training",
+                  "menu": [
+                     {
+                        "linkLabel": "commodore Overview",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Conversion Tips",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Workflows",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Smart Content",
+                        "linkUrl": "#"
+                     }
+                  ]
+                },
+                {
+                  "title": "Case Studies",
+                  "menu": [
+                     {
+                        "linkLabel": "HubSpot",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Google",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Facebook",
+                        "linkUrl": "#"
+                     }
+                  ]
+                }
+              ]
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+      <!------------------ MAIN CONTENT COLUMN --------------------> 
+       {% dnd_column 
+        offset=4,
+        width=8
+      %}
+          
+<!-------------- MULTI-COLUMN CONTENT  ------------>
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_1"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h2>Ebooks</h2>",
+                "settings": {
+                  "align_desktop": "left",
+                  "align_mobile": "left",
+                  "show_divider": true,
+                  "custom_text_color": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "10px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "10px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "50px"
+                },
+                "style": {
+                  "pull_up": false
+                },
+                "code": {
+                  "section_id": "ebooks"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_1"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-1.jpg"
+                },
+                "headline": "The Art of Inbound",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_2"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-6.jpg"
+                },
+                "headline": "The Guide to User Experience",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_3"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-4.jpg"
+                },
+                "headline": "Branding in the year 2020",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        
+<!-------------- MULTI-COLUMN CONTENT  ------------>
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_2"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h2>Video Training</h2>",
+                "settings": {
+                  "align_desktop": "left",
+                  "align_mobile": "left",
+                  "show_divider": true,
+                  "custom_text_color": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "50px",
+                  "padding_bottom": "10px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "10px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "50px"
+                },
+                "style": {
+                  "pull_up": false
+                },
+                "code": {
+                  "section_id": "ebooks"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_4"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "2"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-5.jpg"
+                },
+                "headline": "The commodore Overview",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_2" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-6.jpg"
+                },
+                "headline": "10 Tips to Better Conversion Rates",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_5"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "2"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-3.jpg"
+                },
+                "headline": "Setting Up Workflows",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBRB affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_2" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-2.jpg"
+                },
+                "headline": "Leveraging Smart Content",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBRB affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        
+<!-------------- MULTI-COLUMN CONTENT  ------------>
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_3"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h2>Case Studies</h2>",
+                "settings": {
+                  "align_desktop": "left",
+                  "align_mobile": "left",
+                  "show_divider": true,
+                  "custom_text_color": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "50px",
+                  "padding_bottom": "10px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "10px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "50px"
+                },
+                "style": {
+                  "pull_up": false
+                },
+                "code": {
+                  "section_id": "ebooks"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+<!-------------- FLEXI CARDS IN ROW  --------------->
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_5"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "3"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-9.jpg"
+                },
+                "headline": "HubSpot",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBRB affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_2" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-10.jpg"
+                },
+                "headline": "Google",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBRB affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_3" is_json=True %}
+              {
+                "photo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/resource-11.jpg"
+                },
+                "headline": "Facebook",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBRB affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_4"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Love these and want more?</h2><p>Enter your email address below and we will let you know when we add new resources.</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false,
+              "form_max_width": 50
+            },
+            "add_form": true,
+            "btn_inline": true
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

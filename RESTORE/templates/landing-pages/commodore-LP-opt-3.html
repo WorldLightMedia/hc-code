@@ -1,0 +1,586 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/lp-3-6-2.jpg
+  label: Landing Page - Opt 3 - Commodore
+-->
+{% extends "../layouts/base-lp.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+    <!----------------------- GLOBAL HEADER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_header"
+        path="../../modules/Global Header v2",
+        label="Global Header - Opt2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false,
+        hide_nav=true,
+        hide_header_hat=true,
+        hide_footer=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+    
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "hero_baner"
+        path='../../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "2",
+            "col_arrangement": "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "rotating_text": false,
+            "content": "<h1>So Easy To Use</h1><h4>Every commodore landing page is incredibly simple to create multiple versions so that you can test a range of options in minutes.</h4>",
+            "style": {
+              "content_align": "left",
+              "font_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "col_content_type": "form",
+            "form_lead_in_text": "<h3>Sign Up Today</h3>",
+            "style": {
+              "content_align": "left",
+              "col_bg": "gradient",
+              "color_1": {
+                "color": "#000000",
+                "opacity": 0
+              },
+              "color_2": {
+                "color": "#000000",
+                "opacity": 20
+              },
+              "gradient_angle": "45deg"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "bg_color_1": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "bg_color_2": {
+              "color": "#00bda5",
+              "opacity": 100
+            },
+            "bg_gradient_angle": "45deg",
+            "overlay_bg": "none",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- LOGO SCROLLER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "logo_scroller"
+        path='../../modules/commodore - Row - Logo Scroller',
+        label="Logo Scroller",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_logos": 5
+          }
+        {% end_module_attribute %}
+        {% module_attribute "logo_group" is_json=True %}
+          [
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-entrepreneur-mag.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-fast-company.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-forbes-logo.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-mashable@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-ny-times@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-techcrunch@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-wired@2x.png"
+                }
+              }
+          ]
+        {% end_module_attribute %}
+        {% module_attribute "slider_options" is_json=True %} 
+          {
+            "auto_rotate": true,
+            "dots": true,
+            "show_arrows": false,
+            "make_logos_links": false,
+            "section_title": true 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "title" %} 
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt4"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-hubspot-platform.png' alt='commodore-hubspot-platform' style='width: 400px;'>",
+            "settings": {
+              "align_desktop": "right",
+              "align_mobile": "center",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<h2>Powerful, Flexible, and Super Easy to Use.</h2><h4>Plus, tons of video tutorials to help you along the way.</h4><p>I created the commodore series to be incredibly easy for anyone, regardless of their experience on Hubspot, to use. Not only that, but its packed with customization features that will have any pro web designer grinning ear-to-ear.</p><ul><li>Customize Button Styles</li><li>Customize Typography</li><li>Customize Brand Colors</li><li>Upload Video Backgrounds</li><li>And much much more...</li></ul>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color:": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "custom",
+            "set_width": 1200,
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_2"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt3"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/commodore-video-embed-sml.jpg' alt='example' />",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "center",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<h3>Let Me Show You.</h3><p><span>In this video I show you just how simple and customizable the templates are to work with. If you are new to Hubspot or using templates, you will definitely want to give this a watch. You can also take a look at my documentation page and the commodore Module Library.</span></p>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color:": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt2"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h3>Let Me Show You.</h3><p><span>In this video I show you just how simple and customizable the templates are to work with. If you are new to Hubspot or using templates, you will definitely want to give this a watch. You can also take a look at my documentation page and the commodore Module Library.</span></p>",
+            "settings": {
+              "align_desktop": "right",
+              "align_mobile": "left",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/commodore-video-embed-sml.jpg' alt='example' />",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "center",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color:": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+ 
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt3"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/commodore-video-embed-sml.jpg' alt='example' />",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "center",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<h3>Let Me Show You.</h3><p><span>In this video I show you just how simple and customizable the templates are to work with. If you are new to Hubspot or using templates, you will definitely want to give this a watch. You can also take a look at my documentation page and the commodore Module Library.</span></p>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color:": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "50px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_4"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Get Updates on commodore</h2><p>Drop your name and email below to be the first to know when updates to the commodore series are released.</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": true,
+              "custom_divider_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              },
+              "form_max_width": 50,
+              "divider_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "color_1": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "color_2": {
+              "color": "#00bda5",
+              "opacity": 100
+            },
+            "gradient_angle": "45deg",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- GLOBAL FOOTER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_footer"
+        path="../../modules/Global Footer",
+        label="Global Footer",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    {% end_dnd_area %}
+</main>
+{% endblock body %}

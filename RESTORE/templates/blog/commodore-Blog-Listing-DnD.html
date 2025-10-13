@@ -1,0 +1,105 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/blog-listing-6-2.jpg
+  label: COMMODORE - BLOG - Drag-n-Drop Listing Page
+-->
+
+
+{% extends "../layouts/base.html" %}
+
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container dnd-blog-listing body-container--blog-index', label='Main section' %}
+ 
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  <!----------------------- BLOG HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../../modules/commodore - Blog - Hero Banner',
+        label="Blog Hero Banner - C6.2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "2",
+            "col_arrangement": "opt3"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "rotating_text": false,
+            "content": "<h1>Commodore Blog</h1><h4>Add subtitle here.</h4>",
+            "style": {
+              "content_align": "left"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "150px",
+              "padding_bottom": "150px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "100px",
+              "padding_bottom_mobile": "150px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- BLOG POST GRID CARDS  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "blog_post_grid_cards"
+        path="../../modules/commodore - Blog - Post Grid Cards - Listing",
+        label="Blog Post Grid Cards - C6.2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+ {% end_dnd_area %}
+</main>
+{% endblock body %}

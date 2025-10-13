@@ -1,0 +1,186 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/team-member-6-2.jpg
+  label: Team Member - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width=true,
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- TWO COLUMN SETUP -----------------------> 
+    {% dnd_section
+      padding={
+        'top': 50,
+        'bottom': 50,
+        'left': 25,
+        'right': 25
+      },
+      background_color='#ffffff',
+      full_width=false,
+      max_width=1140,
+      vertical_alignment='TOP'
+    %}
+      
+    <!--------- TEAM PROFILE CARD -----------> 
+      {% dnd_column 
+        offset=0,
+        width=4,
+        vertical_alignment='TOP'
+      %}
+        {% dnd_row %}
+          {% dnd_module "team_profile_cards_1"
+            path='../modules/commodore - Row - Team Profile Cards Opt 2',
+            label="Team Profile Cards",
+            offset=0
+          %}
+          {% module_attribute "start" is_json=True  %}
+            {
+              "num_cols": "1"
+            }
+          {% end_module_attribute %}
+
+          {% module_attribute "card_style" is_json=True  %}
+            {
+              "bg_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              },
+              "card_padding": 0,
+              "card_text_padding": 0,
+              "add_shadow": false,
+              "photo_full": true,
+              "text_align": "left"
+            }
+          {% end_module_attribute %}
+          {% module_attribute "profile_card" is_json=True  %}
+        [
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "",
+            "title": "",
+            "show_short_bio": false,
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          }
+        ]
+      {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container-fluid",
+                "adv_settings": {
+                  "padding_top": "100px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "100px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+      {% dnd_column 
+        offset=4,
+        width=8,
+        vertical_alignment='TOP'
+      %}
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_4"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h2>Dave Smith</h2><h6>Director of Marketing</h6><p>Lorem ipsum dolor amet austin thundercats you probably havent heard of them keytar lumbersexual plaid tumeric VHS. Shabby chic tofu small batch microdosing forage. Put a bird on it organic man bun keffiyeh synth gochujang. +1 pickled waistcoat, biodiesel PBR&amp;B live-edge next level poutine blue bottle hashtag art party prism street art pork belly direct trade. Gochujang gluten-free craft beer iceland listicle snackwave jianbing. Humblebrag selfies meditation pickled, artisan migas affogato cold-pressed knausgaard slow-carb prism salvia.</p><blockquote>Biodiesel organic brunch typewriter. Heirloom master commodorese mlkshk thundercats yuccie.</blockquote><p>Poutine literally godard, four dollar toast distillery unicorn master commodorese schlitz poke street art sustainable. Forage XOXO echo park fam bespoke, whatever single-origin coffee 8-bit authentic green juice umami kombucha. Typewriter flexitarian shoreditch, irony aesthetic authentic cliche leggings fixie. Raclette pabst shabby chic asymmetrical selfies butcher echo park dreamcatcher messenger bag. Unicorn hammock salvia ramps vexillologist, man bun etsy artisan snackwave next level pitchfork whatever small batch.</p>",
+                "settings": {
+                  "align_desktop": "left",
+                  "align_mobile": "left",
+                  "show_divider": true,
+                  "custom_text_color": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "100px",
+                  "padding_bottom": "150px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "50px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                },
+                "style": {
+                  "pull_up": false
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

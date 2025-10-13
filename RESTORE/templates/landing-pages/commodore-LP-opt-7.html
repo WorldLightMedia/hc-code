@@ -1,0 +1,555 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/lp-7-6-2.jpg
+  label: Landing Page - Opt 7 - Commodore
+-->
+{% extends "../layouts/base-lp.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+   <!----------------------- GLOBAL HEADER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_header"
+        path="../../modules/Global Header v2",
+        label="Global Header - Opt2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false,
+        hide_nav=true,
+        hide_header_hat=true,
+        logo_center=false,
+        hide_footer=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+   
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "hero_baner"
+        path='../../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "rotating_text": false,
+            "content": "<h1>Marketing Superpowers.</h1><h4>It all begins with your website and the experience your customers have.</h4><p></p><a href='#' class='cta-primary'>Call to Action</a>",
+            "style": {
+              "content_align": "center"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "video",
+            "video_clip": [
+              {            
+                "mp4": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/video/commodore-vid-new-city.mp4"
+              },
+              {            
+                "mp4": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/video/commodore-new-vid-scuba.mp4"
+              }
+            ],
+            "overlay_bg": "color",
+            "bg_color": {
+              "color": "#000000",
+              "opacity": 50
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label=" Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Built for Marketers. Loved by Designers.</h2><h4>The commodore series has been created for marketers who need to move at the speed of light, yet is powerful enough for designers to pixel-push to their hearts content.</h4>",
+            "settings": {
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- ICON & TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "icon_text_1"
+        path='../../modules/commodore - Row - Icon with Text',
+        label=" Icon with Text",
+        offset=0
+      %}
+        {% module_attribute "icon_options" is_json=True  %}
+          {
+            "num_cols": "3",
+            "icon_type": "upload_icon",
+            "size": 38
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content_group" is_json=True  %}
+          {
+            "column_1": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-split-testing-2.png",
+                "width": "220",
+                "height": "200"
+              },
+              "content": "<h4>Magical</h4><p>So easy to customize you will think you have developed super powers.</p>"
+            },
+            "column_2": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-optimization-ready.png",
+                "width": "188",
+                "height": "200"
+              },
+              "content": "<h4>No Coding Required</h4><p><span>Build to leverage the Hubspot CMS making it simple to create and optimize webpages.</span></p>"
+            },
+            "column_3": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-seo.png",
+                "width": "188",
+                "height": "200"
+              },
+              "content": "<h4>Mobile Ready</h4><p>Each template is responsive and designed to look awesome on all devices.</p>"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True  %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- ICON & TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "icon_text_2"
+        path='../../modules/commodore - Row - Icon with Text',
+        label=" Icon with Text",
+        offset=0
+      %}
+        {% module_attribute "icon_options" is_json=True  %}
+          {
+            "num_cols": "3",
+            "icon_type": "upload_icon",
+            "size": 38
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content_group" is_json=True  %}
+          {
+            "column_1": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-video-tutorials.png",
+                "width": "199",
+                "height": "200"
+              },
+              "content": "<h4>Magical</h4><p>So easy to customize you will think you have developed super powers.</p>"
+            },
+            "column_2": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-style-customizations.png",
+                "width": "213",
+                "height": "200"
+              },
+              "content": "<h4>No Coding Required</h4><p><span>Build to leverage the Hubspot CMS making it simple to create and optimize webpages.</span></p>"
+            },
+            "column_3": {
+              "icon_upload": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-split-testing-1.png",
+                "width": "190",
+                "height": "200"
+              },
+              "content": "<h4>Mobile Ready</h4><p>Each template is<span>&nbsp;responsive and designed to look awesome on all devices.</span></p>"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True  %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<p style='text-align: center; font-size: 24px;'><img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/customers/reputation-x.png' alt='reputation-x' width='156' style='width: 156px;'></p><blockquote style='font-size: 30px; border: none;'>Our traffic and search engine rankings picked up once we installed the commodore template. For the very few challenges we had to overcome, Kevin has been very responsive and helpful. I highly recommend this template. Kevin obviously cares about his craft and it shows.</blockquote><p style='text-align: center;'><strong>Kent Campbell</strong><br><a href='https://www.reputationx.com/' rel='noopener' target='_blank'>reputationx.com</a></p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "color_1": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "color_2": {
+              "color": "#00bda5",
+              "opacity": 100
+            },
+            "gradient_angle": "45deg",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "image_text_opt_2_1"
+        path='../../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Headline</h3><h6>Cool Subhead</h6><p>Some good old placeholder text. Salvia mixtape distillery venmo, leggings succulents echo park offal waistcoat subway tile cliche. Street art live-edge distillery migas cred portland franzen bespoke swag artisan.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/hubspot-computer.png" 
+            },
+            "settings": {
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "image_text_opt_2_2"
+        path='../../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "right",
+            "col_arrangement":  "opt4"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Headline</h3><h6>Cool Subhead</h6><p>Some good old placeholder text. Salvia mixtape distillery venmo, leggings succulents echo park offal waistcoat subway tile cliche. Street art live-edge distillery migas cred portland franzen bespoke swag artisan.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/hubspot-computer.png" 
+            },
+            "settings": {
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_4"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Its your last chance!</h2><p>Nah... Not really. But you knew that. I will just leave this button here for you when you need it.</p><p></p><a href='#' class='cta-primary'>Call To Action</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- GLOBAL FOOTER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_footer"
+        path="../../modules/Global Footer",
+        label="Global Footer",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

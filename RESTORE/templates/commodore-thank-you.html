@@ -1,0 +1,75 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/thank-you-6-2.jpg
+  label: Thank You - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module"
+        path='../modules/COMMODORE - Magic Module',
+        label="Hero Area (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "rich_text":"<h1 style='text-align:center;'>Thank you!</h1><h4 style='text-align:center;'>This is a perfect template to direct people to after they fill out one of your forms. Its super flexible should you want to promote a secondary offer.</h4>"
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none",
+              "full_screen_bg": true
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
+
+

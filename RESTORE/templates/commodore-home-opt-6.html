@@ -1,0 +1,797 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/home-6-6-2.jpg
+  label: Home - Opt 6 - Commodore
+-->
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+    
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "2",
+            "col_arrangement": "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "rotating_text": false,
+            "content": "<h4 style='font-size: 48px;'><em>What we were able to build in the timelines we were working with could not have been done without the commodore pack.</em></h4><h5>- John Smith</h5><p></p><p><img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/customers/crank-software.png' alt='crank-software' width='139' style='width: 139px;'></p>",
+            "style": {
+              "content_align": "left",
+              "content_align_mobile": "left",
+              "font_color": {
+                "color": "#444444",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "col_content_type": "rich_text",
+            "content": ""
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "image",
+            "bg_image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/heros/testimonial-portrait.jpg"
+            },
+            "bg_position": "center top",
+            "bg_size":"cover",
+            "overlay_bg": "none",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "200px",
+              "padding_bottom": "150px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  <!----------------------- CARD FLIPPER COLUMNS -----------------------> 
+    
+    <!--------- TEXT IN SIDE BARD -----------> 
+    {% dnd_section
+      padding={
+        'top': 50,
+        'bottom': 50,
+        'left': 25,
+        'right': 25
+      },
+      background_color='#f2f5f8',
+      full_width='false',
+      vertical_alignment='MIDDLE',
+      max_width=1140
+    %}
+      {% dnd_column 
+        offset=0,
+        width=4
+      %}
+        {% dnd_row %}
+          {% dnd_module "rich_text_1"
+            path="@hubspot/rich_text",
+            label="Rich Text",
+            offset=0
+          %}
+            {% module_attribute "html" %}
+              <h2>Something Powerful</h2><h3>Tell The Reader More</h3><p>The headline and subheader tells us what you're <a href="#">offering</a>, and the form header closes the deal. Over here you can explain why your offer is so great its worth filling out a form for.</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+      <!--------- CARD FLIPPER COLUMN -----------> 
+      {% dnd_column 
+        offset=4,
+        width=4
+      %}
+      
+        <!--------- CARD FLIPPER -----------> 
+        {% dnd_row %}
+          {% dnd_module "card_flipper_1"
+            path='../modules/commodore - Row - Card Flippers',
+            label="Content Card Flipper",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True  %}
+             {
+              "num_cols": 1,
+              "card_height": 300,
+              "card_height_tablet": 380,
+              "card_height_mobile": 300
+             }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True  %}
+            {
+              "front": {
+                "image": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-working-on-computer.png"
+                }
+              }
+            }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 0
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "0px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "0px",
+                  "padding_top_mobile": "0px",
+                  "padding_bottom_mobile": "0px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        <!--------- CARD FLIPPER -----------> 
+        {% dnd_row %}
+          {% dnd_module "card_flipper_2"
+            path="../modules/commodore - Row - Card Flippers",
+            label="Content Card Flipper",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True  %}
+             {
+              "num_cols": 1,
+              "card_height": 300,
+              "card_height_tablet": 380,
+              "card_height_mobile": 300
+             }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True  %}
+            {
+              "front": {
+                "image": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-working-on-computer.png"
+                }
+              }
+            }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 0
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "0px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "0px",
+                  "padding_top_mobile": "0px",
+                  "padding_bottom_mobile": "0px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+      {% end_dnd_column %}
+      <!--------- CARD FLIPPER COLUMN -----------> 
+      {% dnd_column 
+        offset=8,
+        width=4
+      %}
+      
+        <!--------- CARD FLIPPER -----------> 
+        {% dnd_row %}
+          {% dnd_module "card_flipper_3"
+            path="../modules/commodore - Row - Card Flippers",
+            label="Content Card Flipper",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True  %}
+             {
+              "num_cols": 1,
+              "card_height": 300,
+              "card_height_tablet": 380,
+              "card_height_mobile": 300
+             }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True  %}
+            {
+              "front": {
+                "image": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-working-on-computer.png"
+                }
+              }
+            }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 0
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "0px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "0px",
+                  "padding_top_mobile": "0px",
+                  "padding_bottom_mobile": "0px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+        <!--------- CARD FLIPPER -----------> 
+        {% dnd_row %}
+          {% dnd_module "card_flipper_4"
+            path="../modules/commodore - Row - Card Flippers",
+            label="Content Card Flipper",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True  %}
+             {
+              "num_cols": 1,
+              "card_height": 300,
+              "card_height_tablet": 380,
+              "card_height_mobile": 300
+             }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True  %}
+            {
+              "front": {
+                "image": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-working-on-computer.png"
+                }
+              }
+            }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 0
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "0px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "0px",
+                  "padding_top_mobile": "0px",
+                  "padding_bottom_mobile": "0px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+
+      {% end_dnd_column %} 
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>One Theme to Rule Them All</h2><h4>For 6 years the commodore series for HubSpot has remained one of the top selling themes in the marketplace.</h4>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_1"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Fully Drag-n-Drop</h3><p>Gone are the days of having to know how to code or having to rely on someone who does in order to create and manage your marketing site, landing pages, and email campaigns. commodore is based on insanely flexible and customizable row modules that you can drag and drop to create pages and easily optimize them along the way.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/5816394/commodore-images/gifs/commodore-5s-drag-n-drop.gif" 
+            },
+            "settings": {
+              "show_divider": false
+            },
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#1c2125",
+                "opacity": 20
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_2"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "right",
+            "col_arrangement":  "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Wonderfully Customizable</h3><p><span>You will have access to loads of fine grain customization controls right from within the page editor. Select the rows background color, text color, row spacing, how things animate in, and so much more.</span></p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/5816394/commodore-images/gifs/commodore-5s-color-settings.gif" 
+            },
+            "settings": {
+              "show_divider": false
+            },
+            "text_align": "right",
+            "text_align_mobile": "left",
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#1c2125",
+                "opacity": 20
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_3"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>A Designers Dream Tempalte</h3><p>Just because you are using a template system doesn not mean your website has to look like a template. commodore was built with designers, like you, in mind. You will have wide ranging control of style elements including color, spacing, column sizes, shadows, and much more.</p><p><strong>Not a designer? Not a problem. Your team will think you are by using commodore.</strong></p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/5816394/commodore-images/gifs/commodore-5s-design-settings-2.gif" 
+            },
+            "settings": {
+              "show_divider": false
+            },
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#1c2125",
+                "opacity": 20
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_2"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt3"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>You are Awesome.</h2><p>Distillery cornhole post-ironic shaman godard normcore tumblr put a bird on it. Austin bitters vice pitchfork, jean shorts craft beer kickstarter sriracha tilde pop-up fanny pack.</p>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false,
+              "custom_text_color": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<h3>Sign Up Today</h3>",
+            "add_form": true,
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "image",
+            "bg_image": {
+              "src": "https://cdn2.hubspot.net/hubfs/5816394/commodore-images/heros/laptop-glow-2.jpg"
+            },
+            "overlay_bg": "color",
+            "overlay_color": {
+              "color": "#000000",
+              "opacity": 40
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_4"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Headline</h3><h6>Cool Subhead</h6><p>Some good old placeholder text. Salvia mixtape distillery venmo, leggings succulents echo park offal waistcoat subway tile cliche. Street art live-edge distillery migas cred portland franzen bespoke swag artisan.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/hubspot-computer.png" 
+            },
+            "settings": {
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_5"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "right",
+            "col_arrangement":  "opt4"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>Headline</h3><h6>Cool Subhead</h6><p>Some good old placeholder text. Salvia mixtape distillery venmo, leggings succulents echo park offal waistcoat subway tile cliche. Street art live-edge distillery migas cred portland franzen bespoke swag artisan.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/hubspot-computer.png" 
+            },
+            "settings": {
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Its your last chance!</h2><p>Nah... Not really. But you knew that. I will just leave this button here for you when you need it.</p><p></p><a href='#' class='cta-primary'>Call To Action</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "150px",
+              "padding_bottom": "150px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

@@ -1,0 +1,36 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/thumbnails/error-404.jpg
+  label: CLEAN Pro - Error 404
+-->
+{% extends "../layouts/base.html" %}
+{% if theme.system_pages.error.use_sticky_nav %}
+  {% require_js %}
+    <script>
+      var element = document.getElementById("hhs-main-nav");
+      element.classList.add("hhs-alt-nav");
+    </script>
+  {% end_require_js %}
+{% endif %}
+
+{% block body %}
+<div class="error-page-full">
+  <div class="content-wrapper error-page-con">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="error-page" data-error="404">
+            <div class="error-inner">
+              <h1 class="error-page_heading">
+                404
+              </h1>
+              <h4>Sorry! This page is nowhere to be seen.</h4>
+              <a class="cta-primary" href="/">Take Me Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,176 @@
+<!--
+ templateType: section
+ label: Pricing Group
+ description: "A simple pricing layout that converts every time."
+ isAvailableForNewContent: true
+ screenshotPath: ../images/sections/pricing.jpg
+-->
+ {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      
+      {% dnd_column 
+        offset=0
+      %}
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Simple pricing. Incredible service.</h2><p>Let us make your life even easier today.</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "pricing_table"
+            path='../modules/commodore - Row - Pricing Table',
+            label="Pricing Table",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "3",
+                "price_toggle": false
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content" is_json=True %}
+              {
+                "package_1": {
+                  "title": "Package Title",
+                  "sub_title": "Subtitle",
+                  "price": "$99",
+                  "desc": "<p>Add your package description here.</p>",
+                  "col_bg_color": {
+                    "color": "#f2f5f8",
+                    "opacity": 100
+                  }
+                },
+                "package_2": {
+                  "title": "Package Title",
+                  "sub_title": "Subtitle",
+                  "price": "$199",
+                  "desc": "<p>Add your package description here.</p>",
+                  "highlight_package": true,
+                  "highlight_title": "This is the one you want.",
+                  "highlight_title_color": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                  },
+                  "highlight_bg_color": {
+                    "color": "#ff7a59",
+                    "opacity": 100
+                  },
+                  "col_bg_color": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                  },
+                  "shadow": true,
+                  "drop_shadow": {
+                    "color": "#000000",
+                    "opacity": 20
+                  }
+                },
+                "package_3": {
+                  "title": "Package Title",
+                  "sub_title": "Subtitle",
+                  "price": "$299",
+                  "desc": "<p>Add your package description here.</p>",
+                  "col_bg_color": {
+                    "color": "#f2f5f8",
+                    "opacity": 100
+                  }
+                }
+              }
+            {% end_module_attribute %}
+
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "icon_text_1"
+            path='../modules/commodore - Row - Icon with Text',
+            label="Icon with Text",
+            offset=0
+          %}
+            {% module_attribute "icon_options" is_json=True  %}
+              {
+                "num_cols": "3",
+                "icon_type": "hs_list",
+                "size": 38
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content_group" is_json=True  %}
+              {
+                "column_1": {
+                  "content": "<h4>Social Proof</h4><p>Add descriptor here.</p>"
+                },
+                "column_2": {
+                  "content": "<h4>Social Proof</h4><p><span>Add descriptor here.</span></p>"
+                },
+                "column_3": {
+                  "content": "<h4>Social Proof</h4><p>Add descriptor here.</p>"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True  %}
+              {
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "25px",
+                  "padding_bottom": "50px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "50px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %} 
+    {% end_dnd_section %}

@@ -1,0 +1,66 @@
+<!--
+  templateType: search_results_page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/search-results.jpg
+  label: commodore - Search Results Page - Commodore
+-->
+{% extends "../layouts/base.html" %}
+{% if theme.system_pages.search_results.use_sticky_nav %}
+  {% require_js %}
+    <script>
+      var element = document.getElementById("hhs-main-nav");
+      element.classList.add("hhs-alt-nav");
+    </script>
+  {% end_require_js %}
+{% endif %}
+
+{############ TRANSLATE ELEMENTS ############}
+
+{% set blog_lang = html_lang %}
+
+{% if blog_lang == 'en' or blog_lang == 'en-us' %}
+  {% set results_text = 'Results for' %}
+
+{% elif blog_lang == 'it' %}
+  {% set results_text = 'Risultati per' %}
+
+{% elif blog_lang == 'fr' %}
+  {% set results_text = 'Résultats pour' %}
+
+{% elif blog_lang == 'fi' %}
+  {% set results_text = 'Tulokset' %}
+
+{% elif blog_lang == 'de' %}
+  {% set results_text = 'Ergebnisse für' %}
+
+{% elif blog_lang == 'es' %}
+  {% set results_text = 'Resultados para' %}
+
+{% else %}
+  {% set results_text = 'Results for' %}
+{% endif %}
+
+{% block body %}
+<div class="results-pre-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h5>{{ results_text }}</h5>
+        <h1>"{{ request.query_dict.term|escape }}"</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="results-full">
+  <div class="container-slim">
+    <div class="row">
+      <div class="col-12">
+        <div class="systems-page">
+          {% module "search_results" path="@hubspot/search_results" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

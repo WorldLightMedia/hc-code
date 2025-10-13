@@ -1,0 +1,199 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/thumbnails/lp-opt-1.jpg
+  label: Landing Page - Opt 1 - Commodore
+-->
+{% extends "../layouts/base-lp.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+    
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/CLEAN - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false,
+        hide_nav=true,
+        hide_header_hat=true,
+        hide_footer=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  <!----------------------- GLOBAL HEADER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_header"
+        path="../../modules/Global Header v2",
+        label="Global Header - Opt2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+    
+   <!----------------------- Hero Area - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_1"
+        path='../../modules/CLEAN Pro - Magic Module',
+        label="Hero Area (Magic Module - Pro)",
+        start={
+          "num_cols":2
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h1 style='color:#fff;'>Simple, Fullscreen Landing Page</h1><p style='color:#fff;'>A fantastic landing page as a starting point to promote your product, service, or offer.</p><p style='color:#fff;'>This template intentionally has the navigation items in the header and footer hidden. These can be turned back on by clicking the tab to see the list of modules on the page. Then click the Header Footer Overrides module.</p>",
+              "content_mb":25
+            },
+            {
+              "type": "form",
+              "content_name":"form"
+            }
+          ]
+        },
+        col_2={
+          "content":[
+            {
+              "type":"text",
+              "content_name":"Empty content",
+              "rich_text":""
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/hero-bg-4.jpg') }}"
+              },
+              "full_screen_bg":true,
+              "use_scroll_down":true,,
+              "add_overlay":"gradient",
+              "overlay_gradient":{
+                "colors":[{
+                  "color":{
+                    "r":0,
+                    "g":0,
+                    "b":0,
+                    "a":1
+                  }
+                },
+                {
+                  "color":{
+                    "r":0,
+                    "g":0,
+                    "b":0,
+                    "a":0
+                  }
+                }
+               ],
+                 "side_or_corner": {
+                  "verticalSide":"null",
+                  "horizontalSide":"RIGHT"
+                 }
+              }
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 290,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 250,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "padding":{
+                  "top": {
+                    "value": 290,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 150,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+  
+   <!----------------------- GLOBAL FOOTER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_footer"
+        path="../../modules/Global Footer",
+        label="Global Footer",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

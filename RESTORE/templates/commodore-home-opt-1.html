@@ -1,0 +1,2143 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/thumbnails/home-opt-1.jpg
+  label: Home - Opt 1 - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/CLEAN - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=true,
+        nav_trans=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+  <!----------------------- HERO AREA - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_1"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Hero Area (Magic Module - Pro)",
+        start={
+          "num_cols":2,
+          "use_rotating_text":true
+        },
+        col_1={
+          "content": [
+            {
+              "type":"rotating",
+              "content_name":"Rotating Headline",
+              "rotating_text_style":"h1",
+              "rotate_text_animation":"animate__fadeIn",
+              "rotation_speed":4,
+              "rotate_begin":"Save",
+              "rotate_middle":"Time, Money",
+              "rotate_end":"with Clean Pro.",
+              "drop_end":true
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h4 style='text-align:left;'>No fancy web developer needed with CLEAN Pro.</h4><p>You can get straigt down to business marketing your products and service. This template makes use of the Magic Module in a variety of well, MAGICAL, ways to help inspire you and show you all the amazing options available with this single module.</p>",
+              "content_mb":25
+            },
+            {
+              "type": "cta",
+              "content_name":"Learn more button",
+              "button": {
+                "type":"button",
+                "btn_1":{
+                  "btn_label":"Learn More",
+                  "style":"cta-primary"
+                }
+              }
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Man hands in pockets",
+              "image": {
+                "src":"{{ get_asset_url('../../images/gfx/person-cut-out-1.png') }}"
+              }
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/hero-bg-8.jpg') }}"
+              }
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "bottom":{
+                    "value":75,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+  <!----------------------- Services - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+    {% dnd_column %}
+    {% dnd_row %}
+      {% dnd_module "magic_module_2"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Features (Magic Module - Pro)",
+        start={
+          "num_cols":4
+        },
+        col_1={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/gfx-example-1.svg') }}",
+                "width":80
+              },
+              "pos": {
+                "align":"center"
+              },
+              "content_mb":25
+            },
+            {
+              "type":"text",
+              "content_name":"Text section",
+              "rich_text":"<h5 style='text-align:center;'>Feature Headline</h5><p style='text-align:center;'>Cred chicharrones hashtag offal small batch bespoke waistcoat put a bird on it dreamcatcher.</p>"
+            }
+          ],
+          "animation":{
+            "type":"animate__animated animate__fadeIn"
+          }
+        },
+        col_2={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/gfx-example-2.svg') }}",
+                "width":70
+              },
+              "pos": {
+                "align":"center"
+              },
+              "content_mb":25
+            },
+            {
+              "type":"text",
+              "content_name":"Text section",
+              "rich_text":"<h5 style='text-align:center;'>Feature Headline</h5><p style='text-align:center;'>Cred chicharrones hashtag offal small batch bespoke waistcoat put a bird on it dreamcatcher.</p>"
+            }
+          ],
+          "animation":{
+            "type":"animate__animated animate__fadeIn",
+            "delay":"animate__delay-05s"
+          }
+        },
+        col_3={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/gfx-example-3.svg') }}",
+                "width":66
+              },
+              "pos": {
+                "align":"center"
+              },
+              "content_mb":25
+            },
+            {
+              "type":"text",
+              "content_name":"Text section",
+              "rich_text":"<h5 style='text-align:center;'>Feature Headline</h5><p style='text-align:center;'>Cred chicharrones hashtag offal small batch bespoke waistcoat put a bird on it dreamcatcher.</p>"
+            }
+          ],
+          "animation":{
+            "type":"animate__animated animate__fadeIn",
+            "delay":"animate__delay-1s"
+          }
+        },
+        col_4={
+          "content": [
+            {
+              "type":"image",
+              "content_name":"Image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/gfx-example-4.svg') }}",
+                "width":75
+              },
+              "pos": {
+                "align":"center"
+              },
+              "content_mb":25
+            },
+            {
+              "type":"text",
+              "content_name":"Text section",
+              "rich_text":"<h5 style='text-align:center;'>Feature Headline</h5><p style='text-align:center;'>Cred chicharrones hashtag offal small batch bespoke waistcoat put a bird on it dreamcatcher.</p>"
+            }
+          ],
+          "animation":{
+            "type":"animate__animated animate__fadeIn",
+            "delay":"animate__delay-1-5s"
+          }
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#f9f9f9",
+                "opacity":100
+              }
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top":{
+                    "value":-100,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top":{
+                    "value":-100,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top":{
+                    "value":-50,
+                    "units":"px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col": {
+            "col_1":{
+              "bg":{
+                "match_height":true,
+                "type":"color",
+                "color":{
+                  "color":"#ffffff",
+                  "opacity":70
+                },
+                "add_blur_bg":true,
+                "blur_ammount_bg":10
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":25,
+                      "units":"px"
+                    }
+                  }
+                }
+              },
+              "extras":{
+                "border_radius":10,
+                "add_drop_shadow":true
+              }
+            },
+            "col_2":{
+              "bg":{
+                "match_height":true,
+                "type":"color",
+                "color":{
+                  "color":"#ffffff",
+                  "opacity":70
+                },
+                "add_blur_bg":true,
+                "blur_ammount_bg":10
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":25,
+                      "units":"px"
+                    }
+                  }
+                }
+              },
+              "extras":{
+                "border_radius":10,
+                "add_drop_shadow":true
+              }
+            },
+            "col_3":{
+              "bg":{
+                "match_height":true,
+                "type":"color",
+                "color":{
+                  "color":"#ffffff",
+                  "opacity":70
+                },
+                "add_blur_bg":true,
+                "blur_ammount_bg":10
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":25,
+                      "units":"px"
+                    }
+                  }
+                }
+              },
+              "extras":{
+                "border_radius":10,
+                "add_drop_shadow":true
+              }
+            },
+            "col_4":{
+              "bg":{
+                "match_height":true,
+                "type":"color",
+                "color":{
+                  "color":"#ffffff",
+                  "opacity":70
+                },
+                "add_blur_bg":true,
+                "blur_ammount_bg":10
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":50,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":50,
+                      "units":"px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "bottom":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "left":{
+                      "value":25,
+                      "units":"px"
+                    },
+                    "right":{
+                      "value":25,
+                      "units":"px"
+                    }
+                  }
+                }
+              },
+              "extras":{
+                "border_radius":10,
+                "add_drop_shadow":true
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_module "magic_module_3"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Centered CTA (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type": "cta",
+              "content_name":"Get Started",
+              "button": {
+                "type":"button",
+                "btn_1":{
+                  "btn_label":"See More",
+                  "style":"cta-secondary"
+                }
+              },
+              "simple_align":"c-justify-center"
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#f9f9f9",
+                "opacity":100
+              }
+            },
+            "add_wave":{
+              "add_wave_bottom":true,
+              "bottom_wave":{
+                "type":"opt_3"
+              }
+            }
+          },
+          "row":{
+            "size":{
+              "content_width":"container-slim"
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  
+    {% end_dnd_column %}
+    {% end_dnd_section %}
+  
+<!----------------------- CENTERED HEADLINE - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+    {% dnd_column %}
+    {% dnd_row %}
+      {% dnd_module "magic_module_4"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Centered Headline (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2 style='text-align:center;'>Headline goes here.</h2><p style='text-align:center;'>Thundercats hammock adaptogen literally crucifix hashtag drinking vinegar hot chicken live-edge banjo.</p>",
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_module "magic_module_4"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Icon & Text Row (Magic Module - Pro)",
+        start={
+          "num_cols":4
+        },
+        col_1={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        col_3={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },,
+        col_4={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "size":{
+              "content_width":"container"
+            },
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "padding":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_module "magic_module_5"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Icon & Text Row (Magic Module - Pro)",
+        start={
+          "num_cols":4
+        },
+        col_1={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        col_3={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },,
+        col_4={
+          "content": [
+            {
+              "type":"icon",
+              "content_name":"Icon",
+              "icon_style":{
+                "size": 40
+              },
+              "pos": {
+                "align":"left"
+              },
+              "content_mb":5
+            },
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h5>Feature</h5><p>Prism literally swag, cardigan chillwave ethical helvetica Brooklyn.</p>"
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "size":{
+              "content_width":"container"
+            },
+            "spacing":{
+              "desktop":{
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %} 
+   
+  <!----------------------- IMAGE AND TEXT - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_6"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Image and Text (Magic Module - Pro)",
+        start={
+          "num_cols":2
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Empty text",
+              "rich_text":""
+            }
+          ]
+        },
+        col_2={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2>Headline goes here.</h2><p>Vape typewriter umami DIY, iceland ascot 90's drinking vinegar tacos shabby chic. Blue bottle farm-to-table palo santo literally.</p><p>Chillwave pabst raclette tousled snackwave unicorn keytar gochujang prism next level adaptogen wolf. Crucifix wayfarers pitchfork microdosing.</p><ul><li>This is a bullet point</li><li>This is a bullet point</li><li>This is a bullet point</li><li>This is a bullet point</li></ul>",
+              "content_mb":15
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color":"#f9f9f9",
+                "opacity":100
+              }
+            }
+          },
+          "row":{
+            "size":{
+              "content_width":"container-fluid",
+              "add_full_bleed":true,
+              "remove_col_gutter":true
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "image",
+                "image":{
+                  "src":"{{ get_asset_url('../../images/gfx/hero-bg-2.jpg') }}",
+                  "background_position":"LEFT_CENTER"
+                }
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 200,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 200,
+                      "units": "px"
+                    }
+                  }
+                },
+                "tablet": {
+                  "padding": {
+                    "top": {
+                      "value": 200,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 200,
+                      "units": "px"
+                    }
+                  }
+                },
+                "mobile": {
+                  "padding": {
+                    "top": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 100,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            },
+            "col_2":{
+              "bg": {
+                "type": "none"
+              },
+              "extras":{
+                "vert_align":"center"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 100,
+                      "units": "px"
+                    }
+                  }
+                },
+                "tablet": {
+                  "padding": {
+                    "top": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 100,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 100,
+                      "units": "px"
+                    }
+                  }
+                },
+                "mobile": {
+                  "padding": {
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+<!----------------------- CENTERED HEADLINE - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+    {% dnd_column %}
+    {% dnd_row %}
+      {% dnd_module "magic_module_7"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Centered Headline (Magic Module - Pro)",
+        start={
+          "num_cols":1
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and text",
+              "rich_text":"<h2 style='text-align:center;'>Headline goes here.</h2><p style='text-align:center;'>Thundercats hammock adaptogen literally crucifix hashtag drinking vinegar hot chicken live-edge banjo.</p>",
+            }
+          ]
+        },
+        style={
+          "section":{
+            "bg":{
+              "type":"none"
+            }
+          },
+          "row":{
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "bg": {
+                "type": "none"
+              },
+              "spacing":{
+                "desktop": {
+                  "padding": {
+                    "top": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 0,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 0,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% dnd_row %}
+    {% dnd_module "count_up"
+        path='../modules/CLEAN Pro - Count Up',
+        label="Social Proof Counters (Count Up - Pro)",
+        start={
+          "num_cols":4
+        },
+        number_cards=[
+          {
+            "card_label":"Reviews",
+            "num":1355,
+            "text_below":"<p style='text-align:center;'>5-Star Reviews</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Customers",
+            "num":2279,
+            "text_below":"<p style='text-align:center;'>Happy Customers</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Coffee",
+            "num":438,
+            "text_right":"+",
+            "text_below":"<p style='text-align:center;'>Cups of Coffee</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"High-Fives",
+            "num":2190,
+            "text_below":"<p style='text-align:center;'>Virtual High-Fives</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Percent example",
+            "num":99,
+            "text_right":"%",
+            "text_below":"<p style='text-align:center;'>Awesomeness</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Revenue example",
+            "num":3601578,
+            "text_left":"$",
+            "text_below":"<p style='text-align:center;'>Revenue Growth</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Leads example",
+            "num":6284,
+            "text_below":"<p style='text-align:center;'>Leads Generated</p>",
+            "apply_num_format":true
+          },
+          {
+            "card_label":"Percent example",
+            "num":80,
+            "text_right":"+",
+            "text_below":"<p style='text-align:center;'>Versions Released</p>",
+            "apply_num_format":true
+          }
+        ],
+        style={
+          "cards":{
+            "number_format":{
+              "seperator_sign":","
+            },
+            "fonts":{
+              "text_left_font":{
+                "size":48,
+                "size_unit":"px"
+              },
+              "text_right_font":{
+                "size":48,
+                "size_unit":"px"
+              }
+            }
+          },
+          "section":{
+          },
+          "row":{
+            "size":{
+              "content_width":"container"
+            },
+            "bg":{
+              "type":"none"
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 25,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 25,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+  {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %} 
+   
+  
+   <!----------------------- Bottom Callout Form - MAGIC MODULE ----------------------->
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "magic_module_7"
+        path='../modules/CLEAN Pro - Magic Module',
+        label="Bottom Callout Form (Magic Module - Pro)",
+        start={
+          "num_cols":2,
+          "two_col_arrangement":"opt4"
+        },
+        col_1={
+          "content": [
+            {
+              "type":"text",
+              "content_name":"Headline and Text",
+              "rich_text":"<h2 style='color:#ffffff;'>Add an awesome headline right here.</h2><p style='color:#ffffff;'>Whatever adaptogen truffaut freegan photo booth neutra lumbersexual mustache scenester bespoke leggings fanny pack craft beer actually banjo. Grailed knausgaard mlkshk vice. Umami mukbang adaptogen, scenester vinyl banh mi bicycle rights brunch authentic.</p>",
+              "content_mb":25
+            },
+            {
+              "type": "cta",
+              "content_name":"Get Started",
+              "button": {
+                "type":"button",
+                "btn_1":{
+                  "btn_label":"Get Started",
+                  "style":"cta-tertiary"
+                }
+              }
+            }
+          ]
+        },
+        col_2={
+          "content":[
+            {
+              "type":"text",
+              "content_name":"Empty text",
+              "rich_text":""
+            }
+          ]
+        },
+        style={
+          "section":{
+          },
+          "row":{
+            "size":{
+              "content_width":"container"
+            },
+            "bg":{
+              "type":"image",
+              "image":{
+                "src":"{{ get_asset_url('../../images/gfx/hero-bg-9.jpg') }}"
+              },
+              "add_overlay":"color",
+              "overlay_color":{
+                "color":"#000000",
+                "opacity": 40
+              }
+            },
+            "extras":{
+              "add_rounded_corners":true,
+              "add_drop_shadow":true,
+              "shadow_blur_radius":15,
+              "shadow_spread":10
+            },
+            "spacing":{
+              "desktop":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 100,
+                    "units": "px"
+                  }
+                }
+              },
+              "tablet":{
+                "margin":{
+                  "top": {
+                    "value": 50,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 50,
+                    "units": "px"
+                  }
+                },
+                "padding":{
+                  "top": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 150,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              },
+              "mobile":{
+                "padding":{
+                  "top": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "bottom": {
+                    "value": 100,
+                    "units": "px"
+                  },
+                  "left": {
+                    "value": 0,
+                    "units": "px"
+                  },
+                  "right": {
+                    "value": 0,
+                    "units": "px"
+                  }
+                }
+              }
+            }
+          },
+          "col":{
+            "col_1":{
+              "extras":{
+                "vert_align":"center"
+              }
+            },
+            "col_2":{
+              "bg":{
+                "type":"none"
+              },
+              "spacing":{
+                "desktop":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                },
+                "tablet":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                },
+                "mobile":{
+                  "padding":{
+                    "top": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "bottom": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "left": {
+                      "value": 25,
+                      "units": "px"
+                    },
+                    "right": {
+                      "value": 25,
+                      "units": "px"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+ 
+<!----------------------- Logo Scroller ----------------------->  
+  
+  {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+    {% dnd_module "logo_scroller"
+        path='../modules/CLEAN - Row - Logo Scroller',
+        label="Logo Scroller (Pro)",
+        start={
+          "num_logos":4
+        },
+        logo_group=[
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-1.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-2.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-3.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-4.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            },
+            {
+              "logo":{
+                "src":"{{ get_asset_url('../../images/gfx/logo-placeholder-5.svg') }}",
+                "width":80,
+                "alt":"example logo"
+              }
+            }
+          ],
+         slider_options={
+          "section_title":true,
+          "auto_rotate":true,
+          "smooth_rotation":true,
+          "show_arrows":false,
+          "dots":false
+         },
+         title="<h5 style='text-align:center;'>Trusted by 1000+ companies worldwide.</h5>"
+     %}
+     {% end_dnd_module %}
+  
+  {% end_dnd_section %}
+ 
+  
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
