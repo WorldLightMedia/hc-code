@@ -1,0 +1,213 @@
+<!--
+ templateType: section
+ label: Content with Sidebar
+ description: "Great for when you want to add a little extra navigation peice for pages with a lot of content."
+ isAvailableForNewContent: true
+ screenshotPath: ../images/sections/content-with-sidebar.jpg
+-->
+ {% dnd_section
+      padding={
+        'top': 50,
+        'bottom': 50,
+        'left': 25,
+        'right': 25
+      },
+      background_color='#ffffff',
+      full_width='false',
+      max_width="1140",
+      vertical_alignment='TOP'
+    %}
+      
+      {% dnd_column 
+        offset=0,
+        width=4,
+        vertical_alignment='TOP'
+      %}
+        {% dnd_row %}
+          {% dnd_module "accordion_menu_1"
+            path='../modules/commodore - Item - Accordion Menu',
+            label="Accordion Menu",
+            offset=0,
+            make_sticky=true
+          %}
+            {% module_attribute "accordion_menu" is_json=True  %} 
+              [
+                {
+                  "title": "Ebooks",
+                  "menu": [
+                     {
+                        "linkLabel": "Inbound Maketing",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "User Experience",
+                        "linkUrl": "#",
+                        "children": [
+                           {
+                              "linkUrl": "http://www.hubspot.com/company/management",
+                              "linkLabel": "Our Team"
+                           }
+                        ]
+                     },
+                     {
+                        "linkLabel": "Branding",
+                        "linkUrl": "#"
+                     }
+                  ]
+                },
+                {
+                  "title": "Video Training",
+                  "menu": [
+                     {
+                        "linkLabel": "commodore Overview",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Conversion Tips",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Workflows",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Smart Content",
+                        "linkUrl": "#"
+                     }
+                  ]
+                },
+                {
+                  "title": "Case Studies",
+                  "menu": [
+                     {
+                        "linkLabel": "HubSpot",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Google",
+                        "linkUrl": "#"
+                     },
+                     {
+                        "linkLabel": "Facebook",
+                        "linkUrl": "#"
+                     }
+                  ]
+                }
+              ]
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column 
+        offset=4,
+        width=8
+      %}
+      {% dnd_row %}
+          {% dnd_module "multi_col_content_1"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h2>Ebooks</h2>",
+                "settings": {
+                  "align_desktop": "left",
+                  "align_mobile": "left",
+                  "show_divider": true,
+                  "custom_text_color": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "0px",
+                  "padding_bottom": "10px",
+                  "padding_top_tablet": "0px",
+                  "padding_bottom_tablet": "10px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "50px"
+                },
+                "style": {
+                  "pull_up": false
+                },
+                "code": {
+                  "section_id": "ebooks"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "flexi_cards_1"
+            path='../modules/commodore - Row - Flexi Cards',
+            label="Flexi Cards",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "photo": {
+                  "src": "{{ get_asset_url('../../images/gfx/feat-img-temp.jpg') }}"
+                },
+                "headline": "The Art of Inbound",
+                "subhead": "",
+                "show_desc_text": true,
+                "desc_text": "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+                "link": {
+                  "choice": "page"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "card_style" is_json=True %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "text_align": "left",
+                "card_padding": 0,
+                "card_text_padding": 25,
+                "add_shadow": false,
+                "photo_full": true,
+                "rounded_corners": 0
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#ffffff",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %} 
+    {% end_dnd_section %}

@@ -1,0 +1,170 @@
+<!--
+ templateType: section
+ label: Icon Group
+ description: "Need to display some product features? This section has your name written all over it."
+ isAvailableForNewContent: true
+ screenshotPath: ../images/sections/icon-group.jpg
+-->
+ {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      
+      {% dnd_column 
+        offset=0
+      %}
+        {% dnd_row %}
+          {% dnd_module "multi_col_content_2"
+            path='../modules/commodore - Row - Multi-Column Content',
+            label="Multi-Column Content",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %}
+              {
+                "num_cols": "1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "col_1" is_json=True %}
+              {
+                "content": "<h5>Clever</h5><h2>Headline</h2>",
+                "settings": {
+                  "show_divider": false
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "bg_type": "color",
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "add_wave_top" : true,
+                "wave_top": {
+                  "type": "opt_5",
+                  "color": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                  }
+                },
+                "content_width": "container-slim",
+                "adv_settings": {
+                  "padding_top": "100px",
+                  "padding_bottom": "50px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "10px",
+                  "padding_top_mobile": "25px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module 'icon_text_1'
+            path='../modules/commodore - Row - Icon with Text',
+            label="Icon with Text",
+            offset=0
+          %}
+            {% module_attribute "icon_options" is_json=True  %}
+              {
+                "num_cols": "3",
+                "icon_type": "hs_list",
+                "size": 38
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content_group" is_json=True  %}
+              {
+                "column_1": {
+                  "content": "<h4>Magical</h4><p>So easy to customize you will think you have developed super powers.</p>"
+                },
+                "column_2": {
+                  "content": "<h4>No Coding Required</h4><p><span>Build to leverage the Hubspot CMS making it simple to create and optimize webpages.</span></p>"
+                },
+                "column_3": {
+                  "content": "<h4>Mobile Ready</h4><p>Each template is<span>&nbsp;responsive and designed to look awesome on all devices.</span></p>"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True  %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "25px",
+                  "padding_top_tablet": "10px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "10px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module 'icon_text_2'
+            path='../modules/commodore - Row - Icon with Text',
+            label="Icon with Text",
+            offset=0
+          %}
+            {% module_attribute "icon_options" is_json=True  %}
+              {
+                "num_cols": "3",
+                "icon_type": "hs_list",
+                "size": 38
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content_group" is_json=True  %}
+              {
+                "column_1": {
+                  "content": "<h4>Unlimited Chat Support</h4><p><span>Need help or have a question about using any of the templates? You are only a few clicks from an answer.</span></p>"
+                },
+                "column_2": {
+                  "content": "<h4>Created to Convert</h4><p><span>Your websites #1 job is to create leads that turn into customers. commodore is designed specifically for that purpose.</span></p>"
+                },
+                "column_3": {
+                  "content": "<h4>Huge Icon Set</h4><p><span>Integrated with FontAwesome so that you can select from a huge library of icons.</span></p>"
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True  %}
+              {
+                "bg_color": {
+                  "color": "#f2f5f8",
+                  "opacity": 100
+                },
+                "add_wave_btm" : true,
+                "wave": {
+                  "type": "opt_3",
+                  "color": {
+                    "color": "#ffffff",
+                    "opacity": 100
+                  }
+                },
+                "content_width": "container",
+                "adv_settings": {
+                  "padding_top": "10px",
+                  "padding_bottom": "100px",
+                  "padding_top_tablet": "10px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "10px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %} 
+    {% end_dnd_section %}

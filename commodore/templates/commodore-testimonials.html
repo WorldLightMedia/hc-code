@@ -1,0 +1,189 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/testimonials-6-2.jpg
+  label: Testimonials - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h1>Happy Clients</h1><h4>Add as many testimonials as you like.</h4>",
+            "style": {
+              "content_align": "left"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "image",
+            "parallax": true,
+            "bg_image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/heros/careers-bg.jpg"
+            },
+            "overlay_bg": "gradient",
+            "color_1": {
+              "color": "#33475b",
+              "opacity": 40
+            },
+            "color_2": {
+              "color": "#000000",
+              "opacity": 100
+            },
+            "gradient_angle": "45deg",
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "200px",
+              "padding_bottom": "200px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "100px",
+              "padding_bottom_mobile": "150px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- TESTIMONIAL CARDS  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "versa_cards"
+        path='../modules/COMMODORE - Versa Cards',
+        label="Testimonial Cards (Versa Cards Pro-Beta)",
+        offset=0,
+        start={
+          "card_style": "testimonial"
+        },
+        style={
+          "row":{
+            "spacing":{
+              "desktop": {
+                "margin": {
+                  "top":{
+                    "value":-150,
+                    "units":"px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      %}
+      
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Its your last chance!</h2><p>Nah... Not really. But you knew that. I will just leave this button here for you when you need it.</p><p></p><a href='#' class='cta-primary'>Call To Action</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

@@ -1,0 +1,418 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/lp-2-6-2.jpg
+  label: Landing Page - Opt 2 - Commodore
+-->
+{% extends "../layouts/base-lp.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+  <!----------------------- GLOBAL HEADER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_header"
+        path="../../modules/Global Header v2",
+        label="Global Header - Opt2",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false,
+        hide_nav=true,
+        hide_header_hat=true,
+        logo_center=true,
+        logo_mt='20',
+        hide_footer=true
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+    
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "hero_baner_1"
+        path='../../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "rotating_text": false,
+            "content": "<h1>Simple and Effective</h1><h4>Super flexible and easy to split test with.</h4>",
+            "style": {
+              "content_align": "center",
+              "font_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            },
+            "add_form": true,
+            "form_position": "center",
+            "btn_inline": true,
+            "form_width": 50
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "video",
+            "video_clip": [
+              {            
+                "mp4": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/video/commodore-vid-new-city.mp4"
+              },
+              {            
+                "mp4": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/video/commodore-new-vid-scuba.mp4"
+              }
+            ],
+            "overlay_bg": "color",
+            "bg_color": {
+              "color": "#000000",
+              "opacity": 50
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "200px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<img src='https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/hubspot-computer.png' alt='example' />",
+            "settings": {
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 0
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": true,
+              "content_bg_color": {
+                "color": "#ffffff",
+                "opacity": 0
+              },
+              "pull_up_num_desktop": 180,
+              "pull_up_num_tablet": 0,
+              "pull_up_num_mobile": 0,
+              "con_padding": 0,
+              "con_padding_tablet": 0,
+              "con_padding_mobile": 0,
+              "no_padding_btm": true
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- ICON & TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "icon_text_1"
+        path='../../modules/commodore - Row - Icon with Text',
+        label="Icon with Text",
+        offset=0
+      %}
+        {% module_attribute "icon_options" is_json=True  %}
+          {
+            "num_cols": "3",
+            "icon_type": "hs_list",
+            "size": 38
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content_group" is_json=True  %}
+          {
+            "column_1": {
+              "content": "<h4>Magical</h4><p>So easy to customize you will think you have developed super powers.</p>"
+            },
+            "column_2": {
+              "content": "<h4>No Coding Required</h4><p><span>Build to leverage the Hubspot CMS making it simple to create and optimize webpages.</span></p>"
+            },
+            "column_3": {
+              "content": "<h4>Mobile Ready</h4><p>Each template is<span>&nbsp;responsive and designed to look awesome on all devices.</span></p>"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True  %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "content_alignment_desktop": "left",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- LOGO SCROLLER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "logo_scroller"
+        path='../../modules/commodore - Row - Logo Scroller',
+        label="Logo Scroller",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_logos": 5 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "logo_group" is_json=True %}
+          [
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-entrepreneur-mag.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-fast-company.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-forbes-logo.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-mashable@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-ny-times@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-techcrunch@2x.png"
+                }
+              },
+              {
+                "logo": {
+                  "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/logos/gray-wired@2x.png"
+                }
+              }
+          ]
+        {% end_module_attribute %}
+        {% module_attribute "slider_options" is_json=True %} 
+          {
+            "auto_rotate": true,
+            "dots": true,
+            "show_arrows": false,
+            "make_logos_links": false,
+            "section_title": false 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "title"  %} 
+            <h6 style='text-align: center;'>As Featured In</h6>
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "multi_col_content_2"
+        path='../../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<blockquote style='border-left: 0px;padding-left: 0px;'>We used this Template Pack to build a new homepage for our company and are happy that we decided to go with the commodore package. It is very self-explanatory and intuitive. Once we finished the homepage, Kevin helped us to optimize the few things that couldnt be done by ourselves.</blockquote><p><span>- Marvin Dillenburg</span></p><p>&nbsp;</p><a href='#' class='cta-primary'>Call to Action</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+     <!----------------------- GLOBAL FOOTER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      {% dnd_module "global_footer"
+        path="../../modules/Global Footer",
+        label="Global Footer",
+        offset=0
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

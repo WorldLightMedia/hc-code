@@ -1,0 +1,159 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/style-guide-6-2.jpg
+  label: Style Guide - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+  
+   <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} {# "start" targets the group #}
+          {
+            "num_cols": "1" 
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h1>Style Guide</h1><p>This is a great template to reference as you start customizing the templates to your brand identity.</p>",
+            "style": {
+              "content_align": "center"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "gradient",
+            "bg_color_1": {
+              "color": "#00bda5",
+              "opacity": 100
+            },
+            "bg_color_2": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "bg_gradient_angle": "45deg",
+            "overlay_bg": "none",
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} {# 'start' targets the group #}
+          {
+            "num_cols": "2",
+            "two_col_arrangement": "opt3"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h3>Typography</h3><p>Fonts, sizes, colors, and all that good stuff. A great resource for keeping your type sizing looking tight is to reference <a href='https://type-scale.com/' target='_blank'>Type Scale</a>.</p><h1>H1 Heading</h1><h2>H2 Heading</h2><h3>H3 Heading</h3><h4>H4 Heading</h4><h5>H5 Heading</h5><h6>H6 Heading</h6><p>Adaptogen etsy godard chia fam, vaporware tote bag vinyl hoodie blue bottle neutra ennui locavore. 3 wolf moon hot chicken swag ugh mustache plaid squid coloring book mixtape franzen. Flannel cliche messenger bag vexillologist portland chambray freegan godard, tote bag marfa mustache humblebrag pug.</p><p>Salvia leggings lumbersexual you probably havent heard of them wayfarers 8-bit vinyl pour-over kale chips tumblr jean shorts before they sold out. Yr locavore 8-bit, cornhole cred you probably havent heard of them ramps skateboard affogato cray schlitz raclette small batch seitan.</p><ul><li>This is an unordered list</li><li>Lists are awesome</li><li>Everyone loves a list</li></ul><ol><li>This is a ordered list</li><li>Lists are awesome</li><li>Everyone loves a list</li></ol><blockquote>Man braid cliche poutine hexagon, four dollar toast air plant humblebrag umami adaptogen forage succulents scenester.</blockquote>",
+            "settings": {
+              "align_desktop": "left",
+              "show_divider": true
+            },
+            "btn_pop": true,
+            "btn_pop_opts": {
+              "btn_label": "Modal Pop Up",
+              "btn_style": "cta-primary"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_2" is_json=True %}
+          {
+            "content": "<h3>Buttons / CTAs</h3><p>You can set up various buttons style to help visually communicate primary, secondary, and tertiary actions you want a visitor to take.</p><p></p><p><a href='#' class='cta-primary'>cta-primary</a></p><p><a href='#' class='cta-secondary'>cta-secondary</a></p><p><a href='#' class='cta-tertiary'>cta-tertiary</a></p><p></p><h3>Forms</h3>",
+            "add_form": true,
+            "settings":
+            {
+              "align_desktop": "left",
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- ICON WITH TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+
+      {% dnd_module
+        path='../modules/commodore - Row - Icon with Text',
+        label="Icon with Text",
+        offset=0
+      %}
+
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

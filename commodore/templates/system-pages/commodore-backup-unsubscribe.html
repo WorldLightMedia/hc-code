@@ -1,0 +1,40 @@
+<!--
+  templateType: email_backup_unsubscribe_page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/email-backup.jpg
+  label: commodore - Email Backup Unsubscribe Page - Commodore
+-->
+{% extends "../layouts/base.html" %}
+{% if theme.system_pages.sub_prefs.use_sticky_nav %}
+  {% require_js %}
+    <script>
+      var element = document.getElementById("hhs-main-nav");
+      element.classList.add("hhs-alt-nav");
+    </script>
+  {% end_require_js %}
+{% endif %}
+
+{% block body %}
+<div class="sub-pre-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>We hate to see you go</h1>
+        <p>To unsubscribe, just add your email below.</p>
+      </div>
+    </div>
+  </div>
+  <div class="head-overlay"></div>
+</div>
+<div class="sub-pref-full">
+  <div class="container-slim">
+    <div class="row">
+      <div class="col-12">
+        <div class="systems-page">
+          {% module "backup_unsubscribe" path="@hubspot/email_simple_subscription" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

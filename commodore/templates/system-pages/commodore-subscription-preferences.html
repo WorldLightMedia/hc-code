@@ -1,0 +1,39 @@
+<!--
+  templateType: email_subscription_preferences_page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/email-sub-prefs.jpg
+  label: commodore - Email Subscriptions Preferences - Commodore
+-->
+{% extends "../layouts/base.html" %}
+{% if theme.system_pages.sub_prefs.use_sticky_nav %}
+  {% require_js %}
+    <script>
+      var element = document.getElementById("hhs-main-nav");
+      element.classList.add("hhs-alt-nav");
+    </script>
+  {% end_require_js %}
+{% endif %}
+
+{% block body %}
+<div class="sub-pre-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Edit Your Subscription Preferences</h1>
+      </div>
+    </div>
+  </div>
+  <div class="head-overlay"></div>
+</div>
+<div class="sub-pref-full">
+  <div class="container-slim">
+    <div class="row">
+      <div class="col-12">
+        <div class="systems-page">
+          {% module "subscription_preferences" path="@hubspot/email_subscriptions" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

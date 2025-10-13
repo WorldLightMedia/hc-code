@@ -1,0 +1,199 @@
+<!--
+ templateType: section
+ label: Image Stack
+ description: "Awesome when you want to include a few rows with image then some supporting text."
+ isAvailableForNewContent: true
+ screenshotPath: ../images/sections/image-stack.jpg
+-->
+ {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='TOP'
+    %}
+      
+      {% dnd_column 
+        offset=0
+      %}
+        {% dnd_row %}
+          {% dnd_module "image_text_opt_2_1"
+            path='../modules/commodore - Row - Image and Text - Opt 2',
+            label="Image and Text - Opt 2",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %} 
+              {
+                "img_col": "left",
+                "col_arrangement":  "opt1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content" is_json=True %}
+              {
+                "text": "<h2>Feature Headline 1</h2><p>Food truck schlitz craft beer synth JOMO banjo live-edge enamel pin dreamcatcher poutine ennui. Raclette fashion axe messenger bag, authentic try-hard celiac coloring book ethical disrupt slow-carb locavore.</p>",
+                "image": {
+                  "src": "{{ get_asset_url('../../images/gfx/feat-img-temp.jpg') }}" 
+                },
+                "settings": {
+                  "show_divider": false
+                },
+                "advanced": {
+                  "layer_img": true,
+                  "text_slider": 100,
+                  "header_cutout": true,
+                  "cutout_size": 20,
+                  "underlay_type": "color",
+                  "underlay_color": {
+                    "color": "#33475b",
+                    "opacity": 50
+                  },
+                  "underlay_offset_position": "top_left",
+                  "offset_distance": 30,
+                  "img_shadow": true,
+                  "shadow_size": 50,
+                  "shadow_color": {
+                    "color:": "#000000",
+                    "opacity": 40
+                  }
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "content_width": "custom",
+                "set_width": 1200,
+                "adv_settings": {
+                  "padding_top": "150px",
+                  "padding_bottom": "50px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "100px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "image_text_opt_2_2"
+            path='../modules/commodore - Row - Image and Text - Opt 2',
+            label="Image and Text - Opt 2",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %} 
+              {
+                "img_col": "right",
+                "col_arrangement":  "opt1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content" is_json=True %}
+              {
+                "text": "<h2>Feature Headline 2</h2><p>Food truck schlitz craft beer synth JOMO banjo live-edge enamel pin dreamcatcher poutine ennui. Raclette fashion axe messenger bag, authentic try-hard celiac coloring book ethical disrupt slow-carb locavore.</p>",
+                "text_align": "right",
+                "text_align_mobile": "left",
+                "image": {
+                  "src": "{{ get_asset_url('../../images/gfx/feat-img-temp.jpg') }}" 
+                },
+                "settings": {
+                  "show_divider": false
+                },
+                "advanced": {
+                  "layer_img": true,
+                  "text_slider": 100,
+                  "header_cutout": true,
+                  "cutout_size": 20,
+                  "underlay_type": "color",
+                  "underlay_color": {
+                    "color": "#33475b",
+                    "opacity": 50
+                  },
+                  "underlay_offset_position": "top_right",
+                  "offset_distance": 30,
+                  "img_shadow": true,
+                  "shadow_size": 50,
+                  "shadow_color": {
+                    "color:": "#000000",
+                    "opacity": 40
+                  }
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "content_width": "custom",
+                "set_width": 1200,
+                "adv_settings": {
+                  "padding_top": "100px",
+                  "padding_bottom": "50px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "25px",
+                  "padding_top_mobile": "50px",
+                  "padding_bottom_mobile": "25px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module "image_text_opt_2_3"
+            path='../modules/commodore - Row - Image and Text - Opt 2',
+            label="Image and Text - Opt 2",
+            offset=0
+          %}
+            {% module_attribute "start" is_json=True %} 
+              {
+                "img_col": "left",
+                "col_arrangement":  "opt1"
+              }
+            {% end_module_attribute %}
+            {% module_attribute "content" is_json=True %}
+              {
+                "text": "<h2>Feature Headline 3</h2><p>Food truck schlitz craft beer synth JOMO banjo live-edge enamel pin dreamcatcher poutine ennui. Raclette fashion axe messenger bag, authentic try-hard celiac coloring book ethical disrupt slow-carb locavore.</p>",
+                "image": {
+                  "src": "{{ get_asset_url('../../images/gfx/feat-img-temp.jpg') }}" 
+                },
+                "settings": {
+                  "show_divider": false
+                },
+                "advanced": {
+                  "layer_img": true,
+                  "text_slider": 100,
+                  "header_cutout": true,
+                  "cutout_size": 20,
+                  "underlay_type": "color",
+                  "underlay_color": {
+                    "color": "#33475b",
+                    "opacity": 50
+                  },
+                  "underlay_offset_position": "top_left",
+                  "offset_distance": 30,
+                  "img_shadow": true,
+                  "shadow_size": 50,
+                  "shadow_color": {
+                    "color:": "#000000",
+                    "opacity": 40
+                  }
+                }
+              }
+            {% end_module_attribute %}
+            {% module_attribute "row_settings" is_json=True %}
+              {
+                "content_width": "custom",
+                "set_width": 1200,
+                "adv_settings": {
+                  "padding_top": "100px",
+                  "padding_bottom": "150px",
+                  "padding_top_tablet": "50px",
+                  "padding_bottom_tablet": "50px",
+                  "padding_top_mobile": "50px",
+                  "padding_bottom_mobile": "50px"
+                }
+              }
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %} 
+    {% end_dnd_section %}

@@ -1,0 +1,219 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/contact-us-6-2.jpg
+  label: Contact Us - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+  {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+  <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- IMAGE AND TEXT OPT 1 ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_1_1"
+        path='../modules/commodore - Row - Image and Text - Opt 1',
+        label="Image and Text - Opt 1",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "right",
+            "col_arrangement": "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h1>Hello.</h1><h4><span>Need to get in touch with our Support or Sales team? We are all ears (and eyes).</span></h4>",
+            "text_padding_right_left": 100,
+            "text_padding_right_left_tablet": 50,
+            "text_padding_right_left_mobile": 50,
+            "custom_text_color": true,
+            "text_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "text_align": "left",
+            "text_align_mobile": "center",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/support.jpg"
+            },
+            "settings": {
+              "img_first_mobile": true,
+              "show_divider": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#00a4bd",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "200px",
+              "padding_bottom": "200px",
+              "padding_top_tablet": "150px",
+              "padding_bottom_tablet": "150px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+
+
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Lets Chat.</h2><h4>Who do you need to get in touch with?</h4>",
+            "settings": {
+              "show_divider": false
+            },
+            "add_form": true
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": true,
+              "content_bg_color": {
+                "color": "#f2f5f8",
+                "opacity": 100
+              },
+              "pull_up_num_desktop": 150,
+              "pull_up_num_tablet": 0,
+              "pull_up_num_mobile": 50,
+              "con_padding": 50,
+              "con_padding_tablet": 15,
+              "con_padding_mobile": 15,
+              "no_padding_btm": true
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MAP AND TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "map_and_text_1"
+        path='../modules/commodore - Row - Map and Text',
+        label="Map and Text",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "img_col": "left",
+            "col_arrangement": "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h6>Our Office</h6><h2>Commodore HQ</h2><p>T: 310.321.9876<br>E: <a href='mailto:support@yourcompany.com'>support@yourcompany.com</a></p><p>321 Superhero Dr. #111<br>Redondo Beach, CA 90277</p>",
+            "text_padding_right_left": 100,
+            "text_padding_right_left_tablet": 25,
+            "text_padding_right_left_mobile": 50,
+            "text_align": "left",
+            "text_align_mobile": "left",
+            "map": "<div class='hs-responsive-embed-wrapper hs-responsive-embed' style='border: 0; width: 100%; height: auto; position: relative; overflow: hidden; min-width: 256px; margin: 0px auto; display: block; max-width: 600px; max-height: 450px; padding: 0;'><div class='hs-responsive-embed-inner-wrapper' style='position: relative; overflow: hidden; max-width: 100%; padding-bottom: 75.00%; margin: 0;'><iframe class='hs-responsive-embed-target-iframe hs-responsive-embed-iframe' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;' xml='lang' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41558.794515543836!2d-118.45159266613582!3d33.97548458457265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4f46808acafc48d4!2sIn-N-Out+Burger!5e0!3m2!1sen!2sus!4v1566334307603!5m2!1sen!2sus' width='600' height='450' data-service='google-maps' allowfullscreen='allowfullscreen' frameborder='0'></iframe></div></div>"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+  
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

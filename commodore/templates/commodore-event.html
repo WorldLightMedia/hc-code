@@ -1,0 +1,1544 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  screenshotPath: ../images/screenshots/event-6-2.jpg
+  label: Event - Commodore
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="body-container-wrapper">
+    {% dnd_area "dnd_area" class='body-container', label='Main section' %}
+
+ <!----------------------- HEADER FOOTER OVERRIDES  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "header_footer_overrides"
+        path='../modules/commodore - Style - Header Footer Override',
+        label="Header Footer Override",
+        offset=0,
+        use_alt_nav=false
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+    
+<!----------------------- HERO BANNER  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "hero_baner"
+        path='../modules/commodore - Hero Banner',
+        label="Hero Banner",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h3>– May 4th, 2026 –</h3><h1>Best. Event. Template. Ever.</h1><h4>Super flexible and a fantastic way to get your audience super excited about your event.</h4>",
+            "style": {
+              "content_align": "center"
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "video",
+            "video_clip": [
+              {            
+                "mp4": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/video/commodore-vid-new-city.mp4"
+              }
+            ],
+            "overlay_bg": "gradient",
+            "color_1": {
+              "color": "#000000",
+              "opacity": 80
+            },
+            "color_2": {
+              "color": "#000000",
+              "opacity": 0
+            },
+            "gradient_angle": "45deg",
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "200px",
+              "padding_bottom": "200px",
+              "padding_top_tablet": "100px",
+              "padding_bottom_tablet": "100px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  <!----------------------- COUNT DOWN  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "count_down_1"
+        path='../modules/COMMODORE - Countdown Timer',
+        label="Countdown Timer (Pro-Beta)",
+        start={},
+        style={
+          "section":{
+            "bg":{
+              "type":"color",
+              "color":{
+                "color": "#000000",
+                "opacity": 100
+              }
+            }
+          }
+        }
+      %}
+        
+  
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_1"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Get Updates in Your Inbox</h2><p>Easily add a form to capture interest in your event.</p>",
+            "add_form": true,
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              },
+              "form_max_width": 70
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_2"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Awesome Speakers</h2><p>More to be announced!</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- TEAM PROFILE CARDS - OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "team_profile_cards_1"
+        path='../modules/commodore - Row - Team Profile Cards Opt 2',
+        label="Team Profile Cards - Opt 2",
+        offset=0
+      %}
+      {% module_attribute "start" is_json=True  %}
+        {
+          "num_cols": "3"
+        }
+      {% end_module_attribute %}
+
+      {% module_attribute "card_style" is_json=True  %}
+        {
+          "bg_color": {
+            "color": "#ffffff",
+            "opacity": 100
+          },
+          "card_padding": 0,
+          "card_text_padding": 25,
+          "add_shadow": true,
+          "photo_full": true,
+          "text_align": "left"
+        }
+      {% end_module_attribute %}
+  
+      {% module_attribute "profile_card" is_json=True  %}
+        [
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          },
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          },
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          }
+        ]
+      {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  
+<!----------------------- TEAM PROFILE CARDS - OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "team_profile_cards_2"
+        path='../modules/commodore - Row - Team Profile Cards Opt 2',
+        label="Team Profile Cards - Opt 2",
+        offset=0
+      %}
+      {% module_attribute "start" is_json=True  %}
+        {
+          "num_cols": "4"
+        }
+      {% end_module_attribute %}
+
+      {% module_attribute "card_style" is_json=True  %}
+        {
+          "bg_color": {
+            "color": "#ffffff",
+            "opacity": 100
+          },
+          "card_padding": 0,
+          "card_text_padding": 25,
+          "add_shadow": true,
+          "photo_full": true,
+          "text_align": "left"
+        }
+      {% end_module_attribute %}
+  
+      {% module_attribute "profile_card" is_json=True  %}
+        [
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          },
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          },
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "email": "johnsmith@company.com",
+              "show_social": true,
+              "show_linkedin": true,
+              "linkedin_url": "https://linkedin.com",
+              "show_facebook": true,
+              "facebook_url": "https://facebook.com",
+              "show_twitter": true,
+              "twitter_url": "https://twitter.com",
+              "show_instagram": true,
+              "instagram_url": "https://instagram.com",
+              "show_youtube": true,
+              "youtube_url": "https://youtube.com",
+              "show_medium": true,
+              "medium_url": "https://medium.com"
+            }
+          },
+          {
+            "photo": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gfx/team-profile-placeholder.jpg"
+            },
+            "full_name": "John Smith",
+            "title": "Director of Marketing",
+            "show_short_bio": true,
+            "short_bio": "Fashion axe raw denim art party quinoa banh mi single-origin coffee. Flannel unicorn palo santo, seitan pabst art party knausgaard brooklyn meh cardigan vinyl tote bag thundercats glossier.",
+            "card_link": false,
+            "social": {
+              "show_email": true,
+              "show_social": true
+            }
+          }
+        ]
+      {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "25px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_3"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<a class='#' class='cta-tertiary'>View All Speakers</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": false,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "10px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_1"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h2>Fully Drag-n-Drop</h2><p>Gone are the days of having to know how to code or having to rely on someone who does in order to create and manage your marketing site, landing pages, and email campaigns. commodore is based on insanely flexible and customizable row modules that you can drag and drop to create pages and easily optimize them along the way.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gifs/commodore-5s-drag-n-drop.gif" 
+            },
+            "settings": {
+              "show_divider": true
+            },
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#000000",
+                "opacity": 40
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "custom",
+            "set_width": 1300,
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_2"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "right",
+            "col_arrangement":  "opt4"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h2>Wonderfully Customizable</h2><p>You will have access to loads of fine grain customization controls right from within the page editor. Select the rows background color, text color, row spacing, how things animate in, and so much more.</p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gifs/commodore-5s-color-settings.gif" 
+            },
+            "settings": {
+              "show_divider": true
+            },
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#000000",
+                "opacity": 40
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "custom",
+            "set_width": 1300,
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE AND TEXT OPT 2  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_text_opt_2_3"
+        path='../modules/commodore - Row - Image and Text - Opt 2',
+        label="Image and Text - Opt 2",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %} 
+          {
+            "img_col": "left",
+            "col_arrangement":  "opt5"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>A Designers Dream Tempalte</h3><p>Just because you are using a template system doesn not mean your website has to look like a template. commodore was built with designers, like you, in mind. You will have wide ranging control of style elements including color, spacing, column sizes, shadows, and much more.</p><p><strong>Not a designer? Not a problem. Your team will think you are by using commodore.</strong></p>",
+            "image": {
+              "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/gifs/commodore-5s-design-settings.gif" 
+            },
+            "settings": {
+              "show_divider": true
+            },
+            "advanced": {
+              "img_shadow": true,
+              "shadow_size": 50,
+              "shadow_color": {
+                "color:": "#000000",
+                "opacity": 40
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "content_width": "custom",
+            "set_width": 1300,
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_4"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True  %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True  %}
+          {
+            "content": "<h2>Event Schedule</h2>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "10px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_5"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h3>Friday</h3>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "0px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- EVENT SCHEDULE  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "event_schedule_1"
+        path='../modules/commodore - Row - Event Schedule',
+        label="Event Schedule",
+        offset=0
+      %}
+        {% module_attribute "event_section" is_json=True %}
+          [
+            {
+            "time": "10:00AM",
+            "title": "Welcome",
+            "title_sub_detail": "with Sam Smith",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "11:00AM",
+            "title": "Session 1",
+            "title_sub_detail": "with Ken West",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "12:00PM",
+            "title": "Lunch Break",
+            "title_sub_detail": "",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "1:30PM",
+            "title": "Session 2",
+            "title_sub_detail": " with Steve Sims",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "3:00PM",
+            "title": "Session 3",
+            "title_sub_detail": "with Brian Appal",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": true
+            }
+          ]
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "style_options" is_json=True %}
+          {
+            "custom_text_color": true,
+              "text_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "border_bottom_color": {
+              "color": "#444444",
+              "opacity": 100
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_6"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h3>Saturday</h3>",
+            "settings": {
+              "align_desktop": "left",
+              "align_mobile": "left",
+              "show_divider": false,
+              "custom_text_color": true,
+              "text_color": {
+                "color": "#ffffff",
+                "opacity": 100
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "0px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "10px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- EVENT SCHEDULE  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "event_schedule_2"
+        path='../modules/commodore - Row - Event Schedule',
+        label="Event Schedule",
+        offset=0
+      %}
+        {% module_attribute "event_section" is_json=True %}
+          [
+            {
+            "time": "10:00AM",
+            "title": "Welcome",
+            "title_sub_detail": "with Sam Smith",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "11:00AM",
+            "title": "Session 1",
+            "title_sub_detail": "with Ken West",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "12:00PM",
+            "title": "Lunch Break",
+            "title_sub_detail": "",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "1:30PM",
+            "title": "Session 2",
+            "title_sub_detail": " with Steve Sims",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": false
+            },
+            {
+            "time": "3:00PM",
+            "title": "Session 3",
+            "title_sub_detail": "with Brian Appal",
+            "full_detail": "Lorem ipsum dolor amet vice taxidermy squid vape roof party, artisan normcore. Bespoke ethical asymmetrical, celiac church-key pinterest unicorn blog banjo offal organic.",
+            "last_of_day": true
+            }
+          ]
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#111111",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "25px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "25px",
+              "padding_bottom_tablet": "25px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "style_options" is_json=True %}
+          {
+            "custom_text_color": true,
+              "text_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "border_bottom_color": {
+              "color": "#444444",
+              "opacity": 100
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_7"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>The Location</h2><p>Join us in beautiful San Diego, CA</p>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true,
+              "custom_text_color": false
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container-slim",
+            "adv_settings": {
+              "padding_top": "50px",
+              "padding_bottom": "50px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE GRID  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_grid_1"
+        path='../modules/commodore - Row - Image Grid',
+        label="Image Grid",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1",
+            "add_link": false
+          }
+        {% end_module_attribute %}
+        {% module_attribute "img_settings" is_json=True %}
+          {
+            "img_height_desktop": 300,
+            "img_height_tablet": 200,
+            "img_height_mobile": 100,
+            "img_space": true,
+            "img_space_num": 5
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "col_1": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/location-1.jpg"
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "0px",
+              "padding_top_tablet": "0px",
+              "padding_bottom_tablet": "0px",
+              "padding_top_mobile": "0px",
+              "padding_bottom_mobile": "0px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- IMAGE GRID  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_grid_2"
+        path='../modules/commodore - Row - Image Grid',
+        label="Image Grid",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "2",
+            "add_link": false
+          }
+        {% end_module_attribute %}
+        {% module_attribute "img_settings" is_json=True %}
+          {
+            "img_height_desktop": 300,
+            "img_height_tablet": 200,
+            "img_height_mobile": 100,
+            "img_space": true,
+            "img_space_num": 5
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "col_1": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/location-2.jpg"
+              }
+            },
+            "col_2": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/location-3.jpg"
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "0px",
+              "padding_top_tablet": "0px",
+              "padding_bottom_tablet": "0px",
+              "padding_top_mobile": "0px",
+              "padding_bottom_mobile": "0px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+<!----------------------- IMAGE GRID  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "image_grid_3"
+        path='../modules/commodore - Row - Image Grid',
+        label="Image Grid",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "4",
+            "add_link": false
+          }
+        {% end_module_attribute %}
+        {% module_attribute "img_settings" is_json=True %}
+          {
+            "img_height_desktop": 200,
+            "img_height_tablet": 100,
+            "img_height_mobile": 100,
+            "img_space": true,
+            "img_space_num": 5
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "col_1": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/fun-1.jpg"
+              }
+            },
+            "col_2": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/fun-2.jpg"
+              }
+            },
+            "col_3": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/fun-3.jpg"
+              }
+            },
+            "col_4": {
+              "img": {
+                "src": "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/photos/fun-4.jpg"
+              }
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "0px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "0px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "0px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MAP AND TEXT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "map_and_text_1"
+        path='../modules/commodore - Row - Map and Text',
+        label="Map and Text",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "img_col": "left",
+            "col_arrangement": "opt1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "content" is_json=True %}
+          {
+            "text": "<h3>San Diego Convention Center</h3><h4>111 W Harbor Dr, <br>San Diego, CA 92101</h4>",
+            "text_padding_right_left": 100,
+            "text_padding_right_left_tablet": 25,
+            "text_padding_right_left_mobile": 50,
+            "text_align": "left",
+            "text_align_mobile": "left",
+            "map": "<div class='hs-responsive-embed-wrapper hs-responsive-embed' style='border: 0; width: 100%; height: auto; position: relative; overflow: hidden; max-width: 600px; max-height: 450px; min-width: 256px; margin: 0px auto; display: block; padding: 0;'><div class='hs-responsive-embed-inner-wrapper' style='position: relative; overflow: hidden; max-width: 100%; padding-bottom: 75.00%; margin: 0;'><iframe class='hs-responsive-embed-target-iframe hs-responsive-embed-iframe' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;' xml='lang' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3357.2065972991054!2d-117.16469234824524!3d32.70713748089994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d953574be55d8b%3A0x568846370a748ca5!2sSan+Diego+Convention+Center!5e0!3m2!1sen!2sus!4v1566509924709!5m2!1sen!2sus' width='600' height='450' data-service='google-maps' frameborder='0' allowfullscreen='allowfullscreen'></iframe></div></div>"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_color": {
+              "color": "#f2f5f8",
+              "opacity": 100
+            },
+            "adv_settings": {
+              "padding_top": "100px",
+              "padding_bottom": "100px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "50px",
+              "padding_bottom_mobile": "50px"
+            }
+          }
+        {% end_module_attribute %}
+
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+
+<!----------------------- MULTI-COLUMN CONTENT  ----------------------->
+    {% dnd_section
+      padding={
+        'top': 0,
+        'bottom': 0,
+        'left': 0,
+        'right': 0
+      },
+      full_width='true',
+      vertical_alignment='MIDDLE'
+    %}
+      {% dnd_module "multi_col_content_8"
+        path='../modules/commodore - Row - Multi-Column Content',
+        label="Multi-Column Content",
+        offset=0
+      %}
+        {% module_attribute "start" is_json=True %}
+          {
+            "num_cols": "1"
+          }
+        {% end_module_attribute %}
+        {% module_attribute "col_1" is_json=True %}
+          {
+            "content": "<h2>Register Today!</h2><p>You can easily add a form below or CTA that take someone to the next page.</p><p></p><a href='#' class='cta-primary'>Call to Action</a>",
+            "settings": {
+              "align_desktop": "center",
+              "align_mobile": "center",
+              "show_divider": true
+            }
+          }
+        {% end_module_attribute %}
+        {% module_attribute "row_settings" is_json=True %}
+          {
+            "bg_type": "color",
+            "bg_color": {
+              "color": "#ffffff",
+              "opacity": 100
+            },
+            "content_width": "container",
+            "adv_settings": {
+              "padding_top": "150px",
+              "padding_bottom": "150px",
+              "padding_top_tablet": "50px",
+              "padding_bottom_tablet": "50px",
+              "padding_top_mobile": "25px",
+              "padding_bottom_mobile": "25px"
+            },
+            "style": {
+              "pull_up": false
+            }
+          }
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}
+

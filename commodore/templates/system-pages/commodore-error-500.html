@@ -1,0 +1,38 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: true
+  screenshotPath: ../../images/screenshots/error-500.jpg
+  label: commodore - Error 500 - Commodore
+-->
+{% extends "../layouts/base.html" %}
+{% if theme.system_pages.error.use_sticky_nav %}
+  {% require_js %}
+    <script>
+      var element = document.getElementById("hhs-main-nav");
+      element.classList.add("hhs-alt-nav");
+    </script>
+  {% end_require_js %}
+{% endif %}
+
+
+{% block body %}
+<div class="error-page-full">
+  <div class="content-wrapper error-page-con">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="error-page" data-error="500">
+            <div class="error-inner">
+              <h1 class="error-page_heading">
+                500
+              </h1>
+              <h4>Hhmmm... Something isn't quite right.</h4>
+              <p>Sorry, an internal server error occurred. But have no fear, we're on the case!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
