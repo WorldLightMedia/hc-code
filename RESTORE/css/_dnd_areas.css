@@ -1,0 +1,17 @@
+.dnd-section .widget-type-cell {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@media (min-width: 922px) {
+  .dnd_area-module-1-vertical-alignment {
+    display: block !important;
+  }
+}
+
+@media (max-width: 923px) {
+  .dnd-section .widget-type-cell {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

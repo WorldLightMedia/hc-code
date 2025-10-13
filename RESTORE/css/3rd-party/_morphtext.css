@@ -1,0 +1,6 @@
+#js-rotating {display: none;}
+
+#js-rotating.morphext,
+.morphext > .animated {
+    display: inline-block;
+}

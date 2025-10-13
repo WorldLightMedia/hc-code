@@ -1,0 +1,14 @@
+.hhs-video {position: relative;z-index: 0;}
+.hhs-video img {
+ z-index: 1;
+  position: relative;
+}
+.hhs-video-underlay {
+  position: absolute;
+  right:0px;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: contain !important;
+}

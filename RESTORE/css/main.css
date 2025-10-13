@@ -1,0 +1,64 @@
+{# Configuration variables #}
+
+{% set blog_default_featured_image = '../images/gfx/featured-img-temp.jpg' %}
+
+/** MODULES **/
+{% include './modules/global-footer.css' %}
+{% include './modules/hero-slider.css' %}
+{% include './modules/item-accordion-menu.css' %}
+{% include './modules/item-card-flipper.css' %}
+{% include './modules/item-spacer.css' %}
+{% include './modules/row-blog-post-thumbnails.css' %}
+{% include './modules/row-card-flippers.css' %}
+{% include './modules/row-content-filter-opt1.css' %}
+{% include './modules/row-content-filter-opt2.css' %}
+{% include './modules/row-count-down.css' %}
+{% include './modules/row-event-schedule.css' %}
+{% include './modules/row-flexi-cards.css' %}
+{% include './modules/row-hover-cards.css' %}
+{% include './modules/row-icon-text.css' %}
+{% include './modules/row-image-gallery-grid.css' %}
+{% include './modules/row-image-grid.css' %}
+{% include './modules/row-image-text-opt2.css' %}
+{% include './modules/row-logo-scroller.css' %}
+{% include './modules/row-map-text.css' %}
+{% include './modules/row-masonry-grid-gallery.css' %}
+{% include './modules/row-multi-column-content.css' %}
+{% include './modules/row-multi-column-accordion.css' %}
+{% include './modules/row-price-comparison.css' %}
+{% include './modules/row-price-table.css' %}
+{% include './modules/row-social-share.css' %}
+{% include './modules/row-tabbed-content.css' %}
+{% include './modules/row-team-profile-cards-opt2.css' %}
+{% include './modules/row-testimonial-scroller.css' %}
+{% include './modules/row-testimonial-cards.css' %}
+{% include './modules/row-video-carousel.css' %}
+{% include './modules/row-video-text.css' %}
+
+
+
+{% include './layout.css' %}
+{% include './_reset.css' %}
+{% include './_normalize.css' %}
+{% include './_dnd_areas.css' %}
+{% include './_typography.css' %}
+{% include './_forms.css' %}
+{% include './_menus.css' %}
+{% include './_blog.css' %}
+{% include './_system_pages.css' %}
+{% include './_commodore-theme-style.css' %}
+{% include './_commodore-modal.css' %}
+
+
+
+/** 3RD PART CSS INCLUDES **/
+{% include './3rd-party/_bootstrap-grid.css' %}
+{% include './3rd-party/_morphtext.css' %}
+{% include './3rd-party/_animate.css' %}
+{% include './3rd-party/_slider-flickity.css' %}
+{% include './3rd-party/_material.css' %}
+{% include './3rd-party/jquery-modal.css' %}
+{% include './3rd-party/_fontawesome_minimal.css' %}
+
+{% include './theme-overrides.css' %}
+

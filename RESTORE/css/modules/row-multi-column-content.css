@@ -1,0 +1,80 @@
+{###########################################################################}
+{##############################   ROW - MULTI-COLUMN CONTENT #############################}
+{###########################################################################}
+.hhs-text-mod {position: relative; z-index: 1;}
+.hhs-text-mod .row {position: relative; z-index: 3;}
+.hhs-row-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hhs-text-mod .c1,
+.hhs-text-mod .c2,
+.hhs-text-mod .c3,
+.hhs-text-mod .c4 {
+  position: relative; 
+}
+
+.hhs-form-con {
+ margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+@media (max-width: 575px){
+  .order-1-mobile .hhs-img {
+   margin-bottom: 25px; 
+  }
+}
+
+.hhs-text-mod {position: relative;}
+.hhs-text-mod .row {
+  z-index: 2;
+  position: relative;
+}
+
+
+.hhs-col-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hhs-text-mod video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: initial;
+}
+
+.btn-pop {
+ clear: both; 
+}
+
+.hhs-text-mod .col-inner {
+ height: 100%;
+  position: relative;
+}
+
+
+@media (max-width: 922px) {
+  .hhs-text-mod .col-inner {
+   height: 100%; 
+  }   
+}

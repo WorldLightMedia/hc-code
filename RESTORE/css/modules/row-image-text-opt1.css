@@ -1,0 +1,23 @@
+.hhs-bg-image {
+ position: relative; 
+}
+
+.hhs-reg-image {
+  object-fit: cover;
+  object-position: center;
+  -o-object-fit: cover;
+  -o-object-position: center;
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@media (max-width: 922px) {
+ .hhs-reg-image {
+   position: static;
+  }
+}

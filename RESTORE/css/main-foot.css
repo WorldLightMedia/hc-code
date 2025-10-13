@@ -1,0 +1,16 @@
+{# LOADS IN THE FOOT AS ASYNC #}
+
+{% include './_forms.css' %}
+{% include './_blog.css' %}
+{% include './_system_pages.css' %}
+{% include './_commodore-modal.css' %}
+
+{# 3RD PART CSS INCLUDES #}
+{% include './3rd-party/_morphtext.css' %}
+{% include './3rd-party/_animate.css' %}
+{% include './3rd-party/_slider-flickity.css' %}
+{% include './3rd-party/_material.css' %}
+{% include './3rd-party/jquery-modal.css' %}
+{% include './3rd-party/_fontawesome_minimal.css' %}
+
+{% include './theme-overrides.css' %}

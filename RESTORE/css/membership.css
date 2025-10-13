@@ -1,0 +1,57 @@
+.content-wrapper.membership-section {
+ padding: 250px 0; 
+}
+
+.membership-page {
+  padding: 30px 50px;
+  max-width: 640px;
+  margin: 0px auto 0px;
+  background-color: #eee;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.membership-page .hs-form-field {
+ margin-bottom:20px; 
+}
+
+.membership-page .hs-form-field input {
+ margin-top: 5px;
+}
+
+.membership-page .hs-reset-widget-show-password,
+.membership-page .hs-register-widget-show-password,
+.membership-page .hs-login-widget-show-password {
+ float: right; 
+  font-size: 0.8em;
+}
+
+.membership-page #hs_login_reset {
+  font-size: 0.8em;
+}
+
+.membership-page #hs_cos_wrapper_sign_in_button,
+.membership-page .hs-submit,
+.membership-page .hs-button{
+ margin: 20px 0; 
+  cursor: pointer;
+}
+
+.text-center {
+ text-align: center; 
+}
+
+.membership-page .hs-error-msgs,
+.membership-page .hs-error-msgs label{
+ background-color: transparent !important;
+  border: none;
+  padding: 0;
+}
+
+
+@media (max-width: 575px) {
+ .membership-page {
+   margin: 0 15px;
+  padding: 15px;
+  }
+}

@@ -1,0 +1,96 @@
+.hhs-testimonial-card-mod {position: relative; z-index: 1;}
+.hhs-testimonial-card-mod .row {position: relative; z-index: 3;}
+.hhs-row-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.star-rating {
+  margin: 0 auto;
+  display: table;
+}
+
+.hhs-form-con {
+ margin: 0 auto; 
+}
+
+@media (max-width: 575px){
+  .order-1-mobile .hhs-img {
+   margin-bottom: 25px; 
+  }
+}
+
+.hhs-testimonial-card-mod {
+  position: relative;
+}
+.hhs-testimonial-card-mod .row {
+  z-index: 2;
+  position: relative;
+}
+
+.hhs-testimonial-card-mod .hhs-social-con {
+  position: absolute;
+  bottom: 25px;
+  display: inline-flex;
+}
+
+.hhs-testimonial-card-mod .hhs-social-con a {
+ padding-left: 0px;
+}
+
+.hhs-testimonial-content {
+ padding-bottom: 25px; 
+ position: relative;
+}
+
+.hhs-testimonial-content blockquote {
+  border-left: 0px;
+  padding-left: 0px;
+}
+
+.hhs-testimonial-content blockquote {
+  margin-bottom: 25px;
+}
+
+  
+.hhs-testimonial-card-mod video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: initial;
+}
+
+.hhs-testimonial-card {
+ height: 100%; 
+}
+
+@media (max-width: 992px) {
+  .hhs-testimonial-card {
+   margin-bottom: 25px; 
+  }
+  .hhs-testimonial-card-mod {
+   margin-bottom: 25px; 
+  }
+}
+
+
+@media (max-width: 575px) {
+  .hhs-testimonial-card-mod {
+   margin-bottom: 25px; 
+  }
+  .hhs-testimonial-card {
+   height: auto; 
+  }
+
+}

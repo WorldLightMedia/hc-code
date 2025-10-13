@@ -1,0 +1,164 @@
+{%- macro.foundation_style() -%}
+    {# SECTION STYLE #}
+    .clean-base {
+      {% if module.style.section.bg.type == 'image' and module.style.section.bg.add_parallax == 'false' %}
+        {{ module.style.section.bg.image.css }}
+      {% elif module.style.section.bg.type == 'gradient' %}
+        background: {{ module.style.section.bg.gradient.css }};
+        {% if module.style.section.bg.animated_gradient %}
+          animation: gradient {{ module.style.section.bg.gradient_speed }}s linear infinite;
+          animation-direction: alternate;
+          background-size: 600% 600%;
+        {% endif %}
+      {% elif module.style.section.bg.type == 'color' %}
+        background-color: rgba({{ module.style.section.bg.color.color|convert_rgb }}, {{ module.style.section.bg.color.opacity * 0.01 }});
+      {%- endif -%}
+    }
+
+    {% if module.style.section.bg.add_overlay != 'none' %}
+      .s-overlay {
+        {% if module.style.section.bg.add_overlay == 'gradient' %}
+          background: {{ module.style.section.bg.overlay_gradient.css }}
+        {% elif module.style.section.bg.add_overlay == 'color' %}
+          background-color: rgba({{ module.style.section.bg.overlay_color.color|convert_rgb }}, {{ module.style.section.bg.overlay_color.opacity * 0.01 }});
+        {%- endif -%}
+      }
+    {%- endif -%}
+
+    {# ROW STYLE #}
+     
+     .clean-base .row {
+      {{ module.style.row.spacing.desktop.css }}
+        {%- if module.style.row.bg.type == 'image' and module.style.row.bg.add_parallax == 'false' -%}
+          {{ module.style.row.bg.image.css }}
+        {%- elif module.style.row.bg.type == 'gradient' -%}
+          background: {{ module.style.row.bg.gradient.css }};
+          {% if module.style.row.bg.animated_gradient %}
+            animation: gradient {{ module.style.row.bg.gradient_speed }}s linear infinite;
+            animation-direction: alternate;
+            background-size: 600% 600%;
+          {% endif %}
+        {%- elif module.style.row.bg.type == 'color' -%}
+          background-color: rgba({{ module.style.row.bg.color.color|convert_rgb }}, {{ module.style.row.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+      }
+      
+
+      {% if module.style.row.bg.add_overlay != 'none' %}
+        .r-overlay {
+          {% if module.style.row.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.row.bg.overlay_gradient.css }};
+          {% elif module.style.row.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.row.bg.overlay_color.color|convert_rgb }}, {{ module.style.row.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+        }
+      {%- endif -%}
+  
+    {#### WAVE ####}
+
+    {% if module.style.section.add_wave.add_wave_top %}
+      .c-wave-con-top {
+        color: rgba({{ module.style.section.add_wave.top_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.top_wave.color.opacity * 0.01 }});
+        top: 0;
+      }
+      
+      {% if module.style.section.add_wave.top_wave.type == 'opt_6' %}
+        .c-wave-con-top svg {
+          fill: rgba({{ module.style.section.add_wave.top_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.top_wave.color.opacity * 0.01 }});
+          height: {{ module.style.section.add_wave.top_wave.angle_height }}px;
+        }
+      {%- endif -%}
+  
+      @media only screen and (max-width: 992px) {
+        .c-wave-con-top {
+          top: 0;
+        }
+      }
+      @media only screen and (max-width: 575px) {
+        .c-wave-con-top {
+          top: 0;
+        }
+      }
+    {%- endif -%}
+
+    {% if module.style.section.add_wave.add_wave_bottom %}
+      .c-wave-con-btm {
+        color: rgba({{ module.style.section.add_wave.bottom_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.bottom_wave.color.opacity * 0.01 }});
+        bottom: 0;
+      }
+      
+      {% if module.style.section.add_wave.bottom_wave.type == 'opt_6' %}
+        .c-wave-con-btm svg {
+          fill: rgba({{ module.style.section.add_wave.bottom_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.bottom_wave.color.opacity * 0.01 }});
+          height: {{ module.style.section.add_wave.bottom_wave.angle_height }}px;
+        }
+      {%- endif -%}
+  
+      @media only screen and (max-width: 992px) {
+        .c-wave-con-btm {
+          bottom: 0;
+        }
+      }
+      @media only screen and (max-width: 575px) {
+        .c-wave-con-btm {
+          bottom: 0;
+        }
+      }
+    {%- endif -%}
+  
+    {#### VIDEO BACKGROUND ####}
+
+    {%- if module.style.section.bg.type == 'video' -%}
+      .c-video-player.c-section {
+       background: {{ module.bg_video.section.video_bg_color.color }} url({{ module.bg_video.section.still.src }}) no-repeat center center;
+       background-size: cover;
+      }
+    {%- endif -%}
+    {% if module.style.section.bg.type == 'video' %} 
+      .c-video-player.c-section {
+        background: {{ module.bg_video.section.video_bg_color.color }} url({{ module.bg_video.section.still.src }}) no-repeat center center;
+        background-size: cover;
+      }
+      .c-section video {
+        object-position: {{ module.bg_video.section.vid_pos }};
+      }
+    {%- endif -%}  
+
+    {%- if module.style.row.bg.type == 'video' -%}
+      .c-video-player.c-row {
+       background: {{ module.bg_video.row.video_bg_color.color }} url({{ module.bg_video.row.still.src }}) no-repeat center center;
+       background-size: cover;
+      }
+    {%- endif -%}
+    {%- if module.style.row.bg.type == 'video' -%} 
+      .c-video-player.c-row {
+        background: {{ module.bg_video.row.video_bg_color.color }} url({{ module.bg_video.row.still.src }}) no-repeat center center;        
+        background-size: cover;
+      }
+      .c-row video {
+        object-position: {{ module.bg_video.row.vid_pos }};
+      }
+    {%- endif -%}
+    {%- if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down -%}
+      .c-scroll-down {
+        border: 2px solid rgba({{ module.style.section.bg.scroll_animation_color.color|convert_rgb }}, {{ module.style.section.bg.scroll_animation_color.opacity * 0.01 }});;
+      } 
+      .c-scroll-down:before {
+        background-color: rgba({{ module.style.section.bg.scroll_animation_color.color|convert_rgb }}, {{ module.style.section.bg.scroll_animation_color.opacity * 0.01 }});;
+      }
+    {%- endif -%}
+    
+    
+    @media only screen and (max-width: 992px) {
+      .clean-base .row {
+        {{ module.style.row.spacing.tablet.css }}
+      }
+    }
+    @media only screen and (max-width: 575px) {
+      .clean-base .row {
+        {{ module.style.row.spacing.mobile.css }} 
+      }
+    }
+{%- endmacro -%}
+
+

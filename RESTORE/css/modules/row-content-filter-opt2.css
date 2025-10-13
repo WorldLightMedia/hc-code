@@ -1,0 +1,123 @@
+
+{###########################################################################}
+{##############################   ROW - CONTENT FILTER OPT 2   #############################}
+{###########################################################################}
+
+
+.filter-opt-2 .grid-sizer {width: 23%}/* ADL */
+.filter-opt-2 .gutter-sizer {width: 1%}/* ADL */
+
+.filter-opt-2 .content-card-opt2 {
+  margin: 0 0 20px 0;
+  width: 23%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+
+.filter-opt-2 .content-desc { 
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  position: relative;
+  z-index: 100;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.filter-opt-2 .content-inner {
+ padding: 15px; 
+  position: relative;
+}
+
+.filter-opt-2 .content-inner .content-card-cta {
+ position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.filter-opt-2 .content-desc img {
+ width: 100%; 
+}
+
+.filter-opt-2 .content-desc h4,
+.filter-opt-2 .content-desc h6{
+ text-align: left;
+}
+
+.filter-opt-2 .content-desc h4 {
+ font-weight: 700; 
+}
+
+
+.filter-opt-2 .contentFilter {
+  padding: 15px 0 0;
+  margin-bottom: 15px;
+}
+
+.filter-opt-2 .contentFilter button {
+  margin-right: 6px;
+  color: #555;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 4px 15px;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer !important;
+  background-color: transparent;
+}
+
+.filter-opt-2 .contentFilter button:focus,
+.filter-opt-2 .contentFilter button.current {
+  font-weight: 600;
+  color: #000;      
+  -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  outline: none;
+}
+
+.content-card-opt2:hover {
+  -moz-transform: scale(1.02);
+-webkit-transform: scale(1.02);
+-o-transform: scale(1.02);
+-ms-transform: scale(1.02);
+transform: scale(1.02);
+}
+
+/* BEGIN ADL */
+@media (max-width: 1024px) {
+  .filter-opt-2 .grid-sizer, .filter-opt-2 .content-card {width: 32%}
+  .filter-opt-2 .gutter-sizer {width: 2%}
+  .filter-opt-2 .content-card-opt2 {width: 32%;}
+}
+
+@media (min-width: 992px) {
+  .hhs-content-filter-mod.filter-opt-2 .container {
+   max-width: 1140px; 
+  }
+}
+
+@media (max-width: 575px) {
+  .filter-opt-2 .grid-sizer, .filter-opt-2 .content-card {width: 100%}
+  .filter-opt-2 .gutter-sizer {width: 0%}
+  .filter-opt-2 .content-card-opt2 {width: 100%;}
+}

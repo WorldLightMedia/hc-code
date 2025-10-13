@@ -1,0 +1,74 @@
+.content-group {display: none; width: 100%;}
+
+.scrolling-testimonials .slick-slider {
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  -o-transition: height 0.2s;
+  -ms-transition: height 0.2s;
+  transition: height 0.2s;
+}
+
+
+.scrolling-testimonials .slick-arrow:focus{ outline: none;}
+.scrolling-testimonials .slick-arrow:hover{ opacity:0.4;}
+
+.scrolling-testimonials button.slick-prev,
+.scrolling-testimonials button.slick-next {
+   position: absolute;
+   top: 50%;
+   margin-top: -31px;
+}
+
+.scrolling-testimonials button.slick-prev { 
+  left: -60px; 
+  transform: rotate(45deg);
+}
+.scrolling-testimonials button.slick-next { 
+  right: -60px; 
+  transform: rotate(-135deg);
+}
+
+.scrolling-testimonials button.slick-prev svg,
+.scrolling-testimonials button.slick-next svg {
+  display: none; 
+}
+
+.scrolling-testimonials .slick-dots li {
+  width: 15px;
+  height: 3px;
+  border-radius: 0;
+}
+
+.scrolling-testimonials .slick-dots li.is-selected { 
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.scrolling-testimonials .slick-dots {
+ position: static;
+  margin-top: 25px;
+}
+
+.scrolling-testimonials blockquote {
+  border-left: 0px;
+  padding-left: 0px;
+}
+
+.quote-con {
+    line-height: 1.4em;
+    padding: 25px 0;
+}
+
+.test-name {
+ font-weight: bold; 
+}
+
+@media screen and (max-width: 768px) {
+  .scrolling-testimonials button.slick-prev,
+  .scrolling-testimonials button.slick-next { 
+   display: none !important; 
+  }
+}

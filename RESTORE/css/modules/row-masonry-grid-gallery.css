@@ -1,0 +1,23 @@
+{###########################################################################}
+{##############################   ROW - MASONRY GRID #############################}
+{###########################################################################}
+
+.hhs-masonry-gallery-mod {position: relative; z-index: 1;}
+.hhs-masonry-gallery-mod .row {position: relative; z-index: 2;}
+.hhs-row-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+@media (max-width: 575px){
+  .order-1-mobile .hhs-img {
+   margin-bottom: 25px; 
+  }
+}
+

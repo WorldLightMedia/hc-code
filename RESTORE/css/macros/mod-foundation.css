@@ -1,0 +1,1021 @@
+{%- macro.foundation_style() -%}
+    {# SECTION STYLE #}
+    .clean-base {
+      {% if module.style.section.bg.type == 'image' and module.style.section.bg.add_parallax == 'false' %}
+        {{ module.style.section.bg.image.css }}
+      {% elif module.style.section.bg.type == 'gradient' %}
+        background: {{ module.style.section.bg.gradient.css }};
+        {% if module.style.section.bg.animated_gradient %}
+          animation: gradient {{ module.style.section.bg.gradient_speed }}s linear infinite;
+          animation-direction: alternate;
+          background-size: 600% 600%;
+        {% endif %}
+      {% elif module.style.section.bg.type == 'color' %}
+        background-color: rgba({{ module.style.section.bg.color.color|convert_rgb }}, {{ module.style.section.bg.color.opacity * 0.01 }});
+      {%- endif -%}
+      {% if module.style.section.bg.overflow_hidden %}
+        overflow: hidden;
+      {% endif %}
+    }
+
+    {% if module.style.section.bg.add_overlay != 'none' %}
+      .s-overlay {
+        {% if module.style.section.bg.add_overlay == 'gradient' %}
+          background: {{ module.style.section.bg.overlay_gradient.css }}
+        {% elif module.style.section.bg.add_overlay == 'color' %}
+          background-color: rgba({{ module.style.section.bg.overlay_color.color|convert_rgb }}, {{ module.style.section.bg.overlay_color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.section.bg.add_blur %}
+          backdrop-filter: blur({{ module.style.section.bg.blur_amount }}px);
+          -webkit-backdrop-filter: blur({{ module.style.section.bg.blur_amount }}px);
+        {%- endif -%}
+      }
+    {%- endif -%}
+
+    {# ROW STYLE #}
+     
+     .clean-base .row {
+      {{ module.style.row.spacing.desktop.css }}
+        {%- if module.style.row.bg.type == 'image' and module.style.row.bg.add_parallax == 'false' -%}
+          {{ module.style.row.bg.image.css }}
+        {%- elif module.style.row.bg.type == 'gradient' -%}
+          background: {{ module.style.row.bg.gradient.css }};
+        {% if module.style.row.bg.animated_gradient %}
+          animation: gradient {{ module.style.row.bg.gradient_speed }}s linear infinite;
+          animation-direction: alternate;
+          background-size: 600% 600%;
+        {% endif %}
+        {%- elif module.style.row.bg.type == 'color' -%}
+          background-color: rgba({{ module.style.row.bg.color.color|convert_rgb }}, {{ module.style.row.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.row.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.row.extras.shadow_horz }}px {{ module.style.row.extras.shadow_vert }}px {{ module.style.row.extras.shadow_blur_radius }}px {{ module.style.row.extras.shadow_spread }}px rgba({{ module.style.row.extras.shadow_color.color|convert_rgb }}, {{ module.style.row.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.row.extras.shadow_horz }}px {{ module.style.row.extras.shadow_vert }}px {{ module.style.row.extras.shadow_blur_radius }}px {{ module.style.row.extras.shadow_spread }}px rgba({{ module.style.row.extras.shadow_color.color|convert_rgb }}, {{ module.style.row.extras.shadow_color.opacity * 0.01 }});
+        {% endif %}
+        {%- if module.style.row.extras.add_rounded_corners -%}
+          -webkit-border-radius: {{ module.style.row.extras.border_radius }}px;
+          border-radius: {{ module.style.row.extras.border_radius }}px;
+          {%- if !module.style.row.extras.overflow_hidden_off -%}
+            overflow: hidden;
+          {%- endif -%}
+        {%- endif -%}
+       {% if module.style.row.bg.add_blur_bg %}
+         backdrop-filter: blur({{ module.style.row.bg.blur_amount_bg }}px);
+         -webkit-backdrop-filter: blur({{ module.style.row.bg.blur_amount_bg }}px);
+       {%- endif -%}
+      }
+
+
+      {% if module.style.row.bg.add_overlay != 'none' %}
+        .r-overlay {
+          {% if module.style.row.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.row.bg.overlay_gradient.css }};
+          {% elif module.style.row.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.row.bg.overlay_color.color|convert_rgb }}, {{ module.style.row.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.row.bg.add_blur %}
+            backdrop-filter: blur({{ module.style.row.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.row.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+  
+    {#### WAVE ####}
+
+    {% if module.style.section.add_wave.add_wave_top %}
+      .c-wave-con-top {
+        color: rgba({{ module.style.section.add_wave.top_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.top_wave.color.opacity * 0.01 }});
+        top: 0;
+      }
+      
+      {% if module.style.section.add_wave.top_wave.type == 'opt_6' %}
+        .c-wave-con-top svg {
+          fill: rgba({{ module.style.section.add_wave.top_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.top_wave.color.opacity * 0.01 }});
+          height: {{ module.style.section.add_wave.top_wave.angle_height }}px;
+        }
+      {%- endif -%}
+  
+      @media only screen and (max-width: 992px) {
+        .c-wave-con-top {
+          top: 0;
+        }
+      }
+      @media only screen and (max-width: 575px) {
+        .c-wave-con-top {
+          top: 0;
+        }
+      }
+    {%- endif -%}
+
+    {% if module.style.section.add_wave.add_wave_bottom %}
+      .c-wave-con-btm {
+        color: rgba({{ module.style.section.add_wave.bottom_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.bottom_wave.color.opacity * 0.01 }});
+        bottom: 0;
+      }
+      
+      {% if module.style.section.add_wave.bottom_wave.type == 'opt_6' %}
+        .c-wave-con-btm svg {
+          fill: rgba({{ module.style.section.add_wave.bottom_wave.color.color|convert_rgb }}, {{ module.style.section.add_wave.bottom_wave.color.opacity * 0.01 }});
+          height: {{ module.style.section.add_wave.bottom_wave.angle_height }}px;
+        }
+      {%- endif -%}
+  
+      @media only screen and (max-width: 992px) {
+        .c-wave-con-btm {
+          bottom: 0;
+        }
+      }
+      @media only screen and (max-width: 575px) {
+        .c-wave-con-btm {
+          bottom: 0;
+        }
+      }
+    {%- endif -%}
+  
+    {#### VIDEO BACKGROUND ####}
+
+    {%- if module.style.section.bg.type == 'video' -%}
+      .c-video-player.c-section {
+       background: {{ module.bg_video.section.video_bg_color.color }} url({{ module.bg_video.section.still.src }}) no-repeat center center;
+       background-size: cover;
+      }
+    {%- endif -%}
+    {% if module.style.section.bg.type == 'video' %} 
+      .c-video-player.c-section {
+        background: {{ module.bg_video.section.video_bg_color.color }} url({{ module.bg_video.section.still.src }}) no-repeat center center;
+        background-size: cover;
+      }
+      .c-section video {
+        object-position: {{ module.bg_video.section.vid_pos }};
+      }
+    {%- endif -%}  
+
+    {%- if module.style.row.bg.type == 'video' -%}
+      .c-video-player.c-row {
+       background: {{ module.bg_video.row.video_bg_color.color }} url({{ module.bg_video.row.still.src }}) no-repeat center center;
+       background-size: cover;
+      }
+    {%- endif -%}
+    {%- if module.style.row.bg.type == 'video' -%} 
+      .c-video-player.c-row {
+        background: {{ module.bg_video.row.video_bg_color.color }} url({{ module.bg_video.row.still.src }}) no-repeat center center;        
+        background-size: cover;
+      }
+      .c-row video {
+        object-position: {{ module.bg_video.row.vid_pos }};
+      }
+    {%- endif -%}
+    {%- if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down -%}
+      .c-scroll-down {
+        border: 2px solid rgba({{ module.style.section.bg.scroll_animation_color.color|convert_rgb }}, {{ module.style.section.bg.scroll_animation_color.opacity * 0.01 }});;
+      } 
+      .c-scroll-down:before {
+        background-color: rgba({{ module.style.section.bg.scroll_animation_color.color|convert_rgb }}, {{ module.style.section.bg.scroll_animation_color.opacity * 0.01 }});;
+      }
+    {%- endif -%}
+    
+    
+    @media only screen and (max-width: 992px) {
+      .clean-base .row {
+        {{ module.style.row.spacing.tablet.css }}
+      }
+    }
+    @media only screen and (max-width: 575px) {
+      .clean-base .row {
+        {{ module.style.row.spacing.mobile.css }} 
+      }
+    }
+{%- endmacro -%}
+
+{%- macro.foundation_column_style() -%}
+{#### COLUMNS ####}
+
+    {# COLUMN 1 #}
+      .clean-base .c-1 {
+        {%- if module.style.col.col_1.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift }}px);
+        {%- elif module.style.col.col_1.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_1.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_1.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_1.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+    .clean-base .c-1 .c-col-inner {
+      {{ module.style.col.col_1.spacing.desktop.css }}
+      margin-bottom: 0;
+      margin-top: 0;
+      {%- if module.style.col.col_1.bg.type == 'image' -%}
+        {{ module.style.col.col_1.bg.image.css }}
+      {%- elif module.style.col.col_1.bg.type == 'gradient' -%}
+        background:{{ module.style.col.col_1.bg.gradient.css }};
+        {% if module.style.col.col_1.bg.animated_gradient %}
+          animation: gradient {{ module.style.col.col_1.bg.gradient_speed }}s linear infinite;
+          animation-direction: alternate;
+          background-size: 600% 600%;
+        {% endif %}
+      {%- elif module.style.col.col_1.bg.type == 'color' %}
+        background-color: rgba({{ module.style.col.col_1.bg.color.color|convert_rgb }}, {{ module.style.col.col_1.bg.color.opacity * 0.01 }});
+      {%- endif -%}
+      {%- if module.style.col.col_1.extras.border.top.style != 'none' -%}
+        border: {{ module.style.col.col_1.extras.border.top.width.value }}px {{ module.style.col.col_1.extras.border.top.style }} rgba({{ module.style.col.col_1.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_1.extras.border.top.opacity * 0.01 }});
+      {%- endif -%}
+      {%- if module.style.col.col_1.extras.border_radius -%}
+        -webkit-border-radius: {{ module.style.col.col_1.extras.border_radius }}px;
+        border-radius: {{ module.style.col.col_1.extras.border_radius }}px;
+        overflow: hidden;
+      {%- endif -%}
+      {%- if module.style.col.col_1.extras.add_drop_shadow -%}
+        -webkit-box-shadow: {{ module.style.col.col_1.extras.shadow_horz }}px {{ module.style.col.col_1.extras.shadow_vert }}px {{ module.style.col.col_1.extras.shadow_blur_radius }}px {{ module.style.col.col_1.extras.shadow_spread }}px rgba({{ module.style.col.col_1.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_1.extras.shadow_color.opacity * 0.01 }});
+        box-shadow: {{ module.style.col.col_1.extras.shadow_horz }}px {{ module.style.col.col_1.extras.shadow_vert }}px {{ module.style.col.col_1.extras.shadow_blur_radius }}px {{ module.style.col.col_1.extras.shadow_spread }}px rgba({{ module.style.col.col_1.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_1.extras.shadow_color.opacity * 0.01 }});
+      {%- endif -%}
+      {%- if module.style.col.col_1.bg.match_height -%}
+        height: 100%;
+      {%- endif -%}
+      {%- if module.style.col.col_1.bg.add_blur_bg -%}
+        backdrop-filter: blur({{ module.style.col.col_1.bg.blur_amount_bg }}px);
+        -webkit-backdrop-filter: blur({{ module.style.col.col_1.bg.blur_amount_bg }}px);
+      {%- endif -%}
+    }
+    {% if module.style.col.col_1.bg.add_overlay != 'none' %}
+      .c-1 .c-overlay {
+        {% if module.style.col.col_1.bg.add_overlay == 'gradient' %}
+          background: {{ module.style.col.col_1.bg.overlay_gradient.css }};
+        {% elif module.style.col.col_1.bg.add_overlay == 'color' %}
+          background-color: rgba({{ module.style.col.col_1.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_1.bg.overlay_color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_1.extras.border_radius  %}
+        -webkit-border-radius: {{ module.style.col.col_1.extras.border_radius }}px;
+        border-radius: {{ module.style.col.col_1.extras.border_radius }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_1.bg.add_blur -%}
+          backdrop-filter: blur({{ module.style.col.col_1.bg.blur_amount }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_1.bg.blur_amount }}px);
+        {%- endif -%}
+      }
+    {%- endif -%}
+
+    {# COLUMN 2 #}
+     {% if module.start.num_cols >= '2' %}
+      .clean-base .c-2 {
+        {%- if module.style.col.col_2.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift }}px);
+        {%- elif module.style.col.col_2.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_2.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_2.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_2.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+      .clean-base .c-2 .c-col-inner {
+        {{ module.style.col.col_2.spacing.desktop.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+        {% if module.style.col.col_2.bg.type == 'image' %}
+          {{ module.style.col.col_2.bg.image.css }}
+        {% elif module.style.col.col_2.bg.type == 'gradient' %}
+          background:{{ module.style.col.col_2.bg.gradient.css }};
+        {% if module.style.col.col_2.bg.animated_gradient %}
+          animation: gradient {{ module.style.col.col_2.bg.gradient_speed }}s linear infinite;
+          animation-direction: alternate;
+          background-size: 600% 600%;
+        {% endif %}
+        {% elif module.style.col.col_2.bg.type == 'color' %}
+          background-color: rgba({{ module.style.col.col_2.bg.color.color|convert_rgb }}, {{ module.style.col.col_2.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_2.extras.border.top.style != 'none' %}
+          border: {{ module.style.col.col_2.extras.border.top.width.value }}px {{ module.style.col.col_2.extras.border.top.style }}  rgba({{ module.style.col.col_2.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_2.extras.border.top.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_2.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_2.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_2.extras.border_radius }}px;
+          overflow: hidden;
+        {%- endif -%}
+        {%- if module.style.col.col_2.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.col.col_2.extras.shadow_horz }}px {{ module.style.col.col_2.extras.shadow_vert }}px {{ module.style.col.col_2.extras.shadow_blur_radius }}px {{ module.style.col.col_2.extras.shadow_spread }}px rgba({{ module.style.col.col_2.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_2.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.col.col_2.extras.shadow_horz }}px {{ module.style.col.col_2.extras.shadow_vert }}px {{ module.style.col.col_2.extras.shadow_blur_radius }}px {{ module.style.col.col_2.extras.shadow_spread }}px rgba({{ module.style.col.col_2.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_2.extras.shadow_color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.col.col_2.bg.match_height -%}
+          height: 100%;
+        {%- endif -%}
+        {%- if module.style.col.col_2.bg.add_blur_bg -%}
+          backdrop-filter: blur({{ module.style.col.col_2.bg.blur_amount_bg }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_2.bg.blur_amount_bg }}px);
+        {%- endif -%}
+      }
+      {% if module.style.col.col_2.bg.add_overlay != 'none' %}
+        .c-2 .c-overlay {
+          {% if module.style.col.col_2.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.col.col_2.bg.overlay_gradient.css }};
+          {% elif module.style.col.col_2.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.col.col_2.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_2.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.col.col_2.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_2.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_2.extras.border_radius }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_2.bg.add_blur -%}
+            backdrop-filter: blur({{ module.style.col.col_2.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.col.col_2.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+    {%- endif -%}
+
+    {# COLUMN 3 #}
+     {% if module.start.num_cols >= '3' %}
+      .clean-base .c-3 {
+        {%- if module.style.col.col_3.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift }}px);
+        {%- elif module.style.col.col_3.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_3.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_3.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_3.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_3.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_3.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+      .clean-base .c-3 .c-col-inner {
+        {{ module.style.col.col_3.spacing.desktop.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+        {% if module.style.col.col_3.bg.type == 'image' %}
+          {{ module.style.col.col_3.bg.image.css }}
+        {% elif module.style.col.col_3.bg.type == 'gradient' %}
+          background:{{ module.style.col.col_3.bg.gradient.css }};
+          {% if module.style.col.col_3.bg.animated_gradient %}
+            animation: gradient {{ module.style.col.col_3.bg.gradient_speed }}s linear infinite;
+            animation-direction: alternate;
+            background-size: 600% 600%;
+          {% endif %}
+        {% elif module.style.col.col_3.bg.type == 'color' %}
+          background-color: rgba({{ module.style.col.col_3.bg.color.color|convert_rgb }}, {{ module.style.col.col_3.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_3.extras.border.top.style != 'none' %}
+          border: {{ module.style.col.col_3.extras.border.top.width.value }}px {{ module.style.col.col_3.extras.border.top.style }}  rgba({{ module.style.col.col_3.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_3.extras.border.top.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_3.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_3.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_3.extras.border_radius }}px;
+          overflow: hidden;
+        {%- endif -%}
+        {%- if module.style.col.col_3.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.col.col_3.extras.shadow_horz }}px {{ module.style.col.col_3.extras.shadow_vert }}px {{ module.style.col.col_3.extras.shadow_blur_radius }}px {{ module.style.col.col_3.extras.shadow_spread }}px rgba({{ module.style.col.col_3.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_3.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.col.col_3.extras.shadow_horz }}px {{ module.style.col.col_3.extras.shadow_vert }}px {{ module.style.col.col_3.extras.shadow_blur_radius }}px {{ module.style.col.col_3.extras.shadow_spread }}px rgba({{ module.style.col.col_3.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_3.extras.shadow_color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.col.col_3.bg.match_height -%}
+          height: 100%;
+        {%- endif -%}
+        {%- if module.style.col.col_3.bg.add_blur_bg -%}
+          backdrop-filter: blur({{ module.style.col.col_3.bg.blur_amount_bg }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_3.bg.blur_amount_bg }}px);
+        {%- endif -%}
+      }
+      {% if module.style.col.col_3.bg.add_overlay != 'none' %}
+        .c-3 .c-overlay {
+          {% if module.style.col.col_3.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.col.col_3.bg.overlay_gradient.css }};
+          {% elif module.style.col.col_3.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.col.col_3.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_3.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.col.col_3.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_3.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_3.extras.border_radius }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_3.bg.add_blur -%}
+            backdrop-filter: blur({{ module.style.col.col_3.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.col.col_3.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+    {%- endif -%}
+
+    {# COLUMN 4 #}
+     {% if module.start.num_cols >= '4' %}
+      .clean-base .c-4 {
+        {%- if module.style.col.col_4.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift }}px);
+        {%- elif module.style.col.col_4.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_4.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_4.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_4.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_4.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_4.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+      .clean-base .c-4 .c-col-inner {
+        {{ module.style.col.col_4.spacing.desktop.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+        {% if module.style.col.col_4.bg.type == 'image' %}
+          {{ module.style.col.col_4.bg.image.css }}
+        {% elif module.style.col.col_4.bg.type == 'gradient' %}
+          background:{{ module.style.col.col_4.bg.gradient.css }};
+          {% if module.style.col.col_4.bg.animated_gradient %}
+            animation: gradient {{ module.style.col.col_4.bg.gradient_speed }}s linear infinite;
+            animation-direction: alternate;
+            background-size: 600% 600%;
+          {% endif %}
+        {% elif module.style.col.col_4.bg.type == 'color' %}
+          background-color: rgba({{ module.style.col.col_4.bg.color.color|convert_rgb }}, {{ module.style.col.col_4.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_4.extras.border.top.style != 'none' %}
+          border: {{ module.style.col.col_4.extras.border.top.width.value }}px {{ module.style.col.col_4.extras.border.top.style }}  rgba({{ module.style.col.col_4.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_4.extras.border.top.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_4.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_4.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_4.extras.border_radius }}px;
+          overflow: hidden;
+        {%- endif -%}
+        {%- if module.style.col.col_4.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.col.col_4.extras.shadow_horz }}px {{ module.style.col.col_4.extras.shadow_vert }}px {{ module.style.col.col_4.extras.shadow_blur_radius }}px {{ module.style.col.col_4.extras.shadow_spread }}px rgba({{ module.style.col.col_4.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_4.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.col.col_4.extras.shadow_horz }}px {{ module.style.col.col_4.extras.shadow_vert }}px {{ module.style.col.col_4.extras.shadow_blur_radius }}px {{ module.style.col.col_4.extras.shadow_spread }}px rgba({{ module.style.col.col_4.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_4.extras.shadow_color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.col.col_4.bg.match_height -%}
+          height: 100%;
+        {%- endif -%}
+        {%- if module.style.col.col_4.bg.add_blur_bg -%}
+          backdrop-filter: blur({{ module.style.col.col_4.bg.blur_amount_bg }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_4.bg.blur_amount_bg }}px);
+        {%- endif -%}
+      }
+      {% if module.style.col.col_4.bg.add_overlay != 'none' %}
+        .c-4 .c-overlay {
+          {% if module.style.col.col_4.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.col.col_4.bg.overlay_gradient.css }};
+          {% elif module.style.col.col_4.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.col.col_4.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_4.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.col.col_4.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_4.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_4.extras.border_radius }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_4.bg.add_blur -%}
+            backdrop-filter: blur({{ module.style.col.col_4.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.col.col_4.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+    {%- endif -%}
+
+    {# COLUMN 5 #}
+     {% if module.start.num_cols >= '5' %}
+      .clean-base .c-5 {
+        {%- if module.style.col.col_5.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift }}px);
+        {%- elif module.style.col.col_5.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_5.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_5.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_5.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_5.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_5.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+      .clean-base .c-5 .c-col-inner {
+        {{ module.style.col.col_5.spacing.desktop.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+        {% if module.style.col.col_5.bg.type == 'image' %}
+          {{ module.style.col.col_5.bg.image.css }}
+        {% elif module.style.col.col_5.bg.type == 'gradient' %}
+          background:{{ module.style.col.col_5.bg.gradient.css }};
+          {% if module.style.col.col_5.bg.animated_gradient %}
+            animation: gradient {{ module.style.col.col_5.bg.gradient_speed }}s linear infinite;
+            animation-direction: alternate;
+            background-size: 600% 600%;
+          {% endif %}
+        {% elif module.style.col.col_5.bg.type == 'color' %}
+          background-color: rgba({{ module.style.col.col_5.bg.color.color|convert_rgb }}, {{ module.style.col.col_5.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_5.extras.border.top.style != 'none' %}
+          border: {{ module.style.col.col_5.extras.border.top.width.value }}px {{ module.style.col.col_5.extras.border.top.style }}  rgba({{ module.style.col.col_5.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_5.extras.border.top.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_5.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_5.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_5.extras.border_radius }}px;
+          overflow: hidden;
+        {%- endif -%}
+        {%- if module.style.col.col_5.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.col.col_5.extras.shadow_horz }}px {{ module.style.col.col_5.extras.shadow_vert }}px {{ module.style.col.col_5.extras.shadow_blur_radius }}px {{ module.style.col.col_5.extras.shadow_spread }}px rgba({{ module.style.col.col_5.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_5.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.col.col_5.extras.shadow_horz }}px {{ module.style.col.col_5.extras.shadow_vert }}px {{ module.style.col.col_5.extras.shadow_blur_radius }}px {{ module.style.col.col_5.extras.shadow_spread }}px rgba({{ module.style.col.col_5.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_5.extras.shadow_color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.col.col_5.bg.match_height -%}
+          height: 100%;
+        {%- endif -%}
+        {%- if module.style.col.col_5.bg.add_blur_bg -%}
+          backdrop-filter: blur({{ module.style.col.col_5.bg.blur_amount_bg }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_5.bg.blur_amount_bg }}px);
+        {%- endif -%}
+      }
+      {% if module.style.col.col_5.bg.add_overlay != 'none' %}
+        .c-5 .c-overlay {
+          {% if module.style.col.col_5.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.col.col_5.bg.overlay_gradient.css }};
+          {% elif module.style.col.col_5.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.col.col_5.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_5.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.col.col_5.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_5.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_5.extras.border_radius }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_5.bg.add_blur -%}
+            backdrop-filter: blur({{ module.style.col.col_5.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.col.col_5.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+    {%- endif -%}
+
+    {# COLUMN 6 #}
+     {% if module.start.num_cols >= '6' %}
+      .clean-base .c-6 {
+        {%- if module.style.col.col_6.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift }}px);
+        {%- elif module.style.col.col_6.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_6.bg.fill_col -%}
+          padding-left: 0;
+          padding-right: 0;
+        {%- endif -%}
+        {%- if module.style.col.col_6.spacing.desktop.margin.top.value %}
+          margin-top: {{ module.style.col.col_6.spacing.desktop.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_6.spacing.desktop.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_6.spacing.desktop.margin.bottom.value }}px;
+        {%- endif -%}
+      }
+      .clean-base .c-6 .c-col-inner {
+        {{ module.style.col.col_6.spacing.desktop.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+        {% if module.style.col.col_6.bg.type == 'image' %}
+          {{ module.style.col.col_6.bg.image.css }}
+        {% elif module.style.col.col_6.bg.type == 'gradient' %}
+          background:{{ module.style.col.col_6.bg.gradient.css }};
+          {% if module.style.col.col_6.bg.animated_gradient %}
+            animation: gradient {{ module.style.col.col_6.bg.gradient_speed }}s linear infinite;
+            animation-direction: alternate;
+            background-size: 600% 600%;
+          {% endif %}
+        {% elif module.style.col.col_6.bg.type == 'color' %}
+          background-color: rgba({{ module.style.col.col_6.bg.color.color|convert_rgb }}, {{ module.style.col.col_6.bg.color.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_6.extras.border.top.style != 'none' %}
+          border: {{ module.style.col.col_6.extras.border.top.width.value }}px {{ module.style.col.col_6.extras.border.top.style }}  rgba({{ module.style.col.col_6.extras.border.top.color|convert_rgb }}, {{ module.style.col.col_6.extras.border.top.opacity * 0.01 }});
+        {%- endif -%}
+        {% if module.style.col.col_6.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_6.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_6.extras.border_radius }}px;
+          overflow: hidden;
+        {%- endif -%}
+        {%- if module.style.col.col_6.extras.add_drop_shadow -%}
+          -webkit-box-shadow: {{ module.style.col.col_6.extras.shadow_horz }}px {{ module.style.col.col_6.extras.shadow_vert }}px {{ module.style.col.col_6.extras.shadow_blur_radius }}px {{ module.style.col.col_6.extras.shadow_spread }}px rgba({{ module.style.col.col_6.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_6.extras.shadow_color.opacity * 0.01 }});
+          box-shadow: {{ module.style.col.col_6.extras.shadow_horz }}px {{ module.style.col.col_6.extras.shadow_vert }}px {{ module.style.col.col_6.extras.shadow_blur_radius }}px {{ module.style.col.col_6.extras.shadow_spread }}px rgba({{ module.style.col.col_6.extras.shadow_color.color|convert_rgb }}, {{ module.style.col.col_6.extras.shadow_color.opacity * 0.01 }});
+        {%- endif -%}
+        {%- if module.style.col.col_6.bg.match_height -%}
+          height: 100%;
+        {%- endif -%}
+        {%- if module.style.col.col_6.bg.add_blur_bg -%}
+          backdrop-filter: blur({{ module.style.col.col_6.bg.blur_amount_bg }}px);
+          -webkit-backdrop-filter: blur({{ module.style.col.col_6.bg.blur_amount_bg }}px);
+        {%- endif -%}
+      }
+      {% if module.style.col.col_6.bg.add_overlay != 'none' %}
+        .c-6 .c-overlay {
+          {% if module.style.col.col_6.bg.add_overlay == 'gradient' %}
+            background: {{ module.style.col.col_6.bg.overlay_gradient.css }};
+          {% elif module.style.col.col_6.bg.add_overlay == 'color' %}
+            background-color: rgba({{ module.style.col.col_6.bg.overlay_color.color|convert_rgb }}, {{ module.style.col.col_6.bg.overlay_color.opacity * 0.01 }});
+          {%- endif -%}
+          {% if module.style.col.col_6.extras.border_radius %}
+          -webkit-border-radius: {{ module.style.col.col_6.extras.border_radius }}px;
+          border-radius: {{ module.style.col.col_6.extras.border_radius }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_6.bg.add_blur -%}
+            backdrop-filter: blur({{ module.style.col.col_6.bg.blur_amount }}px);
+            -webkit-backdrop-filter: blur({{ module.style.col.col_6.bg.blur_amount }}px);
+          {%- endif -%}
+        }
+      {%- endif -%}
+    {%- endif -%}
+
+    @media only screen and (max-width: 992px) {
+      .clean-base .c-1 {
+        {%- if module.style.col.col_1.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_tablet }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_tablet }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_tablet }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_tablet }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_tablet }}px);
+        {%- elif module.style.col.col_1.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_tablet }}px);
+              -o-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_tablet }}px);
+                -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_tablet }}px);
+                  transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_tablet }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.tablet.margin.top.value %}
+          margin-top: {{ module.style.col.col_1.spacing.tablet.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.tablet.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_1.spacing.tablet.margin.bottom.value }}px;
+        {%- endif -%}
+       }
+      .clean-base .c-1 .c-col-inner {
+        {{ module.style.col.col_1.spacing.tablet.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      {% if module.start.num_cols >= '2' %}
+      .clean-base .c-2 {
+        {%- if module.style.col.col_2.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_tablet }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_tablet }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_tablet }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_tablet }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_tablet }}px);
+        {%- elif module.style.col.col_2.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_tablet }}px);
+              -o-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_tablet }}px);
+                -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_tablet }}px);
+                  transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_tablet }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.tablet.margin.top.value %}
+          margin-top: {{ module.style.col.col_2.spacing.tablet.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.tablet.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_2.spacing.tablet.margin.bottom.value }}px;
+        {%- endif -%}
+       }
+      .clean-base .c-2 .c-col-inner {
+        {{ module.style.col.col_2.spacing.tablet.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      {%- endif -%}
+      {% if module.start.num_cols >= '3' %}
+        .clean-base .c-3 {
+          {%- if module.style.col.col_3.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_tablet }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_tablet }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_tablet }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_tablet }}px);
+          {%- elif module.style.col.col_3.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_tablet }}px);
+              -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_tablet }}px);
+                -o-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_tablet }}px);
+                  -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_tablet }}px);
+                    transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_tablet }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_3.spacing.tablet.margin.top.value %}
+            margin-top: {{ module.style.col.col_3.spacing.tablet.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_3.spacing.tablet.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_3.spacing.tablet.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-3 .c-col-inner {
+          {{ module.style.col.col_3.spacing.tablet.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols >= '4' %}
+        .clean-base .c-4 {
+          {%- if module.style.col.col_4.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_tablet }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_tablet }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_tablet }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_tablet }}px);
+          {%- elif module.style.col.col_4.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_tablet }}px);
+              -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_tablet }}px);
+                -o-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_tablet }}px);
+                  -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_tablet }}px);
+                    transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_tablet }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_4.spacing.tablet.margin.top.value %}
+            margin-top: {{ module.style.col.col_4.spacing.tablet.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_4.spacing.tablet.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_4.spacing.tablet.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-4 .c-col-inner {
+          {{ module.style.col.col_4.spacing.tablet.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols >= '5' %}
+        .clean-base .c-5 {
+          {%- if module.style.col.col_5.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_tablet }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_tablet }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_tablet }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_tablet }}px);
+          {%- elif module.style.col.col_5.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_tablet }}px);
+              -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_tablet }}px);
+                -o-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_tablet }}px);
+                  -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_tablet }}px);
+                    transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_tablet }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_5.spacing.tablet.margin.top.value %}
+            margin-top: {{ module.style.col.col_5.spacing.tablet.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_5.spacing.tablet.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_5.spacing.tablet.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-5 .c-col-inner {
+          {{ module.style.col.col_5.spacing.tablet.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols == '6' %}
+        .clean-base .c-6 {
+          {%- if module.style.col.col_6.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_tablet }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_tablet }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_tablet }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_tablet }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_tablet }}px);
+          {%- elif module.style.col.col_6.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_tablet }}px);
+              -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_tablet }}px);
+                -o-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_tablet }}px);
+                  -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_tablet }}px);
+                    transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_tablet }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_6.spacing.tablet.margin.top.value %}
+            margin-top: {{ module.style.col.col_6.spacing.tablet.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_6.spacing.tablet.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_6.spacing.tablet.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-6 .c-col-inner {
+          {{ module.style.col.col_6.spacing.tablet.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+    }
+    @media only screen and (max-width: 575px) {
+      .clean-base .c-1 {
+        {%- if module.style.col.col_1.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_mobile }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_mobile }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_mobile }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_mobile }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_1.extras.shift_mobile }}px);
+        {%- elif module.style.col.col_1.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_mobile }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_mobile }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_mobile }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_mobile }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_1.extras.shift_mobile }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.mobile.margin.top.value %}
+          margin-top: {{ module.style.col.col_1.spacing.mobile.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_1.spacing.mobile.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_1.spacing.mobile.margin.bottom.value }}px;
+        {%- endif -%}
+       }
+      .clean-base .c-1 .c-col-inner {
+        {{ module.style.col.col_1.spacing.mobile.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      {% if module.start.num_cols >= '2' %}
+      .clean-base .c-2 {
+        {%- if module.style.col.col_2.extras.shift_col == 'down' -%}
+          -moz-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_mobile }}px);
+          -webkit-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_mobile }}px);
+          -o-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_mobile }}px);
+          -ms-transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_mobile }}px);
+          transform: translateX(0px) translateY({{ module.style.col.col_2.extras.shift_mobile }}px);
+        {%- elif module.style.col.col_2.extras.shift_col == 'up' -%}
+          -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_mobile }}px);
+          -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_mobile }}px);
+          -o-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_mobile }}px);
+          -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_mobile }}px);
+          transform: translateX(0px) translateY(-{{ module.style.col.col_2.extras.shift_mobile }}px);
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.mobile.margin.top.value %}
+          margin-top: {{ module.style.col.col_2.spacing.mobile.margin.top.value }}px;
+        {%- endif -%}
+        {%- if module.style.col.col_2.spacing.mobile.margin.bottom.value %}
+          margin-bottom: {{ module.style.col.col_2.spacing.mobile.margin.bottom.value }}px;
+        {%- endif -%}
+       }
+      .clean-base .c-2 .c-col-inner {
+        {{ module.style.col.col_2.spacing.mobile.css }}
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      {%- endif -%}
+      {% if module.start.num_cols >= '3' %}
+        .clean-base .c-3 {
+          {%- if module.style.col.col_3.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_3.extras.shift_mobile }}px);
+          {%- elif module.style.col.col_3.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY(-{{ module.style.col.col_3.extras.shift_mobile }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_3.spacing.mobile.margin.top.value %}
+            margin-top: {{ module.style.col.col_3.spacing.mobile.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_3.spacing.mobile.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_3.spacing.mobile.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-3 .c-col-inner {
+          {{ module.style.col.col_3.spacing.mobile.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols >= '4' %}
+        .clean-base .c-4 {
+          {%- if module.style.col.col_4.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_4.extras.shift_mobile }}px);
+          {%- elif module.style.col.col_4.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY(-{{ module.style.col.col_4.extras.shift_mobile }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_4.spacing.mobile.margin.top.value %}
+            margin-top: {{ module.style.col.col_4.spacing.mobile.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_4.spacing.mobile.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_4.spacing.mobile.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-4 .c-col-inner {
+          {{ module.style.col.col_4.spacing.mobile.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols >= '5' %}
+        .clean-base .c-5 {
+          {%- if module.style.col.col_5.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_5.extras.shift_mobile }}px);
+          {%- elif module.style.col.col_5.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY(-{{ module.style.col.col_5.extras.shift_mobile }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_5.spacing.mobile.margin.top.value %}
+            margin-top: {{ module.style.col.col_5.spacing.mobile.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_5.spacing.mobile.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_5.spacing.mobile.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-5 .c-col-inner {
+          {{ module.style.col.col_5.spacing.mobile.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+      {% if module.start.num_cols >= '6' %}
+        .clean-base .c-6 {
+          {%- if module.style.col.col_6.extras.shift_col == 'down' -%}
+            -moz-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY({{ module.style.col.col_6.extras.shift_mobile }}px);
+          {%- elif module.style.col.col_6.extras.shift_col == 'up' -%}
+            -moz-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_mobile }}px);
+            -webkit-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_mobile }}px);
+            -o-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_mobile }}px);
+            -ms-transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_mobile }}px);
+            transform: translateX(0px) translateY(-{{ module.style.col.col_6.extras.shift_mobile }}px);
+          {%- endif -%}
+          {%- if module.style.col.col_6.spacing.mobile.margin.top.value %}
+            margin-top: {{ module.style.col.col_6.spacing.mobile.margin.top.value }}px;
+          {%- endif -%}
+          {%- if module.style.col.col_6.spacing.mobile.margin.bottom.value %}
+            margin-bottom: {{ module.style.col.col_6.spacing.mobile.margin.bottom.value }}px;
+          {%- endif -%}
+         }
+        .clean-base .c-6 .c-col-inner {
+          {{ module.style.col.col_6.spacing.mobile.css }}
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      {%- endif -%}
+    }
+
+{%- endmacro -%}
+

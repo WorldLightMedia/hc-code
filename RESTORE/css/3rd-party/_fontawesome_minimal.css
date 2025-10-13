@@ -1,0 +1,203 @@
+{#** FONT AWESOME MINIMAL **#}
+.fa,
+.fab,
+.fal,
+.far,
+.fas,
+.fa-brands{
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1
+}
+
+{#** ICONS USED IN commodore TEMPLATES **#}
+
+.fa-chevron-up:before {
+	content: "\f077"
+}
+
+.fa-quote-right:before {
+	content: "\f10e"
+}
+
+.fa-check:before {
+	content: "\f00c"
+}
+
+.fa-angle-right:before {
+ content: "\f105"; 
+}
+
+.fa-angle-left:before {
+ content: "\f104"; 
+}
+
+.fa-search:before {
+	content: "\f002"
+}
+
+.fa-times:before {
+	content: "\f00d"
+}
+
+.fa-angle-double-down:before {
+	content: "\f103"
+}
+
+.fa-reply:before {
+  content: "\f3e5"; }
+
+.fa-angle-double-up:before {
+	content: "\f102"
+}
+
+.fa-paper-plane:before {
+	content: "\f1d8"
+}
+
+.fa-phone:before {
+	content: "\f095"
+}
+
+.fa-facebook-f:before {
+	content: "\f39e"
+}
+
+.fa-twitter:before {
+	content: "\f099"
+}
+
+.fa-x-twitter:before {
+ content: '\e61b' ;
+}
+
+.fa-tiktok:before {
+ content: '\e07b' ;
+}
+
+.fa-instagram:before {
+	content: "\f16d"
+}
+
+.fa-linkedin-in:before {
+	content: "\f0e1"
+}
+
+.fa-youtube:before {
+	content: "\f167"
+}
+
+.fa-medium-m:before {
+	content: "\f3c7"
+}
+
+.fa-discord:before {
+	content: "\f392"
+}
+
+.fa-tiktok:before {
+	content: "\e07b"
+}
+
+.fa-telegram:before {
+	content: "\f2c6"
+}
+
+.fa-pinterest:before {
+	content: "\f0d2"
+}
+
+.fa-question-circle:before {
+    content: "\f059"
+}
+
+.fa-plus:before {
+    content: "\f067"
+}
+
+.fa-plus-square:before {
+  content: '\f0fe';
+}
+
+.fa-minus:before {
+    content: "\f068"
+}
+
+.fa-spotify:before {
+ content: "\f1bc" 
+}
+
+.fa-google-play:before {
+  content: "\f3ab"
+}
+
+.fa-angle-down:before {
+  content: "\f107"
+}
+
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("{{ get_asset_url('../../webfonts/fa-brands-400.woff2') }}") format("woff2"), url("{{ get_asset_url('../../webfonts/fa-brands-400.woff') }}") format("woff"), url("{{ get_asset_url('../../webfonts/fa-brands-400.ttf') }}") format("truetype"), url("{{ get_asset_url('../../webfonts/brands.svg') }}") format("svg"); }
+
+.fab, .fa-brands {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("{{ get_asset_url('../../webfonts/fa-regular-400.woff2') }}") format("woff2"), url("{{ get_asset_url('../../webfonts/fa-regular-400.woff') }}") format("woff"), url("{{ get_asset_url('../../webfonts/fa-regular-400.ttf') }}") format("truetype"), url("{{ get_asset_url('../../webfonts/fa-regular-400.svg') }}#fontawesome") format("svg"); }
+
+.far {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400; }
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("{{ get_asset_url('../../webfonts/fa-solid-900.woff2') }}") format("woff2"), url("{{ get_asset_url('../../webfonts/fa-solid-900.woff') }}") format("woff"), url("{{ get_asset_url('../../webfonts/fa-solid-900.ttf') }}") format("truetype"), url("{{ get_asset_url('../../webfonts/fa-solid-900.svg') }}#fontawesome") format("svg"); }
+
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; }
+
+
+.fa-brands,
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400; }
+
+.fa,
+.far,
+.fas {
+	font-family: "Font Awesome 5 Free"
+}

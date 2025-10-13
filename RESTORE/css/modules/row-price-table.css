@@ -1,0 +1,57 @@
+.hhs-price-mod {text-align: center;}
+.hhs-price-mod .col-desc {text-align: initial;}
+
+.hhs-price-mod h2 {margin-bottom: 2px; margin-top: 0;}
+
+.hhs-price-mod .price-con {
+  padding: 20px 0;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hhs-price-inner {
+ padding: 25px 15px 50px;
+  margin: 25px auto;
+  position: relative;
+  flex-grow:1;
+  width: 100%;
+}
+.hhs-price-inner h5 {
+ padding: 15px 0;
+  margin-bottom: 25px;
+}
+
+
+
+.highlight-pack.hhs-price-inner h5 {
+  position: absolute;
+  left: 0;
+  top: -53px;
+  width: 100%;
+  display: block;
+}
+
+.hhs-price-inner h4 {
+  margin-top; 0px; 
+}
+
+.col-cta {margin-bottom: 25px;}
+
+.col-desc, .price-con, .col-cta, .col-title {padding: 0 25px;}
+
+
+@media (max-width: 922px) {
+  .highlight-pack.hhs-price-inner h5 {
+   top: -53px; 
+  }
+}
+
+@media (max-width: 575px) {
+  .highlight-pack.hhs-price-inner{
+   margin-top: 75px; 
+  }
+}
+

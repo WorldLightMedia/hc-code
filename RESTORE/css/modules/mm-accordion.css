@@ -1,0 +1,96 @@
+.c-accordion {
+	margin: 25px auto 0px;
+  padding-left: 0px;
+}
+
+.c-accordion li {
+	position: relative;
+  list-style-type: none;
+  margin-bottom: 0px;
+}
+
+.c-accordion li .c-accordion-content {
+	display: none;
+}
+
+.c-accordion li .c-accordion-content li {
+	border-bottom: none !important;
+  list-style-type: disc;
+}
+
+.c-accordion li .c-accordion-content ol li {
+  list-style-type: decimal;
+}
+.accordion-title {
+  display: flex;
+}
+
+.accordion-title:hover {
+  text-decoration: none;
+}
+
+.c-accordion a.accordion-title {
+	width: 100%;
+	display: flex;
+	cursor: pointer;
+	font-size: 18px;
+	padding-left: 15px !important;
+	user-select: none;
+  padding: 15px 25px 15px 0;
+  flex-direction: row;
+  align-items: center;
+}
+
+.c-accordion a.accordion-title h4 {
+ margin-bottom: 0px; 
+}
+
+.c-accordion a.accordion-title .hs_cos_wrapper {
+ padding-right: 10px; 
+}
+
+.c-accordion a.accordion-title:after {
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	right: 20px;
+	content: " ";
+	transform: rotate(-45deg);
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+  top: inherit;  
+}
+
+.c-accordion .c-accordion-content {
+	line-height: 2;
+	padding: 10px;
+}
+
+a.accordion-title.active:after {
+	transform: rotate(45deg);
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.c-acc-icon {
+  align-items: center;
+  padding: 8px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  margin-right: 10px;
+}
+.c-accordion a.accordion-title .c-acc-icon .hs_cos_wrapper {
+  padding-right: 0px !important;  
+}
+.c-acc-icon svg {
+  display: flex;
+}
+
+@media (max-width: 575px) {
+  .c-accordion li .c-accordion-content {
+    display: none;
+    padding: 20px 20px 30px;
+  }
+}

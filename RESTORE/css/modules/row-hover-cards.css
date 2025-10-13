@@ -1,0 +1,150 @@
+{###########################################################################}
+{##############################   ROW - HOVER CARDS   #############################}
+{###########################################################################}
+
+.hhs-img-text-mod {position: relative;}
+.hhs-img-hover {position: relative; z-index: 1;}
+.hhs-img-hover .row {position: relative; z-index: 3;}
+.hhs-row-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hhs-img-hover-con {
+ position: relative; 
+ background-size: cover !important;
+  overflow: hidden;
+}
+
+.hhs-hover-img {
+  object-fit: cover;
+  object-position: center;
+  -o-object-fit: cover;
+  -o-object-position: center;
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1)
+}
+
+.hhs-img-hover-con:hover .hhs-hover-img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.hover-state {
+ opacity: 0; 
+  visibility: hidden;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+.hhs-img-hover-con:hover .hover-state {
+ opacity: 1; 
+  visibility: visible;
+}
+
+.hhs-img-hover-con .hhs-img-hover-back,
+.hhs-img-hover-con .hhs-img-hover-front {
+ bottom: 0px;
+ right: 0px;
+  width: 100%;
+}
+
+
+.hhs-img-hover-con .img-hover-overlay {
+ position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -webkit-transition: all 400ms ease--out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.hhs-img-hover-con .hhs-img-hover-back {
+ opacity: 0;
+  visibility: hidden;
+}
+
+.hhs-img-hover-con:hover .hhs-img-hover-front {
+ opacity: 0;
+  visibility: hidden;
+}
+
+.hhs-img-hover-con:hover .hhs-img-hover-back {
+ opacity: 1;
+  visibility: visible;
+}
+
+.hhs-img-hover-con .hhs-img-hover-back,
+.hhs-img-hover-con .hhs-img-hover-front {
+  position: absolute;
+  z-index: 2;
+ display: table;
+  height: 100%;
+  -webkit-transition: all 400ms ease--out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.hhs-img-hover-front .inner-con,
+.hhs-img-hover-back .inner-con{
+  display: table-cell;
+}
+.align-top .inner-con {
+  vertical-align: top;
+}
+
+.align-middle .inner-con {
+  vertical-align: middle;
+}
+
+.align-bottom .inner-con {
+  vertical-align: bottom;
+}
+
+@media (max-width: 922px){
+  .card-col.c1, .card-col.c2, .card-col.c3, .card-col.c4 {
+   margin-bottom: 25px; 
+  }
+}
+
+
+@media (max-width: 575px){
+  .order-1-mobile .hhs-img {
+   margin-bottom: 25px; 
+  }
+}
+
+.hhs-img-hover {position: relative;}
+.hhs-img-hover .row {
+  z-index: 2;
+  position: relative;
+}
+
+
