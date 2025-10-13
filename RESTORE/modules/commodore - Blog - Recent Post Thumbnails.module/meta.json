@@ -1,0 +1,19 @@
+{
+  "content_tags" : [ {
+    "name" : "BLOG_POST",
+    "source" : "USER"
+  } ],
+  "global" : true,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+  "icon" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/module-icons/icon-blog-thumbs.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765649,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/modules/row-blog-post-thumbnails.css",
+    "name" : "row-blog-post-thumbnails.css"
+  } ],
+  "label" : "Recent Post Thumbnails - C6.2",
+  "is_available_for_new_content" : true
+}

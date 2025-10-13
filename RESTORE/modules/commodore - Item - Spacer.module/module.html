@@ -1,0 +1,59 @@
+{# 
+ NAME: ITEM - SPACER
+ MODULE VERSION: 2.0.2
+ COMMODORE VERSION: 
+ LAST UPDATED: 3/23/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  {# STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-spacer-mod {
+   background-color: rgba({{ module.opts.bg_color.color|convert_rgb }}, {% if module.opts.bg_color.opacity == '100' %}1{% else %}0.{{ module.opts.bg_color.opacity }}{% endif %});
+  }
+  {% if !module.divider_line %}
+  #hs_cos_wrapper_{{ name }} .hhs-horz-spacer {
+    height:{{ module.opts.spacer_size }};
+  }
+  {% endif %}
+  #hs_cos_wrapper_{{ name }} .hhs-horz-spacer.divider-line {
+    margin:{{ module.opts.spacer_size }} 0 {{ module.opts.spacer_size }}; 
+    border-bottom: 1px solid rgba({{ module.style.divider_line_color.color|convert_rgb }}, {% if module.style.divider_line_color.opacity == '100' %}1{% else %}0.{{ module.style.divider_line_color.opacity }}{% endif %});
+  }
+  
+  
+   {# TABLET CSS #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-horz-spacer {
+    height:{{ module.opts.spacer_size_tablet }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-horz-spacer.divider-line {
+      margin:{{ module.opts.spacer_size_tablet }} 0 {{ module.opts.spacer_size_tablet }}; 
+    }
+  }
+  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-horz-spacer {
+    height:{{ module.opts.spacer_size_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-horz-spacer.divider-line {
+      margin:{{ module.opts.spacer_size_mobile }} 0 {{ module.opts.spacer_size_mobile }}; 
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div class="{{ module.opts.spacer_width }} hhs-spacer-mod"  style="{% if module.opts.spacer_width == 'custom' %} max-width: {{ module.opts.set_width }}px; margin: auto;{% endif %}">
+  <div class="row">
+    <div class="col">
+      {% if module.divider_line == 'true' %}
+        <div class="hhs-horz-spacer divider-line"></div>
+      {% else %}
+        <div class="hhs-horz-spacer" ></div>
+      {% endif %}
+    </div>
+  </div>
+</div>

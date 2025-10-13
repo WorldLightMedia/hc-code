@@ -1,0 +1,106 @@
+{# 
+ NAME: Flexi Tabs
+ MODULE VERSION: Beta 0.1
+ LAST UPDATED: 2/21/24
+ REMINDER: You Rock!
+#}
+
+
+<div class="tab-feature-con">
+  <div class="{{ module.style.row.size.content_width }}"
+       {% if module.style.row.size.content_width == 'custom' %} style="max-width:{{ module.style.row.size.custom_width }}px;"{% endif %}>
+    
+    <div class="row">
+      <div class="col-12 c-tab-mobile-head">
+        {% inline_rich_text field="content_above_dropdown_mobile" value="{{ module.content_above_dropdown_mobile }}" %}
+      </div>
+      <div class="tabs-container col">
+        <ul class="c-tabs">
+          {% for item in module.tabs %}
+          <li class="c-tab {% if item.set_as_active_tab %}active{% endif %}" data-tab="{{ item.tab_id }}">{{ item.tab_label }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .tab-feature-con {
+      background-color: rgba({{ module.style.section.bg_color.color|convert_rgb }}, {{ module.style.section.bg_color.opacity * 0.01 }});
+      {% if module.style.tab_style == 'tab' %}
+        {{ module.style.section.border_bottom.css }}
+      {% endif %}
+    }
+    .tab-feature-con .row {
+      background-color: rgba({{ module.style.row.bg_color.color|convert_rgb }}, {{ module.style.row.bg_color.opacity * 0.01 }});
+      {{ module.style.row.spacing.desktop.css }}
+    }
+    {% if module.style.tab_style == 'button' %}
+      .c-tab {
+        font-family: {{ module.style.button.standard.font.font }}; 
+        {{ module.style.button.standard.font.style }}; 
+        color: {{ module.style.button.standard.font.color }}; 
+        font-size: {{ module.style.button.standard.font.size }}px;
+        background-color: rgba({{ module.style.button.standard.bg_color.color|convert_rgb }}, {{ module.style.button.standard.bg_color.opacity * 0.01 }});
+        {{ module.style.button.standard.border.css }}
+        -webkit-border-radius: {{ module.style.button.standard.border_radius }}px;
+        border-radius: {{ module.style.button.standard.border_radius }}px;
+      }
+      .c-tab:hover,
+      .c-tab.active {
+        color: rgba({{ module.style.button.active.text_color.color|convert_rgb }}, {{ module.style.button.active.text_color.opacity * 0.01 }});
+        background-color: rgba({{ module.style.button.active.bg_color.color|convert_rgb }}, {{ module.style.button.active.bg_color.opacity * 0.01 }});
+        {{ module.style.button.active.border.css }}
+      }
+    {% elif module.style.tab_style == 'underline' %}
+      .c-tab {
+        font-family: {{ module.style.underline.standard.font.font }}; 
+        {{ module.style.underline.standard.font.style }}; 
+        color: {{ module.style.underline.standard.font.color }}; 
+        font-size: {{ module.style.underline.standard.font.size }}px;
+        {{ module.style.underline.standard.border.css }}
+        
+      }
+      .c-tab:hover,
+      .c-tab.active {
+        color: rgba({{ module.style.underline.active.text_color.color|convert_rgb }}, {{ module.style.underline.active.text_color.opacity * 0.01 }});
+        {{ module.style.underline.active.border.css }}
+      }
+    {% elif module.style.tab_style == 'tab' %}
+      .c-tab {
+        font-family: {{ module.style.tab.standard.font.font }}; 
+        {{ module.style.tab.standard.font.style }}; 
+        color: {{ module.style.tab.standard.font.color }}; 
+        font-size: {{ module.style.tab.standard.font.size }}px;
+        background-color: rgba({{ module.style.tab.standard.bg_color.color|convert_rgb }}, {{ module.style.tab.standard.bg_color.opacity * 0.01 }});
+        {{ module.style.tab.standard.border.css }}
+        -webkit-border-radius: {{ module.style.tab.standard.border_radius }}px;
+        border-radius: {{ module.style.tab.standard.border_radius }}px {{ module.style.tab.standard.border_radius }}px 0 0;
+      }
+      .c-tab:hover,
+      .c-tab.active {
+        color: rgba({{ module.style.tab.active.text_color.color|convert_rgb }}, {{ module.style.tab.active.text_color.opacity * 0.01 }});
+        background-color: rgba({{ module.style.tab.active.bg_color.color|convert_rgb }}, {{ module.style.tab.active.bg_color.opacity * 0.01 }});
+        {{ module.style.tab.active.border.css }}
+      }
+    {% endif %}
+  
+    @media (max-width: 992px){
+      .tab-feature-con .row {
+        {{ module.style.row.spacing.tablet.css }}
+      }
+    }
+    @media (max-width: 575px){
+      .tab-feature-con .row {
+        {{ module.style.row.spacing.mobile.css }}
+      }
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+

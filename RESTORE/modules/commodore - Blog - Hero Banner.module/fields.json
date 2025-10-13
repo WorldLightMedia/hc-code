@@ -1,0 +1,2716 @@
+[ {
+  "id" : "0d422613-2dba-c87a-e51c-a4af5f4b4836",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7132bca8-898c-dcb2-791d-2ae062fc7098",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many columns would you like?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "One" ], [ "2", "Two" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "2"
+  }, {
+    "id" : "f139854b-ea49-031e-6011-31861be579a8",
+    "name" : "col_arrangement",
+    "display_width" : null,
+    "label" : "Column Arrangement",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7132bca8-898c-dcb2-791d-2ae062fc7098",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "2",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "opt1", "6 | 6" ], [ "opt2", "4 | 8" ], [ "opt3", "8 | 4" ], [ "opt4", "5 | 7" ], [ "opt5", "7 | 5" ], [ "opt6", "9 | 3" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "opt3"
+  }, {
+    "id" : "82b4551a-da40-d311-46b2-d03a3650e9eb",
+    "name" : "show_tag_filter_dropdown",
+    "display_width" : null,
+    "label" : "Show Tag Filter Dropdown",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "9df847c7-a128-b8af-7725-6bc2c4d9a53c",
+    "name" : "tag_filter_label",
+    "display_width" : null,
+    "label" : "Tag Filter Label",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "82b4551a-da40-d311-46b2-d03a3650e9eb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Filter by Tag"
+  }, {
+    "id" : "a45dd4ca-dac1-d450-4bc6-220a9d01adc4",
+    "name" : "tag_filter_show_all_label",
+    "display_width" : null,
+    "label" : "Tag Filter \"Show All\" Label",
+    "required" : true,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "82b4551a-da40-d311-46b2-d03a3650e9eb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Show All"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "2",
+    "col_arrangement" : "opt3",
+    "show_tag_filter_dropdown" : true,
+    "tag_filter_label" : "Filter by Tag",
+    "tag_filter_show_all_label" : "Show All"
+  }
+}, {
+  "id" : "f0ccf54d-1e15-705b-502d-478d49af7f71",
+  "name" : "col_1",
+  "display_width" : null,
+  "label" : "██████ Column 1:",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+    "name" : "rotating_text",
+    "display_width" : null,
+    "label" : "Add Rotating Text Headline:",
+    "help_text" : "This will give you the option to build one of those fancy headlines that rotates in one section. ",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "8d51306e-4425-0a69-c418-d438e878ddf6",
+    "name" : "text_beginning",
+    "display_width" : null,
+    "label" : "H1 Text (Beginning):",
+    "help_text" : "Leave this blank if you'd like the beginning of the phrase to rotate. ",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Save"
+  }, {
+    "id" : "ae6e16f2-3222-9884-21a8-4ac2f8745143",
+    "name" : "text_rotating",
+    "display_width" : null,
+    "label" : "H1 Text (Rotating):",
+    "help_text" : "Use a comma between the words you'd like to cycle through. Do not add a comma after the last word.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Time, Money, Headaches"
+  }, {
+    "id" : "e778615c-2f13-0802-4441-8c9e7b862cf5",
+    "name" : "text_end",
+    "display_width" : null,
+    "label" : "H1 Text (End):",
+    "help_text" : "You can leave this blank if you'd like the end of the phrase to rotate.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Going with commodore"
+  }, {
+    "id" : "f88a4fb6-a186-aca1-b973-2827da2a0bdb",
+    "name" : "rotating_text_color",
+    "display_width" : null,
+    "label" : "Rotating Text Color",
+    "inline_help_text" : "Edit the color of the text that rotates only.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "2d7b4ac6-afaf-6345-d2c6-fbeff0c9a0a4",
+    "name" : "rotation_speed",
+    "display_width" : null,
+    "label" : "Rotation Speed",
+    "inline_help_text" : "1,000 = 1 second",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "854dc4e4-8a49-21d2-6beb-7623259215a1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 1000,
+    "max" : 10000,
+    "step" : 1,
+    "suffix" : " miliseconds",
+    "type" : "number",
+    "default" : 4000
+  }, {
+    "id" : "e097e1c1-1ce7-46a2-df74-051796d7a7ce",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h1>Commodore Blog</h1>\n<h4>Add a subheading here.</h4>"
+  }, {
+    "id" : "42b3377c-083f-6d91-78c7-8d12677d81fa",
+    "name" : "add_lottie_file",
+    "display_width" : null,
+    "label" : "Add Lottie File (Animation)",
+    "help_text" : "Lottie files are super sweet animated files that you can find here: https://lottiefiles.com ",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "5b98f21c-0ff8-0a55-495b-5c700ca3c60e",
+    "name" : "lottie_embed",
+    "display_width" : null,
+    "label" : "Paste Lottie Player Embed Code:",
+    "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "42b3377c-083f-6d91-78c7-8d12677d81fa",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "<lottie-player src=\"http...\"",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "9b3f91ce-6e3e-159d-9dae-79982c2e8082",
+    "name" : "lottie_above",
+    "display_width" : null,
+    "label" : "Place Lottie Above Content",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "42b3377c-083f-6d91-78c7-8d12677d81fa",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+    "name" : "add_form",
+    "display_width" : null,
+    "label" : "Add Form Below:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "1bbb3c88-c85c-0033-fc88-c3462e8b136e",
+    "name" : "btn_pop",
+    "display_width" : null,
+    "label" : "Add button to trigger pop-up",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "885ea7e8-fcc3-5404-5cf0-6d91dc1aca99",
+    "name" : "form",
+    "display_width" : null,
+    "label" : "Select Form:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "form",
+    "default" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  }, {
+    "id" : "a1934f6f-1c58-f561-0801-adf22571e8c5",
+    "name" : "follow_up_type_simple",
+    "display_width" : null,
+    "label" : "Send follow up email:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "1607f0c1-5530-7678-db2f-f15ed4f086d4",
+    "name" : "simple_email_for_live_id",
+    "display_width" : null,
+    "label" : "Select Follow Up Email:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a1934f6f-1c58-f561-0801-adf22571e8c5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "followupemail"
+  }, {
+    "id" : "7084f13c-c491-159c-a387-2a0833ccf4e8",
+    "name" : "form_width",
+    "display_width" : null,
+    "label" : "Form Width in Column (%):",
+    "help_text" : "This will allow you to control the size of the form from within the column.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 20,
+    "max" : 100,
+    "step" : 10,
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "2bc342ce-3482-598f-d5b9-82138aed132f",
+    "name" : "form_position",
+    "display_width" : null,
+    "label" : "Form Position:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "radio",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "80e10bb7-12fe-e4fc-a0fd-d0f1fe071539",
+    "name" : "submit_alt",
+    "display_width" : null,
+    "label" : "Use Submit Button Alternative Style:",
+    "help_text" : "This is the alternative style that you can set from the Global Style Settings Module.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "4895064b-8291-727c-b479-2a79c6e34191",
+    "name" : "btn_inline",
+    "display_width" : null,
+    "label" : "Put button on same line as the input field:",
+    "help_text" : "IMPORTANT:  Only use this when you have a single input field in the form.  If there are multiple, chances are it's going to look really wonky.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "b3b02e24-af48-4199-e7b3-0610f03898b8",
+    "name" : "btn_pop_opts",
+    "display_width" : null,
+    "label" : "Button with Pop-up Options:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "1bbb3c88-c85c-0033-fc88-c3462e8b136e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "2ba3c9c5-c8de-3b61-6508-3d15daee3953",
+      "name" : "btn_label",
+      "display_width" : null,
+      "label" : "Button Label",
+      "help_text" : "",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "9671f11d-7a2e-6d2f-6618-f98d1018de25",
+      "name" : "btn_style",
+      "display_width" : null,
+      "label" : "Select Button Style:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cta-primary", "Primary" ], [ "cta-secondary", "Secondary" ], [ "cta-tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cta-primary"
+    }, {
+      "id" : "218c3f83-da3a-0907-6477-54fa53b7b2b0",
+      "name" : "pop_up_content",
+      "display_width" : null,
+      "label" : "Pop-up Content:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>"
+    }, {
+      "id" : "df303f26-993b-3207-15cb-965155403cff",
+      "name" : "add_form",
+      "display_width" : null,
+      "label" : "Add Form to Pop-up:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "6f5a19af-bb2a-2b27-776d-ffd801545bb2",
+      "name" : "pop_form",
+      "display_width" : null,
+      "label" : "Select Form for Pop-Up:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "df303f26-993b-3207-15cb-965155403cff",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "form",
+      "default" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      }
+    }, {
+      "id" : "446d651d-cff1-3211-5e15-a50ce7617cf5",
+      "name" : "follow_up_type_simple",
+      "display_width" : null,
+      "label" : "Send Follow Up Email",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "df303f26-993b-3207-15cb-965155403cff",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "baf6f85f-be8a-4dee-1613-0ee849fd6d06",
+      "name" : "simple_email_for_live_id",
+      "display_width" : null,
+      "label" : "Select Follow Up Email",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "446d651d-cff1-3211-5e15-a50ce7617cf5",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "followupemail"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "btn_label" : "",
+      "btn_style" : "cta-primary",
+      "pop_up_content" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>",
+      "add_form" : false,
+      "pop_form" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    }
+  }, {
+    "id" : "4764f5dc-3a54-6dcd-0eb5-c260b996b854",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "██████ Style Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "9e959699-12da-0772-7d0c-2ace70728e1e",
+      "name" : "content_align",
+      "display_width" : null,
+      "label" : "Content Alignment (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "a42ec0b1-8e61-c43d-441e-af30fc318500",
+      "name" : "content_align_mobile",
+      "display_width" : null,
+      "label" : "Content Alignment (Mobile):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "ccf0d249-c265-1996-bf8e-9c7e5b117a93",
+      "name" : "font_color",
+      "display_width" : null,
+      "label" : "Font Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+      "name" : "col_bg",
+      "display_width" : null,
+      "label" : "Add Background to Column:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "a58ccf55-211b-8e9b-36f8-ba0774fef2ab",
+      "name" : "col_bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 50
+      }
+    }, {
+      "id" : "002df648-4b93-bd24-306a-198ad75f3fb7",
+      "name" : "color_1",
+      "display_width" : null,
+      "label" : "Gradient 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "eb24b50c-7b1c-5ae1-8dae-e7fb440673c2",
+      "name" : "color_2",
+      "display_width" : null,
+      "label" : "Gradient 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "73ab4f0a-cb35-7776-18ed-6ef1d4870279",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle: ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "ceecc754-f7e3-4932-7966-10dc36c9922d",
+      "name" : "col_padding",
+      "display_width" : null,
+      "label" : "Column Padding",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "none",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "c4e12339-1652-b8b8-5f16-d0bf32123966",
+      "name" : "corner_size",
+      "display_width" : null,
+      "label" : "Corner Size:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "19a5572e-eb84-3822-e9f3-31b323a459e9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "none",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "2af5ff25-516f-9076-00ee-6ec41f1a2299",
+      "name" : "vert_align_center",
+      "display_width" : null,
+      "label" : "Vertical Align Content",
+      "help_text" : "This feature is awesome when the column to the right or left is much longer and you want this one to be centered vertically in this column.",
+      "inline_help_text" : "Align this column's content so it's centered with the column next to it.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "content_align" : "left",
+      "content_align_mobile" : "left",
+      "font_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "col_bg" : "none",
+      "col_bg_color" : {
+        "color" : "#000000",
+        "opacity" : 50
+      },
+      "color_1" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "color_2" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "col_padding" : 25,
+      "corner_size" : 3,
+      "vert_align_center" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "rotating_text" : false,
+    "text_beginning" : "Save",
+    "text_rotating" : "Time, Money, Headaches",
+    "text_end" : "Going with commodore",
+    "rotating_text_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "rotation_speed" : 4000,
+    "content" : "<h1>Commodore Blog</h1>\n<h4>Add a subheading here.</h4>",
+    "add_lottie_file" : false,
+    "lottie_above" : false,
+    "add_form" : false,
+    "btn_pop" : false,
+    "form" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    },
+    "follow_up_type_simple" : false,
+    "form_width" : 100,
+    "form_position" : "left",
+    "submit_alt" : false,
+    "btn_inline" : false,
+    "btn_pop_opts" : {
+      "btn_label" : "",
+      "btn_style" : "cta-primary",
+      "pop_up_content" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>",
+      "add_form" : false,
+      "pop_form" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    },
+    "style" : {
+      "content_align" : "left",
+      "content_align_mobile" : "left",
+      "font_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "col_bg" : "none",
+      "col_bg_color" : {
+        "color" : "#000000",
+        "opacity" : 50
+      },
+      "color_1" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "color_2" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "col_padding" : 25,
+      "corner_size" : 3,
+      "vert_align_center" : false
+    }
+  }
+}, {
+  "id" : "97eb2251-98a3-058c-593b-8483be398659",
+  "name" : "col_2",
+  "display_width" : null,
+  "label" : "██████ Column 2:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "7132bca8-898c-dcb2-791d-2ae062fc7098",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "2",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+    "name" : "col_content_type",
+    "display_width" : null,
+    "label" : "What would you like to add to this column?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "rich_text", "Rich Text" ], [ "form", "Form" ], [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "form"
+  }, {
+    "id" : "cb05504e-18cc-0f6a-dd14-e97f01fd1bfb",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Content:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "rich_text",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<p><span>Palo santo mixtape DIY, next level four dollar toast asymmetrical PBR&amp;B four loko tattooed. Swag mixtape pitchfork flexitarian unicorn typewriter organic palo santo snackwave +1 pabst cardigan. Vexillologist man braid roof party godard. Live-edge organic man bun, aesthetic bitters XOXO subway tile.</span></p>"
+  }, {
+    "id" : "0bb69dfd-459c-2cac-a2e3-11487a2de91c",
+    "name" : "add_lottie_file",
+    "display_width" : null,
+    "label" : "Add Lottie File (Animation)",
+    "help_text" : "Lottie files are super sweet animated files that you can find here: https://lottiefiles.com ",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "rich_text",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "4afba549-ab2b-c7e8-aa90-6f3a35dba816",
+    "name" : "lottie_embed",
+    "display_width" : null,
+    "label" : "Paste Lottie Player Embed Code:",
+    "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "0bb69dfd-459c-2cac-a2e3-11487a2de91c",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "<lottie-player src=\"http...\"",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text"
+  }, {
+    "id" : "4300e476-265e-eeb8-8d4f-3cbc8089bc5f",
+    "name" : "lottie_above",
+    "display_width" : null,
+    "label" : "Place Lottie Above Content",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0bb69dfd-459c-2cac-a2e3-11487a2de91c",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "0c4984f7-e73a-673d-cf2e-f2284864e444",
+    "name" : "btn_pop",
+    "display_width" : null,
+    "label" : "Add button to trigger pop-up",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "rich_text",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "6592e4f7-6bb9-1745-3ed3-68b222599277",
+    "name" : "btn_pop_opts",
+    "display_width" : null,
+    "label" : "Button with Pop-up Options:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0c4984f7-e73a-673d-cf2e-f2284864e444",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "5e058a3f-15db-0253-eacd-4868a1841dae",
+      "name" : "btn_label",
+      "display_width" : null,
+      "label" : "Button Label",
+      "help_text" : "",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "1d99a682-cff5-5255-1b03-042817c56b0c",
+      "name" : "btn_style",
+      "display_width" : null,
+      "label" : "Select Button Style:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cta-primary", "Primary" ], [ "cta-secondary", "Secondary" ], [ "cta-tertiary", "Tertiary" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cta-primary"
+    }, {
+      "id" : "7026e8f7-2ea6-209f-0e04-9087f50755f6",
+      "name" : "pop_up_content",
+      "display_width" : null,
+      "label" : "Pop-up Content:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>"
+    }, {
+      "id" : "94c60e7e-9566-2e07-846d-9ca52c571e0d",
+      "name" : "add_form",
+      "display_width" : null,
+      "label" : "Add Form to Pop-up:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "29009773-97fd-7b57-2212-8f65e9f079c4",
+      "name" : "pop_form",
+      "display_width" : null,
+      "label" : "Select Form for Pop-Up:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "94c60e7e-9566-2e07-846d-9ca52c571e0d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "form",
+      "default" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      }
+    }, {
+      "id" : "1c955e39-748b-ce02-e882-db091221a817",
+      "name" : "follow_up_type_simple",
+      "display_width" : null,
+      "label" : "Send Follow Up Email",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "94c60e7e-9566-2e07-846d-9ca52c571e0d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "e58220d4-9a1a-6203-9036-fd150860f261",
+      "name" : "simple_email_for_live_id",
+      "display_width" : null,
+      "label" : "Select Follow Up Email",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1c955e39-748b-ce02-e882-db091221a817",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "followupemail"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "btn_label" : "",
+      "btn_style" : "cta-primary",
+      "pop_up_content" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>",
+      "add_form" : false,
+      "pop_form" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    }
+  }, {
+    "id" : "b16dd53a-3abc-0e96-4718-eb33dc49cb79",
+    "name" : "form_lead_in_text",
+    "display_width" : null,
+    "label" : "Form Lead In Text",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h5>Sign Up Today</h5>"
+  }, {
+    "id" : "bed2e11e-bbb8-76f1-c4e6-d0c3818c4d31",
+    "name" : "form",
+    "display_width" : null,
+    "label" : "Select Form:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "form",
+    "default" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  }, {
+    "id" : "6effd08e-55b9-d66b-66e7-746f53ba30b3",
+    "name" : "follow_up_type_simple",
+    "display_width" : null,
+    "label" : "Send follow up email:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "01524a98-5dbe-eff1-60b4-2ce79b666064",
+    "name" : "simple_email_for_live_id",
+    "display_width" : null,
+    "label" : "Select Follow Up Email:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "6effd08e-55b9-d66b-66e7-746f53ba30b3",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "followupemail"
+  }, {
+    "id" : "29111b43-201f-bbb6-e6fe-8f97865baf09",
+    "name" : "form_width",
+    "display_width" : null,
+    "label" : "Form Width in Column (%):",
+    "help_text" : "This will allow you to control the size of the form from within the column.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 20,
+    "max" : 100,
+    "step" : 10,
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "68ea3770-23ce-e4c4-781a-d52372c01cd8",
+    "name" : "form_position",
+    "display_width" : null,
+    "label" : "Form Position:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2418d2b9-215c-9752-7978-1f2d1a4fe1d1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "radio",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "1a83de59-2859-7f15-5411-caa49610a4f3",
+    "name" : "submit_alt",
+    "display_width" : null,
+    "label" : "Use Submit Button Alternative Style:",
+    "help_text" : "This is the alternative style that you can set from the Global Style Settings Module.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "aaa825b1-d59d-7f84-57c6-91379a910f54",
+    "name" : "btn_inline",
+    "display_width" : null,
+    "label" : "Put button on same line as the input field:",
+    "help_text" : "IMPORTANT:  Only use this when you have a single input field in the form.  If there are multiple, chances are it's going to look really wonky.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "form",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "b49e61fd-bd59-656c-26ca-acf212e90206",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Upload an Image:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "89e4fbdf-9e54-d799-c2d3-27e0c181d71b",
+    "name" : "video",
+    "display_width" : null,
+    "label" : "Embed Video:",
+    "help_text" : "Select INSERT then EMBED, then paste the link to your video in.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e9ba4b64-0121-048d-a8e9-4684ca723ac2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext"
+  }, {
+    "id" : "af345751-9535-8f07-835e-ba38595129b9",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "██████ Style Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "05c0aebe-67c0-d3f5-e100-f4048cf2046a",
+      "name" : "content_align",
+      "display_width" : null,
+      "label" : "Content Alignment (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "ac29f2a1-1fe6-1a3d-7663-baa58cb40233",
+      "name" : "content_align_mobile",
+      "display_width" : null,
+      "label" : "Content Alignment (Mobile):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "fcf9f5ba-ee3f-65c9-13c4-2b95888d0a75",
+      "name" : "font_color",
+      "display_width" : null,
+      "label" : "Font Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "63396262-fa7d-3524-138c-381fd63941f4",
+      "name" : "col_bg",
+      "display_width" : null,
+      "label" : "Add Background to Column:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "685f5cc6-3353-ee2b-a8a9-5ff0012e2964",
+      "name" : "col_bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 70
+      }
+    }, {
+      "id" : "4bc475c9-fa17-077a-ace8-7b4b29969f08",
+      "name" : "color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 0
+      }
+    }, {
+      "id" : "873d3f1a-f655-7383-698e-ea558f12e9fb",
+      "name" : "color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 70
+      }
+    }, {
+      "id" : "c9ee4370-886f-30b6-0753-29ddd03d5e71",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "bb808b2a-167b-5ac6-514b-cba7bb685920",
+      "name" : "col_padding",
+      "display_width" : null,
+      "label" : "Column Padding:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "none",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "953211ee-dde1-8437-4a9b-2a81da0baaea",
+      "name" : "corner_size",
+      "display_width" : null,
+      "label" : "Rounded Corners Size:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "63396262-fa7d-3524-138c-381fd63941f4",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "none",
+        "property" : null,
+        "operator" : "NOT_EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 3
+    }, {
+      "id" : "51b2aff1-d24c-1ffa-93cd-c183273ca0c6",
+      "name" : "vert_align_center",
+      "display_width" : null,
+      "label" : "Vertical Align Content",
+      "help_text" : "This feature is awesome when the column to the right or left is much longer and you want this one to be centered vertically in this column.",
+      "inline_help_text" : "Align this column's content so it's centered with the column next to it.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "content_align" : "left",
+      "content_align_mobile" : "left",
+      "font_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "col_bg" : "none",
+      "col_bg_color" : {
+        "color" : "#444444",
+        "opacity" : 70
+      },
+      "color_1" : {
+        "color" : "#444444",
+        "opacity" : 0
+      },
+      "color_2" : {
+        "color" : "#444444",
+        "opacity" : 70
+      },
+      "gradient_angle" : "-45deg",
+      "col_padding" : 25,
+      "corner_size" : 3,
+      "vert_align_center" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "col_content_type" : "form",
+    "content" : "<p><span>Palo santo mixtape DIY, next level four dollar toast asymmetrical PBR&amp;B four loko tattooed. Swag mixtape pitchfork flexitarian unicorn typewriter organic palo santo snackwave +1 pabst cardigan. Vexillologist man braid roof party godard. Live-edge organic man bun, aesthetic bitters XOXO subway tile.</span></p>",
+    "add_lottie_file" : false,
+    "lottie_above" : false,
+    "btn_pop" : false,
+    "btn_pop_opts" : {
+      "btn_label" : "",
+      "btn_style" : "cta-primary",
+      "pop_up_content" : "<h3>Add a headline.</h3>\n<p><span>Lorem ipsum dolor amet food truck affogato cronut freegan skateboard photo booth, tousled pickled 90's wayfarers retro succulents hoodie edison bulb ramps. XOXO seitan tote bag, offal vape air plant disrupt chia plaid taxidermy cloud bread microdosing 8-bit.&nbsp;</span></p>",
+      "add_form" : false,
+      "pop_form" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    },
+    "form_lead_in_text" : "<h5>Sign Up Today</h5>",
+    "form" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    },
+    "follow_up_type_simple" : false,
+    "form_width" : 100,
+    "form_position" : "left",
+    "submit_alt" : false,
+    "btn_inline" : false,
+    "image" : {
+      "src" : "",
+      "alt" : null,
+      "loading" : "lazy"
+    },
+    "style" : {
+      "content_align" : "left",
+      "content_align_mobile" : "left",
+      "font_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "col_bg" : "none",
+      "col_bg_color" : {
+        "color" : "#444444",
+        "opacity" : 70
+      },
+      "color_1" : {
+        "color" : "#444444",
+        "opacity" : 0
+      },
+      "color_2" : {
+        "color" : "#444444",
+        "opacity" : 70
+      },
+      "gradient_angle" : "-45deg",
+      "col_padding" : 25,
+      "corner_size" : 3,
+      "vert_align_center" : false
+    }
+  }
+}, {
+  "id" : "2c5edf8b-3cf1-e3ac-bf82-dc4cef9b6f67",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c61cf8de-f3c4-ec3f-16ec-52a4b976e75d",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "60aa657f-8717-0966-f223-cfca2de9a827",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+    "name" : "bg_type",
+    "display_width" : null,
+    "label" : "Background Type:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ], [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "gradient"
+  }, {
+    "id" : "e5bda339-43fe-444b-5ae5-36fdc8ff999b",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Upload an Image:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "84599c08-07f9-791f-b457-43724024029e",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "865a2b6b-ca48-3aed-7bcd-4fc476ecf4c0",
+    "name" : "bg_color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "58f38dc0-982a-ec12-2ad9-ee78daac733e",
+    "name" : "bg_color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#444444",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "a14db51c-eaf1-f6d9-06a6-69bb7bcc44c1",
+    "name" : "bg_gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "b0126267-b736-b6a7-61bb-e5018381a859",
+    "name" : "video_clip",
+    "display_width" : null,
+    "label" : "██████ Upload Video Clip",
+    "help_text" : "With this video player you can add multiple smaller video clips that will get stitched together. This will help the page load much faster.  PRO-TIP:  Go to www.youcompress.com and compress your MP4 files so they are even faster to load.  Generally, you want between a 2 -3MB file size. ",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "picker" : "file",
+      "id" : "87785a8f-a2ae-024c-e593-b98dce345f68",
+      "name" : "mp4",
+      "display_width" : null,
+      "label" : "Video (MP4):",
+      "help_text" : "When uploading a video you want to keep the file size as small as possible so that it loads quickly.  Generally, you're going to want to keep it under 20MB.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "video",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "file",
+      "default" : "https://cdn2.hubspot.net/hubfs/19522085/video/commodore-video-demo-sm.mp4"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "mp4" : "https://cdn2.hubspot.net/hubfs/19522085/video/commodore-video-demo-sm.mp4"
+    }
+  }, {
+    "id" : "ea1441b2-744e-eb2b-bb1e-797ba4c6162c",
+    "name" : "video_bg_color",
+    "display_width" : null,
+    "label" : "Video Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "4731caeb-935c-298c-c183-099181c0ca31",
+    "name" : "video_bg_image",
+    "display_width" : null,
+    "label" : "Video Background Image",
+    "inline_help_text" : "Adding a still frame from the first video clip will help preview a flash when the video completes its loop.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : false,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax Scrolling:",
+    "help_text" : "If you turn this on, be sure that you have uploaded a background image with a large enough height so that there is room for the image to do its scrolling magic. \n\nIMPORTANT: If you are not using a background image, it's BEST to keep this off.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "79253e18-240b-2877-68a6-956fa63a5251",
+    "name" : "parallax_on_mobile",
+    "display_width" : null,
+    "label" : "Parallax On Mobile",
+    "help_text" : "Enables Parallax On Mobile",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ce919dfd-6774-4ac9-570b-97c3377896a1",
+    "name" : "parallax_orientation",
+    "display_width" : null,
+    "label" : "Parallax Orientation",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up" ], [ "right", "Right" ], [ "down", "Down" ], [ "left", "Left" ], [ "up left", "Up Left" ], [ "up right", "Up Right" ], [ "down left", "Down Left" ], [ "down right", "Down Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "2526ceab-de19-3bcd-1368-01dba1ca75c6",
+    "name" : "parallax_transition",
+    "display_width" : null,
+    "label" : "Parallax Transition",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "linear", "Linear" ], [ "ease-in-out", "Ease-In-Out" ], [ "slinky", "Slinky" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "linear"
+  }, {
+    "id" : "7c3d9654-53e3-d97b-f4d0-200f63903d72",
+    "name" : "parallax_scale",
+    "display_width" : null,
+    "label" : "Parallax Scale",
+    "help_text" : "Between 1.2 - 1.5 is the sweet spot. The larger the number the more zoomed in the photo will be to account for how fast the parallax moves. Be gentle.",
+    "inline_help_text" : "This controls the speed of the parallax. ",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 1,
+    "max" : 3,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 1.2
+  }, {
+    "id" : "85c3b8df-c520-f181-a214-4b9c73e6f4ad",
+    "name" : "parallax_delay",
+    "display_width" : null,
+    "label" : "Parallax Delay",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 1,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "1852c3fa-b5ae-3521-addd-a7855fb68a3e",
+    "name" : "bg_size",
+    "display_width" : null,
+    "label" : "Background Size:",
+    "help_text" : "Cover: Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges\n\nContain: Resize the background image to make sure the image is fully visible.\n\nInitial: Sets this property to its default value.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "initial", "Initial" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
+    "id" : "0d55434d-a87d-d1cc-eed5-91e34a5bf170",
+    "name" : "bg_position",
+    "display_width" : null,
+    "label" : "Background Position:",
+    "help_text" : "When you have parallax scrolling turned OFF, this will give you a little bit of control to say which part of the image you'd like in view. ",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "right bottom", "Right Bottom" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left center"
+  }, {
+    "id" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+    "name" : "bg_custom_mobile",
+    "display_width" : null,
+    "label" : "Activate Mobile Settings for BG Image",
+    "help_text" : "This will give you super control over the position of your background image on mobile.",
+    "inline_help_text" : "Control the size and position of the background image on a mobile device.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7d0f4c63-cc08-0550-d772-0665d2dca704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "da2f7379-33d1-84c0-37eb-8dd491973d48",
+    "name" : "bg_size_mobile",
+    "display_width" : null,
+    "label" : "Background Size (Mobile)",
+    "help_text" : "This one is a bit tricky and you'll have to play with it to get it just right. I'd suggest opening up a preview window of your page and keep refreshing till you get it.",
+    "inline_help_text" : "This is going to set a percentage (background-size: X% auto;)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 0,
+    "max" : 1000,
+    "step" : 1,
+    "suffix" : "%",
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "de9b3d2b-9ce9-0315-0986-c0086f31a5bb",
+    "name" : "bg_pos_rl_mobile",
+    "display_width" : null,
+    "label" : "Background Position Right/Left (Mobile) ",
+    "help_text" : "This one is a bit tricky and you'll have to play with it to get it just right. I'd suggest opening up a preview window of your page and keep refreshing till you get it.",
+    "inline_help_text" : "This is going to set a background position (background-size: Xpx Ypx;)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 0,
+    "max" : 2000,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "a6a35152-7839-2d02-8cb2-23f46e82dbc2",
+    "name" : "bg_pos_rl_neg",
+    "display_width" : null,
+    "label" : "Make BG Right/Left Position Negative",
+    "help_text" : "",
+    "inline_help_text" : "Flip the direction",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "e6771d10-fcef-d441-07b9-1fd6b8fdca13",
+    "name" : "bg_pos_tb_mobile",
+    "display_width" : null,
+    "label" : "Background PositionTop/Bottom (Mobile)",
+    "help_text" : "This one is a bit tricky and you'll have to play with it to get it just right. I'd suggest opening up a preview window of your page and keep refreshing till you get it.",
+    "inline_help_text" : "This is going to set a background position (background-size: Xpx Ypx;)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 0,
+    "max" : 2000,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "580d9d82-c5e0-0d11-f9a6-52a3d03d30a9",
+    "name" : "bg_pos_tb_neg",
+    "display_width" : null,
+    "label" : "Make BG Top/Bottom Position Negative",
+    "help_text" : "",
+    "inline_help_text" : "This will shift the image up.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9724c82c-e334-1937-7cb2-b470183cc5e2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "5d7e9908-4788-1425-7c0e-ae385e59b0d2",
+    "name" : "full_screen_bg",
+    "display_width" : null,
+    "label" : "Full Screen Background:",
+    "help_text" : "By turning this on, the background image or color will take up the entire height of the browser window. ",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "0fcf7c23-e335-a0c5-e949-34ebee16159a",
+    "name" : "scroll_down",
+    "display_width" : null,
+    "label" : "Show Scroll Down Animation:",
+    "help_text" : "Turning this on will show a little animation letting someone know there is more content below.  ",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "5d7e9908-4788-1425-7c0e-ae385e59b0d2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "2d43014d-1dc5-0c9d-67dc-b0e0221ebdda",
+    "name" : "overlay_bg",
+    "display_width" : null,
+    "label" : "Do you want to add an overlay?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "74719a5e-e2e4-1089-bb68-f7d9efba0446",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2d43014d-1dc5-0c9d-67dc-b0e0221ebdda",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "45f62dcc-a118-3091-29a7-f09ddc85b060",
+    "name" : "color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2d43014d-1dc5-0c9d-67dc-b0e0221ebdda",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#33475b",
+      "opacity" : 40
+    }
+  }, {
+    "id" : "dbe0e166-faf3-7b1d-67e4-0b91897337e6",
+    "name" : "color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2d43014d-1dc5-0c9d-67dc-b0e0221ebdda",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "07bc1c0a-ad1e-4f54-6b12-98693e8464a9",
+    "name" : "gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle: ",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2d43014d-1dc5-0c9d-67dc-b0e0221ebdda",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "-45deg"
+  }, {
+    "id" : "d4dc1525-17f6-9166-65a9-2827fa225aac",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "42f8c25d-b599-343a-784b-f2b2aa0f478d",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d4dc1525-17f6-9166-65a9-2827fa225aac",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "ccd08860-0049-fa9c-e6a8-67d42deddb27",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom)",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave or angled border at the base of row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "9966d6da-8132-1208-5111-3fe951dd1e7e",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ccd08860-0049-fa9c-e6a8-67d42deddb27",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "5b118997-347a-395e-3238-3b1ea0f8ca74",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Select Wave/Angle:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "4ca5ce5f-972b-b279-2eea-f769af59e565",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "5b118997-347a-395e-3238-3b1ea0f8ca74",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 200
+    }, {
+      "id" : "6555aae0-a03b-9ea0-d3a8-37e63988e8f8",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row below has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "1cb3503f-2c19-0fb8-8efc-236837c52817",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 200,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "eda99b4c-b414-0057-948c-ec534add6cab",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "92c20d47-d957-a7f7-8c30-825df3ff536c",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ], [ "350px", "XXL" ], [ "500px", "XXXL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "150px"
+    }, {
+      "id" : "c1ff1b87-d4b2-776f-17b4-dc507dc4459f",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ], [ "350px", "XXL" ], [ "500px", "XXXL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "150px"
+    }, {
+      "id" : "b1a40b2b-efd3-950d-d849-dfe90bf8b6e7",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "f51ecd75-f17e-862f-661a-acd010733a18",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "0d73f499-bcb8-5dfe-ab86-0ce066a947b9",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "3a76633c-15d3-0a8f-2b15-d4bbcdba41e3",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "f872e09a-0e21-82b7-604b-1da387613c1c",
+      "name" : "top_margin",
+      "display_width" : null,
+      "label" : "Top Margin:",
+      "help_text" : "You can adjust this setting according to the height of your header so that the content isn't butted up right next to it.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 60
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "150px",
+      "padding_bottom" : "150px",
+      "padding_top_tablet" : "100px",
+      "padding_bottom_tablet" : "100px",
+      "padding_top_mobile" : "50px",
+      "padding_bottom_mobile" : "50px",
+      "top_margin" : 60
+    }
+  }, {
+    "id" : "e9301563-d573-7985-6d5c-60a178a71d36",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Hero on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "c8d4d1f9-95bc-26d9-6d83-e8a112af0d3d",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "d6eebbdc-432d-93ce-8be7-e0f358736ab3",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "73614e4e-3388-22fe-3b7f-c6fe7c96b133",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "a35cf590-7725-4c6f-591b-e3a1a19b6b34",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The nerdy stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "f9692d53-e266-51ee-883a-c578078e3097",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "461061a5-6e35-9744-96b8-9d222ea6c526",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_type" : "gradient",
+    "bg_image" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    },
+    "bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "bg_color_1" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "bg_color_2" : {
+      "color" : "#444444",
+      "opacity" : 100
+    },
+    "bg_gradient_angle" : "45deg",
+    "video_clip" : {
+      "mp4" : "https://cdn2.hubspot.net/hubfs/19522085/video/commodore-video-demo-sm.mp4"
+    },
+    "video_bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "video_bg_image" : {
+      "size_type" : "auto",
+      "src" : "",
+      "alt" : null,
+      "loading" : "disabled"
+    },
+    "parallax" : false,
+    "parallax_on_mobile" : false,
+    "parallax_orientation" : "up",
+    "parallax_transition" : "linear",
+    "parallax_scale" : 1.2,
+    "parallax_delay" : 0,
+    "bg_size" : "cover",
+    "bg_position" : "left center",
+    "bg_custom_mobile" : false,
+    "bg_size_mobile" : 100,
+    "bg_pos_rl_mobile" : 0,
+    "bg_pos_rl_neg" : false,
+    "bg_pos_tb_mobile" : 0,
+    "bg_pos_tb_neg" : false,
+    "full_screen_bg" : false,
+    "scroll_down" : true,
+    "overlay_bg" : "none",
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 50
+    },
+    "color_1" : {
+      "color" : "#33475b",
+      "opacity" : 40
+    },
+    "color_2" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "gradient_angle" : "-45deg",
+    "content_width" : "container",
+    "set_width" : 600,
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 200,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "150px",
+      "padding_bottom" : "150px",
+      "padding_top_tablet" : "100px",
+      "padding_bottom_tablet" : "100px",
+      "padding_top_mobile" : "50px",
+      "padding_bottom_mobile" : "50px",
+      "top_margin" : 60
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : { }
+  }
+} ]

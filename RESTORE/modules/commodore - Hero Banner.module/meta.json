@@ -1,0 +1,13 @@
+{
+  "global" : false,
+  "icon" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/module-icons/icon-hero.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 135503765651,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/modules/hero-banner.css",
+    "name" : "hero-banner.css"
+  } ],
+  "label" : "Hero Banner (Pro)",
+  "is_available_for_new_content" : true
+}

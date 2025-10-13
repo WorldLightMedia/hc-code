@@ -1,0 +1,55 @@
+{# 
+ NAME: BLOG SIDEBAR
+ MODULE VERSION: 1.0.1
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/21
+ REMINDER: You Rock!
+#}
+
+{% if module.add_tag_list %}
+  {% require_css %}
+    <style>
+      .hhs-tag-list h3 {
+       font-size: {{ module.tag_options.title_font_size }}px; 
+      }
+    </style>
+  {% end_require_css %}
+{% endif %}
+
+{% if module.add_rich_text %}
+  <div class="sidebar-con">
+    {% inline_rich_text field="richtext_field" value="{{ module.richtext_field }}" %} 
+  </div>
+{% endif %}
+{% if module.add_form %}
+  <div class="sidebar-con">
+    {% form
+      form_to_use="{{ module.form.form_id }}"
+      response_response_type="{{ module.form.response_type }}"
+      response_message="{{ module.form.message }}"
+      response_redirect_id="{{ module.form.redirect_id }}"
+      response_redirect_url="{{module.form.redirect_url}}"
+      gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+    %}    
+  </div>
+{% endif %}
+
+{% if module.add_tag_list %}
+  <div class="sidebar-con hhs-tag-list">
+    {% if module.tag_options.select_blog is number %}
+      {% set select_blog = module.tag_options.select_blog %}
+    {% else %}
+      {% set select_blog = 'default' %}
+    {% endif %}
+
+    {% post_filter
+      select_blog='{{ tag_options.select_blog }}',
+      expand_link_text='{{ module.tag_options.expand_link_text }}',
+      list_title='{{ module.tag_options.list_title }}',
+      filter_type='{{ module.tag_options.filter_type }}',
+      order_by='{{ module.tag_options.order_by }}',
+      max_links={{ module.tag_options.max_links }}
+    %}
+  </div>
+{% endif %}
+

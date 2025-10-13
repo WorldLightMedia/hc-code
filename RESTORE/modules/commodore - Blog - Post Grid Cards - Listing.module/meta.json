@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/19522085/commodore-images/module-icons/icon-blog-thumbs-1.svg",
+  "host_template_types" : [ "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765647,
+  "label" : "Blog Post Grid Cards - Listing (Pro)",
+  "is_available_for_new_content" : true
+}

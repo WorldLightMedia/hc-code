@@ -1,0 +1,296 @@
+[ {
+  "id" : "884d8381-20bc-8a83-29f1-a9df171cc70c",
+  "name" : "accordion_menu",
+  "display_width" : null,
+  "label" : "///// Create Your Menu Groups Here",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : null,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : null
+  },
+  "children" : [ {
+    "id" : "87b69b18-34ea-c40b-cf41-96913078f530",
+    "name" : "title",
+    "display_width" : null,
+    "label" : "Menu Title:",
+    "help_text" : "This is what will be clickable to open the menu items,",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "placeholder" : "Add title here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Menu Title"
+  }, {
+    "id" : "6cf77998-6e38-ca81-7b2c-d607825e4423",
+    "name" : "menu",
+    "display_width" : null,
+    "label" : "Build Your Menu:",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "simplemenu",
+    "default" : [ ]
+  }, {
+    "id" : "0c72e01b-d8af-8afe-ed95-36578c002dc6",
+    "name" : "menu_item_id",
+    "display_width" : null,
+    "label" : "Menu Item Id",
+    "help_text" : "This will observe the content and if an id in the content matches this field it will open this menu.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "^[A-Za-z]+[\\w\\-\\:\\.]*$",
+    "placeholder" : "Must unique and begin with a letter ([A-Za-z]) followed by any number of letters, digits, hyphens, underscores, colons, and periods.",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : ""
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : [ ]
+}, {
+  "id" : "bbb9c4f0-237c-ed3a-1d81-256150a594de",
+  "name" : "add_text_over_menu",
+  "display_width" : null,
+  "label" : "Add Text Over Menu",
+  "inline_help_text" : "This gives you a text editor over the menu.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "47034654-cbed-1cca-8e4c-dd98ec4ba412",
+  "name" : "text_above_menu",
+  "display_width" : null,
+  "label" : "Text Above Menu",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "bbb9c4f0-237c-ed3a-1d81-256150a594de",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "richtext",
+  "default" : "<h4>Add Your Text Here</h4>"
+}, {
+  "id" : "801f33f4-8c38-7b01-7f9d-9471d3d65656",
+  "name" : "open_1st_accordion",
+  "display_width" : null,
+  "label" : "Open 1st Accordion:",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "2970e65b-9e40-d673-eb89-34214ac30a41",
+  "name" : "make_sticky",
+  "display_width" : null,
+  "label" : "Make Sticky:",
+  "help_text" : "Turn in this on when you have the Accordion menu module in a sidebar where you won't want it to scroll out of view.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "69fa1b4d-2a6e-c7cd-e470-defa1a3af75f",
+  "name" : "style_opts",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "dbe6c95d-a4a2-3d26-6a3f-41b0788c7f0c",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "32e2bec6-56de-d0b2-c473-6398f0a25790",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "///// Style Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ac881bbc-3825-b362-1d57-938c934fa87b",
+    "name" : "custom_text_color",
+    "display_width" : null,
+    "label" : "Custom Text Color:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "2c430aa4-4968-8f72-02e3-786b76dd7f97",
+    "name" : "title_color",
+    "display_width" : null,
+    "label" : "Title Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ac881bbc-3825-b362-1d57-938c934fa87b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#111111",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "9f7995d2-b742-05a6-942a-a8a4644f885d",
+    "name" : "link_color",
+    "display_width" : null,
+    "label" : "Link Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ac881bbc-3825-b362-1d57-938c934fa87b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "043730d2-6d25-5109-a409-a7f843900550",
+    "name" : "title_size",
+    "display_width" : null,
+    "label" : "Title Size:",
+    "required" : true,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 10,
+    "max" : 30,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "7edfed9a-a1bc-012e-ba39-7ed35de3a7f4",
+    "name" : "line_color",
+    "display_width" : null,
+    "label" : "Line Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "9940e9a4-bfa0-fc4c-c57d-a6cdebbed713",
+    "name" : "arrow_color",
+    "display_width" : null,
+    "label" : "Arrow Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#999999",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "d2c05d80-dbd6-88dc-66fc-5264604ee3fb",
+    "name" : "title_bg_hover",
+    "display_width" : null,
+    "label" : "Title Background Color (Hover)",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#f2f5f8",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "6d3f7f6d-acb6-e23e-2452-dfc631b4684b",
+    "name" : "link_space",
+    "display_width" : null,
+    "label" : "Space between links:",
+    "help_text" : "This is going to give you the ability to control the spacing between the nav links.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 10,
+    "max" : 50,
+    "step" : 1,
+    "type" : "number",
+    "default" : 22
+  }, {
+    "id" : "b316b805-b694-069c-7b8e-a0c26ed95ded",
+    "name" : "link_space_mobile",
+    "display_width" : null,
+    "label" : "Space between links (Mobile)",
+    "help_text" : "This is going to give you the ability to control the spacing between the nav links on mobile.",
+    "required" : true,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 10,
+    "max" : 50,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "default" : 20
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "custom_text_color" : false,
+    "title_color" : {
+      "color" : "#111111",
+      "opacity" : 100
+    },
+    "link_color" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "title_size" : 20,
+    "line_color" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    },
+    "arrow_color" : {
+      "color" : "#999999",
+      "opacity" : 100
+    },
+    "title_bg_hover" : {
+      "color" : "#f2f5f8",
+      "opacity" : 100
+    },
+    "link_space" : 22,
+    "link_space_mobile" : 20
+  }
+} ]

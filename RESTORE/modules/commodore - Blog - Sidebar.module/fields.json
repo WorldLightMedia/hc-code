@@ -1,0 +1,208 @@
+[ {
+  "id" : "2cca9072-1c42-2e3a-df6d-47cd2139dcb6",
+  "name" : "add_rich_text",
+  "display_width" : null,
+  "label" : "Add Rich Text",
+  "required" : false,
+  "locked" : true,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : true
+}, {
+  "id" : "0f45bcbe-9757-543c-5b98-f21a6cfde0a7",
+  "name" : "richtext_field",
+  "display_width" : null,
+  "label" : "Rich Text",
+  "required" : false,
+  "locked" : true,
+  "visibility" : {
+    "controlling_field" : "2cca9072-1c42-2e3a-df6d-47cd2139dcb6",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "richtext",
+  "default" : "<h4>Add Content.</h4>\n<p>Rich text modules are great since they are flexible and you can add an image, CTA, video, and of course... text!&nbsp;</p>"
+}, {
+  "id" : "c4d6f14d-3d02-bb00-fa94-1f76e9ef4c0f",
+  "name" : "add_form",
+  "display_width" : null,
+  "label" : "Add Form",
+  "required" : false,
+  "locked" : true,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "589ab0fe-d30f-02ce-4df4-7b2aa5135f10",
+  "name" : "form",
+  "display_width" : null,
+  "label" : "Select Form",
+  "required" : false,
+  "locked" : true,
+  "visibility" : {
+    "controlling_field" : "c4d6f14d-3d02-bb00-fa94-1f76e9ef4c0f",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "type" : "form",
+  "default" : {
+    "response_type" : "inline",
+    "message" : "Thanks for submitting the form."
+  }
+}, {
+  "id" : "adc82718-e335-d891-1929-cd07f381511b",
+  "name" : "add_tag_list",
+  "display_width" : null,
+  "label" : "Add Tag List",
+  "required" : false,
+  "locked" : true,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "f412babb-e205-36b9-e649-d47e9988e2cf",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : true,
+  "children" : [ {
+    "id" : "12125fc3-41ee-dbc1-cc40-c76d927b7082",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "c3e666d0-0556-cdd8-ba10-d1f8b9dfb497",
+  "name" : "tag_options",
+  "display_width" : null,
+  "label" : "Tag Options",
+  "required" : false,
+  "locked" : true,
+  "visibility" : {
+    "controlling_field" : "adc82718-e335-d891-1929-cd07f381511b",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "8b762d92-c287-6675-1673-af1f3246191c",
+    "name" : "select_blog",
+    "display_width" : null,
+    "label" : "Select Blog",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "type" : "blog"
+  }, {
+    "id" : "31c451b0-4b8a-f3aa-f5ca-f928c4991766",
+    "name" : "filter_type",
+    "display_width" : null,
+    "label" : "Filter By",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "tag", "Tags" ], [ "month", "Months" ], [ "author", "Authors" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "tag"
+  }, {
+    "id" : "331582e4-2af2-7329-9bd5-67d440bb64b9",
+    "name" : "order_by",
+    "display_width" : null,
+    "label" : "Order by",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "post_count", "Post Count" ], [ "name", "Name" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "post_count"
+  }, {
+    "id" : "b8fbc154-ce9d-b035-0f1c-dc47ae4767c7",
+    "name" : "list_title",
+    "display_width" : null,
+    "label" : "Title to display",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Posts by Tag"
+  }, {
+    "id" : "ee692717-d934-0972-577b-22b1fc0e2211",
+    "name" : "max_links",
+    "display_width" : null,
+    "label" : "Max Number to Display",
+    "required" : false,
+    "locked" : false,
+    "display" : "text",
+    "min" : 1,
+    "step" : 1,
+    "type" : "number",
+    "default" : 5
+  }, {
+    "id" : "6653a0f7-552b-9bd3-ff86-88ede4fe1814",
+    "name" : "expand_link_text",
+    "display_width" : null,
+    "label" : "Text to display if there are more than the max.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "See All"
+  }, {
+    "id" : "4d4e23dd-7393-48dc-f317-675314d55ba3",
+    "name" : "title_font_size",
+    "display_width" : null,
+    "label" : "Title Font Size",
+    "inline_help_text" : "Other than the font size, this title will take on the characteristics of an H3.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 8,
+    "max" : 40,
+    "step" : 1,
+    "suffix" : "px",
+    "type" : "number",
+    "default" : 24
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "filter_type" : "tag",
+    "order_by" : "post_count",
+    "list_title" : "Posts by Tag",
+    "max_links" : 5,
+    "expand_link_text" : "See All",
+    "title_font_size" : 24
+  }
+} ]

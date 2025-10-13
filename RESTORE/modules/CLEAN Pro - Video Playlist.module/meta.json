@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">Helpful Hero</a><br/>------------------------------<br/>\nHow to: <a href=\"https://youtu.be/YXLqMr6RmEQ\" >Video Overview</a><br/>Feedback: <a href=\"https://www.clean.pro/feedback\" >Submit Ideas or Bugs</a></br>\nVersion: Beta 0.2",
+  "icon" : "https://5816394.fs1.hubspotusercontent-na1.net/hubfs/5816394/video-playlist.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 163988772991,
+  "label" : "Video Playlist (Pro-Beta)",
+  "is_available_for_new_content" : true
+}

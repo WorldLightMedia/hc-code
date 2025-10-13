@@ -1,0 +1,228 @@
+{# 
+ NAME: Video Playlist
+ MODULE VERSION: Beta 0.2
+ LAST UPDATED: 11/25/23
+ REMINDER: You Rock!
+#}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation.css" as style -%}
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    
+    <div class="row animate__animated animate__delay-05s animate__fadeIn"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      {% if module.start.playlist_title %}
+        <div class="col-lg-12 playlist-title">
+          {% inline_rich_text field="start.playlist_title" value="{{ module.start.playlist_title }}" %}
+        </div>
+      {% endif %}
+      
+      <div class="col-lg-7 col-md-12 col-sm-12 main-video-player">
+        
+      </div>
+      
+      <div class="col-lg-5 col-md-12 col-sm-12 playlist {{ 'dark-scroll' if module.style.video_playlist.dark_mode }}">
+        
+      </div>
+      
+      <div class="gen-area">
+        
+      </div>
+      
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    {{ style.foundation_style() }}
+    .playlist {
+      {% if module.style.video_playlist.bg_color %}
+        background: {{ css_color(module.style.video_playlist.bg_color) }};
+      {% endif %}
+      {% if module.style.video_playlist.spacing.css %}
+        {{ module.style.video_playlist.spacing.css }}
+      {% endif %}
+    }
+    .video-title {
+     font-size: {{ module.style.video_playlist.title_size }}px;
+      font-weight: {{ module.style.video_playlist.title_weight }};
+      color: {{ css_color( module.style.video_playlist.title_color) }};
+    }
+    .video-img img {
+      -webkit-border-radius: {{ module.style.video_playlist.thumbnail_corner_radius }}px;
+      border-radius: {{ module.style.video_playlist.thumbnail_corner_radius }}px;
+    }
+    .video-item {
+      margin-bottom: {{ module.style.video_playlist.space_below_thumbnails }}px;
+    }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{# THIS PULLS IN THE CORE CLEAN FOUNDATION FILE #}
+{{ require_css(get_asset_url('../../css/clean-foundation.css'), { async: true }) }}
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+
+{% require_js %}
+<script defer>
+  // Store all video html
+  var videos_data_{{ name|replace("-", "_") }} = [];
+  {% for item in module.videos %}
+    html = `<div class="video-{{ name }}">
+              {% if item.video.player_id %}
+              {% set max_width = item.video.size_type == 'auto_custom_max' ? item.video.max_width : item.video.width %}
+              {% set max_height = item.video.size_type == 'auto_custom_max' ? item.video.max_height : item.video.height %}
+              {% video_player "embed_player"
+                            player_id={{ item.video.player_id }}
+                            type={{ item.video.player_type || 'scriptV4' }}
+                            full_width={{ item.video.size_type == 'auto_full_width' }},
+                            conversion_asset={{ item.video.conversion_asset|tojson|safe }}
+                            autoplay={{ item.video.autoplay }}
+                            hidden_controls={{ item.video.hide_controls }}
+                            loop={{ item.video.loop_video }}
+                            muted={{ item.video.mute_by_default }}
+                          %}
+              {% endif %}
+    </div>`
+    title = `{% inline_text field="text_field" value="{{ item.text_field }}" %}`;
+    thumbnail = `{% if item.thumbnail.src %}
+                    {% set sizeAttrs = 'width="{{ item.thumbnail.width }}" height="{{ item.thumbnail.height }}"' %}
+                    {% if item.thumbnail.size_type == 'auto' %}
+                      {% set sizeAttrs = 'width="{{ item.thumbnail.width }}" height="{{ item.thumbnail.height }}" style="max-width: 100%; height: auto;"' %}
+                    {% elif item.thumbnail.size_type == 'auto_custom_max' %}
+                      {% set sizeAttrs = 'width="{{ item.thumbnail.max_width }}" height="{{ item.thumbnail.max_height }}" style="max-width: 100%; height: auto;"' %}
+                    {% endif %}
+                     {% set loadingAttr = item.thumbnail.loading != 'disabled' ? 'loading="{{ item.thumbnail.loading }}"' : '' %}
+                    <img src="{{ item.thumbnail.src }}" alt="{{ item.thumbnail.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                  {% endif %}`
+    videos_data_{{ name|replace("-", "_") }}.push([html, thumbnail, title]);
+  {% endfor %}
+  
+  // Genrate iframe and video html
+  genArea_{{ name|replace("-", "_") }} = document.querySelector("#hs_cos_wrapper_{{ name }} .gen-area");
+  for (video of videos_data_{{ name|replace("-", "_") }}) {
+    genArea_{{ name|replace("-", "_") }}.innerHTML += video[0];
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get video elements from gen area
+    var generatedVideos_{{ name|replace("-", "_") }};
+    setTimeout(function() {
+      generatedVideos_{{ name|replace("-", "_") }} = Array.from(genArea_{{ name|replace("-", "_") }}.querySelectorAll(".video-{{ name }}"));
+      videos_{{ name|replace("-", "_") }} = [];
+      for (let i=0; i < generatedVideos_{{ name|replace("-", "_") }}.length; i++) {
+        videos_{{ name|replace("-", "_") }}.push([generatedVideos_{{ name|replace("-", "_") }}[i], videos_data_{{ name|replace("-", "_") }}[i][1], videos_data_{{ name|replace("-", "_") }}[i][2]]);
+      }
+      genArea_{{ name|replace("-", "_") }}.innerHTML = "";
+      playlistRotation_{{ name|replace("-", "_") }}();
+    }, 500);
+    
+    // Add autoplay rotation logic                  
+    mainVideoDiv_{{ name|replace("-", "_") }} = document.querySelector("#hs_cos_wrapper_{{ name }} .main-video-player");
+    videoListDiv_{{ name|replace("-", "_") }} = document.querySelector("#hs_cos_wrapper_{{ name }} .playlist");                                 
+    
+    const clickEvent_{{ name|replace("-", "_") }} = new MouseEvent('click', {
+      bubbles: true,
+      cancelable: false,
+      view: window,
+    });
+                                                                               
+    // Video playlist setup, set current main video
+    function playlistSetup_{{ name|replace("-", "_") }}(index) {
+      mainVideoDiv_{{ name|replace("-", "_") }}.innerHTML = "";
+      videoListDiv_{{ name|replace("-", "_") }}.innerHTML = "";
+      
+      for (let i=0; i < index; i++) {
+        moveVideo = videos_{{ name|replace("-", "_") }}[0];
+        videos_{{ name|replace("-", "_") }}.splice(0, 1);
+        videos_{{ name|replace("-", "_") }}.splice(videos_{{ name|replace("-", "_") }}.length, 0, moveVideo);
+      }
+      
+      for (let i=0; i < videos_{{ name|replace("-", "_") }}.length; i++) {
+        title = videos_{{ name|replace("-", "_") }}[i][2];
+        thumbnail = videos_{{ name|replace("-", "_") }}[i][1];
+        video = videos_{{ name|replace("-", "_") }}[i][0];
+        if (i == 0) {
+          mainVideoDiv_{{ name|replace("-", "_") }}.appendChild(video);
+        }
+        else {
+          videoListDiv_{{ name|replace("-", "_") }}.innerHTML += `<div class="video-item">
+            <div class="col-lg-4 col-md-4 col-sm-4 video-img">${thumbnail}</div>
+            <div class="col-lg-8 col-md-8 col-sm-8 video-title">${title}</div>
+          </div>`
+        }
+        for (let i = 0; i < videoListDiv_{{ name|replace("-", "_") }}.children.length; i++) {
+          videoItem = videoListDiv_{{ name|replace("-", "_") }}.children[i];
+          videoItem.querySelector("img").style.display = "block";
+          videoItem.addEventListener("click", function() {
+            playlistSetup_{{ name|replace("-", "_") }}(i + 1);
+          });
+        }
+      }
+    }
+    
+    // Rotate between videos
+    function playlistRotation_{{ name|replace("-", "_") }}() {
+      playlistSetup_{{ name|replace("-", "_") }}(0);
+      setInterval(function() {
+        videoElement = mainVideoDiv_{{ name|replace("-", "_") }}.querySelector(".video-{{ name }}  div");
+        if (videoElement) {
+          status = videoElement.getAttribute("data-hsv-status");
+          if (status == "ended") {
+            playlistSetup_{{ name|replace("-", "_") }}(1);
+          }
+        }
+      }, 1000);
+    }
+  
+  
+    // Set height
+    setTimeout(function() {
+      moduleHeight_{{ name|replace("-", "_") }} = mainVideoDiv_{{ name|replace("-", "_") }}.offsetHeight;
+      videoListDiv_{{ name|replace("-", "_") }}.style.height = moduleHeight_{{ name|replace("-", "_") }} + "px";
+    }, 500);
+  });
+  
+  
+</script>
+{% end_require_js %}
+

@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">Helpful Hero</a><br/>------------------------------<br/>\nHow to: <a href=\"https://youtu.be/NqIl64A1ZBs\" >Video Tutorial</a><br/>Feedback: <a href=\"https://www.clean.pro/feedback\" >Submit Ideas or Bugs</a></br>\nVersion: Beta 0.1",
+  "icon" : "fontawesome-5.14.0:Bars:SOLID",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 163988772988,
+  "label" : "Flexi Tabs (Pro - Beta)",
+  "is_available_for_new_content" : true
+}

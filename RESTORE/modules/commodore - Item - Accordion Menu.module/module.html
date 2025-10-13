@@ -1,0 +1,112 @@
+{# 
+ NAME: ACCORDION MENU
+ MODULE VERSION: 2.1.9
+ COMMODORE VERSION: v80
+ LAST UPDATED: 2/21/24
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# MENU #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-accordion li { 
+    border-bottom: 1px solid rgba({{ module.style.line_color.color|convert_rgb }}, {% if module.style.line_color.opacity == '100' %}1{% else %}0.{{ module.style.line_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }} .hhs-accordion  {
+    border-top: 1px solid rgba({{ module.style.line_color.color|convert_rgb }}, {% if module.style.line_color.opacity == '100' %}1{% else %}0.{{ module.style.line_color.opacity }}{% endif %});
+  }
+  
+  {# TEXT #}
+  
+  #hs_cos_wrapper_{{ name }} a.accordion-title h4 {
+    {% if module.style.custom_text_color %}  
+      color: {{ module.style.title_color.color }};
+    {% endif %}
+      font-size: {{ module.style.title_size }}px;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-accordion a.accordion-title:hover {   
+   background-color: rgba({{ module.style.title_bg_hover.color|convert_rgb }}, {% if module.style.title_bg_hover.opacity == '100' %}1{% else %}0.{{ module.style.title_bg_hover.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }} .hhs-accordion a.accordion-title:after { 
+    border-right: 1px solid rgba({{ module.style.arrow_color.color|convert_rgb }}, {% if module.style.arrow_color.opacity == '100' %}1{% else %}0.{{ module.style.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.style.arrow_color.color|convert_rgb }}, {% if module.style.arrow_color.opacity == '100' %}1{% else %}0.{{ module.style.arrow_color.opacity }}{% endif %});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-accordion-content.menu-opt .hs-menu-wrapper.hs-menu-flow-horizontal > ul li a {
+    {% if module.style.custom_text_color %} 
+      color: {{ module.style.link_color.color }};
+    {% endif %}
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-accordion-content.menu-opt .hs-menu-item {
+   margin-bottom: {{ module.style.link_space }}px 
+  }
+  
+  @media screen and (min-width: 768px) {
+  .sticky-sidebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  }
+  .sticky-sidebar #hs_cos_wrapper_{{ name }} {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+  }
+}
+  @media screen and (min-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-accordion-content.menu-opt .hs-menu-item {
+     margin-bottom: {{ module.style.link_space_mobile }}px 
+    }
+  
+  }
+
+</style>
+{% end_require_css %}
+
+{% require_js %}
+  <script defer>
+
+  {% if module.make_sticky %}
+  if($('.hs-inline-edit').length <= 0) {
+	  var headerHeight_{{name|replace("-", "_")}} = $('#hhs-main-nav').height(); // Measures Height of Header Element
+	  $('#hs_cos_wrapper_{{ name }}').unwrap().unwrap().unwrap() // Unwraps the Sidebar Container
+									 .css('top', headerHeight_{{name|replace("-", "_")}} + 30) // Adds height of header as css attr "top" to element so it knows where to be fixed at.
+									 .parent('.widget-span').parent('.row-fluid') // Pin-points ".row-fluid" parent outside of spans
+									 .addClass('sticky-sidebar'); // adds sticky-sidebar class that does the css magic.
+  }
+  {% endif %}
+    
+  </script>
+{% end_require_js %}
+
+
+{% if module.make_sticky %}
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar__inner">
+{% endif %}
+      {% if module.add_text_over_menu %}
+        <div class="hhs-menu-text-head">
+          {% inline_rich_text field="text_above_menu" value="{{ module.text_above_menu }}" %}
+        </div>
+      {% endif %}
+      <ul id="hhs-acc-menu" class="hhs-accordion">
+        {% for item in module.accordion_menu %}
+        <li>
+          <a href="#" class="accordion-title {{'active' if module.open_1st_accordion and loop.first }}" data-menu="{{ item.menu_item_id }}" >
+            <h4>{{ item.title }}</h4>
+          </a>
+          <div class="hhs-accordion-content menu-opt" {{'style="display:block;"' if module.open_1st_accordion and loop.first }}>{% simple_menu menu_tree="{{ item.menu }}" %}</div>
+        </li>
+        {% endfor %}
+      </ul>
+
+{% if module.make_sticky %}
+    </div>
+  </div>
+{% endif %}

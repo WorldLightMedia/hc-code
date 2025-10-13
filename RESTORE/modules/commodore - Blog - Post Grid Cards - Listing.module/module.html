@@ -1,0 +1,472 @@
+{# 
+ NAME: BLOG POST GRID CARDS - LISTING PAGE
+ MODULE VERSION: 1.2.3
+ COMMODORE VERSION: v79
+ LAST UPDATED: 1/27/24
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW SETTINGS #}
+  .hhs-blog-grid-cards {
+    {% if module.style.bg_type == 'color' %}
+      background-color: rgba({{ module.style.bg_color.color|convert_rgb }}, {{ module.style.bg_color.opacity * 0.01 }});
+    {% elif module.style.bg_type == 'gradient' %}
+      background: {{ module.style.bg_gradient.css }};
+    {% endif %}
+      padding-top: {{ module.style.spacing.padding_top }};
+      padding-bottom: {{ module.style.spacing.padding_btm }};
+  }
+  
+  
+  @media (max-width: 922px) {
+    .hhs-blog-grid-cards {
+     padding-top: {{ module.style.spacing.padding_top_tablet }};
+      padding-bottom: {{ module.style.spacing.padding_btm_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .hhs-blog-grid-cards {
+      padding-top: {{ module.style.spacing.padding_top_mobile }};
+      padding-bottom: {{ module.style.spacing.padding_btm_mobile }};
+    }
+  }
+  
+  {# POST GRID CARDS #}
+  
+   {% if module.style.card_border_radius %}
+    .blog-index__post,
+    .blog-index__post .hhs-blog-card-inner{
+        -webkit-border-radius: {{ module.style.card_border_radius }}px;
+          border-radius: {{ module.style.card_border_radius }}px;
+        overflow: hidden;
+    }
+  {% endif %}
+  
+  @media screen and (min-width: 922px) {
+    .hhs-blog-grid-cards .blog-index__post {
+      flex:  0 0 calc(100%/2);
+    }
+  }
+  
+   @media screen and (min-width: 1000px) {
+    .hhs-blog-grid-cards.listing-page .blog-index__post {
+      flex:  0 0 calc(100%/{{ module.start.num_cols }});
+    }
+  }
+
+  @media screen and (min-width: 922px) {
+    .hhs-blog-grid-cards.listing-page .blog-index__post--large {
+      flex: 1 0 100%;
+      display: flex;
+      justify-items: space-between;
+    }
+  }
+  
+  .blog-recent-posts__post,
+  .hhs-blog-card-inner,
+  .blog-index__post--large {
+    background-color: rgba({{ module.card.bg_color.color|convert_rgb }}, {{ module.card.bg_color.opacity * 0.01 }});
+  }
+  
+  {# FEATURE IMAGE #}
+  
+  {% if module.card.feat_image.show and module.card.feat_image.custom_image_height %}
+    .feat-cust-height {
+      height: {{ module.card.feat_image.feat_img_height }}px;
+      overflow: hidden;
+    }
+    .feat-cust-height img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: center;
+    }
+  {% endif %}
+  
+  {# READ TIME #}
+  
+  {% if module.card.read_time.show %}
+    p.reading-minutes {
+      margin-bottom: 5px;
+      color: rgba({{ module.card.read_time.color.color|convert_rgb }}, {{ module.card.read_time.color.opacity * 0.01 }});
+      text-transform: uppercase;
+      font-size: {{ module.card.read_time.font_size }}px;
+    }
+  {% endif %}
+  
+  
+  {# TITLE #}
+  
+  .blog-index__post--large h4.card_post_title a {
+    font-size: {{ module.card.post_title.large_card_title_size_desktop }}px;
+    color: rgba({{ module.card.post_title.color.color|convert_rgb }}, {{ module.card.post_title.color.opacity * 0.01 }});
+    line-height: {{ module.card.post_title.large_card_line_height }}em;
+  }
+  
+  .blog-index__post-content--small h4.card_post_title a {
+    font-size: {{ module.card.post_title.small_card_title_size_desktop }}px;
+    color: rgba({{ module.card.post_title.color.color|convert_rgb }}, {{ module.card.post_title.color.opacity * 0.01 }});
+    line-height: {{ module.card.post_title.small_card_line_height }}em;
+  }
+  
+  @media (max-width: 575px) {
+    .blog-index__post--large h4.card_post_title a {
+    font-size: {{ module.card.post_title.large_card_title_size_mobile }}px; 
+    }
+
+    .blog-index__post-content--small h4.card_post_title a {
+      font-size: {{ module.card.post_title.small_card_title_size_mobile }}px;
+    }
+  }
+  
+  {# READ MORE LINK #}
+  
+  {% if module.card.read_more_link.show %}
+    .hhs-blog-card-inner {
+        padding-bottom: 30px;
+      }
+    .blog-index__post--large .blog-index__post-content {
+     padding: 2rem 1rem 2.5rem 1rem; 
+    }
+    a.blog-index__post-button {
+     color: rgba({{ module.card.read_more_link.read_more_text_color.color|convert_rgb }}, {{ module.card.read_more_link.read_more_text_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {# AUTHOR & PUBLISH DATE #}
+  
+  .blog-index__post-author span {
+    font-size: {{ module.card.author_pub_date.text_size }}px;
+  }
+  
+  {% if module.card.author_pub_date.author %} 
+    a.blog-index__post-author-name {
+      color: rgba({{ module.card.author_pub_date.author_name_color.color|convert_rgb }}, {{ module.card.author_pub_date.author_name_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {% if module.card.author_pub_date.publish_date %} 
+    .blog-index__post-author span .pub-date {
+      color: rgba({{ module.card.author_pub_date.date_color.color|convert_rgb }}, {{ module.card.author_pub_date.date_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {# SUMMARY #}
+  
+  {% if module.card.post_summary.show %} 
+    .blog-recent-posts__post p, .blog-index__post--large p, .blog-index__post--small p, .blog-index__tag-subtitle {
+      color: rgba({{ module.card.post_summary.summary_text_color.color|convert_rgb }}, {{ module.card.post_summary.summary_text_color.opacity * 0.01 }});
+      font-size: {{ module.card.post_summary.summary_text_size }}px ;
+    }
+  {% endif %}
+  
+  {# PUBLISH DATE #}
+  
+  {% if module.card.publish_date %}
+    p.blog-index__post-timestamp {
+      color: rgba({{ module.card.date_color.color|convert_rgb }}, {{ module.card.date_color.opacity * 0.01 }});
+      font-size: {{ module.card.date_size }}px;
+      margin-bottom: 3px;
+    }
+  {% endif %}
+  
+  {# TAGS #}
+  
+  {% if module.card.tags.show %}
+    .hhs-blog-grid-cards .blog-index__post-tag {
+      color: rgba({{ module.card.tags.tag_text_color.color|convert_rgb }}, {{ module.card.tags.tag_text_color.opacity * 0.01 }});
+      background: rgba({{ module.card.tags.tag_bg_color.color|convert_rgb }}, {{ module.card.tags.tag_bg_color.opacity * 0.01 }});
+    }
+    .hhs-blog-grid-cards .blog-index__post-tag:hover,
+    .hhs-blog-grid-cards .blog-index__post-tag:focus{
+      color: rgba({{ module.card.tags.tag_text_color_hover.color|convert_rgb }}, {{ module.card.tags.tag_text_color_hover.opacity * 0.01 }});
+      background: rgba({{ module.card.tags.tag_bg_color_hover.color|convert_rgb }}, {{ module.card.tags.tag_bg_color_hover.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {# STYLE OPTIONS #}
+  
+  {% if module.card.pull_up_first_card %}
+    .dnd-blog-listing .blog-index__post--large.pull-up-card {
+      margin-top: -130px;
+      position: relative;
+      z-index: 2;
+    }
+  {% endif %}
+  
+  {# PAGINATION #}
+  
+  .hhs-blog-grid-cards .blog-pagination__prev-link svg, 
+  .hhs-blog-grid-cards .blog-pagination__next-link svg,
+  .hhs-blog-grid-cards .blog-pagination__link {
+    color: rgba({{ module.style.pagination.text_color.color|convert_rgb }}, {{ module.style.pagination.text_color.opacity * 0.01 }});
+  }
+  
+  .hhs-blog-grid-cards .blog-pagination__prev-link svg, 
+  .hhs-blog-grid-cards .blog-pagination__next-link svg {
+    fill: rgba({{ module.style.pagination.text_color.color|convert_rgb }}, {{ module.style.pagination.text_color.opacity * 0.01 }});
+  }
+  
+  .hhs-blog-grid-cards .blog-pagination__link--active {
+    border: 2px solid rgba({{ module.style.pagination.active_color.color|convert_rgb }}, {{ module.style.pagination.active_color.opacity * 0.01 }});
+  }
+  
+  .hhs-blog-grid-cards .blog-pagination__number-link:hover, 
+  .hhs-blog-grid-cards .blog-pagination__number-link:focus {
+    border: 2px solid rgba({{ module.style.pagination.hover_bg_color.color|convert_rgb }}, {{ module.style.pagination.hover_bg_color.opacity * 0.01 }});
+    background-color: rgba({{ module.style.pagination.hover_bg_color.color|convert_rgb }}, {{ module.style.pagination.hover_bg_color.opacity * 0.01 }});
+    color: rgba({{ module.style.pagination.hover_text_color.color|convert_rgb }}, {{ module.style.pagination.hover_text_color.opacity * 0.01 }});
+  }
+  
+</style>
+{% end_require_css %}
+
+
+{# TRANSLATE ELEMENTS #}
+
+{% set blog_lang = html_lang %}
+
+{% if blog_lang == 'en' or blog_lang == 'en-us' %}
+  {% set read_time = 'min read' %}
+  {% set page_prev = 'Prev' %}
+  {% set page_next = 'Next' %}
+
+{% elif blog_lang == 'it' %}
+  {% set read_time = 'lecture des minutes' %}
+  {% set page_prev = 'Precedente' %}
+  {% set page_next = 'Prossimo' %}
+
+{% elif blog_lang == 'de' %}
+  {% set read_time = 'minute lesen' %}
+  {% set page_prev = 'Vorherige' %}
+  {% set page_next = 'Nächste' %}
+
+{% elif blog_lang == 'fi' %}
+  {% set read_time = 'min luettu' %}
+  {% set page_prev = 'Edellinen' %}
+  {% set page_next = 'Seuraava' %}
+
+{% elif blog_lang == 'es' %}
+  {% set read_time = 'minutos de lectura' %}
+  {% set page_prev = 'Previo' %}
+  {% set page_next = 'Próximo' %}
+
+{% elif blog_lang == 'fr' %}
+  {% set read_time = 'Temps de lecture' %}
+  {% set page_prev = 'Précédent' %}
+  {% set page_next = 'Prochain' %}
+
+{% else %}
+  {# DEFAULTS IF NO LANGUAGE SET #}
+  {% set read_time = 'min read' %}
+  {% set page_prev = 'Prev' %}
+  {% set page_next = 'Next' %}
+
+{% endif %}
+
+<div class="hhs-blog-grid-cards listing-page">
+  <div class="container">
+    <div class="row">
+      <div class="blog-index">
+        {% if tag %}
+        <div class="blog-index__tag-header">
+          <h5 class="blog-index__tag-subtitle">{{ topic_page_title }}</h5>
+          <h3 class="blog-index__tag-heading">{{ page_meta.html_title|split(' | ')|last }}</h3>
+        </div>
+        {% endif %}
+        {% for content in contents %}
+          {% if module.start.num_cols == '1' %}        
+            <div class="blog-index__post blog-index__post--large {% if loop.index == 1 %}pull-up-card{% endif %}">
+              {% if module.card.feat_image.show and content.featured_image %}
+                <a class="blog-index__post-image blog-index__post-image--large" href="{{ content.absolute_url }}">
+                  <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}" loading="lazy" />
+                </a>
+              {% endif %}
+              <div class="blog-index__post-content  blog-index__post-content--large">
+                {% if module.card.read_time.show %}
+                  <p class="reading-minutes">
+                    {% set initialPostWords = content.post_body|striptags|wordcount %}
+                    {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+                    {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+                    {% set number = finishedPostWords|round %}
+                    {% if number < 1 %}
+                    
+                    {% else %}
+                    {{ finishedPostWords|round }} {{ read_time }}
+                    {%- endif -%}
+                  </p>
+                {% endif %}
+                <h4 class="card_post_title"><a href="{{ content.absolute_url }}">{{ content.name }}</a></h4>
+                {# Author & Publish Date #}
+                  <div class="blog-index__post-author">
+                    {% if content.blog_author.avatar and module.card.author_pub_date.author %}
+                      <img class="blog-index__post-author-image" src="{{ content.blog_author.avatar }}" width="30" loading="lazy" alt="Picture of {{ content.blog_author.display_name }}">
+                    {% endif %}
+                    <span>{% if module.card.author_pub_date.author %}<a class="blog-index__post-author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_author.display_name }}: </a>{% endif %} {% if module.card.author_pub_date.publish_date %}<span class="pub-date">{{ content.publish_date_localized }}</span>{% endif %}</span>
+                  </div>
+                  {# End author #}
+                  {# Summary #}
+                  {% if module.card.post_summary.show %} 
+                    {{ content.post_list_content|truncatehtml(module.card.post_summary.char_limit_feat)|striptags }}
+                  {% endif %}
+                  {# End Summary #}
+                  {# Tags #}
+                    {% if module.card.tags.show and content.tag_list %}
+                      <div class="blog-index__post-tags">
+                        {% for tag in content.tag_list %}
+                          <a class="blog-index__post-tag" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if !loop.last %}<span> </span>{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {# End tags #}
+                  {# Read more button #}
+                  {% if module.card.read_more_link.show %}
+                    <a class="blog-index__post-button" href="{{ content.absolute_url }}">{{ module.card.read_more_link.read_more_text }}</a>
+                  {% endif %}
+                  {# End read more button #}
+              </div>
+            </div>
+          {% else %}
+          {% if (loop.first && !topic && module.start.show_feature_card) %} 
+            <div class="blog-index__post blog-index__post--large {% if loop.index == 1 %}pull-up-card{% endif %}">
+              {% if module.card.feat_image.show and content.featured_image %}
+                <a class="blog-index__post-image blog-index__post-image--large" href="{{ content.absolute_url }}">
+                  <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}" loading="lazy" />
+                </a>
+              {% endif %}
+              <div class="blog-index__post-content  blog-index__post-content--large">
+                {% if module.card.read_time.show %}
+                  <p class="reading-minutes">
+                    {% set initialPostWords = content.post_body|striptags|wordcount %}
+                    {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+                    {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+                    {% set number = finishedPostWords|round %}
+                    {% if number < 1 %}
+                    
+                    {% else %}
+                    {{ finishedPostWords|round }} {{ read_time }}
+                    {%- endif -%}
+                  </p>
+                {% endif %}
+                <h4 class="card_post_title"><a href="{{ content.absolute_url }}">{{ content.name }}</a></h4>
+                {# Author & Publish Date #}
+                  <div class="blog-index__post-author">
+                    {% if content.blog_author.avatar and module.card.author_pub_date.author %}
+                      <img class="blog-index__post-author-image" src="{{ content.blog_author.avatar }}" width="30" loading="lazy" alt="Picture of {{ content.blog_author.display_name }}">
+                    {% endif %}
+                    <span>{% if module.card.author_pub_date.author %}<a class="blog-index__post-author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_author.display_name }}: </a>{% endif %} {% if module.card.author_pub_date.publish_date %}<span class="pub-date">{{ content.publish_date_localized }}</span>{% endif %}</span>
+                  </div>
+                  {# End author #}
+                  {# Summary #}
+                  {% if module.card.post_summary.show %} 
+                    <p>{{ content.post_list_content|striptags|truncatehtml(module.card.post_summary.char_limit_feat) }}</p>
+                  {% endif %}
+                  {# End Summary #}
+                  {# Tags #}
+                    {% if module.card.tags.show and content.tag_list %}
+                      <div class="blog-index__post-tags">
+                        {% for tag in content.tag_list %}
+                          <a class="blog-index__post-tag" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if !loop.last %}<span> </span>{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {# End tags #}
+                  {# Read more button #}
+                  {% if module.card.read_more_link.show %}
+                    <a class="blog-index__post-button" href="{{ content.absolute_url }}">{{ module.card.read_more_link.read_more_text }}</a>
+                  {% endif %}
+                  {# End read more button #}
+              </div>
+            </div>
+          {% else %}
+            <div class="blog-index__post blog-index__post--small">
+              <div class="hhs-blog-card-inner">   
+                {% if module.card.feat_image.show and content.featured_image %}
+                  <a href="{{ content.absolute_url }}" class="blog-index__post-image blog-index__post-image--small {{ 'feat-cust-height' if module.card.feat_image.custom_image_height }}" style="padding-bottom: 0px; margin-bottom: 0px;">
+                    <img src="{{ content.featured_image }}" alt="{{ content.featured_image_alt_text }}" loading="lazy" />
+                  </a>
+                {% endif %}
+                <div class="blog-index__post-content  blog-index__post-content--small">
+                  {% if module.card.read_time.show %}
+                    <p class="reading-minutes">
+                      {% set initialPostWords = content.post_body|striptags|wordcount %}
+                      {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+                      {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+                      {% set number = finishedPostWords|round %}
+                      {% if number < 1 %}
+
+                      {% else %}
+                      {{ finishedPostWords|round }} {{ read_time }}
+                      {%- endif -%}
+                    </p>
+                  {% endif %}
+                  <h4 class="card_post_title"><a href="{{ content.absolute_url }}">{{ content.name }}</a></h4>
+                  {# Author & Publish Date #}
+                  <div class="blog-index__post-author">
+                    {% if content.blog_author.avatar and module.card.author_pub_date.author %}
+                      <img class="blog-index__post-author-image" src="{{ content.blog_author.avatar }}" width="30" loading="lazy" alt="Picture of {{ content.blog_author.display_name }}">
+                    {% endif %}
+                    <span>{% if module.card.author_pub_date.author %}<a class="blog-index__post-author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_author.display_name }}</a>: {% endif %} {% if module.card.author_pub_date.publish_date %}<span class="pub-date">{{ content.publish_date_localized }}</span>{% endif %}</span>
+                  </div>
+                  {# End author #}
+                  {# Summary #}
+                  {% if module.card.post_summary.show %} 
+                    <p>{{ content.post_list_content|striptags|truncatehtml(module.card.post_summary.char_limit_norm) }}</p>
+                  {% endif %}
+                  {# End Summary #}
+                  {# Tags #}
+                    {% if module.card.tags.show and content.tag_list %} 
+                      <div class="blog-index__post-tags">
+                        {% for tag in content.tag_list %}
+                          <a class="blog-index__post-tag" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if !loop.last %}<span> </span>{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {# End tags #}
+                </div>
+                {# Read more button #}
+                {% if module.card.read_more_link.show %}
+                  <a class="blog-index__post-button" href="{{ content.absolute_url }}">{{ module.card.read_more_link.read_more_text }}</a>
+                {% endif %}
+                {# End read more button #}
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% if contents.total_page_count > 1 %}
+        <div class="blog-pagination">
+          {% set page_list = [-2, -1, 0, 1, 2] %}
+          {% if contents.total_page_count - current_page_num == 1 %}{% set offset = -1 %}
+          {% elif contents.total_page_count - current_page_num == 0 %}{% set offset = -2 %}
+          {% elif current_page_num == 2 %}{% set offset = 1 %}
+          {% elif current_page_num == 1 %}{% set offset = 2 %}
+          {% else %}{% set offset = 0 %}{% endif %}
+          {% if last_page_num %}
+            <a class="blog-pagination__link blog-pagination__prev-link {{ "blog-pagination__prev-link--disabled" if !last_page_num }}" href="{{ blog_page_link(last_page_num) }}">
+              {% icon name="chevron-left" style="SOLID", width="13", no_wrapper=True %}
+              {{ page_prev }}
+            </a>
+          {% endif %}
+          {% for page in page_list %}
+            {% set this_page = current_page_num + page + offset %}
+            {% if this_page > 0 and this_page <= contents.total_page_count %}
+              <a class="blog-pagination__link blog-pagination__number-link {{ "blog-pagination__link--active" if this_page == current_page_num }}" href="{{ blog_page_link(this_page) }}">{{ this_page }}</a>
+            {% endif %}
+          {% endfor %}
+          {% if next_page_num %}
+            <a class="blog-pagination__link blog-pagination__next-link {{ "blog-pagination__next-link--disabled" if !next_page_num }}" href="{{ blog_page_link(current_page_num + 1) }}">
+              {{ page_next }}
+              {% icon name="chevron-right" style="SOLID", width="13", no_wrapper=True %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

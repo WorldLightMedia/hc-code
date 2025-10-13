@@ -1,0 +1,18 @@
+{
+  "content_tags" : [ {
+    "name" : "INTERACTION",
+    "source" : "USER"
+  }, {
+    "name" : "NAVIGATION",
+    "source" : "USER"
+  } ],
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_POST" ],
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">Helpful Hero</a><br/>------------------------------<br/>\nHow to: <a href=\"#\" >Video Tutorial</a><br/>Feedback: <a href=\"https://www.clean.pro/feedback\" >Submit Your Ideas</a></br>\nVersion: 1.o",
+  "categories" : [ "DESIGN", "BODY_CONTENT", "FUNCTIONALITY" ],
+  "icon" : "https://507386.fs1.hubspotusercontent-na1.net/hubfs/507386/table-of-contents.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 163988772990,
+  "label" : "Table of Contents",
+  "is_available_for_new_content" : true
+}

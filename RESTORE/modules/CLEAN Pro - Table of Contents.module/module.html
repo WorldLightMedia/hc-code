@@ -1,0 +1,179 @@
+{# 
+ NAME: TABLE OF CONTENTS
+ MODULE VERSION: 1.0.0
+ LAST UPDATED: 11/2/23
+ REMINDER: You're Awesome!
+#}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+
+<div class="table-of-contents">
+  {% if module.start.text_above %}
+    <div class="table-of-contents-lead-text">
+      {% inline_rich_text field="start.text_above" value="{{ module.start.text_above }}" %}
+    </div>
+  {% endif %}
+  {% for item in module.contents %}
+    <div class="table-of-contents-section">
+      <p><a href="#{{ item.heading_anchor_id }}" class="table-of-contents-section-heading">{{ item.heading }}</a></p>
+      {% if item.add_sub_sections %}
+        {% for item2 in item.sub_sections %}
+        <p><a href="#{{ item2.anchor_id }}" class="table-of-contents-sub-section">{{ item2.sub_section_label }}</a></p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+
+{% if module.start.style == 'sticky' %}
+  {% require_js %}
+<script defer>
+    function unwrap(element) {
+      parent = element.parentNode;
+      while (element.firstChild) {
+        parent.insertBefore(element.firstChild, element);
+      }
+      parent.removeChild(element);
+    }
+
+    hsInlineEditElements = document.querySelectorAll('.hs-inline-edit');
+    if (hsInlineEditElements.length <= 0) {
+      header = document.getElementById('hhs-main-nav');
+      if (header !== null) {
+        headerHeight_{{ name|replace("-","_") }} = header.offsetHeight;
+      }
+      else {
+        headerHeight_{{ name|replace("-","_") }} = 0;
+      }
+      sidebarWrapper = document.getElementById('hs_cos_wrapper_{{ name }}');
+
+      unwrap(sidebarWrapper.parentNode);
+      unwrap(sidebarWrapper.parentNode);
+      unwrap(sidebarWrapper.parentNode);
+      
+      sidebarWrapper.style.top = headerHeight_{{ name|replace("-","_") }} + 30 + 'px'; // Adds height of header as CSS attr "top" to element so it knows where to be fixed at.
+
+      parentWidgetSpan = sidebarWrapper.closest('.widget-span');
+      while (parentWidgetSpan && !parentWidgetSpan.classList.contains('row-fluid')) {
+        parentWidgetSpan = parentWidgetSpan.parentElement; // Pin-points ".row-fluid" parent outside of spans
+      }
+
+      if (parentWidgetSpan) {
+        parentWidgetSpan.classList.add('sticky-sidebar'); // Adds sticky-sidebar class that does the CSS magic.
+      }
+    }
+  
+  $(document).ready(function() {
+    $('.table-of-contents-lead-text').on('click', function() {
+        $('.table-of-contents-section').toggle();
+        
+        // Rotate the arrow based on the visibility of the sections
+        let arrow = $('.table-of-contents-lead-text::after');
+        if ($('.table-of-contents-section').is(':visible')) {
+            arrow.css('transform', 'rotate(180deg)');
+        } else {
+            arrow.css('transform', 'rotate(0deg)');
+        }
+    });
+});
+  
+$(document).ready(function() {
+    let toc = $('.table-of-contents');
+    let stickyStart = toc.offset().top;
+
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > stickyStart) {
+            toc.addClass('sticky');
+        } else {
+            toc.removeClass('sticky');
+        }
+    });
+
+    $('.table-of-contents-section-heading').on('click', function() {
+        if ($(window).width() < 992 && toc.hasClass('sticky')) {
+            $('.table-of-contents-section').hide();
+        }
+    });
+});
+</script>
+{% end_require_js %}
+
+{% endif %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    .table-of-contents {
+      {%- if module.style.table.bg.bg -%}
+        background-color: {{ css_color(module.style.table.bg.bg) }};
+      {%- endif -%}
+      {{ module.style.table.spacing.spacing.css }}
+      {%- if module.style.table.size.max_width %}
+        max-width: {{ module.style.table.size.max_width }}px;
+      {%- endif -%}
+      {%- if module.style.table.corner.rounded_corners -%}
+        -webkit-border-radius: {{ module.style.table.corner.rounded_corners }}px;
+        border-radius: {{ module.style.table.corner.rounded_corners }}px;
+      {%- endif -%}
+      {%- if module.style.table.border.border -%}
+        {{ module.style.table.border.border.css }}
+      {%- endif -%}
+    }
+    .table-of-contents a {
+      padding: {{ module.style.heading.spacing.item_padding }}px 10px;
+    }
+    .table-of-contents-section-heading {
+      {%- if module.style.heading.text.heading -%}
+        color: {{ css_color(module.style.heading.text.heading) }};
+      {%- endif -%}
+      {%- if module.style.heading.text.heading_font_size -%}
+        font-size: {{ module.style.heading.text.heading_font_size }}px;
+      {% endif %}
+      font-weight: {{ module.style.heading.text.heading_font_weight }};
+    }
+    .table-of-contents-section-heading.active,
+    .table-of-contents-section-heading:hover {
+      color: {{ css_color(module.style.heading.text.heading_active) }};
+    }
+    .table-of-contents-sub-section {
+      {%- if module.style.heading.text.sub_section -%}
+        color: {{ css_color(module.style.heading.text.sub_section) }};
+      {%- endif -%}
+      {%- if module.style.heading.text.sub_section_font_size -%}
+        font-size: {{ module.style.heading.text.sub_section_font_size }}px;
+      {% endif %}
+      font-weight: {{ module.style.heading.text.sub_section_font_weight }};
+    }
+    .table-of-contents-sub-section.active,
+    .table-of-contents-sub-section:hover {
+      color: {{ css_color(module.style.heading.text.sub_section_active) }};
+    }
+  @media screen and (max-width: 575px) {
+    .table-of-contents {
+      max-width: 100%;
+    }
+  }
+  {% end_scope_css %}
+  
+  {% if module.start.style %}
+    @media screen and (min-width: 768px) {
+      .sticky-sidebar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+          -ms-flex-flow: row wrap;
+              flex-flow: row wrap;
+      }
+      .sticky-sidebar #hs_cos_wrapper_toc_mod-4242,
+      .sticky-sidebar #hs_cos_wrapper_{{ name }} {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
+      }
+    }
+  {% endif %}
+</style>
+{% end_require_css %}

@@ -1,0 +1,56 @@
+{# 
+ NAME: BREADCRUMB
+ MODULE VERSION: 1.0.1
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/22
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-breadcrumb-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+  }
+  
+  {# END #}
+  
+  {# ROW STYLE #}
+  {# TABLET CSS #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-breadcrumb-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-breadcrumb-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-breadcrumb-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}" >  
+    <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col">
+        {% set menu_id = module.start.menu_id || module.menu %}
+          {% menu 
+            id="{{ module.start.menu_id }}", 
+            root_type="breadcrumb", 
+            flyouts="false", 
+            max_levels="{{ module.start.max_levels }}", 
+            flow="horizontal"
+          %}
+      </div>
+    </div>
+  </div>
+</div>

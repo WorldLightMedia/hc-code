@@ -1,0 +1,173 @@
+[ {
+  "id" : "bb5d334d-792e-fc86-9fd1-091f0a58ab63",
+  "name" : "divider_line",
+  "display_width" : null,
+  "label" : "Divider line:",
+  "help_text" : "By adding a horizontal divider line, the spacing you select below will be added above and below the dividing line.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "7f241af1-687c-8e0d-419e-a69d83b2ba3c",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c144434c-015b-97cf-0abf-b589675a070d",
+    "name" : "divider_line_color",
+    "display_width" : null,
+    "label" : "Divider Line Color",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "bb5d334d-792e-fc86-9fd1-091f0a58ab63",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7ae9c41d-76c9-14da-fbe0-fdfbcc6d8062",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "divider_line_color" : {
+      "color" : "#EEEEEE",
+      "opacity" : 100
+    },
+    "test" : false
+  }
+}, {
+  "id" : "a57e35a4-0c0b-e2be-9ad0-acd433b5de96",
+  "name" : "opts",
+  "display_width" : null,
+  "label" : "██████ Spacing Options",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "8efde98e-ac86-afb0-6896-58b7baee8652",
+    "name" : "spacer_size",
+    "display_width" : null,
+    "label" : "Spacer Size (Desktop):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "0px", "None" ], [ "5px", "XX-Small" ], [ "10px", "X-Small" ], [ "25px", "Small" ], [ "50px", "Medium" ], [ "100px", "Large" ], [ "150px", "X-Large" ], [ "200px", "XXL" ], [ "300px", "XXXL" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "50px"
+  }, {
+    "id" : "c009cbfb-b766-43c9-b1df-c4ce52299883",
+    "name" : "spacer_size_tablet",
+    "display_width" : null,
+    "label" : "Spacer Size (Tablet):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "0px", "None" ], [ "5px", "XX-Small" ], [ "10px", "X-Small" ], [ "25px", "Small" ], [ "50px", "Medium" ], [ "100px", "Large" ], [ "150px", "X-Large" ], [ "200px", "XXL" ], [ "300px", "XXXL" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "50px"
+  }, {
+    "id" : "25e71f1b-657b-a821-d6a7-5108559a3814",
+    "name" : "spacer_size_mobile",
+    "display_width" : null,
+    "label" : "Spacer Size (Mobile):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "0px", "None" ], [ "5px", "XX-Small" ], [ "10px", "X-Small" ], [ "25px", "Small" ], [ "50px", "Medium" ], [ "100px", "Large" ], [ "150px", "X-Large" ], [ "200px", "XXL" ], [ "300px", "XXXL" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "50px"
+  }, {
+    "id" : "8841fcd2-bd3a-8134-5761-5b014ea2ecfb",
+    "name" : "spacer_width",
+    "display_width" : null,
+    "label" : "Spacer Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "e2d8c000-f48a-6bbd-147e-bd93279ff1be",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8841fcd2-bd3a-8134-5761-5b014ea2ecfb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 800
+  }, {
+    "id" : "14279e3e-0f69-f605-20e5-739dfdb0f980",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "help_text" : "Please select a solid color. Colors with transparency aren't available for this module.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 0
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "spacer_size" : "50px",
+    "spacer_size_tablet" : "50px",
+    "spacer_size_mobile" : "50px",
+    "spacer_width" : "container",
+    "set_width" : 800,
+    "bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 0
+    }
+  }
+} ]
