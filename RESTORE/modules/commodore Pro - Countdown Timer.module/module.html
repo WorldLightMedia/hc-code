@@ -1,0 +1,208 @@
+{# 
+ NAME: COUNT DOWN PRO
+ MODULE VERSION: Beta 0.0.3
+ LAST UPDATED: 10/15/23
+ REMINDER: You Rock!
+#}
+
+{% set mod_name = name | replace("-", "_") %}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation.css" as style -%}
+
+{% set adjustedCurTimeList = module.start.date_time_set.timezone|split(" ") %}
+{% set adjustedCurTime = adjustedCurTimeList[0] %}
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      
+         <div class="countdown-mod">
+          {% set currentDate = now %}
+          {% if module.start.date_time_set.date_time|datetimeformat('%Y-%m-%d %H:%M:%S') < currentDate|datetimeformat('%Y-%m-%d %H:%M:%S', adjustedCurTime) %}
+            {% if module.content.end_text %}
+              <div class="c-countdown-end-text">
+                <div class="col-12">
+                  {% inline_rich_text field="content.end_text" value="{{ module.content.end_text }}" %}
+                </div>
+              </div>
+            {% endif %}
+
+          {% else %}
+            {% if module.content.above_counter %}
+              <div class="c-countdown-text">
+                <div class="col-12">
+                  {% inline_rich_text field="content.above_counter" value="{{ module.content.above_counter }}" %}
+                </div>
+              </div>
+            {% endif %}
+
+            <div id="countdown" class="countdown">
+              <div class="time col-3">
+                <h4 class="days">00</h4>
+                {% if module.start.date_time_set.day_label %}
+                  <p><small>{{ module.start.date_time_set.day_label }}</small></p>
+                {% endif %}
+              </div>
+              <div class="time col-3">
+                <h4 class="hours">00</h4>
+                {% if module.start.date_time_set.hour_label %}
+                  <p><small>{{ module.start.date_time_set.hour_label }}</small></p>
+                {% endif %}
+              </div>
+              <div class="time col-3">
+                <h4 class="minutes">00</h4>
+                {% if module.start.date_time_set.minute_label %}
+                  <p><small>{{ module.start.date_time_set.minute_label }}</small></p>
+                {% endif %}
+              </div>
+              <div class="time col-3">
+                <h4 class="seconds">00</h4>
+                {% if module.start.date_time_set.second_label %}
+                  <p><small>{{ module.start.date_time_set.second_label }}</small></p>
+                {% endif %}
+              </div>
+            </div>
+         {% endif %}
+        </div>
+      
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    {{ style.foundation_style() }}
+  
+    .time h4 {
+      {{ module.style.font.num_font.css }}
+    }
+  
+    .time p {
+      {{ module.style.font.label_font.css }}
+    }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{% require_js %}
+<script defer>
+  
+  function countDownInit_{{ mod_name }}() {
+    time_{{ mod_name }} = "{{ module.start.date_time_set.date_time }}";
+    year_{{ mod_name }} = time_{{ mod_name }}.substring(0, 4);
+    month_{{ mod_name }} = time_{{ mod_name }}.substring(5, 7);
+    day_{{ mod_name }} = time_{{ mod_name }}.substring(8, 10);
+    hour_{{ mod_name }} = time_{{ mod_name }}.substring(11, 13);
+    minute_{{ mod_name }} = time_{{ mod_name }}.substring(14, 16);
+    seconds_{{ mod_name }} = time_{{ mod_name }}.substring(17, 19);
+    
+    daysDiv_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .days");
+    hoursDiv_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .hours");
+    minutesDiv_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .minutes");
+    secondsDiv_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .seconds");
+    countdown_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .countdown");
+    yearDiv_{{ mod_name }} = document.querySelector("#hs_cos_wrapper_{{ name }} .year");
+
+    // THIS CONVERTS TIMZONE STRINGS TO THE TIMEOFFSET FROM utc AS A DECIMAL NUMBER
+    function getTimeOffset_{{ mod_name }}(timezoneTime) {
+        [sign, hours, minutes] = timezoneTime.split(/(UTC[+-])(\d{2}):(\d{2})/).filter(Boolean);
+        offsetHours = parseInt(hours, 10);
+        offsetMinutes = parseInt(minutes, 10);
+        decimalOffset = offsetHours + offsetMinutes / 60;
+        finalOffset = sign === "UTC-" ? -decimalOffset : decimalOffset;
+
+        return finalOffset;
+    }
+
+
+    // THIS IS THE CURRENT TIME IN THE USERS TIMEZONE                                
+    nextYear_{{ mod_name }} = new Date().getFullYear() + 1;
+
+    // tHIS IS THE TIME THE WEBSITE OWNER SET FOR THE COUNTDOWN
+    var isSafari = /^((?!chrome|android).)*safari/i.test(window.navigator.userAgent);
+    if (isSafari) {
+        newYearTime_{{ mod_name }} = new Date(year_{{ mod_name }} + "-" + month_{{ mod_name }} + "-" + day_{{ mod_name }} + " " + hour_{{ mod_name }} + ":" + minute_{{ mod_name }} + ":" + seconds_{{ mod_name }});
+    } else {
+        newYearTime_{{ mod_name }} = new Date(month_{{ mod_name }} + " " + day_{{ mod_name }} + " " + year_{{ mod_name }} + " " + hour_{{ mod_name }} + ":" + minute_{{ mod_name }} + ":" + seconds_{{ mod_name }});
+    }
+    
+    // HERE WE CONVERT THE WEBSITE OWNERS TIMEZONE TIME TO BE IN THE TIME OF THE USER
+    userTimezoneOffset_{{ mod_name }} = -new Date().getTimezoneOffset();
+    ownerTimezoneOffset_{{ mod_name }} = getTimeOffset_{{ mod_name }}("{{ adjustedCurTime }}") * 60;
+
+    // THIS FACTOR IS THE TIME DIFFERENC BETWEEN THE VIEWER AND WEBSITE OWNERS TIMEZONES IN MILLISECONDS
+    timezoneOffset_{{ mod_name }} = (userTimezoneOffset_{{ mod_name }} - ownerTimezoneOffset_{{ mod_name }}) * 60000;
+
+    function updateCountdown_{{ mod_name }}() {
+        currentTime_{{ mod_name }} = new Date();
+        difference_{{ mod_name }} = newYearTime_{{ mod_name }} - (currentTime_{{ mod_name }} - timezoneOffset_{{ mod_name }});
+        if (difference_{{ mod_name }} < 0) {
+            return true;
+        }
+
+        currentDays_{{ mod_name }} = Math.floor(difference_{{ mod_name }} / 1000 / 60 / 60 / 24);
+        currentHours_{{ mod_name }} = Math.floor(difference_{{ mod_name }} / 1000 / 60 / 60) % 24;
+        currentMinutes_{{ mod_name }} = Math.floor(difference_{{ mod_name }} / 1000 / 60) % 60;
+        currentSeconds_{{ mod_name }} = Math.floor(difference_{{ mod_name }} / 1000) % 60;
+        daysDiv_{{ mod_name }}.innerText = currentDays_{{ mod_name }};
+        hoursDiv_{{ mod_name }}.innerText = currentHours_{{ mod_name }} < 10 ? "0" + currentHours_{{ mod_name }} : currentHours_{{ mod_name }};
+        minutesDiv_{{ mod_name }}.innerText = currentMinutes_{{ mod_name }} < 10 ? "0" + currentMinutes_{{ mod_name }} : currentMinutes_{{ mod_name }};
+        secondsDiv_{{ mod_name }}.innerText = currentSeconds_{{ mod_name }} < 10 ? "0" + currentSeconds_{{ mod_name }} : currentSeconds_{{ mod_name }};
+    }
+
+
+    updateCountdown_{{ mod_name }}();
+    setInterval(updateCountdown_{{ mod_name }}, 1000);
+  }
+
+  window.onload = countDownInit_{{ mod_name }}();
+
+
+</script>
+{% end_require_js %}
+
+
+
+{# THIS PULLS IN THE CORE CLEAN FOUNDATION FILE #}
+{{ require_css(get_asset_url('../../css/clean-foundation.css'), { async: true }) }}
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+{% end_require_js %}

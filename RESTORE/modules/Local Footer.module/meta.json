@@ -1,0 +1,14 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/module-icons/icon-footer.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 163989176995,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/modules/global-footer.css",
+    "name" : "global-footer.css"
+  } ],
+  "label" : "Local Footer (Pro)",
+  "is_available_for_new_content" : true
+}

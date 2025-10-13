@@ -1,0 +1,60 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.number-counter-mod {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: fade-in 1s ease-in;
+}
+
+.number-counter-card {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.number-counter-grid {
+ width: 100%; 
+}
+
+.number-counter-card-inner {
+  height: 100%;
+  word-break: break-word;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
+}
+
+.number-counter-middle-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.number-counter-top-text,
+.number-counter-left-text,
+.number-counter-right-text,
+.number-counter-bottom-text {
+  display: flex;
+  word-break: break-word;
+}
+.left {
+ justify-content: left;
+}
+.center {
+ justify-content: center;
+}
+.right {
+ justify-content: right;
+}

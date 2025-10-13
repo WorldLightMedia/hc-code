@@ -1,0 +1,134 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: false
+-->
+{############## WAVE TOP ##############}
+{%- macro wave_top() -%}
+<div class="c-wave-con-top">
+  <div class="c-wave-module {{ 'flip-wave' if module.style.section.add_wave.top_wave.flip_wave }} ">
+    {%- if module.style.section.add_wave.top_wave.type == 'opt_1' -%} 
+    <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.top_wave.type == 'opt_2' -%}
+    <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.top_wave.type == 'opt_3' -%}
+    <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.top_wave.type == 'opt_4' -%}
+    <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.top_wave.type == 'opt_5' -%}
+    <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.top_wave.type == 'opt_6' -%}
+    <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+    {%- endif -%}
+  </div>
+</div>
+{%- endmacro -%}
+
+{############## WAVE BOTTOM ##############}
+{%- macro wave_btm() -%}
+<div class="c-wave-con-btm">
+  <div class="c-wave-module {{ 'flip-wave' if module.style.section.add_wave.bottom_wave.flip_wave }}">
+    {%- if module.style.section.add_wave.bottom_wave.type == 'opt_1' -%} 
+    <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.bottom_wave.type == 'opt_2' -%}
+    <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.bottom_wave.type == 'opt_3' -%}
+    <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.bottom_wave.type == 'opt_4' -%}
+    <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.bottom_wave.type == 'opt_5' -%}
+    <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+    {%- elif module.style.section.add_wave.bottom_wave.type == 'opt_6' -%}
+    <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+    {%- endif -%}
+  </div>
+</div>
+{%- endmacro -%}
+
+{############## BACKGROUND VIDEO ##############}
+{%- macro video_bg_section() -%}
+<div class="c-video-player c-section">
+  <div class="c-video-inner">
+    <video autoplay loop muted playsinline class="c-vid-bg" preload="metadata" poster="{{ module.bg_video.section.still.src }}">
+      <source src="{{ module.bg_video.section.clip }}" type="video/mp4">
+    </video>
+  </div>
+</div>
+{%- endmacro -%}
+
+{%- macro video_bg_row() -%}
+<div class="c-video-player c-row">
+  <div class="c-video-inner">
+    <video autoplay loop muted playsinline class="c-vid-bg" preload="metadata" poster="{{ module.bg_video.row.still.src }}">
+      <source src="{{ module.bg_video.row.clip }}" type="video/mp4">
+    </video>
+  </div>
+</div>
+{%- endmacro -%}
+
+{############## PARALLAX ##############}
+{%- macro parallax_section() -%}
+<div class="para-background
+            js-{{ name }}-parallax
+            {{ 'para-background--show-mobile' if module.style.section.bg.parallax_settings.mobile == false }}">
+  <img class="para-background__image
+              js-{{ name }}-parallax_section_background"   
+       src="{{ module.style.section.bg.image.src }}" 
+       alt="parallax image" 
+       loading="lazy" 
+       width="{{ module.style.section.bg.image.width }}" 
+       height="{{ module.style.section.bg.image.height }}" />
+</div>
+{%- endmacro -%}
+
+{%- macro parallax_row() -%}
+<div class="para-background
+            js-{{ name }}-parallax-row
+            {{ 'para-background--show-mobile' if module.style.row.bg.parallax_settings.mobile == false }}">
+  <img class="para-background__image
+              js-{{ name }}-parallax_row_background"   
+       src="{{ module.style.row.bg.image.src }}" 
+       alt="parallax image" 
+       loading="lazy" 
+       width="{{ module.style.row.bg.image.width }}" 
+       height="{{ module.style.row.bg.image.height }}" />
+</div>
+{%- endmacro -%}
+
+{%- macro parallax_section_js() -%}
+<script>
+    {% unless module.style.section.bg.parallax_settings.mobile %}
+      if (window.matchMedia('(min-width: 992px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax_section_background');
+          new simpleParallax(image, {
+            delay: {{ module.style.section.bg.parallax_settings.scroll_delay }},
+            scale: {{ module.style.section.bg.parallax_settings.image_scale }},
+            transition: "{{ module.style.section.bg.parallax_settings.scroll_effect }}",
+            orientation: "{{ module.style.section.bg.parallax_settings.image_scroll_direction }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.style.section.bg.parallax_settings.mobile %}
+      }
+    {% endunless %}
+ </script>
+{%- endmacro -%}
+
+{%- macro parallax_row_js() -%}
+<script>
+    {% unless module.style.row.bg.parallax_settings.mobile %}
+      if (window.matchMedia('(min-width: 992px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax_row_background');
+          new simpleParallax(image, {
+            delay: {{ module.style.row.bg.parallax_settings.scroll_delay }},
+            scale: {{ module.style.row.bg.parallax_settings.image_scale }},
+            transition: "{{ module.style.row.bg.parallax_settings.scroll_effect }}",
+            orientation: "{{ module.style.row.bg.parallax_settings.image_scroll_direction }}",
+            customWrapper: ".js-{{ name }}-parallax-row",
+          });
+    {% unless module.style.row.bg.parallax_settings.mobile %}
+      }
+    {% endunless %}
+ </script>
+{%- endmacro -%}
+

@@ -1,0 +1,278 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: false
+-->
+
+{% if module.start.num_cols == '1' %}
+  {% set col_size_1 = "col-lg-12" %}
+{% endif %}
+
+{% if module.start.num_cols == '2' %}
+  {% if module.start.two_col_arrangement == "opt1" %}
+    {% set col_size_1 = "col-lg-6 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-6 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt2" %}
+    {% set col_size_1 = "col-lg-4 col-md-4 col-sm-12" %}
+    {% set col_size_2 = "col-lg-8 col-md-8 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt3" %}
+    {% set col_size_1 = "col-lg-8 col-md-8 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-5 col-md-5 col-sm-12" %}
+    {% set col_size_2 = "col-lg-7 col-md-7 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt5" %}
+    {% set col_size_1 = "col-lg-7 col-md-7 col-sm-12" %}
+    {% set col_size_2 = "col-lg-5 col-md-5 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt6" %}
+    {% set col_size_1 = "col-lg-9 col-md-9 col-sm-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-3 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt7" %}
+    {% set col_size_1 = "col-lg-3 col-md-3 col-sm-12" %}
+    {% set col_size_2 = "col-lg-9 col-md-9 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt8" %}
+    {% set col_size_1 = "col-lg-10 col-md-8 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-3 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt9" %}
+    {% set col_size_1 = "col-lg-2 col-md-3 col-sm-12" %}
+    {% set col_size_2 = "col-lg-10 col-md-8 col-sm-12" %}
+  {% endif %}
+  {% if module.start.mobile_stacking %}
+    {% set col_mobile_stack_1 = "{{ module.start.stack_order_2_col.col_1_pos }}" %}
+    {% set col_mobile_stack_2 = "{{ module.start.stack_order_2_col.col_2_pos }}" %}
+  {% endif %}
+{% endif %}
+
+{% if module.start.num_cols == '3' %}
+  {% if module.start.three_col_arrangement == "opt1" %}
+    {% set col_size_1 = "col-lg-4 col-md-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-12" %}
+    {% set col_size_3 = "col-lg-4 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt2" %}
+    {% set col_size_1 = "col-lg-6 col-md-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-12" %}
+    {% set col_size_3 = "col-lg-3 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt3" %}
+    {% set col_size_1 = "col-lg-3 col-md-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-12" %}
+    {% set col_size_3 = "col-lg-6 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-3 col-md-12" %}
+    {% set col_size_2 = "col-lg-6 col-md-12" %}
+    {% set col_size_3 = "col-lg-3 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt5" %}
+    {% set col_size_1 = "col-lg-8 col-md-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt6" %}
+    {% set col_size_1 = "col-lg-2 col-md-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-12" %}
+    {% set col_size_3 = "col-lg-8 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt7" %}
+    {% set col_size_1 = "col-lg-2 col-md-12" %}
+    {% set col_size_2 = "col-lg-8 col-md-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt8" %}
+    {% set col_size_1 = "col-lg-6 col-md-5 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-3 col-sm-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt9" %}
+    {% set col_size_1 = "col-lg-2 col-md-3 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-6 col-md-5 col-sm-12" %}
+  {% endif %}
+  {% if module.start.mobile_stacking %}
+    {% set col_mobile_stack_1 = "{{ module.start.stack_order_3_col.col_1_pos }}" %}
+    {% set col_mobile_stack_2 = "{{ module.start.stack_order_3_col.col_2_pos }}" %}
+    {% set col_mobile_stack_3 = "{{ module.start.stack_order_3_col.col_3_pos }}" %}
+  {% endif %}
+{% endif %}
+
+{% if module.start.num_cols == '4' %}
+  {% if module.start.four_col_arrangement == "opt1" %}
+    {% set col_size_1 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_4 = "col-lg-3 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt2" %}
+    {% set col_size_1 = "col-lg-6 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_4 = "col-lg-2 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt3" %}
+    {% set col_size_1 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_4 = "col-lg-6 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-5 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_4 = "col-lg-2 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt5" %}
+    {% set col_size_1 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_4 = "col-lg-5 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt6" %}
+    {% set col_size_1 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-1 col-sm-12" %}
+    {% set col_size_4 = "col-lg-2 col-md-1 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt7" %}
+    {% set col_size_1 = "col-lg-2 col-md-1 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-2 col-sm-12" %}
+    {% set col_size_3 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_4 = "col-lg-4 col-md-5 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt8" %}
+    {% set col_size_1 = "col-lg-2 col-md-1 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_3 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_4 = "col-lg-2 col-md-1 col-sm-12" %}
+  {% endif %}
+  {% if module.start.mobile_stacking %}
+    {% set col_mobile_stack_1 = "{{ module.start.stack_order_4_col.col_1_pos }}" %}
+    {% set col_mobile_stack_2 = "{{ module.start.stack_order_4_col.col_2_pos }}" %}
+    {% set col_mobile_stack_3 = "{{ module.start.stack_order_4_col.col_3_pos }}" %}
+    {% set col_mobile_stack_4 = "{{ module.start.stack_order_4_col.col_4_pos }}" %}
+  {% endif %}
+{% endif %}
+
+{% if module.start.num_cols == '5' %} 
+  {% if module.start.five_col_arrangement == "opt1" %}
+    {% set col_size_1 = "col-md col-sm-12" %}
+    {% set col_size_2 = "col-md col-sm-12" %}
+    {% set col_size_3 = "col-md col-sm-12" %}
+    {% set col_size_4 = "col-md col-sm-12" %}
+    {% set col_size_5 = "col-md col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt2" %}
+    {% set col_size_1 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_5 = "col-lg-2 col-md-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt3" %}
+    {% set col_size_1 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_size_5 = "col-lg-3 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-5 col-md-7 col-sm-12" %}
+    {% set col_size_2 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_3 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_5 = "col-lg-1 col-md-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt5" %}
+    {% set col_size_1 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_2 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-4 col-md-5 col-sm-12" %}
+    {% set col_size_5 = "col-lg-5 col-md-7 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt6" %}
+    {% set col_size_1 = "col-lg-6 col-md-7 col-sm-12" %}
+    {% set col_size_2 = "col-lg-3 col-md-5 col-sm-12" %}
+    {% set col_size_3 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_5 = "col-lg-1 col-md-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt7" %}
+    {% set col_size_1 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_2 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-3 col-md-5 col-sm-12" %}
+    {% set col_size_5 = "col-lg-6 col-md-7 col-sm-12" %}
+  {% endif %}
+  {% if module.start.five_col_arrangement == "opt8" %}
+    {% set col_size_1 = "col-lg-7 col-md-8 col-sm-12" %}
+    {% set col_size_2 = "col-lg-2 col-md-4 col-sm-12" %}
+    {% set col_size_3 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_4 = "col-lg-1 col-md-4 col-sm-12" %}
+    {% set col_size_5 = "col-lg-1 col-md-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.mobile_stacking %}
+    {% set col_mobile_stack_1 = "{{ module.start.stack_order_5_col.col_1_pos }}" %}
+    {% set col_mobile_stack_2 = "{{ module.start.stack_order_5_col.col_2_pos }}" %}
+    {% set col_mobile_stack_3 = "{{ module.start.stack_order_5_col.col_3_pos }}" %}
+    {% set col_mobile_stack_4 = "{{ module.start.stack_order_5_col.col_4_pos }}" %}
+    {% set col_mobile_stack_5 = "{{ module.start.stack_order_5_col.col_5_pos }}" %}
+  {% endif %}
+{% endif %}
+
+{% if module.start.num_cols == '6' %} 
+  {% if module.start.six_col_arrangement == "opt1" %}
+    {% set col_size_1 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_2 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_3 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_4 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_5 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_6 = "col-lg-2 col-md-4 col-sm-6" %}
+  {% endif %}
+  {% if module.start.six_col_arrangement == "opt2" %}
+    {% set col_size_1 = "col-lg-4 col-md-4 col-sm-6" %}
+    {% set col_size_2 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_3 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_4 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_5 = "col-lg-1 col-md-4 col-sm-6" %}
+    {% set col_size_6 = "col-lg-1 col-md-4 col-sm-6" %}
+  {% endif %}
+  {% if module.start.six_col_arrangement == "opt3" %}
+    {% set col_size_1 = "col-lg-1 col-md-4 col-sm-6" %}
+    {% set col_size_2 = "col-lg-1 col-md-4 col-sm-6" %}
+    {% set col_size_3 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_4 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_5 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_6 = "col-lg-4 col-md-4 col-sm-6" %}
+  {% endif %}
+  {% if module.start.six_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-6 col-md-8 col-sm-6" %}
+    {% set col_size_2 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_3 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_4 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_5 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_6 = "col-lg-1 col-md-3 col-sm-6" %}
+  {% endif %}
+  {% if module.start.six_col_arrangement == "opt4" %}
+    {% set col_size_1 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_2 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_3 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_4 = "col-lg-1 col-md-3 col-sm-6" %}
+    {% set col_size_5 = "col-lg-2 col-md-4 col-sm-6" %}
+    {% set col_size_6 = "col-lg-6 col-md-8 col-sm-6" %}
+  {% endif %}
+  {% if module.start.mobile_stacking %}
+    {% set col_mobile_stack_1 = "{{ module.start.stack_order_6_col.col_1_pos }}" %}
+    {% set col_mobile_stack_2 = "{{ module.start.stack_order_6_col.col_2_pos }}" %}
+    {% set col_mobile_stack_3 = "{{ module.start.stack_order_6_col.col_3_pos }}" %}
+    {% set col_mobile_stack_4 = "{{ module.start.stack_order_6_col.col_4_pos }}" %}
+    {% set col_mobile_stack_5 = "{{ module.start.stack_order_6_col.col_5_pos }}" %}
+    {% set col_mobile_stack_6 = "{{ module.start.stack_order_6_col.col_6_pos }}" %}
+  {% endif %}
+{% endif %}

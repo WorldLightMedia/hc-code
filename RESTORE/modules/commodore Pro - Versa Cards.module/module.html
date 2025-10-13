@@ -1,0 +1,845 @@
+{# 
+ NAME: VERSA CARDS
+ MODULE VERSION: 1.0.01
+ LAST UPDATED: 2/21/24
+ REMINDER: You Rock!
+#}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+
+{# HERE WE FIND NUMBER OF COLUMNS #}
+{% set num_cols = module.start.num_cards_per_row %}
+{% if module.event_card|length < module.start.num_cards_per_row %}
+  {% set num_cols = module.event_card|length %}
+{% endif %}
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation-repeater.css" as style -%}
+
+
+
+{# HERE ARE THE MACROS AND NECCESARY IMPORTS FOR DISPLAYING THE DIFFERENT CARD STYLES #}
+
+{# FLEXI CARDS #}
+{% if module.start.card_style == "flexi" %}
+  
+  {% macro display_flexi_card(item, size) %}
+    <div class="filter-card {{ size }}" {% if module.start.add_filter %}id="{{ name }}_{{ loop.index }}{% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}"{% endif %}>
+      {% if module.start.load_opt == "pagination" or module.start.load_opt == "load_more" %}<div class="item-page" id=""></div>{% endif %}
+      {% if item.link_opt.choice != 'none' %}            
+          {% set href1 = item.link_opt.url.url.href %}
+          {% if item.link_opt.url.url.type is equalto "EMAIL_ADDRESS" %}
+            {% set href1 = "mailto:" + href1 %}
+          {% endif %}
+          <a class="flexi-card-outer c-hover-scale" href="{% if item.link_opt.choice == 'anchor' %}{{ item.link_opt.anchor }}{% else %}{{ href1 }}{% endif %}"
+            {% if item.link_opt.url.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.link_opt.url.rel %}rel="{{ item.link_opt.url.rel }}"{% endif %}
+            >
+         {% endif %}
+          <div class="c-card">
+           {% if item.photo.src %}
+              {% set sizeAttrs = 'width="{{ item.photo.width }}" height="{{ item.photo.height }}"' %}
+              {% if item.photo.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.photo.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.photo.max_width }}px; max-height: {{ item.photo.max_height }}px"' %}
+              {% endif %}
+               {% set loadingAttr = item.photo.loading != 'disabled' ? 'loading="{{ item.photo.loading }}"' : '' %}
+              <img class="c-dblock c-m-auto" src="{{ item.photo.src }}" alt="{{ item.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+            {% if item.rich_text %}
+              <div class="c-card-content">
+                {% inline_rich_text field="rich_text" value="{{ item.rich_text }}" %}
+
+                {% if item.link_opt.choice == 'anchor' %}
+                  <i class="fas fa-chevron-down hhs-arrow-down "></i>
+                {% endif %}
+                {% if module.start.filter.show_tags and module.start.add_filter %}
+                <div class="tags">
+                  {% for class in item.filter_classes %}
+                    <div class="tag">
+                      <p>{{ class.filter_class }}</p>
+                    </div>
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </div>
+            {% endif %}
+            
+            
+          </div>
+        {% if item.link_opt.choice != 'none' %}</a>{% endif %}
+      </div>
+  {% endmacro %}
+{% endif %}
+
+
+
+{# TEAM PROFILE CARDS #}
+{% if module.start.card_style == "team_profile" %}
+
+  {% macro display_team_profile_card(item, size) %}
+    <div class="c-card-mod {{ size }} flex-col filter-card" {% if module.start.add_filter %}id="{{ name }}_{{ loop.index }}{% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}"{% endif %}>
+      {% if module.start.load_opt == "pagination" or module.start.load_opt == "load_more" %}<div class="item-page" id=""></div>{% endif %}
+      <div class="c-card">
+        
+        {% set href = item.link.url.href %}
+        {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        
+        {% if item.photo.src %}
+        {% if item.action_card_clicked == "link" %}<a href="{{ href }}"{% if item.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.link.rel %}rel="{{ item.link.rel }}"{% endif %}>{% endif %}
+        {% if item.action_card_clicked == "popup" %}<a href="#tmp{{ loop.index }}_{{ name }}" rel="modal:open" class="btn-pop">{% endif %}
+        {% if item.photo.src %}
+        {% set sizeAttrs = 'width="{{ item.photo.width }}" height="{{ item.photo.height }}"' %}
+        {% if item.photo.size_type == 'auto' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif item.photo.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.photo.max_width }}px; max-height: {{ item.photo.max_height }}px"' %}
+        {% endif %}
+        {% set loadingAttr = item.photo.loading != 'disabled' ? 'loading="{{ item.photo.loading }}"' : '' %}
+        <img class="wow fadeIn" src="{{ item.photo.src }}" alt="{{ item.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        {% if item.action_card_clicked == "popup" or item.action_card_clicked == "link" %}</a>{% endif %}
+        {% endif %}
+        <div class="c-card-content" {% if item.social.show_mail or item.show_social %}style="padding-bottom: calc({{ module.style.profile_cards.card_text_padding }} * 3px);"{% endif %}>   
+            {% if item.rich_text_bio %}
+              {% inline_rich_text field="rich_text_bio" value="{{ item.rich_text_bio }}" %}
+            {% endif %}
+            {% if item.show_social %}
+              <div class="c-social-team-con">
+                {% if item.social.mail %}
+                <a href="mailto:{{ item.social.mail }}" target="blank" rel="noreferrer"><i class="far fa-paper-plane"><span class="hidden">Email</span></i></a>
+                {% endif %}
+                {% if item.social.phone_number %}
+                <a href="tel:{{ item.social.phone_number }}" target="blank" rel="noreferrer"><i class="fas fa-phone"><span class="hidden">Phone</span></i></a>
+                {% endif %}
+                {% if item.social.linkedin_url %} 
+                <a href="{{ item.social.linkedin_url }}" target="blank" rel="noreferrer"><i class="fab fa-linkedin-in"><span class="hidden">Linkedin</span></i></a>
+                {% endif %}
+                {% if item.social.facebook_url %}
+                <a href="{{ item.social.facebook_url }}" target="blank" rel="noreferrer"><i class="fab fa-facebook-f"><span class="hidden">Facebook</span></i></a>
+                {% endif %}
+                {% if item.social.tiktok_url %}
+                <a href="{{ item.social.tiktok_url }}" target="blank" rel="noreferrer"><i class="fa-brands fa-tiktok"><span class="hidden">Tiktok</span></i></a>
+                {% endif %}
+                {% if item.social.twitter_url %}
+                <a href="{{ item.social.twitter_url }}" target="blank" rel="noreferrer"><i class="fab fa-x-twitter"><span class="hidden">Twitter</span></i></a>
+                {% endif %}
+                {% if item.social.instagram_url %}
+                <a href="{{ item.social.instagram_url }}" target="blank" rel="noreferrer"><i class="fab fa-instagram"><span class="hidden">Instagram</span></i></a>
+                {% endif %}
+                {% if item.social.youtube_url %}
+                <a href="{{ item.social.youtube_url }}" target="blank" rel="noreferrer"><i class="fab fa-youtube"><span class="hidden">YouTube</span></i></a>
+                {% endif %}
+                {% if item.social.medium_url %}
+                <a href="{{ item.social.medium_url }}" target="blank" rel="noreferrer"><i class="fab fa-medium-m"><span class="hidden">Medium</span></i></a>
+                {% endif %}
+              </div>
+              {% endif %}
+          </div>
+        </div>
+     </div>
+        
+    <div class="hhs-pop">
+      <div id="tmp{{ loop.index }}_{{ name }}" class="hhs-pop hhs-modal" style="display: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              {% inline_rich_text field="pop_up_content" value="{{ item.pop_up_content }}" %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endmacro %}
+{% endif %}
+        
+        
+{# TESTIMONIAL CARDS #}
+{% if module.start.card_style == "testimonial" %}
+        
+  {% macro display_testimonial_card(item, size) %}
+    <div class="{{ break }} filter-card" {% if module.start.add_filter %}id="{{ name }}_{{ loop.index }}{% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}"{% endif %}>
+      {% if module.start.load_opt == "pagination" or module.start.load_opt == "load_more" %}<div class="item-page" id=""></div>{% endif %}
+      <div class="c-card">
+        
+        {% set href = item.add_link.url.href %}
+        {% if item.add_link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        
+        {% if item.photo.src %}
+        {% if item.card_link %}<a href="{{ href }}" {% if item.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}
+        {% if item.photo.src %}
+        {% set sizeAttrs = 'width="{{ item.photo.width }}" height="{{ item.photo.height }}"' %}
+        {% if item.photo.size_type == 'auto' %}
+        {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+        {% elif item.photo.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ item.photo.max_width }}" height="{{ item.photo.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = item.photo.loading != 'disabled' ? 'loading="{{ item.photo.loading }}"' : '' %}
+        <img src="{{ item.photo.src }}" alt="{{ item.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+        {% if item.card_link %}</a>{% endif %}
+        {% endif %}
+        <div class="c-card-content">
+          <blockquote>{{ item.quote }}</blockquote>
+          <h5>{% if item.card_link %}<a href="{{ href }}" {% if item.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}{{ item.full_name }}{% if item.card_link %}</a>{% endif %}</h5>
+          <h6>{{ item.title }}</h6>
+          {% if item.show_stars %}
+            <div class="star-rating">
+              {% if item.star_rating == '1' %}<span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+              {% if item.star_rating == '2' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+              {% if item.star_rating == '3' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+              {% if item.star_rating == '4' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span>{% endif %}
+              {% if item.star_rating == '5' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endmacro %}
+{% endif %}
+
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      
+         {% if module.start.load_opt == "pagination" %}<div id="top-scroll"></div>{% endif %}
+      
+        {% if module.start.num_cols == '1' %}
+          {% set break = 'col-12' %}
+        {% endif %}
+        {% if module.start.num_cols == '2' %}
+          {% set break = 'col-lg-6 col-sm-12 flex-col' %}
+        {% endif %}
+        {% if module.start.num_cols == '3' %}
+          {% set break = 'col-lg-4 col-md-6 col-sm-12 flex-col' %}
+        {% endif %}
+        {% if module.start.num_cols == '4' %}
+          {% set break = 'col-lg-3 col-md-6 col-sm-12 flex-col' %}
+        {% endif %}
+        {% if module.start.num_cols == '5' %}
+          {% set break = 'col-lg-15 col-md-6 col-sm-12 flex-col' %}
+        {% endif %}
+        {% if module.start.num_cols == '6' %}
+          {% set break = 'col-lg-2 col-md-6 col-sm-12 flex-col' %}
+        {% endif %}
+      
+      
+        {# HERE WE SET WHAT CARDS SHOULD BE DISPLAYED #}
+        {% if module.start.card_style == "flexi" %}
+          {% set cards = module.flexi_cards %}
+        {% elif module.start.card_style == "team_profile" %}
+          {% set cards = module.profile_cards %}
+        {% elif module.start.card_style == "testimonial" %}
+          {% set cards = module.testimonial_cards %}
+        {% endif %}
+      
+        <div class="filter-row {{ module.style.filter.align }}">
+          {% if module.start.add_search %}
+            <div class="search-bar">
+              <input type="text" placeholder="{{ module.start.search_placeholder }}">
+            </div>
+          {% endif %}
+          {% if module.start.add_filter %}
+            <div class="filter-layout-container">
+                <div class="filter-container">
+                  <div class="filter-label">
+                    {{ module.start.filter.filter_label }}
+                  </div>
+
+                  <div class="select-container">
+                    <form class="filters">
+                      <select class="select">
+                        <option value="">{{ module.start.filter.all_label }}</option>
+                      </select>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        
+
+        {# HERE WE ACTUALLY DISPLAY THE CARDS BY USING THE CORRECT MACRO #}
+        <div class="portfolio-grid animate__animated animate__delay-05s animate__fadeIn" style="display: flex;">
+          {% for card in cards %}
+            {% if module.start.card_style == "flexi" %}
+              {{ display_flexi_card(card, break) }}
+            {% elif module.start.card_style == "team_profile" %}
+              {{ display_team_profile_card(card, break) }}
+            {% elif module.start.card_style == "testimonial" %}
+              {{ display_testimonial_card(card, break) }}
+            {% endif %}
+          {% endfor%}
+        </div>
+      
+        {% if module.start.add_search %}
+          <div class="no-results-text" style="display: none">
+            {{ module.start.no_results_text }}
+          </div>
+        {% endif %}
+        
+      {% if module.start.load_opt == "pagination" %}
+        <div class="pages"></div>
+      {% endif %}
+      {% if module.start.load_opt == "load_more" %}
+        <div class="load-more-row">
+          <div class="load-more-btn {{ module.style.load_more_btn_style.btn_style }}">{{ module.start.load_more.btn_text }}</div>
+        </div>
+      {% endif %}
+      {% if module.start.load_opt == "scroll-load" %}
+        <div class="scroll-trigger"></div>
+      {% endif %}
+      
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    /* CUSTOM GRID CLASS */
+    @media (min-width: 992px) {
+      .col-lg-15 {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+      }
+    }
+    {{ style.foundation_style() }}
+    {% if module.start.card_style == "flexi" %}
+      .c-card {
+        background: {{ css_color(module.style.flexi_card.bg_color) }};
+        padding: {{ module.style.flexi_card.card_padding }}px;
+        {% if module.style.flexi_card.corner_radius %}
+          -webkit-border-radius: {{ module.style.flexi_card.corner_radius }}px;
+          border-radius: {{ module.style.flexi_card.corner_radius }}px;
+        {% endif %}
+        {% if module.style.flexi_card.add_shadow %}
+          -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+          box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        {% endif %}
+      }
+      {% if module.style.flexi_card.corner_radius %}
+        .c-card img {
+          -webkit-border-radius: {{ module.style.flexi_card.corner_radius }}px {{ module.style.flexi_card.corner_radius }}px 0 0;
+          border-radius: {{ module.style.flexi_card.corner_radius }}px {{ module.style.flexi_card.corner_radius }}px 0 0;  
+        }
+      {% endif %}
+      .c-card-content {
+        padding: {{ module.style.flexi_card.card_text_padding }}px;
+      }
+      {# IMAGE #}
+      {%- if module.style.flexi_card.photo_full -%}
+        .c-card img {
+          width: 100%; 
+        }
+      {%- endif -%}
+    {% endif %}
+    {# TEAM PROFILE CARDS CSS #}
+    {%- if module.start.card_style == "team_profile" -%}
+      .c-card {
+        background: {{ css_color(module.style.profile_cards.bg_color) }};
+        padding: {{ module.style.profile_cards.card_padding }}px;
+        {% if module.style.profile_cards.corner_radius %}
+          -webkit-border-radius: {{ module.style.profile_cards.corner_radius }}px;
+          border-radius: {{ module.style.profile_cards.corner_radius }}px;
+        {% endif %}
+        {% if module.style.profile_cards.add_shadow %}
+          -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+          box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        {% endif %}
+        margin-bottom: 0px !important;
+      }
+      
+      {% if module.style.profile_cards.corner_radius %}
+        .c-card img {
+          -webkit-border-radius: {{ module.style.profile_cards.corner_radius }}px {{ module.style.profile_cards.corner_radius }}px 0 0;
+          border-radius: {{ module.style.flexi_card.profile_cards }}px {{ module.style.profile_cards.corner_radius }}px 0 0;  
+        }
+      {% endif %}
+      .c-card-content {
+        padding: {{ module.style.profile_cards.card_text_padding }}px;
+        text-align: {{ module.style.profile_cards.text_align }};
+      }
+      {% if module.style.profile_cards.card_text_padding <= 10 %}
+        .c-social-team-con {
+          position: static;
+          display: inline-flex;
+        }
+      {% else %}
+        .c-social-team-con {
+          position: absolute;
+          bottom: 25px;
+          display: block;
+          {% if module.style.profile_cards.text_align == 'center' %}
+            left: 50%;
+            right: 0;
+            margin-left: -50%;
+          {% elif module.style.profile_cards.text_align == 'left' %}
+            display: inline-flex;
+          {% elif module.style.profile_cards.text_align == 'right' %}
+            right: {{ module.style.profile_cards.card_text_padding }}px;
+          {% endif %}
+        }
+      {% endif %}
+      {% if module.style.profile_cards.add_custom_font %}
+        .c-card h4, .c-card h4 a {
+          {{ module.style.profile_cards.name_font.css }}
+        }
+        .c-card h5 {
+          {{ module.style.profile_cards.title_font.css }}
+        }
+        .c-card p {
+          {{ module.style.profile_cards.bio_font.css }}
+        }
+        .c-social-team-con i {
+          {{ css_color(module.style.profile_cards.icon_color) }}
+        }
+      {% endif %}
+      {% if module.style.profile_cards.photo_full %}
+        .c-card img {
+          width: 100%; 
+        }
+      {% endif %}
+      {% if module.style.profile_cards.center_cards %}
+        .row {
+          justify-content: center;
+        }
+      {% endif %}
+    {% endif %}
+    {% if module.start.card_style == "testimonial" %}
+      .c-card {
+        background: {{ css_color(module.style.testimonial_style.bg_color) }};
+        padding: {{ module.style.testimonial_style.card_padding }}px;
+        {% if module.style.testimonial_style.corner_radius %}
+          -webkit-border-radius: {{ module.style.testimonial_style.corner_radius }}px;
+          border-radius: {{ module.style.testimonial_style.corner_radius }}px;
+        {% endif %}
+        {% if module.style.testimonial_style.add_shadow %}
+          -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+          box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        {% endif %}
+      }
+      .c-card-content {
+        padding: {{ module.style.testimonial_style.card_text_padding }}px;
+        text-align: {{ module.style.testimonial_style.text_align }};
+      }
+      .star-rating {
+        justify-content: {{ module.style.testimonial_style.text_align }};  
+        display: flex;
+      }
+      {% if module.style.testimonial_style.add_custom_font %}
+        .c-card h5, .c-card h5 a {
+          {{ module.style.testimonial_style.name_font.css }}
+        }
+        .c-card h6 {
+          {{ module.style.testimonial_style.title_font.css }}
+        }
+        .c-card blockquote {
+          {{ module.style.testimonial_style.quote_font.css }}
+        }
+      {% endif %}
+        .c-card img {
+          {% if module.style.testimonial_style.photo_full %}
+            width: 100%; 
+          {% endif %}
+          {% if module.style.testimonial_style.photo_full == 'false' and module.style.testimonial_style.circle == 'true' %}
+            -webkit-border-radius: 100%;
+            border-radius: 100%;
+          {% endif %}
+          text-align: center;
+          display: block;
+          margin: 0 auto {{ module.style.testimonial_style.card_padding }}px;
+      }
+      {# STAR RATING #}
+      .star-rating .star-solid {
+        color: #f1a604;
+      }
+      .star-rating .star-outline {
+        color: #ccc;
+      }
+    {% endif %}
+    {%- if module.start.add_filter -%}
+      .filter-container {
+        position: relative;
+        display: flex;
+        width: fit-content;
+        margin-left: 15px;
+        margin-bottom: 0px;
+      }
+      .filter-label {
+        {{ module.style.filter.filter_label_font.css }}
+        display: flex;
+        align-items: center;
+      }
+      .filters {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        {{ module.style.filter.dropdown_border.css }}
+      }
+      .filters:after {
+        content:'';
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: rgba({{ module.style.filter.dropdown_arrow.color|convert_rgb }}, {{ module.style.filter.dropdown_arrow.opacity * 0.01 }}) transparent transparent transparent;
+      }
+      .select {
+        {{ module.style.filter.select_filter_font.css }}
+        min-width: 150px;
+        border: none;
+        border-radius: 0px !important;
+        cursor: pointer;
+        background: none;
+      }
+      .select option {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 15px !important;
+        padding-right: 30px !important;
+        font-size: 20px;
+        position: relative;
+      }
+      .select-container {
+        position: relative;
+        padding-left: 20px;
+      }
+      .filter-layout-container {
+        width: 100%;
+      }
+    {%- endif -%}
+    {% if module.start.add_search %}
+      .search-bar input {
+        {{ module.style.search_bar.border_field.css }}
+        {% if module.style.search_bar.border_radius %}
+          -webkit-border-radius:  {{ module.style.search_bar.border_radius }}px;
+          border-radius:  {{ module.style.search_bar.border_radius }}px;
+        {% endif %}
+        {% if module.style.search_bar.bg_color %}
+          background-color: {{ css_color(module.style.search_bar.bg_color) }};
+        {% endif %}
+        {% if module.style.search_bar.font_color %}
+          color: {{ css_color(module.style.search_bar.font_color) }};
+        {% endif %}
+      }
+      .no-results-text {
+        margin-top: 30px;
+        width: 100%;
+      }
+    {% endif %}
+    {% if module.start.load_opt == "pagination" %}
+      .pages {
+        width: 100%;
+        display: flex;
+        margin-top: 25px;
+        justify-content: {{ module.style.pagination_style.pagination_align }};
+        flex-wrap: nowrap;
+      }
+      .page-number {
+        font-size: {{ module.style.pagination_style.number_font_size }}px;
+        color: {{ module.style.pagination_style.number_color.color }};
+        background-color: {{ css_color(module.style.pagination_style.number_bg_color) }};        
+        {{ module.style.pagination_style.number_border.css }}
+        width: {{ 2*module.style.pagination_style.number_font_size }}px;
+        height: {{ 2*module.style.pagination_style.number_font_size }}px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        margin: 0px 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .pages-prev-nav, .pages-next-nav {
+        font-size: {{ module.style.pagination_style.number_font_size }}px;
+        color: {{ css_color( module.style.pagination_style.next_previous_color) }};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        margin: 0px 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        position: relative;
+      }
+      .pages-prev-nav::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+        border-bottom: 3px solid {{ css_color( module.style.pagination_style.next_previous_color) }};
+        border-left: 3px solid {{ css_color( module.style.pagination_style.next_previous_color) }};
+        left: -15px;
+      }
+      .pages-next-nav::before {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+        border-top: 3px solid {{ css_color( module.style.pagination_style.next_previous_color) }};
+        border-right: 3px solid {{ css_color( module.style.pagination_style.next_previous_color) }};
+        right: -15px;
+      }
+      .page-number:hover {
+        color: {{ module.style.pagination_style.number_color_hover.color }};
+        background-color: {{ css_color(module.style.pagination_style.number_bg_color_hover) }};
+        {{ module.style.pagination_style.number_border_hover.css }};
+      }
+      .on-page {
+        color: {{ module.style.pagination_style.number_color_active.color }};
+        background-color: {{ css_color(module.style.pagination_style.number_bg_color_active) }};
+        {{ module.style.pagination_style.number_border_active.css }}
+      }
+    {% endif %}
+    {% if module.start.load_opt == "load_more" %}
+      .load-more-row {
+        width: 100%;
+        display: flex;
+        justify-content: {{ module.style.load_more_btn_style.btn_align }};
+        padding: 0 15px;
+      }
+    {% endif %}
+    {% if module.start.filter.show_tags and module.start.card_style and module.start.add_filter %}
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .tag {
+      }
+      .tag p {
+        padding: 5px 10px;
+        border-radius: 20px;
+        width: fit-content;
+        margin-bottom: 0px;
+        font-size: {{ module.style.flexi_card.tags.font_size }}px;
+        background: {{ module.style.flexi_card.tags.bg_color.color }};
+        color:  {{ module.style.flexi_card.tags.text_color.color }};
+      }
+    {% endif %}
+  
+    .filter-card {
+      padding: 15px;
+      {% if module.start.row_spacing %}
+        margin-bottom: {{ module.start.row_spacing }}px;
+      {% endif %}
+      animation-delay: 0.3s;
+    }
+    .portfolio-grid {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .left {
+      justify-content: left;
+    }
+    .center {
+      justify-content: center;
+    }
+    .right {
+      justify-content: right;
+    }
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{# THIS PULLS IN THE CORE CLEAN FOUNDATION FILE #}
+{{ require_css(get_asset_url('../../css/clean-foundation.css'), { async: true }) }}
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+        
+
+        
+{# LOAD OPTIONS LOGIC #}
+{% if module.start.load_opt == "pagination" %}
+  {{ require_js(get_asset_url('../../js/pagination.js')) }}
+{% endif %}   
+{% if module.start.load_opt == "load_more" %}
+  {{ require_js(get_asset_url('../../js/load-more.js')) }}
+{% endif %}
+     
+{% if module.start.load_opt != "none" or module.start.add_filter or module.start.add_search %}
+{{ require_js(get_asset_url('../../js/isotope.js')) }}
+ 
+    
+{# FILTER LOGIC #}
+{% require_js %}
+<script>
+  function equalizeHeight_{{ name|replace("-","_") }}(className) {
+    elements = document.querySelectorAll(className);
+    maxHeight = 0;
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].offsetHeight > maxHeight) {
+        maxHeight = elements[i].offsetHeight;
+      }
+    }
+    for (var j = 0; j < elements.length; j++) {
+      if (elements[j].tagName.toLowerCase() === 'div') {
+        elements[j].style.height = maxHeight + "px";
+      }
+    }
+    return maxHeight;
+  }
+
+  {% if module.start.add_filter %}
+    // JAVASCRIPT FOR CREATING ALL THE POSSIBLE OPTIONS FOR THE FILTER
+    function createOptions_{{ name|replace("-","_") }}() {
+      const gridItems = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .filter-card');
+      let classNames = [];
+
+      gridItems.forEach(function(item) {
+        const classes = item.id.split(' ');
+        classes.splice(0, 1);
+        for (className of classes) {
+          item.className += " " + className;
+        }
+
+        classes.forEach(function(className) {
+          if (!classNames.includes(className)) {
+            classNames.push(className);
+          }
+        });
+      });
+
+      const select = document.querySelector('#hs_cos_wrapper_{{ name }} .select');
+      classNames.sort();
+      classNames.forEach(function(className) {
+        const option = document.createElement('option');
+        option.className = "{{ name }}";
+        option.value = className;
+        className = className.replace(/----/g, ' ')
+        option.textContent = className;
+
+        select.appendChild(option);
+      });
+    }
+
+    createOptions_{{ name|replace("-","_") }}()
+  {% endif %}
+  {% if module.start.add_filter or module.start.add_search %}
+    function filterCards_{{ name|replace("-","_") }}() {
+      if ($("#hs_cos_wrapper_{{ name }} .select").length > 0) {
+        var filterValue = $("#hs_cos_wrapper_{{ name }} .select").val()
+      } else {
+        var filterValue = ""
+      }
+      if ($("#hs_cos_wrapper_{{ name }} .search-bar input").length > 0) {
+        var searchText = $("#hs_cos_wrapper_{{ name }} .search-bar input").val()
+      } else {
+        var searchText = ""
+      }
+      // Custom filter function
+      items = $("#hs_cos_wrapper_{{ name }} .filter-card");
+      items.each(function () {
+        var $item = $(this);
+        if ((filterValue ? $item.attr("id").includes(filterValue): true) && $item.text().toLowerCase().includes(searchText.toLowerCase())) {
+          $item.show();
+        }
+        else {
+          $item.hide();
+        }
+      });
+      if ($("#hs_cos_wrapper_{{ name }} .filter-card").not(':hidden').toArray().length == 0) {
+        $("#hs_cos_wrapper_{{ name }} .no-results-text").show();
+      }
+      else {
+         $("#hs_cos_wrapper_{{ name }} .no-results-text").hide();
+      }
+    }
+    function filter_{{ name|replace("-","_") }}() {
+      $("#hs_cos_wrapper_{{ name }} .select").on("change", function() {
+        filterCards_{{ name|replace("-","_") }}();
+        $("#hs_cos_wrapper_{{ name }} .portfolio-grid").isotope({
+          itemSelector: '#hs_cos_wrapper_{{ name }} .filter-card',
+          layoutMode: 'fitRows'
+        });
+      });
+      $("#hs_cos_wrapper_{{ name }} .search-bar input").on("input", function() {
+        filterCards_{{ name|replace("-","_") }}();
+        $("#hs_cos_wrapper_{{ name }} .portfolio-grid").isotope({
+          itemSelector: '#hs_cos_wrapper_{{ name }} .filter-card',
+          layoutMode: 'fitRows'
+        });
+      });
+    }
+    
+    window.addEventListener('load', function() {
+      filter_{{ name|replace("-","_") }}();
+    });
+  {% endif %}
+  
+  {% if module.start.load_opt == "pagination" %}
+    pagination_{{ name|replace("-","_") }} = pagination('#hs_cos_wrapper_{{ name }} .portfolio-grid', '#hs_cos_wrapper_{{ name }} .filter-card', {{ module.start.pagination.visible_cards }}, "#hs_cos_wrapper_{{ name }} .select", "#hs_cos_wrapper_{{ name }} .search-bar input", "#hs_cos_wrapper_{{ name }} #top-scroll", "#hs_cos_wrapper_{{ name }}");
+    pagination_{{ name|replace("-","_") }}();
+  {% endif %}
+  {% if module.start.load_opt == "load_more" %}
+    loadMore_{{ name|replace("-","_") }} = loadMore('#hs_cos_wrapper_{{ name }} .portfolio-grid', '#hs_cos_wrapper_{{ name }} .filter-card', {{ module.start.load_more.cards_on_first_load }}, {{ module.start.load_more.load_num_cards }}, "#hs_cos_wrapper_{{ name }} .select", "button", "#hs_cos_wrapper_{{ name }} .search-bar input", "#hs_cos_wrapper_{{ name }}");
+    loadMore_{{ name|replace("-","_") }}();
+  {% endif %}
+  
+  // ISOTOPE JAVASCRIPT
+  window.addEventListener('load', function() {            
+    maxHeight = equalizeHeight_{{ name|replace("-","_") }}("#hs_cos_wrapper_{{ name }} .filter-card");
+    $("#hs_cos_wrapper_{{ name }} .c-card").css("height", (maxHeight-30) + "px")
+                                 
+    setTimeout(() => {
+      $("#hs_cos_wrapper_{{ name }} .portfolio-grid").isotope({
+        itemSelector: '#hs_cos_wrapper_{{ name }} .filter-card',
+        layoutMode: 'fitRows'
+      });
+    }, 100)
+  });
+  
+</script>
+{% end_require_js %}
+{% endif %}   
+

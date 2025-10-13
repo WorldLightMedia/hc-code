@@ -1,0 +1,344 @@
+{# 
+ NAME: COUNT UP (Pro)
+ MODULE VERSION: Beta 0.2
+ LAST UPDATED: 10/15/23
+ REMINDER: You Rock!
+#}
+
+{% set mod_name = name | replace("-", "_") %}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+{# HERE WE FIND NUMBER OF COLUMNS #}
+{% set num_cols = module.start.num_cols %}
+{% if module.number_cards|length < module.start.num_cols %}
+  {% set num_cols = module.number_cards|length %}
+{% endif %}
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation.css" as style -%}
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      
+      <div class="number-counter-mod">
+        <div class="number-counter-grid">
+          {% for item in module.number_cards %}
+            <div class="number-counter-card">
+              <div class="number-counter-card-inner" style="background-color: {{ css_color(item.bg_color) }}">
+                
+                {% if item.text_above %}
+                  <div class="number-counter-top-text">
+                    {% inline_rich_text field="text_above" value="{{ item.text_above }}" %}
+                  </div>
+                {% endif %}
+
+                <div class="number-counter-middle-container">
+                  {% if item.text_left %}
+                    <div class="number-counter-left-text">
+                      {% inline_text field="text_left" value="{{ item.text_left }}" %}
+                    </div>
+                  {% endif %}
+                  
+                  <div class="number-counter-counter_{{ mod_name }} {{ item.num }} {{ item.count_up_duration }} {{ item.apply_num_format }}" id="num{{ loop.index }}_{{ mod_name }}">{{ item.num }}</div>
+                  
+                  {% if item.text_right %}
+                    <div class="number-counter-right-text {{ module.style.cards.horz_align }}">
+                      {% inline_text field="text_right" value="{{ item.text_right }}" %}
+                    </div>
+                  {% endif %}
+                </div>
+                
+                {% if item.text_below %}
+                  <div class="number-counter-bottom-text">
+                    {% inline_rich_text field="text_below" value="{{ item.text_below }}" %}
+                  </div>
+                {% endif %}
+
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    {{ style.foundation_style() }}
+  
+    .number-counter-grid {
+      display: grid;
+      grid-template-columns: repeat({{ num_cols }}, 1fr);
+      grid-template-rows: repeat({{ (module.number_cards|length - 1) // num_cols + 1 }}, 1fr);
+    }
+  
+    .number-counter-card-inner {
+      align-items: {{ module.style.cards.horz_align }};
+      border-radius: {{ module.style.cards.border_radius }}px;
+      {{ module.style.cards.border.css }}
+      {{ module.style.cards.card_spacing.desktop.css }}
+      {{ module.style.cards.fonts.num_font.css }}
+    }
+  
+    .number-counter-counter_{{ mod_name }} {
+      align-items: center;
+      text-align: center;
+      display: flex;
+      justify-content: {{ module.style.cards.horz_align }};
+    }
+
+    .number-counter-left-text {
+      {{ module.style.cards.fonts.text_left_font.css }}
+    }
+    .number-counter-right-text {
+      {{ module.style.cards.fonts.text_right_font.css }}
+    }
+
+  
+    @media screen and (max-width: 922px) {
+      .number-counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        
+        {%- if num_cols < 2 -%}
+          grid-template-columns: repeat(1, 1fr);
+        {%- endif -%}
+      }
+      .number-counter-card-inner {
+        {{ module.style.cards.card_spacing.tablet.css }}
+      }
+    }
+  
+    @media screen and (max-width: 575px) {
+      .number-counter-grid {
+        grid-template-columns: 1fr;
+      }
+      .number-counter-card-inner {
+        {{ module.style.cards.card_spacing.mobile.css }}
+      }
+    }
+
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{# THIS PULLS IN THE CORE CLEAN FOUNDATION FILE #}
+{{ require_css(get_asset_url('../../css/clean-foundation.css'), { async: true }) }}
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+
+
+{{ require_js(get_asset_url('../../js/number-count-up.js')) }}
+
+
+{% require_js %}
+<script defer>
+  
+  function formatNumber(num, decimals, separator, decimalSign) {
+    // Remove the thousand separator from the number string
+    cleanNumber = num.replace(new RegExp(separator, 'g'), '');
+
+    // Convert the cleaned number string to a float
+    parsedNumber = parseFloat(cleanNumber);
+
+    // Format the parsed number with the specified decimals
+    formattedNumber = parsedNumber.toFixed(decimals);
+
+    // Replace the decimal point with the specified decimal sign
+    formattedNumber = formattedNumber.replace('.', decimalSign);
+
+    // Add the thousand separator every 3rd digit in the whole part
+    regex = /\B(?=(\d{3})+(?!\d))/g;
+    formattedNumber = formattedNumber.replace(regex, separator);
+
+    return formattedNumber;
+  }
+
+  
+  
+  document.addEventListener('DOMContentLoaded', function() {
+
+  function setSeperatorSpaces(className) {
+    numberDivs = document.querySelectorAll(className);
+    
+    for (div of numberDivs) {
+      div.textContent = formatNumber(div.textContent, {{ module.style.cards.number_format.num_decimals }}, "{{ module.style.cards.number_format.seperator_sign }}", "{{ module.style.cards.number_format.decimal_sign }}")
+    }
+  }
+
+  function setConstantWidth(className) {
+    divs = document.querySelectorAll(className);
+    maxWidth = 0;
+
+    for (const div of divs) {
+      if (div.tagName.toLowerCase() === 'div') {
+        div.style.width = 'fit-content';
+      }
+
+      originalWidth = div.offsetWidth;
+      maxWidth = Math.max(maxWidth, originalWidth);
+    }
+
+    for (div of divs) {
+      div.style.width = maxWidth + "px";
+    }
+  }
+
+  function resetTextContent_{{ mod_name }}() {
+    counters = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .number-counter-counter_{{ mod_name }}');
+
+    for (const counter of counters) {
+      num = counter.classList[1];
+      counter.textContent = num;
+    }
+  }
+
+  function equalizeHeight(className) {
+    elements = document.querySelectorAll(className);
+
+    for (element of elements) {
+      if (element.tagName.toLowerCase() === 'div') {
+        element.style.height = 'fit-content';
+      }
+    }
+
+    maxHeight = 0;
+    for (element of elements) {
+      height = element.offsetHeight;
+      maxHeight = Math.max(maxHeight, height);
+    }
+
+    for (const element of elements) {
+      if (element.tagName.toLowerCase() === 'div') {
+        element.style.height = maxHeight + "px";
+      }
+    }
+  }
+
+  function equalizeNumberCard_{{ mod_name }}() {
+
+    /*
+    counters = document.querySelectorAll("#hs_cos_wrapper_{{ name }} .number-counter-counter_{{ mod_name }}");
+    for (c of counters) {
+      c.style.width = c.offsetWidth + "px";
+    }
+    
+    setConstantWidth("#hs_cos_wrapper_{{ name }} .number-counter-card-inner");
+    */
+    
+    setSeperatorSpaces("#hs_cos_wrapper_{{ name }} .number-counter-counter_{{ mod_name }}");
+    //grid = document.querySelector("#hs_cos_wrapper_{{ name }} .number-counter-grid");
+    //grid.style.width = grid.offsetWidth + "px";                
+   
+                       
+    equalizeHeight("#hs_cos_wrapper_{{ name }} .number-counter-top-text");
+    equalizeHeight("#hs_cos_wrapper_{{ name }} .number-counter-middle-container");
+    equalizeHeight("#hs_cos_wrapper_{{ name }} .number-counter-bottom-text");
+                       
+    resetTextContent_{{ mod_name }}();
+  }
+
+  
+  equalizeNumberCard_{{ mod_name }}();
+    
+  // HERE WE CREATE THE COUNT UP ANIMATION
+  numCounters = {{ module.number_cards|length }};
+  function countUp_{{ mod_name }}() {
+    var options_{{ mod_name }}_NumFormat = {
+        useEasing : true, 
+        useGrouping : true, 
+        separator : '{{ module.style.cards.number_format.seperator_sign }}', 
+        decimal : '{{ module.style.cards.number_format.decimal_sign }}', 
+        prefix: '',
+        suffix: ''
+    };
+    var options_{{ mod_name }} = {
+        useEasing : true, 
+        useGrouping : true, 
+        separator : '', 
+        decimal : '', 
+        prefix: '',
+        suffix: ''
+    };
+    
+    counters_{{ mod_name }} = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .number-counter-counter_{{ mod_name }}');
+    for (var i=1; i < numCounters+1; i++) {
+      num = counters_{{ mod_name }}[i-1].className.split(" ")[1];
+      duration = counters_{{ mod_name }}[i-1].className.split(" ")[2];
+      
+      if (counters_{{ mod_name }}[i-1].className.split(" ")[3] == "true") {
+        var demo = new CountUp("num" + i + "_{{ mod_name }}", 0, num, {{ module.style.cards.number_format.num_decimals }}, duration, options_{{ mod_name }}_NumFormat);
+      }
+      else {
+        var demo = new CountUp("num" + i + "_{{ mod_name }}", 0, num, {{ module.style.cards.number_format.num_decimals }}, duration, options_{{ mod_name }});
+      }
+      demo.start();
+    }
+
+    var d = new Date();
+		var n = d.getMonth();
+		var f = n+1;
+		var e = 300 / 12;
+		var newtotal = e*f;
+    
+    {% if module.start.trigger_once == "true" %}
+      countUp_{{mod_name}} = true;
+    {% endif %}
+	}
+  
+  counters_{{ mod_name }} = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .number-counter-counter_{{ mod_name }}');
+	counterObs_{{ mod_name }} = new IntersectionObserver(function(entries) {
+		entries.forEach(function(entry){
+			if (entry.intersectionRatio > 0) {
+				countUp_{{mod_name}}();
+			}
+		});
+	});
+  
+	counters_{{ mod_name }}.forEach(function(e) {
+		counterObs_{{ mod_name }}.observe(e);
+	});
+  
+  });
+  
+</script>
+{% end_require_js %}
+

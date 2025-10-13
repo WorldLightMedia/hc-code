@@ -1,0 +1,11 @@
+{
+  "global" : true,
+  "content_types" : [ "BLOG_LISTING", "BLOG_POST" ],
+  "smart_type" : "NOT_SMART",
+ "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">WorldLight Media</a><br/>------------------------------<br/>\nFeedback: <a href=\"https://bit.ly/3WQK7Oq\" >Submit Ideas or Bugs</a></br>\nVersion: 0.0.3",
+  "icon" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/module-icons/icon-related-blog-posts.svg",
+  "host_template_types" : [ "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765676,
+  "label" : "Related Blog Posts (Pro)",
+  "is_available_for_new_content" : true
+}

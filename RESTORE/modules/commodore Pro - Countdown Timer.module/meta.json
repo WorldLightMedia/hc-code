@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">WorldLight Media</a><br/>------------------------------<br/>\nHow to: <a href=\"https://youtu.be/B_C1ZQN6X_o\" >Video Overview</a><br/>Feedback: <a href=\"https://hubs.ly/Q020Jcbt0\" >Submit Ideas or Bugs</a></br>\nVersion: Beta 0.0.1",
+  "icon" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/module-icons/icon-countdown-timer-1.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765675,
+  "label" : "Countdown Timer (Pro)",
+  "is_available_for_new_content" : true
+}

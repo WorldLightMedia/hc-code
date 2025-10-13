@@ -1,0 +1,501 @@
+{# 
+ NAME: Related Blog Posts
+ MODULE VERSION: 1.0.2
+ LAST UPDATED: 2/21/24
+ REMINDER: You Rock!
+#}
+
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+{# MACRO FOR FONT #}
+{% macro css_font(hubl_variable) %}
+  font-family: {{ hubl_variable.font }}; 
+  color: {{ hubl_variable.color }}; 
+  font-size: {{ hubl_variable.size }}px;
+  font-weight: {{ hubl_variable.variant }};
+{% endmacro %}
+
+{# HERE WE FIND NUMBER OF COLUMNS #}
+{% set num_cols = module.start_here.posts_per_row %}
+{% if module.start_here.num_posts < module.start_here.num_cards_per_row %}
+  {% set num_cols = module.start_here.num_posts %}
+{% endif %}
+
+{% macro display_blog_post(blog_post, post_num, tot_posts) %}
+<div class="hhs-blog-card blog-index__post blog-index__post--small">
+  <div class="hhs-blog-card-inner">
+    {% if blog_post.featured_image and module.card.feat_image.show %}  
+    <a class="blog-index__post-image blog-index__post-image--small {{ 'feat-cust-height' if module.card.feat_image.show  }}" href="{{ blog_post.absolute_url }}">
+      <img src="{{ blog_post.featured_image }}" alt="{{ blog_post.name|striptags }}" loading="lazy" />
+    </a>
+    {% endif %}
+    <div class="blog-index__post-content  blog-index__post-content--small">
+      {% if module.card.read_time.show %}
+      <p class="reading-minutes">
+        {% set initialPostWords = blog_post.post_list_content|striptags|wordcount %}
+        {% set calculatedPostWords = (initialPostWords/100) * 100 %}
+        {% set finishedPostWords = calculatedPostWords|divide(300)|round(2) %}
+        {% set number = finishedPostWords|round %}
+        {% if number < 1 %}
+
+        {% else %}
+        {{ finishedPostWords|round }}  {{ read_time }}
+        {%- endif -%}
+      </p>
+      {% endif %}
+      <h4 class="card_post_title"><a href="{{ blog_post.absolute_url }}">{{ blog_post.name }}</a></h4>
+      {# Author & Publish Date #}
+      <div class="blog-index__post-author">
+        {% if blog_post.blog_author.avatar %}
+          {% if module.card.author_pub_date.author %}<img class="blog-index__post-author-image" src="{{ blog_post.blog_author.avatar }}" width="30" loading="lazy" alt="Picture of {{ blog_post.blog_author.display_name }}">{% endif %}
+        {% endif %}
+        <span>{% if module.card.author_pub_date.author %}<a class="blog-index__post-author-name" href="{{ blog_author_url(group.id, blog_post.blog_post_author.slug) }}">{{ blog_post.blog_author.display_name }}</a>{% endif %}{{ " : " if module.card.author_pub_date.author and module.card.author_pub_date.pub_date }}{% if module.card.author_pub_date.pub_date %}<span class="pub-date">{{ blog_post.publish_date_localized }}</span>{% endif %}</span>
+      </div>
+      
+      {# End author #}
+      {# Summary #}
+      {% if module.card.summary.show %} 
+      <p>{{ blog_post.post_list_content|truncatehtml(150)|striptags }}</p>
+      {% endif %}
+      {# End Summary #}
+      {# Tags #}
+      {% if module.card.tags.show and blog_post.tag_list %} 
+      <div class="blog-index__post-tags">
+        {% for tag in blog_post.tag_list %}
+        <a class="blog-index__post-tag" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if !loop.last %}<span> </span>{% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+      {# End tags #}
+    </div>
+    {# Read more button #}
+    {% if module.card.read_more_link.show %}
+    <a class="blog-index__post-button" href="{{ blog_post.absolute_url }}">{{ module.card.read_more_link.text }}</a>
+    {% endif %}
+    {# End read more button #}
+  </div>
+</div>
+{% endmacro %}
+
+
+{% set blog_lang = html_lang %}
+
+{% if blog_lang == 'en' or blog_lang == 'en-us' %}
+  {% set read_time = 'min read' %}
+
+{% elif blog_lang == 'it' %}
+  {% set read_time = 'lecture des minutes' %}
+
+{% elif blog_lang == 'de' or blog_lang == 'de-de' %}
+  {% set read_time = 'Min. Lesezeit' %}
+
+{% elif blog_lang == 'fi' %}
+  {% set read_time = 'min luettu' %}
+
+{% elif blog_lang == 'es' %}
+  {% set read_time = 'minutos de lectura' %}
+
+{% elif blog_lang == 'fr' %}
+  {% set topic_page_title = 'Articles sur' %}
+
+{% else %}
+  {# DEFAULTS IF NO LANGUAGE SET #}
+  {% set read_time = 'min read' %}
+{% endif %}
+
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation-repeater.css" as style -%}
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+
+    
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      {% if module.start_here.lead_in_text %}
+        <div class="col-12">
+          {% inline_rich_text field="start_here.lead_in_text" value="{{ module.start_here.lead_in_text }}" %}
+        </div>
+      </div>
+      {% endif %}
+      <div id="{{ module.code.mod_id }}" class="hhs-blog-cards post-page {{ module.code.mod_class }}" style="background: rgba(0,0,0,0);">
+        {% if tag %}
+          <div class="blog-index__tag-header">
+            <h5 class="blog-index__tag-subtitle">{{ topic_page_title }}</h5>
+            <h3 class="blog-index__tag-heading">{{ page_meta.html_title|split(' | ')|last }}</h3>
+          </div>
+        {% endif %}
+        <div class="blog-posts-grid">
+          {% if module.start_here.slider %}<div class="slider-cover animate__animated animate__delay-05s animate__fadeIn">{% endif %}
+            {% set tagNames = content.tag_names %}
+            {% set tags = tagNames|join(',') %}
+            {% related_blog_posts limit={{ module.start_here.num_posts }}, tags={{ tags }}, post_formatter="display_blog_post" %}
+          {% if module.start_here.slider %}</div>{% endif %}
+        </div>
+      </div>
+      
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    {{ style.foundation_style() }}
+  
+  .hs_cos_wrapper_type_related_blog_posts {
+    display: grid;
+    grid-template-columns: repeat({{ num_cols }}, 1fr);
+  }
+  
+  .blog-recent-posts__post,
+  .hhs-blog-card-inner {
+    background-color: {{ css_color(module.card.bg_color) }};
+    
+    {% if module.style.post_cards.drop_shadow.add_shadow == "true" %}
+      box-shadow: {{ module.style.post_cards.drop_shadow.horz }}px {{ module.style.post_cards.drop_shadow.vert }}px {{ module.style.post_cards.drop_shadow.blur_radius }}px {{ module.style.post_cards.drop_shadow.spread }}px {{ css_color(module.style.post_cards.drop_shadow.shadow_color) }};
+    {% endif %}
+  }
+  
+  {# READ TIME #}
+  
+  {% if module.card.read_time.show %}
+    .hhs-blog-cards p.reading-minutes {
+      margin-bottom: 5px;
+      color: {{ css_color(module.card.read_time.color) }};
+      text-transform: uppercase;
+    }
+  {% endif %}
+  
+  
+  {# TITLE #}
+  
+  .blog-index__post-content--small h4 {
+    line-height: {{ module.card.post_title.title_line_height }}em;
+  }
+  
+  .blog-index__post-content--small h4.card_post_title a {
+    font-size: {{ module.card.post_title.title_size_desktop }}px;
+    color: {{ css_color(module.card.post_title.color) }};
+  }
+  
+  @media (max-width: 575px) {
+    .blog-index__post-content--small h4.card_post_title a {
+      font-size: {{ module.card.post_title.title_size_mobile }}px;
+    }
+  }
+  
+  {# FEATURED IMAGE #}
+  
+  {% if module.card.feat_image.show and module.card.feat_image.custom_image_height %} 
+  .feat-cust-height {
+      height: {{ module.card.feat_image.feat_image_height }}px;
+      overflow: hidden;
+    }
+    .feat-cust-height img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: center;
+    }
+  {% endif %}
+  
+  {# READ MORE LINK #}
+  
+  {% if module.card.read_more_link.show %}
+    .hhs-blog-card-inner {
+        padding-bottom: 30px;
+      }
+    a.blog-index__post-button {
+     color: {{ css_color(module.card.read_more_link.text_color) }} !imprortant;
+    }
+  {% endif %}
+  
+  {# AUTHOR & PUBLISH DATE #}
+  
+  .blog-index__post-author span {
+    font-size: {{ module.card.author_pub_date.text_size }}px;
+  }
+  
+  .blog-index__post-author {
+    display: flex;
+    align-items: center;
+  }
+  
+  {% if module.card.author_pub_date.author %}
+    .blog-index__post-author-image {
+      margin-right: 5px;
+      display: inline-block !important;
+    }
+    a.blog-index__post-author-name {
+      color: {{ css_color(module.card.author_pub_date.author_color) }};
+    }
+  {% endif %}
+  
+  {% if module.card.author_pub_date.pub_date %} 
+    .blog-index__post-author span .pub-date {
+      color: {{ css_color(module.card.author_pub_date.date_color) }};
+    }
+  {% endif %}
+  
+  {# SUMMARY #}
+  
+  {% if module.card.summary.show %} 
+    .blog-recent-posts__post p, .blog-index__post--large p, .blog-index__post--small p, .blog-index__tag-subtitle {
+      color: {{ css_color(module.card.summary.text_color) }};
+      font-size: {{ module.card.summary.text_size }}px;
+    }
+  {% endif %}
+  
+  
+  {# TAGS #}
+  
+  {% if module.card.tags.show %}
+    .hhs-blog-cards .blog-index__post-tag {
+      color: {{ css_color(module.card.tags.text_color) }};
+      background: {{ css_color(module.card.tags.bg_color) }};
+    }
+    .hhs-blog-cards .blog-index__post-tag:hover,
+    .hhs-blog-cards .blog-index__post-tag:focus{
+      color: {{ css_color(module.card.tags.text_color_hover) }};
+      background: {{ css_color(module.card.tags.bg_color_hover) }};
+    }
+  {% endif %}
+  
+  {# STYLE OPTIONS #}  
+
+  @media screen and (max-width: 1000px) {
+      .hs_cos_wrapper_type_related_blog_posts {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        
+        {% if num_cols < 2 %}
+          grid-template-columns: repeat(num_cols, 1fr);
+        {% endif %}
+      }
+    }
+  
+    @media screen and (max-width: 922px) {
+      .hs_cos_wrapper_type_related_blog_posts {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1, 1fr);
+      }
+    }
+  
+  {% if module.start_here.slider %}
+    .hs_cos_wrapper_type_related_blog_posts {
+      display: block !important;
+    }
+  
+    {# HERE WE STYLE THE SLICK SLIDER BUTTONS AND DOTS #}
+    .hhs-blog-cards button.slick-prev,
+    .hhs-blog-cards button.slick-next {
+      border-bottom: {{ module.style.slider_settings.arrow_thickness }}px solid {{ css_color(module.style.slider_settings.arrow_color) }};
+      border-left: {{ module.style.slider_settings.arrow_thickness }}px solid {{ css_color(module.style.slider_settings.arrow_color) }};
+      width: {{ module.style.slider_settings.arrow_size }}px;
+      height: {{ module.style.slider_settings.arrow_size }}px;
+      
+      {%- if module.style.slider_settings.show_arrows == 'false' -%} 
+        display: none !important;
+      {%- endif -%}
+    }
+    .hhs-blog-cards .slick-dots li {
+      background-color: {{ css_color(module.style.slider_settings.dot_color) }}  
+    }
+    .hhs-blog-cards .slick-dots li.slick-active {
+      background-color: {{ css_color(module.style.slider_settings.dot_color_active) }}
+    }
+    .hhs-blog-cards .slick-dots li {
+      width: 30px;
+      height: 3px;
+      border-radius: 0;
+    }
+    .hhs-blog-cards .slick-dots li.is-selected { 
+      -webkit-transition: all 400ms ease-in-out;
+      -moz-transition: all 400ms ease-in-out;
+      -ms-transition: all 400ms ease-in-out;
+      -o-transition: all 400ms ease-in-out;
+      transition: all 400ms ease-in-out;
+    }
+    .hhs-blog-cards .slick-dots {
+      position: static;
+      margin-top: 25px;
+    }
+    .hhs-blog-cards .slick-arrow:focus{ outline: none;}
+    .hhs-blog-cards .slick-arrow:hover{ opacity:0.4;}
+    .hhs-blog-cards button.slick-prev,
+    .hhs-blog-cards button.slick-next {
+      position: absolute;
+      top: 50%;
+      margin-top: -31px;
+      border-radius: 0;
+      background: transparent;
+    }
+    .hhs-blog-cards button.slick-prev { 
+      left: -60px; 
+      transform: rotate(45deg);
+    }
+    .hhs-blog-cards button.slick-next { 
+      right: -60px; 
+      transform: rotate(-135deg);
+    }
+    .hhs-blog-cards button.slick-prev svg,
+    .hhs-blog-cards button.slick-next svg {
+      display: none; 
+    }
+  {% endif %}
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{# THIS PULLS IN THE CORE CLEAN FOUNDATION FILE #}
+{{ require_css(get_asset_url('../../css/clean-foundation.css'), { async: true }) }}
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+
+{% if module.start_here.slider %}
+  {{ require_js(get_asset_url("../../js/slick-slider-min.js")) }}
+  {{ require_css(get_asset_url('../../css/3rd-party/slick-slider.css'), { async: true }) }}
+{% endif %}
+
+{% require_js %}
+<script>
+  
+  {% if not module.start_here.slider %}    
+    posts = document.querySelectorAll("#hs_cos_wrapper_{{ name }} .hhs-blog-card");
+    if (posts.length < {{ num_cols }}) {
+      container = document.querySelector("#hs_cos_wrapper_{{ name }} .hs_cos_wrapper_type_related_blog_posts");
+      container.style.gridTemplateColumns = "repeat(" + posts.length + " , 1fr)";
+      container.style.gridTemplateRows = "repeat(" + {{ (posts.length / module.start_here.posts_per_row)|round(0, "ceil") }} + ", 1fr)";
+    }
+  {% endif %}
+ 
+  // IF SLIDER OPTION IS ACTIVATED
+  {% if module.start_here.slider %}                           
+    numSlides = 1;
+    sliderDelay = 1500;
+    autoRotate = false;
+    autoRotateSpeed = 0;
+    showDots = false;
+     
+    numSlides = {{ module.start_here.num_slides }};
+    sliderDelay = {{ module.style.slider_settings.delay }};
+    {% if module.style.slider_settings.auto_rotate %}
+      autoRotate = true;
+      autoRotateSpeed = {{ module.style.slider_settings.auto_rotate_speed }}000;
+    {% endif %}
+    {% if module.style.slider_settings.show_dots %}
+      showDots = true;
+    {% endif %}
+                            
+    function contentSlider_{{ name }}(){
+      $slider = $('#hs_cos_wrapper_{{ name }} .hs_cos_wrapper_type_related_blog_posts');
+
+      $slider.slick({
+        infinite: true,
+        adaptiveHeight: true,
+                  
+        slidesToShow: numSlides,
+        autoplay: autoRotate,
+        autoplaySpeed: autoRotateSpeed,
+        speed: sliderDelay,
+        dots: showDots,
+
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+            slidesToShow: 1,
+            arrows: false
+            }
+          }
+        ]
+
+      })
+    };
+
+    contentSlider_{{ name }}();
+    
+    function equalizeHeight_{{ name }}(className) {
+      elements = document.querySelectorAll(className);
+      // SET ALL DIVS WITH THIS CSS CLASS TO HAVE THE HEIGHT "FIT-CONTENT"
+      for (var j = 0; j < elements.length; j++) {
+        if (elements[j].tagName.toLowerCase() === 'div') {
+          elements[j].style.height = 'fit-content';
+        }
+      }
+      // FIND MAXIMUM HEIGHT AMONGST THE DIVS WITH THIS CSS CLASS
+      maxHeight = 0;
+      for (var i = 0; i < elements.length; i++) {
+        height = elements[i].offsetHeight;
+        if (height > maxHeight) {
+          maxHeight = height;
+        }
+      }
+      // SET ALL DIVS WITH THIS CSS CLASS TO HAVE THE HEIGHT OF THE TALLEST DIV WITH THIS CSS CLASS
+      for (var j = 0; j < elements.length; j++) {
+        if (elements[j].tagName.toLowerCase() === 'div') {
+          elements[j].style.height = maxHeight + "px";
+        }
+      }
+    }
+  
+    window.onload = function() {
+      equalizeHeight_{{ name }}("#hs_cos_wrapper_{{ name }} .hhs-blog-card");
+    }
+    window.addEventListener('resize', function(){
+      equalizeHeight_{{ name }}("#hs_cos_wrapper_{{ name }} .hhs-blog-card");
+    });
+   
+  
+  {% endif %}
+
+</script>
+{% end_require_js %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,543 @@
+{# 
+ NAME: VIDEO GALLERY
+ COMMODORE MODULE VERSION: 1.0
+ LAST UPDATED: 10/16/23
+ REMINDER: You Rock!
+#}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+ 
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation-repeater.css" as style -%}
+
+{% if module.start.num_vids == '1' %}
+  {% set col_size = "col-lg-12" %}
+{% elif module.start.num_vids == '2' %}
+  {% set col_size = "col-lg-6 col-md-6 col-sm-12" %}
+{% elif module.start.num_vids == '3' %}
+  {% set col_size = "col-lg-4 col-md-6 col-sm-12" %}
+{% elif module.start.num_vids == '4' %}
+  {% set col_size = "col-lg-3 col-md-6 col-sm-12" %}
+{% elif module.start.num_vids == '5' %}
+  {% set col_size = "col-lg col-md col-sm-12" %}
+{% elif module.start.num_vids == '6' %}
+  {% set col_size = "col-lg-2 col-md-4 col-sm-12" %}
+{% endif %}
+
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      
+      {% if module.start.add_filter %}
+      <div class="filter-layout-container">
+        <div class="filter-container {{ module.style.filter.align }}">
+          <div class="filter-label">
+            {{ module.start.filter.filter_label }}
+          </div>
+
+          <div class="select-container">
+            <form class="filters">
+              <select class="select">
+                <option value="*">{{ module.start.filter.all_label }}</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        
+        <div class="portfolio-grid" style="display: flex;">
+      {% endif %}
+      
+      {% for item in module.videos %}
+        <div class="{{ col_size }} c-video-card {{ 'g-0' if module.style.row.size.remove_col_gutter }}"
+             {% if module.start.add_filter %}id="{{ name }}_{{ loop.index }}{% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}"{% endif %}>
+          <div class="c-video-card-outer">
+          {% if module.start.vid_display == 'modal' %}
+            <a href="#modal_{{ loop.index }}_{{ name }}" rel="modal:open" class="btn-pop {% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}" >
+              {% if item.thumb.src %}
+                {% set sizeAttrs = 'width="{{ item.thumb.width }}" height="{{ item.thumb.height }}"' %}
+                {% if item.thumb.size_type == 'auto' %}
+                  {% set sizeAttrs = 'width="{{ item.thumb.width }}" height="{{ item.thumb.height }}" style="max-width: 100%; height: auto;"' %}
+                {% elif item.thumb.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ item.thumb.max_width }}" height="{{ item.thumb.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = item.thumb.loading != 'disabled' ? 'loading="{{ item.thumb.loading }}"' : '' %}
+                <img src="{{ item.thumb.src }}" alt="{{ item.thumb.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+              {% if module.start.play_btn %}
+                <span class="c-vid-play-btn"><span class="c-vid-play-inner"></span></span>
+              {% endif %}
+            </a>
+          <div class="hhs-pop">
+          <div id="modal_{{ loop.index }}_{{ name }}" class="hhs-pop hhs-modal vid-modal wow" style="display: none;">
+            <div class="container g-0">
+              <div class="row">
+                <div class="col-12 g-0" style="display: flex; justify-content: center;">
+                  {% if item.type == 'hubspot' %}
+                    {% if item.hs_vid.player_id %}
+                      <style>
+                        #modal_{{ loop.index }}_{{ name }} .col-12.g-0 > div {
+                          {% if item.hs_vid.size_type == "auto" %}
+                            width: {{ item.hs_vid.width }}px;
+                          {% elif item.hs_vid.size_type == "auto_custom_max" %}
+                            width: {{ item.hs_vid.max_width }}px;
+                          {% else %}
+                            width: 100vw;
+                          {% endif %}
+                        }
+                      </style>
+                      {% set max_width = item.hs_vid.size_type == 'auto_custom_max' ? item.hs_vid.max_width : item.hs_vid.width %}
+                      {% set max_height = item.hs_vid.size_type == 'auto_custom_max' ? item.hs_vid.max_height : item.hs_vid.height %}
+                      {% video_player "embed_player"
+                        player_id={{ item.hs_vid.player_id }}
+                        type={{ item.hs_vid.player_type || 'scriptV4' }}
+                        full_width={{ item.hs_vid.size_type == 'auto_full_width' }},
+                        conversion_asset={{ item.hs_vid.conversion_asset|tojson|safe }}
+                        autoplay={{ item.hs_vid.autoplay }}
+                        hidden_controls={{ item.hs_vid.hide_controls }}
+                        loop={{ item.hs_vid.loop_video }}
+                        muted={{ item.hs_vid.mute_by_default }}
+                      %}
+                    {% endif %}
+                  {% elif item.type == 'embed' %}
+                    {% if item.embed.source_type == "oembed" %}
+                      <div class="oembed_container {% if item.embed.size_type == 'auto_full_width' %} oembed_container--full-size{% endif %}" id="oembed_container-{{name}}">
+                        <div class="iframe_wrapper"
+                          data-embed-url="{{ item.embed.oembed_url }}"
+                          
+                          {% if item.embed.size_type == "exact" %}
+                            data-height="{{ item.embed.height }}"
+                            data-width="{{ item.embed.width }}"
+                          {% elif item.embed.size_type != "exact" %}
+                            data-width="{{ module.style.modal.video_size }}"
+                            data-height="auto"
+                          {% endif %}
+                          >
+                        </div>
+                      </div>
+                      {% require_js %}
+                        <script>
+                          function loadEmbedField(oembedContainer) {
+                            const iframeWrapper = oembedContainer.querySelector('.iframe_wrapper');
+                            if (!iframeWrapper) {
+                              return;
+                            }
+                            const url = iframeWrapper.dataset.embedUrl;
+                            if (!url) {
+                              return;
+                            }
+
+                            const request = new XMLHttpRequest();
+                            const requestUrl = "/_hcms/oembed?url=" + url + "&autoplay=0";
+                            request.open('GET', requestUrl, true);
+                            request.onload = function() {
+                              if (request.status >= 200 && request.status < 400) {
+                                const data = JSON.parse(request.responseText);
+
+                                const maxHeight = iframeWrapper.dataset.maxHeight !== undefined && !iframeWrapper.dataset.maxHeight ? data.height : iframeWrapper.dataset.maxHeight;
+                                const maxWidth = iframeWrapper.dataset.maxWidth !== undefined && !iframeWrapper.dataset.maxWidth ? data.width : iframeWrapper.dataset.maxWidth;
+                                const height = iframeWrapper.dataset.height !== undefined && !iframeWrapper.dataset.height ? data.height : iframeWrapper.dataset.height;
+                                const width = iframeWrapper.dataset.width !== undefined && !iframeWrapper.dataset.width ? data.width : iframeWrapper.dataset.width;
+
+                                const el = document.createElement('div');
+                                el.innerHTML = data.html;
+                                const iframe = el.firstChild;
+                                iframeWrapper.appendChild(iframe);
+
+                                if (maxHeight) {
+                                  const maxHeightStr = maxHeight.toString(10) + "px";
+                                  oembedContainer.style.maxHeight = maxHeightStr;
+                                  iframe.style.maxHeight = maxHeightStr;
+                                }
+
+                                if (maxWidth) {
+                                  const maxWidthStr = maxWidth.toString(10) + "px";
+                                  oembedContainer.style.maxWidth = maxWidthStr;
+                                  iframe.style.maxWidth = maxWidthStr;
+                                }
+
+                              } else {
+                                console.error('Server reached, error retrieving results.');
+                              }
+                            };
+                            request.onerror = function() {
+                              console.error('Could not reach the server.');
+                            };
+                            request.send();
+                          }
+                              
+                          document.addEventListener('DOMContentLoaded', function() {
+                            var oEmbedContainers = document.getElementsByClassName('oembed_container');
+                            Array.prototype.forEach.call(oEmbedContainers, loadEmbedField)
+                          });
+                        </script>
+                      {% end_require_js %}
+                    {% else %}
+                      <div id="embed_container" class="embed_container">
+                        <div class="iframe_wrapper">
+                          {{ item.embed.embed_html }}
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% elif module.start.vid_display == 'embed'  %}
+            {% if item.type == 'hubspot' %}
+                    {% if item.hs_vid.player_id %}
+                      {% set max_width = item.hs_vid.size_type == 'auto_custom_max' ? item.hs_vid.max_width : item.hs_vid.width %}
+                      {% set max_height = item.hs_vid.size_type == 'auto_custom_max' ? item.hs_vid.max_height : item.hs_vid.height %}
+                      {% video_player "embed_player"
+                        player_id={{ item.hs_vid.player_id }}
+                        type={{ item.hs_vid.player_type || 'scriptV4' }}
+                        full_width={{ item.hs_vid.size_type == 'auto_full_width' }},
+                        conversion_asset={{ item.hs_vid.conversion_asset|tojson|safe }}
+                        autoplay={{ item.hs_vid.autoplay }}
+                        hidden_controls={{ item.hs_vid.hide_controls }}
+                        loop={{ item.hs_vid.loop_video }}
+                        muted={{ item.hs_vid.mute_by_default }}
+                      %}
+                    {% endif %}
+                  {% elif item.type == 'embed' %}
+                    {% if item.embed.source_type == "oembed" %}
+                      <div class="oembed_container {% if item.embed.size_type == 'auto_full_width' %} oembed_container--full-size{% endif %}" id="oembed_container-{{name}}">
+                        <div class="iframe_wrapper"
+                          data-embed-url="{{ item.embed.oembed_url }}"
+
+                          {% if item.embed.size_type == "exact" %}
+                            data-height="{{ item.embed.height }}"
+                            data-width="{{ item.embed.width }}"
+                          {% elif item.embed.size_type != "exact" %}
+                            data-width="{{ module.style.modal.video_size }}"
+                            data-height="auto"
+                          {% endif %}
+                          >
+                        </div>
+                      </div>
+                      {% require_js %}
+                        <script>
+                          function loadEmbedField(oembedContainer) {
+                            const iframeWrapper = oembedContainer.querySelector('.iframe_wrapper');
+                            if (!iframeWrapper) {
+                              return;
+                            }
+                            const url = iframeWrapper.dataset.embedUrl;
+                            if (!url) {
+                              return;
+                            }
+                            
+                            const request = new XMLHttpRequest();
+                            const requestUrl = "/_hcms/oembed?url=" + url + "&autoplay=0";
+                            request.open('GET', requestUrl, true);
+                            request.onload = function() {
+                              if (request.status >= 200 && request.status < 400) {
+                                const data = JSON.parse(request.responseText);
+
+                                const maxHeight = iframeWrapper.dataset.maxHeight !== undefined && !iframeWrapper.dataset.maxHeight ? data.height : iframeWrapper.dataset.maxHeight;
+                                const maxWidth = iframeWrapper.dataset.maxWidth !== undefined && !iframeWrapper.dataset.maxWidth ? data.width : iframeWrapper.dataset.maxWidth;
+                                const height = iframeWrapper.dataset.height !== undefined && !iframeWrapper.dataset.height ? data.height : iframeWrapper.dataset.height;
+                                const width = iframeWrapper.dataset.width !== undefined && !iframeWrapper.dataset.width ? data.width : iframeWrapper.dataset.width;
+
+                                const el = document.createElement('div');
+                                el.innerHTML = data.html;
+                                const iframe = el.firstChild;
+                                iframeWrapper.appendChild(iframe);
+
+                                if (maxHeight) {
+                                  const maxHeightStr = maxHeight.toString(10) + "px";
+                                  oembedContainer.style.maxHeight = maxHeightStr;
+                                  iframe.style.maxHeight = maxHeightStr;
+                                }
+
+                                if (maxWidth) {
+                                  const maxWidthStr = maxWidth.toString(10) + "px";
+                                  oembedContainer.style.maxWidth = maxWidthStr;
+                                  iframe.style.maxWidth = maxWidthStr;
+                                }
+
+                              } else {
+                                console.error('Server reached, error retrieving results.');
+                              }
+                            };
+                            request.onerror = function() {
+                              console.error('Could not reach the server.');
+                            };
+                            request.send();
+                          }
+
+                          document.addEventListener('DOMContentLoaded', function() {
+                            var oEmbedContainers = document.getElementsByClassName('oembed_container');
+                            Array.prototype.forEach.call(oEmbedContainers, loadEmbedField)
+                          });
+                        </script>
+                      {% end_require_js %}
+                    {% else %}
+                      <div id="embed_container" class="embed_container">
+                        <div class="iframe_wrapper">
+                          {{ item.embed.embed_html }}
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+          {% endif %}
+          {% if item.open_text %}
+            <div class="c-vid-text" {% if item.space_above_text %}style="margin-top: {{ item.space_above_text }}px;"{% endif %}>
+              {% inline_rich_text field="open_text" value="{{ item.open_text }}" %}
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      
+      {% if module.start.add_filter %}
+        </div>
+        </div>
+      {% endif %}
+        
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {# Must sit outside of scope_css #}
+  .hhs-pop.hhs-modal.vid-modal,
+  .hhs-pop.hhs-modal.vid-modal .container {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+  }
+   .hhs-modal {
+     visibility: visible !important;
+  }
+  .oembed_container, .embed_container  {
+    max-width: 100%;
+    max-height: 80vh;
+    width: {{ module.style.modal.video_size }}px;
+  }
+  .embed_container iframe {
+    width: 100%;
+    height: 100%;
+  }
+  
+  {% scope_css %}
+    {{ style.foundation_style() }}
+  
+    .c-video-card-outer {
+      {% if module.style.video_card.bg_color %}
+        background-color: {{ css_color(module.style.video_card.bg_color) }};
+      {% endif %}
+      {% if module.style.video_card.add_dropshadow %}
+        -webkit-box-shadow: {{ module.style.video_card.drop_shadow.horizontal_length }}px {{ module.style.video_card.drop_shadow.vertical_length }}px {{ module.style.video_card.drop_shadow.blur_radius }}px {{ module.style.video_card.drop_shadow.spread }}px {{ css_color(module.style.video_card.drop_shadow.color) }};
+        box-shadow: {{ module.style.video_card.drop_shadow.horizontal_length }}px {{ module.style.video_card.drop_shadow.vertical_length }}px {{ module.style.video_card.drop_shadow.blur_radius }}px {{ module.style.video_card.drop_shadow.spread }}px {{ css_color(module.style.video_card.drop_shadow.color) }};
+      {% endif %}
+    }
+    {% if module.style.video_card.content_spacing %}
+      .c-video-card-outer .c-vid-text {
+        {{ module.style.video_card.content_spacing.css }}
+      }
+    {% endif %}
+
+    {%- if !module.style.row.size.remove_col_gutter -%}
+      .c-video-card {
+       padding: {{ module.start.col_space }}px; 
+      }
+      .c-vid-play-btn {
+        {%- if module.style.play_button.size -%}
+          width: {{ module.style.play_button.size }}px;
+          height: {{ module.style.play_button.size }}px;
+        {%- endif -%}
+        {{ module.style.play_button.border_style.css }}
+        background-color: rgba({{ module.style.play_button.bg_color.color|convert_rgb }}, {{ module.style.play_button.bg_color.opacity * 0.01 }});
+      }
+      .c-vid-play-inner {
+        border-color: transparent transparent rgba({{ module.style.play_button.arrow_color.color|convert_rgb }}, {{ module.style.play_button.arrow_color.opacity * 0.01 }}) transparent;
+      }
+    {%- endif -%}
+    {%- if module.start.add_filter -%}
+      .filter-container {
+        position: relative;
+        display: flex;
+        width: fit-contetnt;
+        margin-left: 15px;
+        margin-bottom: 0px;
+      }
+      .filter-label {
+        {{ module.style.filter.filter_label_font.css }}
+        display: flex;
+        align-items: center;
+      }
+      .filters {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        {{ module.style.filter.dropdown_border.css }}
+      }
+      .filters:after {
+        content:'';
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: rgba({{ module.style.filter.dropdown_arrow.color|convert_rgb }}, {{ module.style.filter.dropdown_arrow.opacity * 0.01 }}) transparent transparent transparent;
+      }
+      .select {
+        {{ module.style.filter.select_filter_font.css }}
+        min-width: 150px;
+        border: none;
+        border-radius: 0px !important;
+        cursor: pointer;
+        background: none;
+      }
+      .select option {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 15px !important;
+        padding-right: 30px !important;
+        font-size: 20px;
+        position: relative;
+      }
+      .select-container {
+        position: relative;
+        padding-left: 20px;
+      }
+      .filter-layout-container {
+        width: 100%;
+      }
+      .portfolio-grid {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+      }
+      .left {
+        justify-content: left;
+      }
+      .center {
+        justify-content: center;
+      }
+      .right {
+        justify-content: right;
+      }
+    {%- endif -%}
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{% require_js %}
+<script>
+  
+  
+
+</script>
+{% end_require_js %}
+
+
+{% if module.start.add_filter %}
+  {{ require_js(get_asset_url('../../js/isotope.js')) }}
+
+{% require_js %}
+<script defer id="masonry_{{ name|replace("-", "_") }}">
+  
+  // JAVASCRIPT FOR CREATING ALL THE POSSIBLE OPTIONS FOR THE FILTER
+  function createOptions_{{ name|replace("-", "_") }}() {
+    const gridItems = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .c-video-card');
+    let classNames = [];
+
+    gridItems.forEach(function(item) {
+      const classes = item.id.split(' ');
+      classes.splice(0, 1);
+      for (className of classes) {
+        item.className += " " + className;
+      }
+      
+      classes.forEach(function(className) {
+        if (!classNames.includes(className)) {
+          classNames.push(className);
+        }
+      });
+    });
+
+    const select = document.querySelector('#hs_cos_wrapper_{{ name }} .select');
+    classNames.forEach(function(className) {
+      const option = document.createElement('option');
+      option.className = "{{ name|replace("-", "_") }}";
+      option.value = '.' + className;
+      className = className.replace(/----/g, ' ')
+      option.textContent = className;
+
+      select.appendChild(option);
+    });
+  }
+
+  createOptions_{{ name|replace("-", "_") }}()
+  
+  function isotope_{{ name|replace("-", "_") }}() {
+    $grid_{{ name|replace("-", "_") }} = $('#hs_cos_wrapper_{{ name }} .portfolio-grid').isotope({
+      itemSelector: '#hs_cos_wrapper_{{ name }} .c-video-card'
+    });
+
+    $("#hs_cos_wrapper_{{ name }} .select").on("change", function() {
+      // get filter value from option value
+      var filterValue = this.value;
+      $grid_{{ name|replace("-", "_") }}.isotope({ filter: filterValue });
+    });
+  }
+
+  // ISOTOPE JAVASCRIPT
+  window.addEventListener('load', function() {
+    isotope_{{ name|replace("-", "_") }}();
+  });
+  
+</script>
+
+{% end_require_js %}
+
+
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+
+{# THIS PULLS IN THE NEEDED MODAL POP UP JAVASCRIPT #}
+{%- if module.start.vid_display == 'modal' -%}
+  {{ require_js(get_asset_url("../../js/jquery-modal-min.js")) }}
+  {{ require_css(get_asset_url("../../css/3rd-party/jquery-modal.css")) }}
+{%- endif -%}
+{% endif %}

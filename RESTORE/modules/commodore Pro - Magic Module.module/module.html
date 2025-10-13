@@ -1,0 +1,1402 @@
+{# 
+ NAME: MAGIC MODULE
+ MODULE VERSION: 1.2.4
+ LAST UPDATED: 2/29/24 
+ REMINDER: You Rock!
+#}
+
+{# THIS PULLS IN THE NEEDED ROTATING TEXT LOGIC #}
+{%- if module.start.use_rotating_text -%}
+  {{ require_js(get_asset_url("../../js/morph-text.js")) }}
+{%- endif -%}
+
+{# THIS PULLS IN THE NEEDED CSS FOR THE ACCORDION #}
+{%- if module.start.use_accordion -%}
+{{ require_css(get_asset_url("../../css/modules/mm-accordion.css")) }}
+{% require_js %}
+  <script>
+    (function($) {    
+    function accordion(el) {
+        var dropDown = $(el).closest('li').find('.c-accordion-content');
+        
+        // Check if the clicked accordion is already active
+        if ($(el).hasClass('active')) {
+            $(el).removeClass('active');
+            dropDown.stop(false, true).slideUp();
+            return; // Exit the function early
+        }
+
+        if ($("#hs_cos_wrapper_{{ name }} .keep-open").length > 0) {
+            if (!$("#hs_cos_wrapper_{{ name }} .keep-open").has(el).length > 0) {
+                $(el).closest('.c-accordion').find('.c-accordion-content').not(dropDown).slideUp();
+                $(el).closest('.c-accordion').find('a.active').removeClass('active');
+            }
+        } else {
+            $(el).closest('.c-accordion').find('.c-accordion-content').not(dropDown).slideUp();
+            $(el).closest('.c-accordion').find('a.active').removeClass('active');
+        }
+
+        $(el).addClass('active');
+        dropDown.stop(false, true).slideToggle();
+    }
+
+    function openAccordion(){
+        var idHash = window.location.hash.split('#')[1];
+        if(idHash) {
+            var dataId = $('[data-id="'+ idHash +'"]');
+            console.log(dataId);
+            dataId.click();    
+        }
+    }
+
+    $(function(){
+        openAccordion()
+    });
+
+    $('#hs_cos_wrapper_{{ name }} .c-accordion a.accordion-title').on('click', function(e) {
+        e.preventDefault();        
+        accordion(this);
+    });    
+})(jQuery);
+
+  </script>
+{% end_require_js %}
+{%- endif -%}
+
+{# MACRO FOR USING COLOR IN CSS #}
+{% macro css_color(hubl_variable) %}rgba({{ hubl_variable.color|convert_rgb }}, {{ hubl_variable.opacity * 0.01 }}){% endmacro %}
+
+{%- import "../macros/mod-foundation.html" as macros -%}
+{%- import "../../css/macros/mod-foundation.css" as style -%}
+{%- import "../macros/column-structure.html" -%}
+
+
+
+{################
+################
+################ COLUMN INNER LAYOUT MACRO 
+################
+################}
+
+{% macro column_layout(col_num) %} 
+  {%- if item.type == 'text' -%}
+  {#################### RICH TEXT ####################}
+  <div class="c-content-con 
+              c-dblock 
+              c-in-{{ loop.index }} 
+              {% if item.animation.type != 'none' %}{{ item.animation.type }} wow {% endif %}
+              {% if item.animation.type != 'none' and item.animation.delay != 'none' %}{{ item.animation.delay }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.speed != 'none' %}{{ item.animation.speed }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.reps != 'none' %}{{ item.animation.reps }} {% endif %}
+              ">
+    {% inline_rich_text field="rich_text" value="{{ item.rich_text }}" %}
+  </div>
+  {%- elif item.type == 'rotating' -%}
+  {#################### ROTATING TEXT ####################}
+  {% require_js %}
+    <script>
+      $(document).ready(function() {
+          $("#{{ name }}_js-rotating-{{ col_num }}-{{ loop.index}}").Morphext({
+              animation: "{{ item.rotate_text_animation }}",
+              separator: ",",
+              speed: {{ item.rotation_speed }}000,
+              complete: function () {
+            }
+          });
+      });
+    </script>
+  {% end_require_js %}
+  <div class="c-content-con 
+              c-in-{{ loop.index }} 
+              {{ item.simple_align }} 
+              {{ item.text_alignment }}
+              ">
+    {{ '<p>' if item.rotating_text_style == 'p' }}
+    {{ '<h1>' if item.rotating_text_style == 'h1' }}
+    {{ '<h2>' if item.rotating_text_style == 'h2' }}
+    {{ '<h3>' if item.rotating_text_style == 'h3' }}
+    {{ '<h4>' if item.rotating_text_style == 'h4' }}
+    {{ '<h5>' if item.rotating_text_style == 'h5' }}
+    {{ '<h6>' if item.rotating_text_style == 'h6' }}
+    {%- if item.rotate_begin -%}
+    <span class="rotate-begin">{{ item.rotate_begin }} </span> 
+    {%- endif -%} {{ '</br>' if item.drop_middle }}
+    <span class="rotating-text 
+                 rotate-middle 
+                " 
+          id="{{ name }}_js-rotating-{{ col_num }}-{{ loop.index}}">{{ item.rotate_middle }}</span>
+    {%- if item.rotate_end -%}
+    {{ '</br>' if item.drop_end }}
+    <span class="rotate-end 
+                 "> {{ item.rotate_end }}</span>
+    {%- endif -%}
+    {{ '</p>' if item.rotating_text_style == 'p' }}
+    {{ '</h1>' if item.rotating_text_style == 'h1' }}
+    {{ '</h2>' if item.rotating_text_style == 'h2' }}
+    {{ '</h3>' if item.rotating_text_style == 'h3' }}
+    {{ '</h4>' if item.rotating_text_style == 'h4' }}
+    {{ '</h5>' if item.rotating_text_style == 'h5' }}
+    {{ '</h6>' if item.rotating_text_style == 'h6' }}
+  </div>
+  {%- elif item.type == 'image' -%}
+  {#################### IMAGE ####################}
+  <div class="c-content-con 
+              c-in-{{ loop.index }} 
+              {{ 'c-justify-center ' if item.pos.align == 'center' }}
+              {{ 'c-justify-right ' if item.pos.align == 'right' }}
+              {{ 'c-justify-right ' if item.pos.align == 'specific' && item.pos.start_right }} 
+              {% if item.animation.type != 'none' %}{{ item.animation.type }} wow {% endif %}
+              {% if item.animation.type != 'none' and item.animation.delay != 'none' %}{{ item.animation.delay }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.speed != 'none' %}{{ item.animation.speed }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.reps != 'none' %}{{ item.animation.reps }} {% endif %}
+              "
+       {% if item.animation.type == 'rellax' %}
+       data-rellax-speed="{{ item.animation.rellax_speed }}" 
+       {% endif %}
+       >
+    {%- if item.make_link -%}
+      {% set href = item.link_opts.link.url.href %}
+      {% if item.link_opts.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+        {% if item.link_opts.link.open_in_new_tab %}target="_blank"{% endif %}
+        {% if item.link_opts.link.rel %}rel="{{ item.link_opts.link.rel }}"{% endif %}
+        >
+        {% if item.image.src %}
+          {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+          {% if item.image.size_type == 'auto' %}
+          {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
+          {% elif item.image.size_type == 'auto_custom_max' %}
+          {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+          {% endif %}
+          {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+          <img class="c-img-{{ loop.index }}" 
+             src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+        {% endif %}
+      </a>
+    {%- else -%}
+      {% if item.image.src %}
+        {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}"' %}
+        {% if item.image.size_type == 'auto' %}
+        {% set sizeAttrs = 'width="{{ item.image.width }}" height="{{ item.image.height }}" style="max-width: 100%; height: auto;"' %}
+        {% elif item.image.size_type == 'auto_custom_max' %}
+        {% set sizeAttrs = 'width="{{ item.image.max_width }}" height="{{ item.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+        {% endif %}
+        {% set loadingAttr = item.image.loading != 'disabled' ? 'loading="{{ item.image.loading }}"' : '' %}
+        <img class="c-img-{{ loop.index }}" 
+           src="{{ item.image.src }}" alt="{{ item.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+      {% endif %}
+    {%- endif -%}
+  </div>
+  {%- elif item.type == 'video' -%}
+  {#################### VIDEO ####################}
+  <div class="c-content-con 
+              c-in-{{ loop.index }} 
+              c-dblock 
+              {{ 'c-justify-center ' if item.pos.align == 'center' }}
+              {{ 'c-justify-right ' if item.pos.align == 'right' }}
+              {{ 'c-justify-right ' if item.pos.align == 'specific' && item.pos.start_right }}  
+              {% if item.animation.type != 'none' %}{{ item.animation.type }} wow {% endif %}
+              {% if item.animation.type != 'none' and item.animation.delay != 'none' %}{{ item.animation.delay }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.speed != 'none' %}{{ item.animation.speed }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.reps != 'none' %}{{ item.animation.reps }} {% endif %}
+              "
+       {% if item.animation.type == 'rellax' %}
+       data-rellax-speed="{{ item.animation.rellax_speed }}" 
+       {% endif %}
+       >
+    {% if item.video.player_id %}
+      {% set max_width = item.video.size_type == 'auto_custom_max' ? item.video.max_width : item.video.width %}
+      {% set max_height = item.video.size_type == 'auto_custom_max' ? item.video.max_height : item.video.height %}
+      {% video_player "embed_player"
+        player_id={{ item.video.player_id }}
+        type={{ item.video.player_type || 'scriptV4' }}
+        full_width={{ item.video.size_type == 'auto_full_width' }},
+        conversion_asset={{ item.video.conversion_asset|tojson|safe }}
+        autoplay={{ item.video.autoplay }}
+        hidden_controls={{ item.video.hide_controls }}
+        loop={{ item.video.loop_video }}
+        muted={{ item.video.mute_by_default }}
+      %}
+    {% endif %}
+  </div>
+  {%- elif item.type == 'icon' -%}
+  {#################### ICON ####################}
+  <div class="c-content-con 
+              c-icon-con 
+              c-in-{{ loop.index }} 
+              {{ 'c-justify-center ' if item.pos.align == 'center' }}
+              {{ 'c-justify-right ' if item.pos.align == 'right' }}
+              {{ 'c-justify-right ' if item.pos.align == 'specific' && item.pos.start_right }} 
+              {% if item.animation.type != 'none' %}{{ item.animation.type }} wow {% endif %}
+              {% if item.animation.type != 'none' and item.animation.delay != 'none' %}{{ item.animation.delay }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.speed != 'none' %}{{ item.animation.speed }} {% endif %}
+              {% if item.animation.type != 'none' and item.animation.reps != 'none' %}{{ item.animation.reps }} {% endif %}
+              "
+       {% if item.animation.type == 'rellax' %}
+       data-rellax-speed="{{ item.animation.rellax_speed }}" 
+       {% endif %}
+       >
+    <div class="c-icon-{{ loop.index }}">
+      {%- if item.make_link -%}
+        {% set href = item.link_opts.link.url.href %}
+        {% if item.link_opts.link.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+        {% endif %}
+        <a href="{{ href }}"
+          {% if item.link_opts.link.open_in_new_tab %}target="_blank"{% endif %}
+          {% if item.link_opts.link.rel %}rel="{{ item.link_opts.link.rel }}"{% endif %}
+          >
+            {% if !item.fa_pro_code %}
+            {% icon
+             name="{{ item.icon.name }}"
+             style="{{ item.icon.type }}"
+             unicode="{{ item.icon.unicode }}"
+             icon_set="{{ item.icon.icon_set }}"
+           %}
+          {% else %}
+            {{ item.fa_pro_code }}
+          {% endif %}
+        </a>
+      {%- else -%}
+      {% if !item.fa_pro_code %}
+        {% icon
+           name="{{ item.icon.name }}"
+           style="{{ item.icon.type }}"
+           unicode="{{ item.icon.unicode }}"
+           icon_set="{{ item.icon.icon_set }}"
+         %}
+      {% else %}
+        {{ item.fa_pro_code }}
+      {% endif %}
+      {%- endif -%}
+    </div>
+  </div>
+  {%- elif item.type == 'form' -%}
+  {#################### FORM ####################}
+  <div class="c-content-con 
+              c-w-100 
+              c-dblock 
+              c-in-{{ loop.index }} 
+              {{ item.simple_align }} 
+              {{ 'submit-alt' if item.submit_alt }}
+              ">
+    {% form
+         form_to_use="{{ item.form.form_id }}"
+         response_response_type="{{ item.form.response_type }}"
+         response_message="{{ item.form.message }}"
+         response_redirect_id="{{ item.form.redirect_id }}"
+         response_redirect_url="{{item.form.redirect_url}}"
+         gotowebinar_webinar_key="{{ item.form.gotowebinar_webinar_key }}"
+         notifications_are_overridden='{{ item.form.override_email_notifications }}'
+         notifications_override_email_addresses='{{ item.form.select_email_address }}'
+     %}  
+  </div>
+  {%- elif item.type == 'lottie' -%}
+  {#################### LOTTIE ANIMATION ####################}
+  {% require_js %}
+  <script defer>
+      document.addEventListener("DOMContentLoaded", function(event) {
+            bodymovin.loadAnimation({
+            container: document.getElementById('{{ name }}_lottie-container-{{ loop.index }}-{{ item.lottie_unique_id }}'),
+            path: '{{ item.lottie_embed }}',
+            renderer: 'svg', 
+            loop: true, 
+            autoplay: true,
+            name: "Lottie Animation",
+          })
+      });
+  </script>
+  {% end_require_js %}
+  <div class="c-content-con 
+              c-in-{{ loop.index }} 
+              {{ 'c-justify-center ' if item.pos.align == 'center' }}
+              {{ 'c-justify-right ' if item.pos.align == 'right' }}
+              {{ 'c-justify-right ' if item.pos.align == 'specific' && item.pos.start_right }}
+              ">
+    <div id="{{ name }}_lottie-container-{{ loop.index }}-{{ item.lottie_unique_id }}"
+         {%- if item.lottie_max_width -%}
+           style="max-width: {{ item.lottie_max_width }}px;"
+         {%- endif -%}
+         ></div>
+  </div>
+  {%- elif item.type == 'divider' -%}
+  {#################### DIVIDER ACCENT ####################}
+  <div class="c-content-con 
+              c-in-{{ loop.index }} 
+              {{ 'c-justify-center ' if item.pos.align == 'center' }}
+              {{ 'c-justify-right ' if item.pos.align == 'right' }}
+              {{ 'c-justify-right ' if item.pos.align == 'specific' && item.pos.start_right }}
+              ">
+    <div class="hhs-divider"
+         {% if item.custom_divider_color.color %}
+          style="border-color: rgba({{ item.custom_divider_color.color|convert_rgb }}, {{ item.custom_divider_color.opacity * 0.01 }});"
+         {% endif %}
+         >&nbsp;</div>
+  </div>
+  {%- elif item.type == 'cta' -%}
+  {#################### CTA AND BUTTONS ####################}
+  <div class="c-content-con 
+              c-w-100 
+              c-in-{{ loop.index }} 
+              {{ item.simple_align }} 
+              ">
+    <div class="c-cta-con 
+                ">
+      {% if item.button.type == 'cta' %}
+        {% cta guid="{{ item.button.ctas.cta_1 }}" %}
+      {% elif item.button.type == 'button' %}
+        {% set href = item.button.btn_1.link.url.href %}
+        {% if item.button.btn_1.link.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+        {% endif %}
+        <a href="{{ href }}"
+           class="{{ item.button.btn_1.style }}"
+           {% if item.button.btn_1.link.open_in_new_tab %}target="_blank"{% endif %}
+           {% if item.button.btn_1.link.rel %}rel="{{ item.button.btn_1.link.rel }}"{% endif %}
+           >
+          {{ item.button.btn_1.btn_label }}
+        </a>
+      {% elif item.button.type == 'modal' %}
+      <a href="#modal_{{ col_num }}_{{ name }}" rel="modal:open" class="{{ item.button.modal_pop_up.btn_style }} btn-pop">{{ item.button.modal_pop_up.btn_label }}</a>
+      <div class="hhs-pop">
+        <div id="modal_{{ col_num }}_{{ name }}" class="hhs-pop hhs-modal" style="display: none;">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                {% inline_rich_text field="button.modal_pop_up.modal_content" value="{{ item.button.modal_pop_up.modal_content }}" %}
+                {% if item.button.modal_pop_up.add_form %}
+                  {% form
+                     form_to_use="{{ item.button.modal_pop_up.modal_form.form_id }}"
+                     response_response_type="{{ item.button.modal_pop_up.modal_form.response_type }}"
+                     response_message="{{ item.button.modal_pop_up.modal_form.message }}"
+                     response_redirect_id="{{ item.button.modal_pop_up.modal_form.redirect_id }}"
+                     response_redirect_url="{{item.button.modal_pop_up.modal_form.redirect_url}}"
+                     gotowebinar_webinar_key="{{ item.button.modal_pop_up.modal_form.gotowebinar_webinar_key }}"
+                  %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% if item.button.num_btn_row >= '2' and item.button.type != 'modal' %}
+    <div class="c-cta-con
+                ">
+      {% if item.button.type == 'cta' %}
+      {% cta guid="{{ item.button.ctas.cta_2 }}" %}
+      {% else %}
+      {% set href = item.button.btn_2.link.url.href %}
+      {% if item.button.btn_2.link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+         class="{{ item.button.btn_2.style }}"
+         {% if item.button.btn_2.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if item.button.btn_2.link.rel %}rel="{{ item.button.btn_2.link.rel }}"{% endif %}
+         >
+        {{ item.button.btn_2.btn_label }}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if item.button.num_btn_row == '3' and item.button.type != 'modal' %}
+    <div class="c-cta-con cta-con-space
+                ">
+      {% if item.button.type == 'cta' %}
+      {% cta guid="{{ item.button.ctas.cta_3 }}" %}
+      {% else %}
+      {% set href = item.button.btn_3.link.url.href %}
+      {% if item.button.btn_3.link.url.type is equalto "EMAIL_ADDRESS" %}
+      {% set href = "mailto:" + href %}
+      {% endif %}
+      <a href="{{ href }}"
+         class="{{ item.button.btn_3.style }}"
+         {% if item.button.btn_3.link.open_in_new_tab %}target="_blank"{% endif %}
+         {% if item.button.btn_3.link.rel %}rel="{{ item.button.btn_3.link.rel }}"{% endif %}
+         >
+        {{ item.button.btn_3.btn_label }}
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  {%- elif item.type == 'accordion' -%}
+  {#################### ACCORDION ####################}
+  <div class="c-rich-text-in c-w-100 {{ "keep-open" if item.keep_open }}">
+    <div class="c-rich-text">
+      <ul class="c-accordion accordion-controls" aria-label="Accordion Control Group Buttons">
+        {% for row in item.accordions %}
+          <li>
+            <a href="#" id="accordion-control-{{ col_num }}-{{ loop.index }}"  data-id="{{ row.accordion_item_id }}"  class="accordion-title {{'active' if row.open_by_default }}" aria-controls="content-{{ col_num }}-{{ loop.index }}" aria-expanded="false">
+              {% if row.add_icon %}
+                <span class="c-acc-icon">
+                  {% icon
+                    name="{{ row.acc_icon.name }}"
+                    style="{{ row.acc_icon.type }}"
+                    unicode="{{ row.acc_icon.unicode }}"
+                    icon_set="{{ row.acc_icon.icon_set }}"
+                  %}
+                </span>
+              {% endif %}
+              <h4>{{ row.title }}</h4>
+            </a>
+            <div id="content-{{ col_num }}-{{ loop.index }}" class="c-accordion-content" {{'style="display:block;"' if row.open_by_default }} aria-hidden="true">{% inline_rich_text field="content" value="{{ row.content }}" %}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+{% endmacro %}
+
+
+<div id="{{ module.code.mod_id }}" 
+     class="clean-base 
+            {{ module.code.mod_class }} 
+            {{ 'c-fullscreen' if module.style.section.bg.full_screen_bg }} 
+            {{ 'parallax' if module.style.section.bg.add_parallax == 'true' && module.style.section.bg.type == 'image' }}
+            ">
+  {{ macros.wave_top() if module.style.section.add_wave.add_wave_top }}
+  <div class="{{ module.style.row.size.content_width }} 
+              {{ 'g-0' if module.style.row.size.add_full_bleed }}" 
+       {%- if module.style.row.size.content_width == 'custom' -%}style="max-width:{{ module.style.row.size.custom_width }}px;"{%- endif -%}>
+    <div class="row"
+         {%- if module.style.row.size.z_index -%}
+          style="z-index: {{ module.style.row.size.z_index }};"
+         {%- endif -%}
+         >
+      <div class="c-col
+                  c-1 
+                  {{ col_size_1 }} 
+                  {{ col_mobile_stack_1 }} 
+                  {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                  {% if module.col_1.animation.type != 'none' %}{{ module.col_1.animation.type }} wow {% endif %} 
+                  {% if module.col_1.animation.type != 'none' and module.col_1.animation.delay != 'none' %}{{ module.col_1.animation.delay }} {% endif %}
+                  {% if module.col_1.animation.type != 'none' and module.col_1.animation.speed != 'none' %}{{ module.col_1.animation.speed }} {% endif %}
+                  {% if module.col_1.animation.type != 'none' and module.col_1.animation.reps != 'none' %}{{ module.col_1.animation.reps }} {% endif %}
+                  "
+           {% if module.col_1.animation.type == 'rellax' %}  
+             data-rellax-speed="{{ module.col_1.animation.rellax_speed }}" 
+           {% endif %}
+           >
+        {{ '<span class="c-rel">' if !module.style.col.col_1.bg.fill_col }}
+        <div class="c-col-inner 
+                    {{ 'c-align-center' if module.style.col.col_1.extras.vert_align == 'center' }}
+                    {{ 'c-align-bottom' if module.style.col.col_1.extras.vert_align == 'bottom' }}
+                    ">
+          {% for item in module.col_1.content %}
+            {{ column_layout('col-num-1') }}
+          {% endfor %}
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_1.bg.add_overlay != 'none' and !module.style.col.col_1.bg.fill_col }}
+        </div>
+        {{ '<div class="c-overlay"></div>' if module.style.col.col_1.bg.add_overlay != 'none' and module.style.col.col_1.bg.fill_col }}
+        {{ '</span>' if !module.style.col.col_1.bg.fill_col }}
+      </div>
+      {%- if module.start.num_cols >= '2' -%}
+        <div class="c-col 
+                    c-2 
+                    {{ col_size_2 }} 
+                    {{ col_mobile_stack_2 }} 
+                    {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                    {% if module.col_2.animation.type != 'none' %}{{ module.col_2.animation.type }} wow {% endif %} 
+                    {% if module.col_2.animation.type != 'none' and module.col_2.animation.delay != 'none' %}{{ module.col_2.animation.delay }} {% endif %}
+                    {% if module.col_2.animation.type != 'none' and module.col_2.animation.speed != 'none' %}{{ module.col_2.animation.speed }} {% endif %}
+                    {% if module.col_2.animation.type != 'none' and module.col_2.animation.reps != 'none' %}{{ module.col_2.animation.reps }} {% endif %}
+                    "
+             {% if module.col_2.animation.type == 'rellax' %}  
+               data-rellax-speed="{{ module.col_2.animation.rellax_speed }}" 
+             {% endif %}
+             >
+          {{ '<span class="c-rel">' if !module.style.col.col_2.bg.fill_col }}
+          <div class="c-col-inner 
+                    {{ 'c-align-center' if module.style.col.col_2.extras.vert_align == 'center' }}
+                    {{ 'c-align-bottom' if module.style.col.col_2.extras.vert_align == 'bottom' }}
+                      ">
+            {% for item in module.col_2.content %}
+              {{ column_layout('col-num-2') }}
+            {% endfor %}
+            {{ '<div class="c-overlay"></div>' if module.style.col.col_2.bg.add_overlay != 'none' and !module.style.col.col_2.bg.fill_col }}
+          </div>
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_2.bg.add_overlay != 'none' and module.style.col.col_2.bg.fill_col }}
+          {{ '</span>' if !module.style.col.col_2.bg.fill_col }}
+        </div>
+      {%- endif -%}
+      {%- if module.start.num_cols >= '3' -%}
+        <div class="c-col 
+                    c-3 
+                    {{ col_size_3 }} 
+                    {{ col_mobile_stack_3 }} 
+                    {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                    {% if module.col_3.animation.type != 'none' %}{{ module.col_3.animation.type }} wow {% endif %} 
+                    {% if module.col_3.animation.type != 'none' and module.col_3.animation.delay != 'none' %}{{ module.col_3.animation.delay }} {% endif %}
+                    {% if module.col_3.animation.type != 'none' and module.col_3.animation.speed != 'none' %}{{ module.col_3.animation.speed }} {% endif %}
+                    {% if module.col_3.animation.type != 'none' and module.col_3.animation.reps != 'none' %}{{ module.col_3.animation.reps }} {% endif %}
+                    "
+             {% if module.col_3.animation.type == 'rellax' %}  
+               data-rellax-speed="{{ module.col_3.animation.rellax_speed }}" 
+             {% endif %}
+             >
+          {{ '<span class="c-rel">' if !module.style.col.col_3.bg.fill_col }}
+          <div class="c-col-inner 
+                      {{ 'c-align-center' if module.style.col.col_3.extras.vert_align == 'center' }}
+                      {{ 'c-align-bottom' if module.style.col.col_3.extras.vert_align == 'bottom' }}
+                      ">
+            {% for item in module.col_3.content %}
+              {{ column_layout('col-num-3') }}
+            {% endfor %}
+            {{ '<div class="c-overlay"></div>' if module.style.col.col_3.bg.add_overlay != 'none' and !module.style.col.col_3.bg.fill_col }}
+          </div>
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_3.bg.add_overlay != 'none' and module.style.col.col_3.bg.fill_col }}
+          {{ '</span>' if !module.style.col.col_3.bg.fill_col }}
+        </div>
+      {%- endif -%}
+      {%- if module.start.num_cols >= '4' -%}
+        <div class="c-col 
+                    c-4 
+                    {{ col_size_4 }} 
+                    {{ col_mobile_stack_4 }} 
+                    {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                    {% if module.col_4.animation.type != 'none' %}{{ module.col_4.animation.type }} wow {% endif %} 
+                    {% if module.col_4.animation.type != 'none' and module.col_4.animation.delay != 'none' %}{{ module.col_4.animation.delay }} {% endif %}
+                    {% if module.col_4.animation.type != 'none' and module.col_4.animation.speed != 'none' %}{{ module.col_4.animation.speed }} {% endif %}
+                    {% if module.col_4.animation.type != 'none' and module.col_4.animation.reps != 'none' %}{{ module.col_4.animation.reps }} {% endif %}
+                    "
+             {% if module.col_4.animation.type == 'rellax' %}  
+               data-rellax-speed="{{ module.col_4.animation.rellax_speed }}" 
+             {% endif %}
+             >
+          {{ '<span class="c-rel">' if !module.style.col.col_4.bg.fill_col }}
+          <div class="c-col-inner 
+                      {{ 'c-align-center' if module.style.col.col_4.extras.vert_align == 'center' }}
+                      {{ 'c-align-bottom' if module.style.col.col_4.extras.vert_align == 'bottom' }}
+                      ">
+            {% for item in module.col_4.content %}
+              {{ column_layout('col-num-4') }}
+            {% endfor %}
+            {{ '<div class="c-overlay"></div>' if module.style.col.col_4.bg.add_overlay != 'none' and !module.style.col.col_4.bg.fill_col }}
+          </div>
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_4.bg.add_overlay != 'none' and module.style.col.col_4.bg.fill_col }}
+          {{ '</span>' if !module.style.col.col_4.bg.fill_col }}
+        </div>
+      {%- endif -%}
+      {%- if module.start.num_cols >= '5' -%}
+        <div class="c-col 
+                    c-5 
+                    {{ col_size_5 }} 
+                    {{ col_mobile_stack_5 }} 
+                    {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                    {% if module.col_5.animation.type != 'none' %}{{ module.col_5.animation.type }} wow {% endif %} 
+                    {% if module.col_5.animation.type != 'none' and module.col_5.animation.delay != 'none' %}{{ module.col_5.animation.delay }} {% endif %}
+                    {% if module.col_5.animation.type != 'none' and module.col_5.animation.speed != 'none' %}{{ module.col_5.animation.speed }} {% endif %}
+                    {% if module.col_5.animation.type != 'none' and module.col_5.animation.reps != 'none' %}{{ module.col_5.animation.reps }} {% endif %}
+                    "
+             {% if module.col_5.animation.type == 'rellax' %}  
+               data-rellax-speed="{{ module.col_5.animation.rellax_speed }}" 
+             {% endif %}
+             >
+          {{ '<span class="c-rel">' if !module.style.col.col_5.bg.fill_col }}
+          <div class="c-col-inner 
+                      {{ 'c-align-center' if module.style.col.col_5.extras.vert_align == 'center' }}
+                      {{ 'c-align-bottom' if module.style.col.col_5.extras.vert_align == 'bottom' }}
+                      ">
+            {% for item in module.col_5.content %}
+              {{ column_layout('col-num-5') }}
+            {% endfor %}
+            {{ '<div class="c-overlay"></div>' if module.style.col.col_5.bg.add_overlay != 'none' and !module.style.col.col_5.bg.fill_col }}
+          </div>
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_5.bg.add_overlay != 'none' and module.style.col.col_5.bg.fill_col }}
+          {{ '</span>' if !module.style.col.col_5.bg.fill_col }}
+        </div>
+      {%- endif -%}
+      {%- if module.start.num_cols == '6' -%}
+        <div class="c-col 
+                    c-6 
+                    {{ col_size_6 }} 
+                    {{ col_mobile_stack_6 }} 
+                    {{ 'p-0' if module.style.row.size.remove_col_gutter }} 
+                    {% if module.col_6.animation.type != 'none' %}{{ module.col_6.animation.type }} wow {% endif %} 
+                    {% if module.col_6.animation.type != 'none' and module.col_6.animation.delay != 'none' %}{{ module.col_6.animation.delay }} {% endif %}
+                    {% if module.col_6.animation.type != 'none' and module.col_6.animation.speed != 'none' %}{{ module.col_6.animation.speed }} {% endif %}
+                    {% if module.col_6.animation.type != 'none' and module.col_6.animation.reps != 'none' %}{{ module.col_6.animation.reps }} {% endif %}
+                    "
+             {% if module.col_6.animation.type == 'rellax' %}  
+               data-rellax-speed="{{ module.col_6.animation.rellax_speed }}" 
+             {% endif %}
+             >
+          {{ '<span class="c-rel">' if !module.style.col.col_6.bg.fill_col }}
+          <div class="c-col-inner 
+                      {{ 'c-align-center' if module.style.col.col_6.extras.vert_align == 'center' }}
+                      {{ 'c-align-bottom' if module.style.col.col_6.extras.vert_align == 'bottom' }}
+                      ">
+            {% for item in module.col_6.content %}
+              {{ column_layout('col-num-6') }}
+            {% endfor %}
+            {{ '<div class="c-overlay"></div>' if module.style.col.col_6.bg.add_overlay != 'none' and !module.style.col.col_6.bg.fill_col }}
+          </div>
+          {{ '<div class="c-overlay"></div>' if module.style.col.col_6.bg.add_overlay != 'none' and module.style.col.col_6.bg.fill_col }}
+          {{ '</span>' if !module.style.col.col_6.bg.fill_col }}
+        </div>
+      {%- endif -%}
+      {{ macros.parallax_row() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }}
+      {{ '<div class="r-overlay"></div>' if module.style.row.bg.add_overlay != 'none' }}
+      {{ macros.video_bg_row() if module.style.row.bg.type == 'video' }} 
+    </div>
+  </div>
+  {{ macros.parallax_section() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }}
+  {{ '<div class="s-overlay"></div>' if module.style.section.bg.add_overlay != 'none' }}
+  {{ macros.wave_btm() if module.style.section.add_wave.add_wave_bottom }}
+  {{ macros.video_bg_section() if module.style.section.bg.type == 'video' }} 
+  {{ '<span class="c-scroll-down"></span>' if module.style.section.bg.full_screen_bg and module.style.section.bg.use_scroll_down }}
+  
+</div>
+
+
+
+{% require_css %}
+<style>
+  {% scope_css %}
+    {{ style.foundation_style() }}
+    {{ style.foundation_column_style() }}
+
+  {# Column 1 #}
+    {% for item in module.col_1.content %}
+      .c-1 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-1 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-1 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-1 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-1 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-1 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {% if item.custom_form_label_colors %}
+          .c-1 .c-in-{{ loop.index }} form label,
+          .c-1 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-1 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-1 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-1 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-1 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {% endif %}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-1 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-1 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-1 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {# End Col 1 #}
+  {# Column 2 #}
+  {%- if module.start.num_cols >= '2' -%}
+    {% for item in module.col_2.content %}
+      .c-2 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-2 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-2 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-2 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-2 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-2 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {%- if item.custom_form_label_colors -%}
+          .c-2 .c-in-{{ loop.index }} form label,
+          .c-2 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-2 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-2 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-2 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-2 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-2 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-2 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-2 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
+  {# End Col 2 #}
+  {# Column 3 #}
+  {%- if module.start.num_cols >= '3' -%}
+    {% for item in module.col_3.content %}
+      .c-3 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-3 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-3 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-3 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-3 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-3 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {%- if item.custom_form_label_colors -%}
+          .c-3 .c-in-{{ loop.index }} form label,
+          .c-3 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-3 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-3 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-3 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-3 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-3 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-3 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-3 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
+  {# End Col 3 #}
+  {# Column 4 #}
+  {%- if module.start.num_cols >= '4' -%}
+    {% for item in module.col_4.content %}
+      .c-4 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-4 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-4 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-4 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-4 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-4 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {%- if item.custom_form_label_colors -%}
+          .c-4 .c-in-{{ loop.index }} form label,
+          .c-4 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-4 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-4 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-4 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-4 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-4 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-4 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-4 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
+  {# End Col 4 #}
+  {# Column 5 #}
+  {%- if module.start.num_cols >= '5' -%}
+    {% for item in module.col_5.content %}
+      .c-5 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-5 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-5 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-5 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-5 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-5 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {%- if item.custom_form_label_colors -%}
+          .c-5 .c-in-{{ loop.index }} form label,
+          .c-5 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-5 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-5 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-5 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-5 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-5 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-5 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-5 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
+  {# End Col 5 #}
+  {# Column 6 #}
+  {%- if module.start.num_cols >= '6' -%}
+    {% for item in module.col_6.content %}
+      .c-6 .c-in-{{ loop.index }} {
+        {%- if item.pos.align == 'specific' -%}
+          position: absolute;
+          top: {{ item.pos.align_vert }}px;
+          {% if item.pos.start_right %}
+            right: {{ item.pos.align_horiz }}px;
+          {%- else -%}
+            left: {{ item.pos.align_horiz }}px;
+          {%- endif -%}
+          {%- if item.pos.layer -%}
+            z-index: {{ item.pos.z_index }};
+          {%- endif -%}
+        {%- endif -%}
+        {%- if item.content_mb -%}
+          margin-bottom: {{ item.content_mb }}px;
+        {%- endif -%}
+        {%- if item.pos.layer -%}
+          z-index: {{ item.pos.z_index }};
+        {%- endif -%}
+        {%- if item.space_plr -%}
+          padding: 0 {{ item.space_plr }}px;
+        {%- endif -%}
+      }
+      {%- if item.type == 'icon' -%}
+        .c-6 .c-icon-{{ loop.index }} {
+          max-width: {{ item.icon_style.size }}px;
+          {%- if item.fa_pro_code -%}
+            font-size: {{ item.icon_style.size }}px;
+          {%- endif -%}
+        }
+        {%- if item.icon_style.custom_color -%}
+          {% if !item.fa_pro_code %}
+            .c-6 .c-icon-{{ loop.index }} svg {
+              fill: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% else %}
+            .c-6 .c-icon-{{ loop.index }} i {
+              color: rgba({{ item.icon_style.color.color|convert_rgb }}, {{ item.icon_style.color.opacity * 0.01 }});
+            }
+          {% endif %}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'image' and item.image_scale -%}
+        .c-6 .c-img-{{ loop.index }} {
+          -moz-transform: scale({{ item.image_scale }});
+          -webkit-transform: scale({{ item.image_scale }});
+          -o-transform: scale({{ item.image_scale }});
+          -ms-transform: scale({{ item.image_scale }});
+          transform: scale({{ item.image_scale }});
+        }
+      {%- endif -%}
+      {%- if item.type == 'form' -%}
+        {%- if item.form_max_width -%}
+          .c-6 .c-in-{{ loop.index }} form {
+            max-width: {{ item.form_max_width }}px;
+            {% if item.simple_align == 'c-justify-right' %}
+              float: right;
+              width: 100%;
+            {% elif item.simple_align == 'c-justify-center' %}
+              margin: auto;
+              width: 100%;
+            {% endif %}
+          }
+        {%- endif -%}
+        {%- if item.custom_form_label_colors -%}
+          .c-6 .c-in-{{ loop.index }} form label,
+          .c-6 .c-in-{{ loop.index }} form .hs-form-radio span {
+            color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-6 .c-in-{{ loop.index }} form .mdl-checkbox__box-outline,
+          .c-6 .c-in-{{ loop.index }} form .mdl-radio__outer-circle{
+            border-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-6 .c-in-{{ loop.index }} form .mdl-checkbox.is-checked .mdl-checkbox__tick-outline
+          {
+            background-color: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+          .c-6 .c-in-{{ loop.index }} form .mdl-radio__inner-circle
+          {
+            background: rgba({{ item.form_label_color.color|convert_rgb }}, {{ item.form_label_color.opacity * 0.01 }});
+          }
+        {%- endif -%}
+      {%- endif -%}
+      {%- if item.type == 'rotating' -%}
+        {%- if item.use_custom_color -%}
+          {%- if item.rotating_text_color.beginning.color -%}
+          .c-6 .c-in-{{ loop.index }} .rotate-begin {
+            color: rgba({{ item.rotating_text_color.beginning.color|convert_rgb }}, {{ item.rotating_text_color.beginning.opacity * 0.01 }});
+          }
+          {%- endif -%}
+          {%- if item.rotating_text_color.rotating.color -%}
+            .c-6 .c-in-{{ loop.index }} .rotate-middle {
+              color: rgba({{ item.rotating_text_color.rotating.color|convert_rgb }}, {{ item.rotating_text_color.rotating.opacity * 0.01 }});
+            }
+          {%- endif -%}
+          {%- if item.rotating_text_color.ending.color -%}
+            .c-6 .c-in-{{ loop.index }} .rotate-end {
+              color: rgba({{ item.rotating_text_color.ending.color|convert_rgb }}, {{ item.rotating_text_color.ending.opacity * 0.01 }});
+            }
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {% endfor %}
+  {%- endif -%}
+  {# End Col 6 #}
+  
+  {# GLOBAL CSS #}
+  
+  {# ACCORDION #}
+  {% if module.start.use_accordion %}
+    .c-accordion a.accordion-title h4 {
+      color: {{ css_color(module.style.accordion_style.title_color_closed) }};
+      font-size: {{ module.style.accordion_style.title_font_size }}px;
+    }
+    .c-accordion a.active h4 {
+      color: {{ css_color(module.style.accordion_style.title_color_open) }}
+    }
+    {% if module.style.accordion_style.closed_bg_color.color %}
+      .c-accordion a.accordion-title {
+        background-color: {{ css_color(module.style.accordion_style.closed_bg_color) }};
+      }
+    {% endif %}
+    {% if module.style.accordion_style.open_bg_color.color %}
+      .c-accordion a.active {
+        background-color: {{ css_color(module.style.accordion_style.open_bg_color) }};
+      }
+    {% endif %}
+    .c-accordion .c-accordion-content {
+      {% if module.style.accordion_style.content_background_color.color %}
+        background-color: {{ css_color(module.style.accordion_style.content_background_color) }};
+      {% endif %}
+      {{ module.style.accordion_style.spacing.css }}
+    }
+    .c-accordion li {
+      border-bottom: 1px solid {{ css_color(module.style.accordion_style.seperator_line_color) }};
+    }
+    .c-accordion  {
+      border-top: 1px solid {{ css_color(module.style.accordion_style.seperator_line_color) }};
+    }
+    .c-accordion a.accordion-title:after {
+      border-right: 1px solid {{ css_color(module.style.accordion_style.arrow_color) }};
+      border-bottom: 1px solid {{ css_color(module.style.accordion_style.arrow_color) }};;
+    }
+    .c-acc-icon {
+      background-color: {{ css_color(module.style.accordion_style.icon.bg_color) }}; 
+    }
+    .accordion-title.active .c-acc-icon {
+      background-color: {{ css_color(module.style.accordion_style.icon.bg_color_open) }}; 
+    }
+    .c-acc-icon svg {
+      fill: {{ css_color(module.style.accordion_style.icon.color) }};
+      height: {{ module.style.accordion_style.icon.size }}px;
+      width: {{ module.style.accordion_style.icon.size }}px;
+    }
+    .accordion-title.active .c-acc-icon svg {
+      fill: {{ css_color(module.style.accordion_style.icon.color_open) }};
+    }
+  {% endif %}
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+
+{# THIS PULLS IN THE PARALLAX MAGIC #}
+{%- if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' or  module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' -%}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{%- endif -%}
+{% require_js %}
+  {{ macros.parallax_section_js() if module.style.section.bg.add_parallax == 'true' and module.style.section.bg.type == 'image' }} 
+  {{ macros.parallax_row_js() if module.style.row.bg.add_parallax == 'true' and module.style.row.bg.type == 'image' }} 
+{% end_require_js %}
+
+{# THIS PULLS IN THE NEEDED LOTTIE LOGIC #}
+{%- if module.start.use_lottie -%}
+  {{ require_js(get_asset_url("../../js/lottie-player.js")) }}
+{%- endif -%}
+
+
+{# THIS PULLS IN THE NEEDED MODAL POP UP JAVASCRIPT #}
+{%- if module.start.use_modal_pop_up -%}
+  {{ require_js(get_asset_url("../../js/jquery-modal-min.js")) }}
+  {{ require_css(get_asset_url("../../css/3rd-party/jquery-modal.css")) }}
+{%- endif -%}
+
+
+{# THIS PULLS IN THE NEEDED ELEMENT PARALLAX JAVASCRIPT #}
+{%- if module.start.use_element_parallax -%}
+  {{ require_js(get_asset_url("../../js/rellax.js")) }}
+  {% require_js %}
+    <script defer>
+      var rellax = new Rellax('.rellax', {
+        wrapper: '.c-col-inner',
+        relativeToWrapper: true
+      });
+    </script>
+  {% end_require_js %}
+{%- endif -%}

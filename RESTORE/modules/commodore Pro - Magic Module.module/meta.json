@@ -1,0 +1,56 @@
+{
+  "content_tags" : [ {
+    "name" : "ACCORDION",
+    "source" : "USER"
+  }, {
+    "name" : "ANIMATION",
+    "source" : "USER"
+  }, {
+    "name" : "BUTTONS",
+    "source" : "USER"
+  }, {
+    "name" : "CTA",
+    "source" : "USER"
+  }, {
+    "name" : "FORM",
+    "source" : "USER"
+  }, {
+    "name" : "ICON",
+    "source" : "USER"
+  }, {
+    "name" : "IMAGE",
+    "source" : "USER"
+  }, {
+    "name" : "RICH_TEXT",
+    "source" : "USER"
+  }, {
+    "name" : "TEXT",
+    "source" : "USER"
+  }, {
+    "name" : "VIDEO",
+    "source" : "USER"
+  }, {
+    "name" : "BANNER",
+    "source" : "USER"
+  }, {
+    "name" : "LAYOUT",
+    "source" : "USER"
+  }, {
+    "name" : "MULTIMEDIA",
+    "source" : "USER"
+  } ],
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">WorldLight Media</a><br/>------------------------------<br/>\nHow to: <a href=\"https://bit.ly/3IgANxr\" >Tutorial</a><br/>Feedback: <a href=\"https://bit.ly/3Myj6eY\" >Submit Ideas or Bugs</a></br>\nVersion: 1.0.1",
+  "categories" : [ "FORMS_AND_BUTTONS", "BODY_CONTENT", "TEXT" ],
+  "icon" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/mod-icons/icon-magic-module.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765677,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "../../css/commodore-foundation.css",
+    "name" : "commodore-foundation.css"
+  } ],
+  "label" : "Magic Module (Pro)",
+  "is_available_for_new_content" : true
+}
