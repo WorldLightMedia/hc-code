@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/19522085/commodore-images/module-icons/icon-count-down.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765655,
+  "label" : "Countdown Timer (Pro)",
+  "is_available_for_new_content" : true
+}

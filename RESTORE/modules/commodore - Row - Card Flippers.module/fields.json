@@ -1,0 +1,4750 @@
+[ {
+  "id" : "0180a4c2-9200-6b0b-99dc-b695fb4b8b3e",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many people do you want to show?",
+    "help_text" : "",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "One" ], [ "2", "Two" ], [ "3", "Three" ], [ "4", "Four" ], [ "5", "Five" ], [ "6", "Six" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "3"
+  }, {
+    "id" : "4e7694e0-2959-d7a6-d331-4c9d086764e3",
+    "name" : "card_height_desktop",
+    "display_width" : null,
+    "label" : "Card Height (Desktop):",
+    "help_text" : "The card will automatically set its width according to the column it's in so that it's responsive for different size screens.  Set the height according to the amount of content you have here.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 300
+  }, {
+    "id" : "51a7d51e-3857-381e-1824-49234f309a07",
+    "name" : "card_height_tablet",
+    "display_width" : null,
+    "label" : "Card Height (Tablet):",
+    "help_text" : "The card will automatically set its width according to the column it's in so that it's responsive for different size screens.  Set the height according to the amount of content you have here.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 300
+  }, {
+    "id" : "08457ae2-1f57-44cb-5c52-52e1e7fc99d1",
+    "name" : "card_height_mobile",
+    "display_width" : null,
+    "label" : "Card Height (Mobile):",
+    "help_text" : "The card will automatically set its width according to the column it's in so that it's responsive for different size screens.  Set the height according to the amount of content you have here.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 300
+  }, {
+    "id" : "b237c4b7-8252-b903-8973-09089a2c8fb5",
+    "name" : "drop_shadow",
+    "display_width" : null,
+    "label" : "Add Drop Shadow to Cards:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "0d8d677d-ab5e-2e42-5673-e2440dad2a76",
+    "name" : "card_border_color",
+    "display_width" : null,
+    "label" : "Card Border Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#CCCCCC",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "f3ef67fb-71c6-43a6-61cb-0a66fc7911d8",
+    "name" : "flip_trigger",
+    "display_width" : null,
+    "label" : "Trigger the flip by:",
+    "required" : true,
+    "locked" : false,
+    "display" : "radio",
+    "choices" : [ [ "click", "Click" ], [ "hover", "Hover" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "click"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "3",
+    "card_height_desktop" : 300,
+    "card_height_tablet" : 300,
+    "card_height_mobile" : 300,
+    "drop_shadow" : true,
+    "card_border_color" : {
+      "color" : "#CCCCCC",
+      "opacity" : 100
+    },
+    "flip_trigger" : "click"
+  }
+}, {
+  "id" : "923c019a-bb65-ee9e-09ec-34e1db944d60",
+  "name" : "col_1",
+  "display_width" : null,
+  "label" : "Column 1:",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "856e1738-b9fd-a6f3-88b0-f19ff08c41fb",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "261cf3a6-8539-ebaa-4e95-117a99fd37a1",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "9f8f8dbb-3da1-e4cc-4a0c-993197d5f995",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "6aa7fc4d-2c89-4a8b-84cd-73451a82c954",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "16b79458-0f77-f286-a827-3cebec6a60eb",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "04b5f01c-a35c-a9f4-8c71-26feb2a21717",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "a6dab32c-087b-00cd-bc33-4cc8ad6792bb",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "c5cca621-77b3-9156-861c-2f240aa84ffe",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "78fe8317-4223-226b-0382-0121cf702155",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "c5cca621-77b3-9156-861c-2f240aa84ffe",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "1eae4a6b-4cc4-1042-cdae-3e52a02cc81c",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "bacacac1-e428-fc68-23ad-7c11bd9c4782",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "c3a9e1c8-949f-6839-7ed5-f38e10b72a23",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "e84c7b7a-86c5-6876-a8dc-ed7b2d0dbcf5",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "6d6afd92-57e2-2c19-4894-39759537596f",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "baf73e6f-720f-1007-e77e-b4031dcd7467",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text & Image Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "383a4bf6-50f4-fdb1-06de-3e67336ea3d2",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "b140e1f3-27f3-1d4c-c231-75c5d99792d6",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "a4f9f3e5-20a7-2383-e93f-eb2013f16e38",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "b61dbafa-52bf-5d4e-8806-a2368f225be7",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "445119ac-03ef-c0e9-5aa3-2c817063f486",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "3cebe74f-6ad2-2d05-dc86-a994ffc85a37",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "445119ac-03ef-c0e9-5aa3-2c817063f486",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "b8dbf2a6-45c5-4234-034d-66882361d48e",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "445119ac-03ef-c0e9-5aa3-2c817063f486",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "0d7f04ae-e424-5ad9-ad04-b4ad108a4f48",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "445119ac-03ef-c0e9-5aa3-2c817063f486",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "1bcb5111-e403-b774-8956-2c7bac8c00fb",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "445119ac-03ef-c0e9-5aa3-2c817063f486",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "dd4537e8-2c34-a1b8-0486-03909ddf75d8",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "144523af-e02b-42da-3790-52e0ba8eb34b",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "055a5c97-d633-9470-db16-f156b66f4811",
+  "name" : "col_2",
+  "display_width" : null,
+  "label" : "Column 2:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[23456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "56f5b555-f1ca-700d-6712-48aed2988105",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "548a668d-a05f-8fd3-cb3c-0dbdefe118bc",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "c0c190e6-c8e2-0b90-d2e7-1773bf3304cd",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "f453dbe9-aa4b-c113-0fab-c51014bbfac6",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "f5ecadd5-0b3d-b48e-0990-2b0d03017565",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "e6a03bc8-9b21-7748-5bee-ef51a426af9b",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "4bdeede3-0090-14b9-e485-0327c01f8e8c",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "76f1efec-25be-367e-ce27-b7a5c9392e43",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "4bdeede3-0090-14b9-e485-0327c01f8e8c",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "ed281353-075a-81bd-7e30-2a720d2e0eaf",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "c2958cfa-49a8-8f59-44a9-00ebe042dd9e",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "9c08fd8e-8086-7399-91dd-3ec3dff90e62",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "6b288cbb-dfb4-7c0d-566e-2bef337012dc",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "e90af394-aec5-bb4c-6877-8a49949964e4",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "03fc1558-98c6-a05a-cd3f-2902e303e35b",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "c7fd3dcd-57b5-85cb-1307-1bcc08390062",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "d3454a40-0e9f-a85c-ff0d-5dcb2a0d911f",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "90dc18a5-41e6-5df2-f94e-1b336b279078",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "48b33182-3dfe-6b7a-1c2a-d29c55e42199",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "93414570-f9f7-d17e-5ee8-69ae43d8d232",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "a40b7f1a-7adf-9b80-9c42-545691486cda",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "93414570-f9f7-d17e-5ee8-69ae43d8d232",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "146f3c98-4dc6-5d07-0a9f-ab8387ee55a4",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "93414570-f9f7-d17e-5ee8-69ae43d8d232",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "27c13f54-491f-95f0-49c7-c1943ed108c0",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "93414570-f9f7-d17e-5ee8-69ae43d8d232",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "ad47dac9-a6fc-9325-141b-1fadc8c7cb5f",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "93414570-f9f7-d17e-5ee8-69ae43d8d232",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "7eef0f0e-4611-e68c-707f-4328541c0b57",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "4b662a17-1703-1241-f4b0-f7f6d513eda3",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "44d9ba03-d113-3335-1c64-b2244d81e052",
+  "name" : "col_3",
+  "display_width" : null,
+  "label" : "Column 3:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[3456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "c007d686-3c20-0e56-ac7d-8ccf1a56531e",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "bc77f634-5032-2f89-8928-fcd9098b88e8",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "338f0856-4d70-4880-0c5a-a140377b1e54",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bc77f634-5032-2f89-8928-fcd9098b88e8",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "3cb9f8ce-6354-a0cb-1453-bd466a6bc1e4",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "a5085db2-10aa-2082-5b7a-307c883439d4",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "bc77f634-5032-2f89-8928-fcd9098b88e8",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "5c720581-c62b-5b32-8efd-06bee48593a6",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "bc77f634-5032-2f89-8928-fcd9098b88e8",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "a4232a1e-1817-65f0-cc70-733f90c7d5cd",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "bc77f634-5032-2f89-8928-fcd9098b88e8",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "01f29e6f-3208-dae8-1ca9-6c4839fa6d3f",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "1de97f01-a936-8520-62ed-6e555deef6a3",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "3d2b04c9-d832-e431-498f-84a26b3bd0c5",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "01f29e6f-3208-dae8-1ca9-6c4839fa6d3f",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "17ca7487-948b-d8af-ab0b-cc8ac22721cf",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "024d6f66-6009-7db3-d9c6-caf911843e01",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "e7290b01-ffae-6e8f-6018-5f03b8149118",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "17ac7341-7bbc-4499-074b-830195b58610",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "9dc152ce-1919-c0c5-b5d5-d8ae8b8f710e",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "a9def2c6-377c-bdf8-7539-c293fdd92320",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "8e90885b-0a91-a4c5-fead-0b71b6e629eb",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "194110c7-81b5-ac41-cc9f-1c4b5cfa7217",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "05f5b74b-c248-61b8-52be-7fa78ec5f49b",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "aa1dc3f1-e472-0927-67b4-db4f9b4cb0c6",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "cc4e3988-92b4-efb6-6f87-883a28ffbad1",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "d11bff51-f77b-1ab4-b763-ea5fed1f0555",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "cc4e3988-92b4-efb6-6f87-883a28ffbad1",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "4eb55a23-e7b9-646d-4479-cbcbe366f5e0",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "cc4e3988-92b4-efb6-6f87-883a28ffbad1",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "303ba899-3f39-bc35-865d-48a3616dd34d",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "cc4e3988-92b4-efb6-6f87-883a28ffbad1",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "47809595-dbd8-1728-49cd-1495f3f9cbeb",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "cc4e3988-92b4-efb6-6f87-883a28ffbad1",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "c2802976-c91a-77ef-6e09-a6edc34f5ec1",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "d8887fe8-bf35-e5d2-137d-e4af2ee8b59b",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "3733b836-bac0-1690-6f89-7b022c9a8204",
+  "name" : "col_4",
+  "display_width" : null,
+  "label" : "Column 4:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "64ead2f3-447c-c937-64cf-4f4da9b68e80",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "36e04bd4-f14d-f036-c8d1-dea6dd47d1a8",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "3609cad3-e295-997a-1a66-f86a9036a3ab",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "84dce865-3aee-7502-a120-1fecb0d19206",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "8b869d1b-6a78-8efa-2b3b-f0921332f62a",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "1b2328a0-f4fc-a220-dc94-0f2579d1f3b6",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "09faa6e3-028a-ffde-0225-f4ecfc39ed9d",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "296248bd-0c11-7e89-61cd-68f5394ee0d2",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "8e1b5c9b-c72a-6818-c410-8899e9e9b555",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "09faa6e3-028a-ffde-0225-f4ecfc39ed9d",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "9436ba68-6028-72c6-5a9a-04226ab56be6",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "263cf703-6920-fbd5-44f3-cc4c332034c9",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "13ca7fbf-4736-2eeb-1d61-f8edbefa5cae",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "05c8e860-f87a-7a20-ed5c-898bebd98a7c",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "cee19dad-b490-8ce8-5b4a-536fe94f798e",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "ecfcfb1d-a062-cf43-6f91-47ef2248de18",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "045e4c72-3c64-da08-9fbb-bf9e0dd91b47",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "d16a6b10-83ba-dead-aeac-c208155b6d7a",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "e9a53c84-e2e9-920f-e615-18fb09904d6a",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "89a7225b-ea6e-2f38-ba3d-7c59b9ebe1b9",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "797f1e5f-4e3a-f11b-6257-4bf4fc40ea1c",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "e16b1df7-d7d3-199c-c322-afe6b8316eb3",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "797f1e5f-4e3a-f11b-6257-4bf4fc40ea1c",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "d0d8eb9a-bca8-b768-5c03-ec096bd35b49",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "797f1e5f-4e3a-f11b-6257-4bf4fc40ea1c",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "430e85b1-994c-6602-c23e-b71c044233b5",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "797f1e5f-4e3a-f11b-6257-4bf4fc40ea1c",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "742d5653-2486-14b9-867b-f0856c080bfe",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "797f1e5f-4e3a-f11b-6257-4bf4fc40ea1c",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "75b99095-e661-c0d8-8c4a-9ff06bb1166e",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "8c0537ea-d14d-15b3-5231-8bc57c0f4bcc",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "0761cbd4-9a5d-edb5-c213-c5c65a654e8b",
+  "name" : "col_5",
+  "display_width" : null,
+  "label" : "Column 5:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[56]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "c98d7d4d-34c8-5dcf-0626-5ee3b4d6a592",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "35196e10-508b-9013-6370-ec91713edf66",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "a02deccd-ad9e-ea3d-185c-ef992b22de1c",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "88cafc0f-e81c-b1cb-84c3-1cf3b9a9e32d",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "d83260e6-5a00-dbe8-9db3-8813af224576",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "e0882884-151c-f842-b757-4ee6a666fd95",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "ce26fe68-236b-4ad9-9dbc-120e14625157",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "d027ee89-5c49-fc67-36d9-ba8cf83a3867",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "7a8c37df-0b21-ec67-dbe7-e20734780ef2",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "ce26fe68-236b-4ad9-9dbc-120e14625157",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "220b2c01-7874-99cb-0e2f-9ee606da84d3",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "e585bebf-d33b-7e16-0d1f-85abc745d65f",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "29d39bb6-4ae5-2715-58d2-58033a4dc9df",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "78e7da8d-0532-6035-98a4-bcbe3b617873",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "4678cf62-cbc5-c22b-1556-5e36bcf644f6",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "548907ce-0a8d-386c-1abb-80a70166cd57",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "868a827c-8d05-d894-0234-9793e4f52766",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "0d31a6cb-4d54-4fc8-55eb-071e640d2402",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "7ff3e61f-a11d-d8b2-c126-f53074c78e71",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "7b60d8f3-34b6-7f1c-0baf-2f47411270d5",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "44311e15-9537-50ba-c40c-e232bb67b9ce",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "ebfd469e-36fa-f27b-7c6a-e8d58348e478",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "44311e15-9537-50ba-c40c-e232bb67b9ce",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "69eaefec-6c1a-bb97-f658-d52e2e5df46d",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "44311e15-9537-50ba-c40c-e232bb67b9ce",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "5d2b3c2d-65dd-4c1e-58be-f67914795619",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "44311e15-9537-50ba-c40c-e232bb67b9ce",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "fc52e3d8-8844-7a38-027d-a74959a9966b",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "44311e15-9537-50ba-c40c-e232bb67b9ce",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "fef96537-b469-e3a8-732e-507b7c87925a",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "9060bfcf-427e-92db-27ce-c4b14478c6cc",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "84bb3567-e64a-9cad-9656-d4e2d05b60f4",
+  "name" : "col_6",
+  "display_width" : null,
+  "label" : "Column 6:",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "6",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "3a3d4850-dada-75d8-e881-1e3436b6d9c0",
+    "name" : "front",
+    "display_width" : null,
+    "label" : "Front of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+      "name" : "graphic_type",
+      "display_width" : null,
+      "label" : "Graphic Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "image", "Image" ], [ "icon", "HubSpot Icon" ], [ "fa_pro", "Font Awesome Pro" ], [ "none", "None" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "image"
+    }, {
+      "id" : "8ad4dcbc-bf4e-0f90-c7fe-7eec34f05c44",
+      "name" : "image",
+      "display_width" : null,
+      "label" : "Add an Image:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "image",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "24728d3c-3aa0-c3a3-a765-ba91a78e5521",
+      "name" : "icon",
+      "display_width" : null,
+      "label" : "Icon Settings",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "a2e91f49-ea99-aee7-1377-1926d29e2281",
+        "name" : "hs_icon",
+        "display_width" : null,
+        "label" : "HubSpot Icon:",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "icon_set" : "fontawesome-5.14.0",
+        "type" : "icon",
+        "default" : { }
+      }, {
+        "id" : "f32e9ada-25f1-0281-5bce-63fb4079c705",
+        "name" : "font_awesome_pro_embed",
+        "display_width" : null,
+        "label" : "Font Awesome Pro Embed",
+        "inline_help_text" : "IMPORTANT: You must include Font Awesome Pro global script to use this feature. <a href=\"https://commodore.worldlightmedia.com/how-to-use-font-awesome-pro-with-commodore\" target=\"_blank\" >Here is how</a>.",
+        "required" : false,
+        "locked" : false,
+        "validation_regex" : "",
+        "visibility" : {
+          "controlling_field" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "fa_pro",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "placeholder" : "<i class=\"fa-regular fa-hand-horns\"></i>",
+        "allow_new_line" : false,
+        "show_emoji_picker" : false,
+        "type" : "text"
+      }, {
+        "id" : "18be1292-57ec-7a21-8d81-a2cab0f0d747",
+        "name" : "icon_size",
+        "display_width" : null,
+        "label" : "Icon Size",
+        "inline_help_text" : "This slider sets the height of the icon so you can create consistency for each card with greater ease.",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "slider",
+        "min" : 10,
+        "max" : 500,
+        "step" : 1,
+        "suffix" : "px",
+        "type" : "number",
+        "default" : 50
+      }, {
+        "id" : "dd8732b0-c7eb-c41a-2013-3558c2860f7d",
+        "name" : "custom_icon_color",
+        "display_width" : null,
+        "label" : "Custom Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "31770731-55f3-c2c4-dbdd-36ef3f4c7604",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "icon|fa_pro",
+          "property" : null,
+          "operator" : "MATCHES_REGEX",
+          "access" : null
+        },
+        "display" : "checkbox",
+        "type" : "boolean",
+        "default" : false
+      }, {
+        "id" : "fba8d041-3ff4-c8d1-9667-cefeb02ab4fc",
+        "name" : "icon_color",
+        "display_width" : null,
+        "label" : "Icon Color",
+        "required" : false,
+        "locked" : false,
+        "visibility" : {
+          "controlling_field" : "dd8732b0-c7eb-c41a-2013-3558c2860f7d",
+          "controlling_field_path" : null,
+          "controlling_value_regex" : "true",
+          "property" : null,
+          "operator" : "EQUAL",
+          "access" : null
+        },
+        "type" : "color",
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "CONTENT",
+      "expanded" : false,
+      "type" : "group",
+      "default" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }
+    }, {
+      "id" : "1f8c904e-19d2-1750-9a6c-e32c484811b5",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "3e4a57eb-fac4-038f-e933-f9c9118a23be",
+      "name" : "text",
+      "display_width" : null,
+      "label" : "Text:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "placeholder" : "Add your text here...",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Click me and watch me do a flip."
+    }, {
+      "id" : "32c1a02b-7ae4-8dc5-a485-4c1dba253a49",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "fbfeca0d-1f55-af2a-ae80-aaa0664e4504",
+      "name" : "font_size",
+      "display_width" : null,
+      "label" : "Font Size:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 8,
+      "max" : 60,
+      "step" : 1,
+      "type" : "number",
+      "default" : 32
+    }, {
+      "id" : "9e39b6f7-29d0-a301-fbd7-7247c6811d87",
+      "name" : "font_weight",
+      "display_width" : null,
+      "label" : "Font Weight:",
+      "help_text" : "The font you're using must include weights to support these options.  In most cases Normal and Bold will be available.  The Thin option is the one you might need to check on if it's not appearing as thin as you'd like.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "thin", "Thin" ], [ "normal", "Normal" ], [ "bold", "Bold" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "normal"
+    }, {
+      "id" : "0c76ef74-eb00-2729-f44d-07f0c4c7277b",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "dce471dc-6ef1-327a-2779-9efd5c55034c",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Space above text:",
+      "help_text" : "This is going to give you the option to add some space above the text.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "2ecab114-220b-ac79-acee-1c10e4c05584",
+      "name" : "plus_color",
+      "display_width" : null,
+      "label" : "Plus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "8045fdb8-ace0-02cd-2d15-de5e347d3baa",
+    "name" : "back",
+    "display_width" : null,
+    "label" : "Back of Card:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "ec6ba7d1-dffc-b8e3-c065-44b6201a5838",
+      "name" : "rich_text",
+      "display_width" : null,
+      "label" : "Rich text:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>"
+    }, {
+      "id" : "bfae735b-6d1e-ee79-c98c-91aa3f01c9bc",
+      "name" : "bg_type",
+      "display_width" : null,
+      "label" : "Background Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "color"
+    }, {
+      "id" : "e3fe08c1-e910-7697-89e8-182ec675815c",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bfae735b-6d1e-ee79-c98c-91aa3f01c9bc",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "color",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "d5c601e9-e67e-2cb8-cdce-10924bffe361",
+      "name" : "gradient_color_1",
+      "display_width" : null,
+      "label" : "Gradient Color 1:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bfae735b-6d1e-ee79-c98c-91aa3f01c9bc",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "ad0de6a1-40f3-12de-5a5a-a36a8a820002",
+      "name" : "gradient_color_2",
+      "display_width" : null,
+      "label" : "Gradient Color 2:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bfae735b-6d1e-ee79-c98c-91aa3f01c9bc",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "7639f490-194a-259d-8608-c4ffb3f4b2e3",
+      "name" : "gradient_angle",
+      "display_width" : null,
+      "label" : "Gradient Angle:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "bfae735b-6d1e-ee79-c98c-91aa3f01c9bc",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "gradient",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "-45deg"
+    }, {
+      "id" : "e5d80ce8-9f9b-a67b-f09f-fc06ab734350",
+      "name" : "text_color",
+      "display_width" : null,
+      "label" : "Text Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "87decbcf-cc7d-2304-8ab1-69e45a871819",
+      "name" : "text_align",
+      "display_width" : null,
+      "label" : "Text Alignment:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "left"
+    }, {
+      "id" : "63c0b4a1-161c-881d-2593-45622ccec003",
+      "name" : "text_pt",
+      "display_width" : null,
+      "label" : "Spacing above text:",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "6a784359-0e83-5355-e4ee-f01fdacf4ee2",
+      "name" : "minus_color",
+      "display_width" : null,
+      "label" : "Minus Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text_align" : "left",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "front" : {
+      "graphic_type" : "image",
+      "image" : {
+        "size_type" : "exact",
+        "src" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/isometric/commodore-iso-marketing.png",
+        "alt" : "commodore-iso-marketing",
+        "width" : 100,
+        "height" : 100,
+        "max_width" : 300,
+        "max_height" : 300,
+        "loading" : "lazy"
+      },
+      "icon" : {
+        "hs_icon" : { },
+        "icon_size" : 50,
+        "custom_icon_color" : false,
+        "icon_color" : {
+          "color" : null,
+          "opacity" : null
+        }
+      },
+      "bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text" : "Click me and watch me do a flip.",
+      "text_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      },
+      "font_size" : 32,
+      "font_weight" : "normal",
+      "text_align" : "left",
+      "text_pt" : 0,
+      "plus_color" : {
+        "color" : "#444444",
+        "opacity" : 100
+      }
+    },
+    "back" : {
+      "rich_text" : "<p><span style=\"color: #ffffff;\">Lorem ipsum dolor amet vape offal food truck tumeric. Actually schlitz williamsburg deep v ennui offal. Coloring book pitchfork hashtag poutine disrupt wayfarers post-ironic air plant meh la croix cliche food truck. Shabby chic offal selvage pop-up typewriter.</span></p>",
+      "bg_type" : "color",
+      "bg_color" : {
+        "color" : "#33475b",
+        "opacity" : 100
+      },
+      "gradient_color_1" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "gradient_color_2" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "gradient_angle" : "-45deg",
+      "text_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "text_align" : "left",
+      "text_pt" : 50,
+      "minus_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }
+  }
+}, {
+  "id" : "971df1d6-0b2f-53eb-a254-824b9fc3b543",
+  "name" : "style_opts",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "0228ae24-7ffa-c719-e238-995f2458c57f",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "1b6ab185-9555-6ab7-405a-a71e3f90cce4",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+    "name" : "bg_type",
+    "display_width" : null,
+    "label" : "Select a Background Type:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ], [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "color"
+  }, {
+    "id" : "578eb8aa-92db-b0ff-4e8f-94e11425c895",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "b113aa8a-cf4b-8690-2c8d-1a6a0c5fb3ac",
+    "name" : "color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "72bb82ad-8c74-8b54-cf42-48fa96fca32f",
+    "name" : "color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7cdc580c-cf63-f946-41ca-edec5d088bae",
+    "name" : "gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "874a5e5b-ea14-3643-1f8b-4f17514082bf",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Upload Your Background Image:",
+    "help_text" : "The recommended size is 1920 x 1280px",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "https://cdn2.hubspot.net/hubfs/19522085/bgs/coffee-bg-1.jpg",
+      "alt" : "coffee-bg-1",
+      "width" : 2000,
+      "height" : 1333
+    }
+  }, {
+    "id" : "8f52a55e-5030-b230-d199-fd77dbc6d97d",
+    "name" : "image_loading",
+    "display_width" : null,
+    "label" : "Image Loading:",
+    "inline_help_text" : "Lazy image loading can improve performance if this module is lower on the page.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "lazy", "Lazy" ], [ "eager", "Eager" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "lazy"
+  }, {
+    "id" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax Scrolling:",
+    "help_text" : "If you turn this on, be sure that you have uploaded a background image with a large enough height so that there is room for the image to do its scrolling magic. \n\n1920 x 1280px will work great in most cases but it depends on the height of this content row. \n\nIMPORTANT: If you are not using a background image, it's BEST to keep this off.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "79253e18-240b-2877-68a6-956fa63a5251",
+    "name" : "parallax_on_mobile",
+    "display_width" : null,
+    "label" : "Parallax On Mobile",
+    "help_text" : "Enables Parallax On Mobile",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ce919dfd-6774-4ac9-570b-97c3377896a1",
+    "name" : "parallax_orientation",
+    "display_width" : null,
+    "label" : "Parallax Orientation",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up" ], [ "right", "Right" ], [ "down", "Down" ], [ "left", "Left" ], [ "up left", "Up Left" ], [ "up right", "Up Right" ], [ "down left", "Down Left" ], [ "down right", "Down Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "2526ceab-de19-3bcd-1368-01dba1ca75c6",
+    "name" : "parallax_transition",
+    "display_width" : null,
+    "label" : "Parallax Transition",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "linear", "Linear" ], [ "ease-in-out", "Ease-In-Out" ], [ "slinky", "Slinky" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "linear"
+  }, {
+    "id" : "7c3d9654-53e3-d97b-f4d0-200f63903d72",
+    "name" : "parallax_scale",
+    "display_width" : null,
+    "label" : "Parallax Scale",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 1,
+    "max" : 3,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 1.2
+  }, {
+    "id" : "85c3b8df-c520-f181-a214-4b9c73e6f4ad",
+    "name" : "parallax_delay",
+    "display_width" : null,
+    "label" : "Parallax Delay",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 1,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "1852c3fa-b5ae-3521-addd-a7855fb68a3e",
+    "name" : "bg_size",
+    "display_width" : null,
+    "label" : "Background Size:",
+    "help_text" : "Cover: Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges\n\nContain: Resize the background image to make sure the image is fully visible.\n\nInitial: Sets this property to its default value.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "initial", "Initial" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
+    "id" : "6012c69f-130d-a96a-25f6-106e3fb162b6",
+    "name" : "img_pos",
+    "display_width" : null,
+    "label" : "Image Position:",
+    "help_text" : "This will allow you to select which portion of the image you'd like to show.  \n\nSince this is a \"background image\" that needs to be responsive to a variety of screen sizes, there will ways be a portion of the photo cropped out. ",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left center"
+  }, {
+    "id" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "4e58f24c-a46c-f2fa-6c25-20403ee04546",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Custom Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Do you want to add a subtle shadow?",
+    "help_text" : "This will add a subtle inner or outer shadow on the entire row.",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "inner", "Inner" ], [ "outer", "Outer" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "03fbe648-ab0f-4d90-3ce5-0951efe014d8",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 10
+    }
+  }, {
+    "id" : "0b935188-d0b0-95e2-53f8-744cd71e182c",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+    "name" : "overlay_bg",
+    "display_width" : null,
+    "label" : "Do you want to add an overlay?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Color" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "cf86314b-25cb-790b-8b7b-1244f51b9bae",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#444444",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "195ad235-4e6c-b5fc-0877-a753832de169",
+    "name" : "overlay_color_1",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "c69de540-5c3d-75a4-246d-0fb14d959bf4",
+    "name" : "overlay_color_2",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "80a27bb0-2177-da1b-1669-dcc0099886d9",
+    "name" : "overlay_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "5b0aabea-db4c-5d44-995a-ed8222bd4c22",
+    "name" : "video_clip",
+    "display_width" : null,
+    "label" : "██████ Upload Video Clip(s)",
+    "help_text" : "With this video player you can add multiple smaller video clips that will get stitched together. This will help the page load much faster.  PRO-TIP:  Go to www.youcompress.com and compress your MP4 files so they are even faster to load.  Generally, you want between a 2 -3MB file size. ",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "picker" : "file",
+      "id" : "4e64c080-a9b0-eb60-5b4b-dd0ee894f0c0",
+      "name" : "mp4",
+      "display_width" : null,
+      "label" : "Video (mp4):",
+      "help_text" : "When uploading a video you want to keep the file size as small as possible so that it loads quickly.  Generally, you're going to want to keep it under 20MB.",
+      "required" : false,
+      "locked" : false,
+      "type" : "file"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  }, {
+    "id" : "e284b872-585e-4d1d-a4d0-6c65e218c154",
+    "name" : "video_bg_color",
+    "display_width" : null,
+    "label" : "Video Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7c050cac-30eb-b4a5-9ac4-835305f8fe6f",
+    "name" : "add_wave_top",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Top)",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the top of the row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "9b281976-d59c-ebd3-462b-fe7561a3a046",
+    "name" : "wave_top",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Top)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "7c050cac-30eb-b4a5-9ac4-835305f8fe6f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "5dda81f2-34f5-76ce-e883-b143918cb976",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "b83a5b44-3f4f-733a-a97b-d9b5e4689362",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "5dda81f2-34f5-76ce-e883-b143918cb976",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "cb4c867d-b137-6b7c-eeff-b38e13b2554d",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "a890ec60-4856-e3f8-288f-47702cc86c5e",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "84e23c78-451b-fffe-87f9-92e7c0adfac6",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom)",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the base of row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "c4973f4f-3716-c4c9-cb94-f4106346f765",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave Style Settings (Bottom)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "84e23c78-451b-fffe-87f9-92e7c0adfac6",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "b3d09f2f-f4ef-3ea2-d265-a586a8723319",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "82b4221a-10b1-1da7-986a-2fc845cec0ca",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "b3d09f2f-f4ef-3ea2-d265-a586a8723319",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "f86aa5a7-1166-f1fc-ed4f-8f2a8a20644d",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "590e72fc-ee11-d89d-6ba6-dfed40fc496f",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "716bdec1-19e8-7754-cf8d-62ca7652a381",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e9c0cddb-4a15-3b1b-934d-725296a23ae5",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "2bf95a4b-7cd6-c196-c378-e8eb035c2883",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "eab4e593-0b4f-bf5f-e925-7dcf8cb18cd7",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "90612062-5878-5a7e-9f25-32098d2c9246",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "f8e41cc6-ad1d-3afa-b01d-dee28a9cd462",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "a6b6a170-9f30-09d4-11b1-3eb0f869e0a0",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "bbddaf57-5a31-761e-f7d6-fca2d66a834d",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d056e81c-27d1-9085-8e99-1cb06278d6cb",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "2e641f18-75b2-279c-48f9-9b531c16a118",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "0f303c0e-b995-cd70-48c8-e825295fc099",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "090c4aa2-a049-0edc-9ee9-c6cfd91d559f",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "██████ Style Options (They geeky design stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+      "name" : "pull_up",
+      "display_width" : null,
+      "label" : "Pull content over the row above:",
+      "help_text" : "This will give you the option to pull the content container up over the row above. This can be an awesome visual technique when used subtly.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "184d0c2f-ae10-c71a-0d57-707b87c48c20",
+      "name" : "content_bg_color",
+      "display_width" : null,
+      "label" : "Content Container Background Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "73bf10ea-7a97-8e6d-a42a-aedaf9faf804",
+      "name" : "pull_up_num_desktop",
+      "display_width" : null,
+      "label" : "Pull Up Content (Desktop):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 500,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "a73c6583-7ea3-3d51-08fb-a82cc3895a35",
+      "name" : "pull_up_num_mobile",
+      "display_width" : null,
+      "label" : "Pull Up Content (Mobile):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by on mobile devices.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "40120d81-c074-16a2-0f33-a018c94f786f",
+      "name" : "con_padding",
+      "display_width" : null,
+      "label" : "Container Padding:",
+      "help_text" : "It's a good idea to give the content a little breathing room. This is where you can set the padding. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "23a71245-c72f-70f7-6b33-b4f2625a899b",
+      "name" : "subtle_shadow",
+      "display_width" : null,
+      "label" : "Add Subtle Shadow:",
+      "help_text" : "This will add a slight glow around the content container to lift it of the page ever so elegantly.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "subtle_shadow" : false
+    }
+  }, {
+    "id" : "3cfe113c-9b56-aee3-87ea-28ecc8d1b76d",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The Nerdy Stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e6f4eb14-0b0c-5741-1a3b-034feb587e8e",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "help_text" : "This will place and ID on the row that you'll be able to set an anchor tag and have the user jump down to this section of the page.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "6f0e4f97-7515-26e4-1667-90a19e2f0592",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces.  ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_type" : "color",
+    "bg_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "color_1" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "color_2" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    },
+    "gradient_angle" : "45deg",
+    "bg_image" : {
+      "src" : "https://cdn2.hubspot.net/hubfs/19522085/bgs/coffee-bg-1.jpg",
+      "alt" : "coffee-bg-1",
+      "width" : 2000,
+      "height" : 1333
+    },
+    "image_loading" : "lazy",
+    "parallax" : false,
+    "parallax_on_mobile" : false,
+    "parallax_orientation" : "up",
+    "parallax_transition" : "linear",
+    "parallax_scale" : 1.2,
+    "parallax_delay" : 0,
+    "bg_size" : "cover",
+    "img_pos" : "left center",
+    "content_width" : "container",
+    "set_width" : 600,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 10
+    },
+    "shadow_size" : 20,
+    "overlay_bg" : "none",
+    "overlay_color" : {
+      "color" : "#444444",
+      "opacity" : 50
+    },
+    "overlay_color_1" : {
+      "color" : "#000000",
+      "opacity" : 50
+    },
+    "overlay_color_2" : {
+      "color" : "#000000",
+      "opacity" : 0
+    },
+    "overlay_angle" : "45deg",
+    "video_clip" : { },
+    "video_bg_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "add_wave_top" : false,
+    "wave_top" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "style" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "subtle_shadow" : false
+    },
+    "code" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  }
+} ]

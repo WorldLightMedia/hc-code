@@ -1,0 +1,707 @@
+[ {
+  "id" : "85e3d6d0-e789-5c09-8adc-1b3179e3e8c0",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "inline_help_text" : "IMPORTANT: There are a few keys steps to configuring a form to work with this module. <a target=\"_blank\"  href=\"https://commodore.worldlightmedia.com/how-to-use-the-form-wizard\">CLICK HERE to learn how to use the form wizard</a>.",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "45b39c4d-8d5d-6040-b401-c8ab386a2679",
+    "name" : "intro_text",
+    "display_width" : null,
+    "label" : "Intro Text:",
+    "inline_help_text" : "The text that sits above the steps and form.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h3 style=\"text-align: center;\">Fill out this cool form.</h3>\n<div style=\"text-align: center;\">Just enter your details below.</div>"
+  }, {
+    "id" : "122b11f0-074f-e8e8-5205-9c3045df1818",
+    "name" : "unique_form_id",
+    "display_width" : null,
+    "label" : "Unique Form ID:",
+    "inline_help_text" : "If you include multiple Form Wizard modules on the page, you'll set a unique ID for each.",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "form_1"
+  }, {
+    "id" : "8bd2e1ac-42ad-8edf-3038-7c7a11e75751",
+    "name" : "form",
+    "display_width" : null,
+    "label" : "Select Form:",
+    "help_text" : "To create each step, you'll want to separate input field groups (ie. Name & Email) with a Rich Text line inside of the actual form. ",
+    "inline_help_text" : "IMPORTANT: You need to build the \"steps\" within the HubSpot Form Manager. ",
+    "required" : false,
+    "locked" : false,
+    "type" : "form",
+    "default" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "intro_text" : "<h3 style=\"text-align: center;\">Fill out this cool form.</h3>\n<div style=\"text-align: center;\">Just enter your details below.</div>",
+    "unique_form_id" : "form_1",
+    "form" : {
+      "response_type" : "inline",
+      "message" : "Thanks for submitting the form."
+    }
+  }
+}, {
+  "id" : "61cacc5d-bf93-28bb-91ee-4e4ad46ad8f5",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "/// Wizard Style Options:",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "97750115-f22c-85e1-83cd-2122880e7e90",
+    "name" : "form_con",
+    "display_width" : null,
+    "label" : "Form Container:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "914b6184-9b28-af5f-8853-a6ff448409a8",
+      "name" : "bg_color",
+      "display_width" : null,
+      "label" : "Background Color:",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "7346a4de-85a3-f9c2-3f7b-b216d3a3e2eb",
+      "name" : "max_width",
+      "display_width" : null,
+      "label" : "Maximum Width:",
+      "help_text" : "You'll be able to set the main container width in the /// Row Settings. This gives you finer grain control over the container the form sits in.",
+      "inline_help_text" : "Gives you the ability to make the form smaller if needed. ",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 20,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "%",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "55b39a3d-b037-839e-fdbe-76f406333e04",
+      "name" : "padding",
+      "display_width" : null,
+      "label" : "Padding:",
+      "inline_help_text" : "Spacing around the form.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "d4a8e05c-315f-d776-b221-3f3ed1932380",
+      "name" : "rounded_corner_size",
+      "display_width" : null,
+      "label" : "Rounded Corner Size:",
+      "help_text" : "",
+      "inline_help_text" : "",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 5
+    }, {
+      "id" : "43b86d81-ea93-eae9-92f8-25042c8295af",
+      "name" : "next_button_label",
+      "display_width" : null,
+      "label" : "Next Step (Button Label):",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Next"
+    }, {
+      "id" : "efea7bc2-e432-61e4-9f0f-ca93e1c25f84",
+      "name" : "next_btn_style",
+      "display_width" : null,
+      "label" : "Next Step (Button Style):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cta-primary", "Primary" ], [ "cta-secondary", "Secondary" ], [ "cta-tertiary", "Tertiary" ], [ "cta-four", "Fourth" ], [ "cta-five", "Fifth" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cta-primary"
+    }, {
+      "id" : "6bb52704-d369-97fc-0893-4d3ca26026fd",
+      "name" : "prev_button_label",
+      "display_width" : null,
+      "label" : "Previous Step (Button Label):",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Back"
+    }, {
+      "id" : "3e8442b2-ce19-d89b-5dc0-7ea2ac372ea4",
+      "name" : "prev_btn_style",
+      "display_width" : null,
+      "label" : "Previous Step (Button Style):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cta-primary", "Primary" ], [ "cta-secondary", "Secondary" ], [ "cta-tertiary", "Tertiary" ], [ "cta-four", "Fourth" ], [ "cta-five", "Fifth" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cta-secondary"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "bg_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "max_width" : 100,
+      "padding" : 50,
+      "rounded_corner_size" : 5,
+      "next_button_label" : "Next",
+      "next_btn_style" : "cta-primary",
+      "prev_button_label" : "Back",
+      "prev_btn_style" : "cta-secondary"
+    }
+  }, {
+    "id" : "c5a48e9b-4078-90a6-61bc-c91c97e06ea3",
+    "name" : "steps",
+    "display_width" : null,
+    "label" : "Bubbles (Step Indicators):",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "631aab96-8d4c-1445-88ac-e636c11c8e8e",
+      "name" : "bubble_default",
+      "display_width" : null,
+      "label" : "Bubble Color (Default):",
+      "inline_help_text" : "The bubble's background color prior to the step being completed.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "90899840-88e7-83ff-a742-bbdaef99d853",
+      "name" : "text_default",
+      "display_width" : null,
+      "label" : "Text Color (Default):",
+      "inline_help_text" : "The bubble's text color prior to the step being completed.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "d4dbe7bc-00c7-a5f6-6da3-b1d0964d13a7",
+      "name" : "bubble_active",
+      "display_width" : null,
+      "label" : "Bubble Color (Active):",
+      "inline_help_text" : "The bubble's background color which indicates the active step.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ff7a59",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "a42f00f3-256c-5659-e01c-aa086045bb45",
+      "name" : "text_active",
+      "display_width" : null,
+      "label" : "Text Color (Active):",
+      "inline_help_text" : "The bubble's text color to indicate the active step.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "8da1c670-c87e-1052-9801-3b9d17260798",
+      "name" : "bubble_complete",
+      "display_width" : null,
+      "label" : "Bubble Color (Complete):",
+      "inline_help_text" : "The bubble's background color once the form step has been completed.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "8105e5f3-35c1-20b1-0328-74072ee14ac8",
+      "name" : "text_complete",
+      "display_width" : null,
+      "label" : "Text Color (Complete):",
+      "inline_help_text" : "The bubble's text color once the form step is complete.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "ef92aca2-2e69-9203-13cd-cfe1ea792955",
+      "name" : "line_color_default",
+      "display_width" : null,
+      "label" : "Line Color (Default):",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "653c7c88-0fcf-0cd4-c657-95e36e18f9e2",
+      "name" : "bubble_outline",
+      "display_width" : null,
+      "label" : "Bubble Outline (All):",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "245c0777-da19-98aa-3bc0-4050d2f3946a",
+      "name" : "padding_top_bottom",
+      "display_width" : null,
+      "label" : "Padding Above & Below",
+      "inline_help_text" : "Adds space above and below the bubble steps.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 40
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "bubble_default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "text_default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_active" : {
+        "color" : "#ff7a59",
+        "opacity" : 100
+      },
+      "text_active" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_complete" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "text_complete" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "line_color_default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_outline" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "padding_top_bottom" : 40
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "form_con" : {
+      "bg_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "max_width" : 100,
+      "padding" : 50,
+      "rounded_corner_size" : 5,
+      "next_button_label" : "Next",
+      "next_btn_style" : "cta-primary",
+      "prev_button_label" : "Back",
+      "prev_btn_style" : "cta-secondary"
+    },
+    "steps" : {
+      "bubble_default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "text_default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_active" : {
+        "color" : "#ff7a59",
+        "opacity" : 100
+      },
+      "text_active" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_complete" : {
+        "color" : "#00bda5",
+        "opacity" : 100
+      },
+      "text_complete" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "line_color_default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "bubble_outline" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "padding_top_bottom" : 40
+    }
+  }
+}, {
+  "id" : "d1bfd692-0168-6a7a-2105-cba6e1525a5f",
+  "name" : "style_opts",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "72659e9e-1477-7c62-c418-f7a013bc4a9b",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "36f02a7b-64cf-189b-4bae-fb2530f958e9",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "7741dcdd-4c0c-6929-d340-bad13294f038",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "c358d88b-da42-3850-72d2-87f5c85072ac",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "4607094f-ee33-daa0-feed-1acb347f49ff",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c358d88b-da42-3850-72d2-87f5c85072ac",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "848246fa-70e3-e283-b41d-7716f758aaab",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "52a15d47-875a-b0eb-2438-6fe997e6a88f",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "c8db8f95-f608-8300-f1cb-73a14c33751b",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "2d2005c6-f15c-bd3a-bb16-2ba16d72be89",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "00636d2a-4273-ee3c-43b9-bf7d0b02687c",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "35c226c8-377b-1999-43c2-4f42780f9a52",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding top (Mobile):",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "d16fe5d8-1024-e675-ad62-33fba323c8dd",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "XL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "100px",
+      "padding_bottom" : "100px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "29444ced-13ea-3169-e2ad-767e2f319bd6",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "29a6817d-e82c-2c54-b984-95afa8f37767",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "bb272922-9356-ec68-3ec1-bdf5837d11b9",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "06b9f2bb-db78-046d-2a7b-5277a413be03",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "dbbbaffc-7db6-ef73-45dc-8d407bf61aec",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The nerdy stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d75c87d6-c50e-c364-97b2-019b49544ae4",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "help_text" : "This will place and ID on the row that you'll be able to set an anchor tag and have the user jump down to this section of the page.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "7a755bab-6635-d281-74cf-6d6fbf21e7bf",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces.  ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "content_width" : "container",
+    "set_width" : 600,
+    "adv_settings" : {
+      "padding_top" : "100px",
+      "padding_bottom" : "100px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : { }
+  }
+} ]

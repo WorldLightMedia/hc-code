@@ -1,0 +1,146 @@
+{# 
+ NAME: JOB LISTING TABLE
+ MODULE VERSION: 1.0.4
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 1/17/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-table-mod {
+    padding-top: {{ module.style.adv_settings.padding_top }};
+    padding-bottom:  {{ module.style.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.style.bg_color.color|convert_rgb }}, {{ module.style.bg_color.opacity * 0.01 }});
+  }
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod {
+      padding-top: {{ module.style.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.style.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod {
+      padding-top: {{ module.style.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.style.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.style.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.style.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }},{% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+   {# END #}
+  
+   {# TABLE STYLE #}  
+  
+  #hs_cos_wrapper_{{ name }} .hhs-table-mod table {
+    background-color: rgba({{ module.style.table.bg_color.color|convert_rgb }}, {{ module.style.table.bg_color.opacity * 0.01 }});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-table-mod table th,
+  #hs_cos_wrapper_{{ name }} .hhs-table-mod table td {
+    text-align: {{ module.style.table.text_alignment }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-table-mod table th,
+  #hs_cos_wrapper_{{ name }} table td::before{
+   font-size: {{ module.style.table.title_size }}px;
+    color: rgba({{module.style.table.title_color.color|convert_rgb }}, {{ module.style.table.title_color.opacity * 0.01 }});
+  }
+  
+  #hs_cos_wrapper_{{ name }} table,
+  #hs_cos_wrapper_{{ name }} table tr {
+   border: 1px solid rgba({{ module.style.table.border_color.color|convert_rgb }}, {{ module.style.table.border_color.opacity * 0.01 }});
+  }
+  
+  @media screen and (max-width: 992px) {
+    #hs_cos_wrapper_{{ name }} table {
+     border: 0; 
+    }
+    
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod table th,
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod table td {
+      text-align: right;
+    }
+    
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod table td {
+      border-bottom: 1px solid rgba({{ module.style.table.border_color.color|convert_rgb }}, {{ module.style.table.border_color.opacity * 0.01 }});
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-table-mod table td:last-child {
+      border-bottom: 0px;
+    }
+  }
+  
+</style>
+{% end_require_css %}
+
+<div id="{{ module.code.section_id }}" class="hhs-table-mod  {% if module.style.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.style.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.style.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.style.shadow == 'inner' %}inner-shadow{% endif %} {% if module.style.shadow == 'outer' %}outer-shadow{% endif %} {{ module.code.section_class }}" >
+  <div class="{{ module.style.content_width }}" style="{% if module.style.content_width == 'custom' %} max-width: {{ module.style.set_width }}px; margin: auto;{% endif %}">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col"><span>{{ module.titles.col_1 }}</span></th>
+          <th scope="col"><span>{{ module.titles.col_2 }}</span></th>
+          {% if module.start.num_cols == '3' or module.start.num_cols == '4' or module.start.num_cols == '5' or module.start.num_cols == '6' %}
+            <th scope="col"><span>{{ module.titles.col_3 }}</span></th>
+          {% endif %}
+          {% if module.start.num_cols == '4' or module.start.num_cols == '5' or module.start.num_cols == '6' %}
+            <th scope="col"><span>{{ module.titles.col_4 }}</span></th>
+          {% endif %}
+          {% if module.start.num_cols == '5' or module.start.num_cols == '6' %}
+            <th scope="col"><span>{{ module.titles.col_5 }}</span></th>
+          {% endif %}
+          {% if module.start.num_cols == '6' %}
+            <th scope="col"><span>{{ module.titles.col_6 }}</span></th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in module.content %}
+          <tr>
+            <td scope="row" data-label="{{ module.titles.col_1 }}">{% inline_rich_text field="col_1" value="{{ item.col_1 }}" %}</td>
+            <td data-label="{{ module.titles.col_2 }}">{% inline_rich_text field="col_2" value="{{ item.col_2 }}" %}</td>
+            {% if module.start.num_cols == '3' or module.start.num_cols == '4' or module.start.num_cols == '5' or module.start.num_cols == '6' %}
+              <td data-label="{{ module.titles.col_3 }}">{% inline_rich_text field="col_3" value="{{ item.col_3 }}" %}</td>
+            {% endif %}
+            {% if module.start.num_cols == '4' or module.start.num_cols == '5' or module.start.num_cols == '6' %}
+              <td data-label="{{ module.titles.col_4 }}">{% inline_rich_text field="col_4" value="{{ item.col_4 }}" %}</td>
+            {% endif %}
+            {% if module.start.num_cols == '5' or module.start.num_cols == '6' %}
+              <td data-label="{{ module.titles.col_5 }}">{% inline_rich_text field="col_5" value="{{ item.col_5 }}" %}</td>
+            {% endif %}
+            {% if module.start.num_cols == '6' %}
+              <td data-label="{{ module.titles.col_6 }}">{% inline_rich_text field="col_6" value="{{ item.col_6 }}" %}</td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-flexi-table.css"), { async: true }) }}
+

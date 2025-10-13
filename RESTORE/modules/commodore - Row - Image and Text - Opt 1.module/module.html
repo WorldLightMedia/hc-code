@@ -1,0 +1,260 @@
+{# 
+ NAME: IMAGE AND TEXT OPT 1
+ MODULE VERSION: 3.0.3
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 9/18/22
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-img-text-mod {
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %}
+  
+  {# END #}
+  {# TEXT COLUMN #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    padding-right: {{ module.content.text_padding_right_left }}px;
+    padding-left: {{ module.content.text_padding_right_left }}px;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text p, #hs_cos_wrapper_{{ name }} .hhs-rich-text span, #hs_cos_wrapper_{{ name }} .hhs-rich-text li {
+    text-align: {{ module.content.text_align }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+    z-index: 10;
+    position: relative;
+    margin-{{ module.start.img_col }}: -{{ module.content.advanced.text_slider }}px;
+    {% if module.content.advanced.header_cutout %}
+      background-color: {{ module.row_settings.bg_color.color }};
+      padding: {{ module.content.advanced.cutout_size }}px; 
+      {% if module.start.img_col == 'right' %}
+        padding-left: 0px;
+      {% endif %}
+    {% endif %}
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+    margin-{{ module.start.img_col }}: -{{ module.content.advanced.text_slider }}px !important;
+    text-align: {{ module.start.img_col }};
+  }
+  
+  {# DIVIDER #}
+  
+  {% if module.content.settings.custom_divider_color %}
+    #hs_cos_wrapper_{{ name }} .hhs-divider{
+      border-color: {{ module.content.settings.divider_color.color }};
+    }
+  {% endif %}
+  {% if module.content.text_align == 'center' %}
+    #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: auto; margin-left: auto;}
+  {% elif module.content.text_align == 'left' %}
+    #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: 50px; margin-left: 0px;}
+  {% elif module.content.text_align == 'right' %}
+    #hs_cos_wrapper_{{ name }} .hhs-divider {float: right;}
+  {% endif %}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img {
+   position: relative;
+   z-index: 10;
+  }
+  
+  {# END #}
+  {# TABLET #}
+  
+  @media (max-width: 992px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+      padding-right: {{ module.content.text_padding_right_left_tablet }}px;
+      padding-left: {{ module.content.text_padding_right_left_tablet }}px;
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-bg-image {background-image: none; }
+    #hs_cos_wrapper_{{ name }} .hhs-reg-image {display: block;}
+    #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+      margin-{{ module.start.img_col }}: unset !important;
+      text-align: {{ module.content.text_align_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+      z-index: 1;
+      position: relative;
+      margin-{{ module.start.img_col }}: unset;
+      background-color: none;
+      padding: 0 !important; 
+    }
+  }
+  
+  {# END #}
+  
+  {# TABLET #}
+  @media (max-width: 992px) {
+    {% if module.content.settings.img_first_mobile == 'true' %}
+     #hs_cos_wrapper_{{ name }} .order-1-mobile, #hs_cos_wrapper_{{ name }} .order-1-tablet {order: 1;}
+     #hs_cos_wrapper_{{ name }} .order-2-mobile, #hs_cos_wrapper_{{ name }} .order-2-tablet {order: 2;}
+    {% endif %}
+  }
+  {# MOBILE #}
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      padding-right: {{ module.content.text_padding_right_left_mobile }}px;
+      padding-left: {{ module.content.text_padding_right_left_mobile }}px;
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text p, #hs_cos_wrapper_{{ name }} .hhs-rich-text span, #hs_cos_wrapper_{{ name }} .hhs-rich-text li {
+      text-align: {{ module.content.text_align_mobile }};
+    }
+    
+    #hs_cos_wrapper_{{ name }} .hhs-bg-image {
+      background-image: none; 
+    }
+
+    #hs_cos_wrapper_{{ name }} .hhs-reg-image {display: block;}
+    
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+      z-index: 1;
+      position: relative;
+      margin-{{ module.start.img_col }}: unset;
+      background-color: none;
+      padding: 0 !important; 
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+      margin-{{ module.start.img_col }}: unset;
+      text-align: {{ module.content.text_align_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+      margin-{{ module.start.img_col }}: unset !important;
+    }
+    {% if module.content.text_align_mobile == 'center' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: auto; margin-left: auto;}
+    {% elif module.content.text_align_mobile == 'left' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: 50px; margin-left: 0px;}
+    {% elif module.content.text_align_mobile == 'right' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {float: right;}
+    {% endif %}
+  }
+</style>
+{% end_require_css %}
+
+
+{% if module.start.col_arrangement == "opt1" %}
+  {% set col_1_size = "col-lg-6 col-md-12" %}
+  {% set col_2_size = "col-lg-6 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt2" %}
+  {% set col_1_size = "col-lg-4 col-md-12" %}
+  {% set col_2_size = "col-lg-8 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt3" %}
+  {% set col_1_size = "col-lg-8 col-md-12" %}
+  {% set col_2_size = "col-lg-4 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt4" %}
+  {% set col_1_size = "col-lg-5 col-md-12" %}
+  {% set col_2_size = "col-lg-7 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt5" %}
+  {% set col_1_size = "col-lg-7 col-md-12" %}
+  {% set col_2_size = "col-lg-5 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt6" %}
+  {% set col_1_size = "col-lg-9 col-md-12" %}
+  {% set col_2_size = "col-lg-3 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt7" %}
+  {% set col_1_size = "col-lg-3 col-md-12" %}
+  {% set col_2_size = "col-lg-9 col-md-12" %}
+{% endif %}
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-img-text-mod  {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}">
+  <div class="container-fluid no-gutters">
+    <div class="row no-gutters">
+      <div class="{% if module.start.img_col == 'left' %}{{ col_2_size }} order-2{% else %}{{ col_1_size }}{% endif %} {{ col_1_order }} {% if module.content.settings.img_first_mobile and module.start.img_col == 'right' %}order-2-mobile{% elif module.start.img_col == 'left' and module.content.settings.text_first_mobile == 'true' %}order-1-mobile order-1-tablet{% endif %}">
+        <div class="hhs-rich-text {% if module.content.settings.animate_text != 'none' %}wow {{ module.content.settings.animate_text }}{% endif %} {% if module.content.advanced.layer_img %}overlay-img{% endif %}" {% if module.content.settings.animate_text != 'none' %}data-wow-delay="{{ module.content.settings.text_animation_delay }}"{% endif %}>
+          {% if module.content.settings.show_divider %}<div class="hhs-divider {% if module.content.advanced.layer_img %}overlay-img{% endif %}" >&nbsp;</div>{% endif %}
+          <div class="hhs-rich-text-in">
+            {{ module.content.text }}
+            {% if module.content.btn_pop %}
+              <a href="#tmp1_{{ name }}" rel="modal:open" class="{{ module.content.btn_pop_opts.btn_style }} btn-pop">{{ module.content.btn_pop_opts.button_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="hhs-bg-image {% if module.start.img_col == 'left' %}{{ col_1_size }} order-1{% else %}{{ col_2_size }}{% endif %}  {% if module.content.settings.img_first_mobile and module.start.img_col == 'right' %}order-1-mobile order-1-tablet{% endif %} {% if module.start.img_col == 'left' and module.content.settings.text_first_mobile == 'true' %}order-2-mobile{% endif %} no-padding">
+        <div>
+          {% if module.content.image.src %}
+            {% set sizeAttrs = 'width="{{ module.content.image.width }}" height="{{ module.content.image.height }}"' %}
+            {% if module.content.image.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+            {% elif module.content.image.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ module.content.image.max_width }}" height="{{ module.content.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = module.content.image.loading != 'disabled' ? 'loading="{{ module.content.image.loading }}"' : '' %}
+            <img class="hhs-reg-image wow fadeIn" src="{{ module.content.image.src }}" alt="{{ module.content.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# MODAL POP UP #}
+{% if module.content.btn_pop %}
+  <div class="hhs-pop">
+    <div id="tmp1_{{ name }}" class="hhs-pop hhs-modal" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            {% inline_rich_text field="content.btn_pop_opts.pop_up_content" value="{{ module.content.btn_pop_opts.pop_up_content }}" %}
+            {% if module.content.btn_pop_opts.add_form %}
+              {% form
+                form_to_use="{{ module.content.btn_pop_opts.form_pop.form_id }}",
+                response_response_type="{{ module.content.btn_pop_opts.form_pop.response_type }}",
+                response_message="{{ module.content.btn_pop_opts.form_pop.message }}",
+                response_redirect_id="{{ module.content.btn_pop_opts.form_pop.redirect_id }}",
+                response_redirect_url="{{module.content.btn_pop_opts.form_pop.redirect_url}}",
+                gotowebinar_webinar_key="{{ module.content.btn_pop_opts.form_pop.gotowebinar_webinar_key }}",
+                follow_up_type_simple='{{ module.content.btn_pop_opts.follow_up_type_simple }}',
+                simple_email_for_live_id='{{ module.content.btn_pop_opts.simple_email_for_live_id }}'
+              %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-image-text-opt1.css"), { async: true }) }}
+

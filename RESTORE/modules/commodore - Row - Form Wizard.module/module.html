@@ -1,0 +1,244 @@
+{# 
+ NAME: FORM WIZARD
+ MODULE VERSION: 1.0.3
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 2/6/22
+ REMINDER: You Rock!
+#}
+
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+
+{% require_css %}
+<style>
+  {{ scope_css }}
+  {# ROW STYLE #}
+  .hhs-form-wizard-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+  }
+  {# END #}
+
+  {# WIZARD STYLE #} 
+  
+  .hhs-form-wizard-mod .hhs-form-con {
+    background: rgba({{ module.style.form_con.bg_color.color|convert_rgb }}, {{ module.style.form_con.bg_color.opacity * 0.01 }});
+    max-width: {{ module.style.form_con.max_width }}%;
+    padding: {{ module.style.form_con.padding }}px;
+    -webkit-border-radius: {{ module.style.form_con.rounded_corner_size }}px;
+    border-radius: {{ module.style.form_con.rounded_corner_size }}px;
+  } 
+  .form-step {
+    background: rgba({{ module.style.steps.bubble_default.color|convert_rgb }}, {{ module.style.steps.bubble_default.opacity * 0.01 }});
+    color: rgba({{ module.style.steps.text_default.color|convert_rgb }}, {{ module.style.steps.text_default.opacity * 0.01 }});
+    border-color: rgba({{ module.style.steps.bubble_outline.color|convert_rgb }}, {{ module.style.steps.bubble_outline.opacity * 0.01 }});
+  }
+  .form-step:before,
+  .form-step-outer:after{
+    background: rgba({{ module.style.steps.bubble_complete.color|convert_rgb }}, {{ module.style.steps.bubble_complete.opacity * 0.01 }});
+    color: rgba({{ module.style.steps.text_complete.color|convert_rgb }}, {{ module.style.steps.text_complete.opacity * 0.01 }});
+  }
+  
+  .form-step-outer:before {
+    background: rgba({{ module.style.steps.line_color_default.color|convert_rgb }}, {{ module.style.steps.line_color_default.opacity * 0.01 }});
+  }
+  
+  .form-step-outer.active  .form-step {
+    background: rgba({{ module.style.steps.bubble_active.color|convert_rgb }}, {{ module.style.steps.bubble_active.opacity * 0.01 }});
+    color: rgba({{ module.style.steps.text_active.color|convert_rgb }}, {{ module.style.steps.text_active.opacity * 0.01 }});
+  }
+
+  {# TABLET CSS #}
+  @media (max-width: 922px) {
+    .hhs-form-wizard-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+    .hhs-form-wizard-mod .hhs-form-con {
+      max-width: 100%; 
+      padding: 25px;
+    }
+  }
+  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    .hhs-form-wizard-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {{ end_scope_css }}
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-form-wizard-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}" >  
+    <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+      {% if module.start.intro_text %}
+        <div class="row">
+          <div class="col-12">
+            {% inline_rich_text field="start.intro_text" value="{{ module.start.intro_text }}" %}
+          </div>
+        </div>
+      {% endif %}
+     <div class="row">
+      <div id="{{ module.start.unique_form_id }}" class="hhs-form-wizard col">
+        <div class="page-center" style="display:none;">
+          <div class="hhs-form-loading">Loading...</div>
+          <div class="hhs-steps" ></div>
+            <div class="hhs-form-con"> 
+               <script>
+                    hbspt.forms.create({
+                       portalId: {{hub_id}},
+                      formId: "{{ module.start.form.form_id }}",
+                      onFormReady: function($form) {
+
+
+                          var formid = "#{{ module.start.unique_form_id }}";
+                         $(formid).addClass('form-loaded');
+                          $(formid + ' .hs-richtext').parent().addClass('wrapper-point');
+
+              $(document).on("keypress", formid+" form", function(event) { 
+              return event.keyCode != 13;
+              });
+
+              $(formid+' .wrapper-point').each(function (index) {
+              var dataStep = "step"+(index+1);
+              var step = index+1;
+
+              $(this).nextUntil(".wrapper-point").addBack().wrapAll('<div data-filter=".'+dataStep+'" class="form-step-content '+dataStep+'"  />');
+              $(formid + ' .hhs-steps').append('<div class="form-step-outer '+dataStep+'"><div class="form-step" data-filter="'+dataStep+'">'+step+'</div></div>');
+              });
+
+               $(formid+' .form-step-content').each(function () {
+              if(!$(this).find('.hs-button.primary').length > 0){
+                $(this).append('<div class="clearfix"><a class="{{ module.style.form_con.prev_btn_style }} prev-btn ">{{ module.style.form_con.prev_button_label }}</a>  <a class="{{ module.style.form_con.next_btn_style }} disable next-btn">{{ module.style.form_con.next_button_label }}</a></div>');  
+              }
+              else{
+                $(this).find('.actions').prepend('<a class="{{ module.style.form_con.prev_btn_style }} prev-btn">{{ module.style.form_con.prev_button_label }}</a> <a class="{{ module.style.form_con.next_btn_style }} next-btn submit_btn">Submit</a>');
+              } 
+
+              });
+
+              $(formid+' .form-step-content.step1,.hhs-steps .form-step-outer:first-child').addClass('active');
+               var validity = false; 
+               $(document).on('click',formid+'.hhs-form-wizard .next-btn',function(){
+                var el = $(this);
+                var element =  $(this).closest('.form-step-content').find('[required]');
+                var elementtwo =  $(this).closest('.form-step-content').find('ul[required]');
+                var file =  $(this).closest('.form-step-content').find('input[type="file"]');
+                var elcount = 0;
+
+                var getRel = $(this).closest('.form-step-content').attr('data-filter');
+                 if(!element.hasClass('invalid')){
+                   validity = true;
+                 }
+                 else{
+                   validity = false;
+                 }
+
+
+                element.each(function () {
+                  var elnew = $(this);
+                  $(this).focus();
+                  elnew.blur();
+                  setTimeout(function(){ 
+                  if(elnew.hasClass('invalid')){
+                    validity=false;
+                  }
+
+                  }, 500);
+
+                });
+
+                elementtwo.each(function () {
+                  var elnew = $(this).find('input');
+                  elnew.each(function(){
+                    var el = $(this);
+                      if (el.is(':checked')) {
+                       elcount = elcount+1;
+                      }
+                   });
+
+                  console.log(elcount);
+                    if(elcount < 1){
+                      validity=false;
+                      $(this).after('<ul class="no-list hs-error-msgs inputs-list" ><li><label >Please complete this required field.</label></li></ul>')
+                    }
+                    else{
+                      $(this).next('.hs-error-msgs').remove();
+                    }
+
+                  elcount=0;
+                  });
+                file.each(function(){
+                  if($(this).closest('.hs_file_upload').find('.hs-form-required').length > 0){
+                  var getid = $(this).attr('id'); 
+
+                  if ($(this).get(0).files.length === 0) {
+                    validity=false;
+                    $(this).closest('.hs-form-field').after('<ul class="no-list hs-error-msgs inputs-list" ><li><label >Please complete this required field.</label></li></ul>');
+                  }
+                  else{
+                    $(this).closest('.hs-form-field').next('.hs-error-msgs').remove();
+                  }
+                  }
+                });
+                $(formid).click()
+
+                setTimeout(function(){ 
+                if(validity){
+                  $(formid+' .form-step-outer'+getRel).removeClass('active').addClass('completed');
+                  $(formid+' .form-step-outer'+getRel).next().addClass('active');
+                  el.closest('.form-step-content').removeClass('active invalid').fadeOut('500',function(){
+                  el.closest('.form-step-content').next().addClass('active').fadeIn(500);  
+                  validity = false;
+                  });
+
+                  if(el.hasClass('submit_btn')){
+                  $(formid+' input[type="submit"]').click()
+                  }  
+                  }else{
+                  el.closest('.form-step-content').addClass('invalid'); 
+                  }
+                  elcount=0
+                }, 500);   
+              });
+
+               $(document).on('click',formid+'.hhs-form-wizard input[type="checkbox"] , '+formid+'.hhs-form-wizard input[type="radio"]',function(){
+               var el = $(this);
+                if (el.is(':checked')) {
+                  el.closest('ul').next('.hs-error-msgs').remove();
+                }
+               });      
+
+                $(document).on('change',formid+'.hhs-form-wizard input[type="file"]',function(){
+                  $(this).closest('.hs-form-field').next('.hs-error-msgs').remove();
+                });         
+
+              var btnval = $(formid+' .submit_btn').next('input[type="submit"]').val();
+              $(formid+' .submit_btn').text(btnval);
+
+               $(formid+'.hhs-form-wizard').on('click','.prev-btn',function(){
+               var el = $(this);
+               var getRel = $(this).closest(formid+' .form-step-content').attr('data-filter');
+               $(formid+' .form-step-outer'+getRel).removeClass('active').removeClass('completed');
+               $(formid+' .form-step-outer'+getRel).prev().addClass('active').removeClass('completed');;
+              el.closest(formid+' .form-step-content').removeClass('active').fadeOut('500',function(){
+                el.closest(formid+' .form-step-content').prev().addClass('active').fadeIn();
+
+              });
+
+              });
+                $(formid+' .page-center').show(); 
+                $(formid+' .hhs-form-loading').hide();
+
+                    } 
+                    });
+                  </script>
+             </div>
+	        </div>
+      </div>
+    </div>
+  </div>
+</div>

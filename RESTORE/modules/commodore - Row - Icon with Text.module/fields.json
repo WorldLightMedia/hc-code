@@ -1,0 +1,1679 @@
+[ {
+  "id" : "b78cec2c-0534-451b-f701-4e6d2b88d5da",
+  "name" : "icon_options",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : null,
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "35ffde6d-fb46-e7ed-248b-7442ecf3123b",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many columns do you want?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "2", "Two" ], [ "3", "Three" ], [ "4", "Four" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "3"
+  }, {
+    "id" : "0458f619-f9ad-df19-e1a6-d7922ca9ffee",
+    "name" : "icon_pos",
+    "display_width" : null,
+    "label" : "Icon Position:",
+    "required" : false,
+    "locked" : false,
+    "display" : "radio",
+    "choices" : [ [ "icon-top", "On Top of Content" ], [ "icon-left-side", "To the Left of Content" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "icon-top"
+  }, {
+    "id" : "a0beb970-ab6a-5619-9e1f-e2aca59a0c26",
+    "name" : "icon_align",
+    "display_width" : null,
+    "label" : "Icon Alignment:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0458f619-f9ad-df19-e1a6-d7922ca9ffee",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "icon-left-side",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "radio",
+    "choices" : [ [ "icon-align-top", "Top" ], [ "icon-align-center", "Center" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "icon-align-top"
+  }, {
+    "id" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+    "name" : "icon_type",
+    "display_width" : null,
+    "label" : "What kind of icon would you like to use?",
+    "help_text" : "If you select Font Awesome and want to use their PRO ICONS, you will need to have a FA-Pro paid account and go through a few setup steps.  See my documentation page hubpsothero.com/commodore-documentation for more info. ",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "Please select",
+    "choices" : [ [ "hs_list", "Select from Hubspot Default List" ], [ "upload_icon", "Upload My Own" ], [ "font_awesome", "Font Awesome" ], [ "lottie", "Lottie File" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "hs_list"
+  }, {
+    "id" : "c9476741-0468-e474-5084-ac8863d5dbc4",
+    "name" : "custom_icon_size",
+    "display_width" : null,
+    "label" : "Custom Icon Size",
+    "help_text" : "If you'd like to set a custom icon size that's different than your global setting, toggle this on so the slider below is activated.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "upload_icon",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bf1ebfc4-c681-02a4-f1ac-a94c0f629952",
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Icon Size:",
+    "help_text" : "Set the size of your Font Awesome Icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c9476741-0468-e474-5084-ac8863d5dbc4",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 20,
+    "max" : 200,
+    "step" : 1,
+    "type" : "number",
+    "default" : 38
+  }, {
+    "id" : "0ed8eb59-3d65-6fab-2b4d-fc1a071df3eb",
+    "name" : "set_color",
+    "display_width" : null,
+    "label" : "Custom Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "upload_icon",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bb04f371-dc5f-2a4e-26b8-216378f7a91a",
+    "name" : "custom_color",
+    "display_width" : null,
+    "label" : "Icon Color:",
+    "help_text" : "Please select the custom color you'd like applied to these icons.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "0ed8eb59-3d65-6fab-2b4d-fc1a071df3eb",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "8fbaf1e2-72bc-c2cb-16a3-c33493274105",
+    "name" : "icon_link",
+    "display_width" : null,
+    "label" : "Make Icons Links:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "3",
+    "icon_pos" : "icon-top",
+    "icon_align" : "icon-align-top",
+    "icon_type" : "hs_list",
+    "custom_icon_size" : false,
+    "size" : 38,
+    "set_color" : false,
+    "custom_color" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "icon_link" : false
+  }
+}, {
+  "id" : "46f2a230-1acd-d3c7-ae9c-047da2f6d56d",
+  "name" : "content_group",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Content Here ",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "df16d7df-0f91-ddd0-3f12-e1d89ff4a81c",
+    "name" : "column_1",
+    "display_width" : null,
+    "label" : "██████ Column 1:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3c7fed92-fef1-8203-71cc-4897277a4647",
+      "name" : "icon_hs",
+      "display_width" : null,
+      "label" : "Select an Icon:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "hs_list",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "icon_set" : "fontawesome-5.0.10",
+      "type" : "icon",
+      "default" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "8c7d622f-51e4-20e0-c586-69b51557fe59",
+      "name" : "icon_upload",
+      "display_width" : null,
+      "label" : "Upload an Icon:",
+      "help_text" : "Upload your icon file here. Make sure you upload a transparent PNG.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "upload_icon",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "490a29b2-ddcf-7b08-38c3-39078fb82ebe",
+      "name" : "lottie_embed",
+      "display_width" : null,
+      "label" : "Paste Lottie Player Embed Code",
+      "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "lottie",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "<lottie-player src=\"http...\"",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "5b67292a-f749-adde-8121-968fd475ca0c",
+      "name" : "icon_fa",
+      "display_width" : null,
+      "label" : "Paste Font Awesome Free/Pro Code:",
+      "help_text" : "The code you need to copy from Font Awesome will look like this: <i class=\"fal fa-unicorn\"></i>",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "font_awesome",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "<i class=\"fas fa-dog\"></i>"
+    }, {
+      "id" : "90d5e39e-255f-1d8b-acd6-e24138410c8d",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Icon Link:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "8fbaf1e2-72bc-c2cb-16a3-c33493274105",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "1198e0f7-a056-375c-27d0-e6bbf0339ba2",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Rich Text Editor:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    }
+  }, {
+    "id" : "7c0ee906-f4cf-c565-cdc0-177a5c52a6cb",
+    "name" : "column_2",
+    "display_width" : null,
+    "label" : "██████ Column 2:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "41a5fc35-6905-e6c2-a7c5-00ee2e4e0d01",
+      "name" : "icon_hs",
+      "display_width" : null,
+      "label" : "Select an Icon:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "hs_list",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "icon_set" : "fontawesome-5.0.10",
+      "type" : "icon",
+      "default" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "722c30fc-9ecb-ef4c-1b4d-329a906f1861",
+      "name" : "icon_upload",
+      "display_width" : null,
+      "label" : "Upload an Icon:",
+      "help_text" : "Upload your icon file here. Make sure you upload a transparent PNG.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "upload_icon",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "5ade09de-5e98-349d-fb00-2a361f04ce08",
+      "name" : "lottie_embed",
+      "display_width" : null,
+      "label" : "Paste Lottie Player Embed Code:",
+      "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "lottie",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "<lottie-player src=\"http...\"",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "b905b76c-0c8d-c6dc-b8da-7ab990c6a60f",
+      "name" : "icon_fa",
+      "display_width" : null,
+      "label" : "Paste Font Awesome Free/Pro Code",
+      "help_text" : "The code you need to copy from Font Awesome will look like this: <i class=\"fal fa-unicorn\"></i>",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "font_awesome",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "<i class=\"fas fa-dog\"></i>"
+    }, {
+      "id" : "05fa5248-070f-5e4c-05b2-8a328b4cc818",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Icon Link:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "8fbaf1e2-72bc-c2cb-16a3-c33493274105",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "79ad1843-3826-33b7-3f71-2bdaf2f0726c",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Rich Text Editor",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    }
+  }, {
+    "id" : "bea4f0bc-b0c1-5f46-f3c3-3a0551966e7e",
+    "name" : "column_3",
+    "display_width" : null,
+    "label" : "██████ Column 3:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "35ffde6d-fb46-e7ed-248b-7442ecf3123b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "2",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "d2b6b2d9-2be3-9942-4f6d-7e38e3b333e9",
+      "name" : "icon_hs",
+      "display_width" : null,
+      "label" : "Select an Icon:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "hs_list",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "icon_set" : "fontawesome-5.0.10",
+      "type" : "icon",
+      "default" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "c80eac55-1c67-8f2b-833b-74c4837e6106",
+      "name" : "icon_upload",
+      "display_width" : null,
+      "label" : "Upload an Icon:",
+      "help_text" : "Upload your icon file here. Make sure you upload a transparent PNG.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "upload_icon",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60
+      }
+    }, {
+      "id" : "1976ce67-742b-e317-6447-b3044b1d3234",
+      "name" : "lottie_embed",
+      "display_width" : null,
+      "label" : "Paste Lottie Player Embed Code:",
+      "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "lottie",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "<lottie-player src=\"http...\"",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "20e9d062-d63a-bbb9-42be-73b8ee33e91a",
+      "name" : "icon_fa",
+      "display_width" : null,
+      "label" : "Paste Font Awesome Free/Pro Code:",
+      "help_text" : "The code you need to copy from Font Awesome will look like this: <i class=\"fal fa-unicorn\"></i>",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "font_awesome",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "<i class=\"fas fa-dog\"></i>"
+    }, {
+      "id" : "9b2ac5f7-1fec-94a1-70da-d12f60aeb85f",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Icon Link:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "8fbaf1e2-72bc-c2cb-16a3-c33493274105",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "abdd9981-064f-c9f4-8a90-b0c88245300c",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Rich Text Editor:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    }
+  }, {
+    "id" : "685d0668-c796-6201-26ba-594faf02a7c2",
+    "name" : "column_4",
+    "display_width" : null,
+    "label" : "██████ Column 4:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "35ffde6d-fb46-e7ed-248b-7442ecf3123b",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "4",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "a3df45a2-0910-96bd-f73d-c60e9c8df994",
+      "name" : "icon_hs",
+      "display_width" : null,
+      "label" : "Select an Icon:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "hs_list",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "icon_set" : "fontawesome-5.0.10",
+      "type" : "icon",
+      "default" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      }
+    }, {
+      "id" : "9dd26e8a-b287-3efb-4291-85d437565999",
+      "name" : "icon_upload",
+      "display_width" : null,
+      "label" : "Upload an Icon:",
+      "help_text" : "Upload your icon file here. Make sure you upload a transparent PNG.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "upload_icon",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "responsive" : true,
+      "resizable" : true,
+      "show_loading" : true,
+      "type" : "image",
+      "default" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      }
+    }, {
+      "id" : "4a443411-58c6-f8aa-9827-d1d959fd0fe3",
+      "name" : "lottie_embed",
+      "display_width" : null,
+      "label" : "Paste Lottie Player Embed Code:",
+      "help_text" : "When pasting the code DO NOT include the line that starts with \"script\".  IMPORTANT: To ensure the animated image is responsive on all screen sizes, set the width to 100% and remove the height property (style=\"width=100%\")   See commodore documentation for directions.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "lottie",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "<lottie-player src=\"http...\"",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "2ea0807f-82c6-6056-4a7c-84ee742db614",
+      "name" : "icon_fa",
+      "display_width" : null,
+      "label" : "Paste Font Awesome Free/Pro Code:",
+      "help_text" : "The code you need to copy from Font Awesome will look like this: <i class=\"fal fa-unicorn\"></i>",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "e20b5d8b-d65f-f35c-08ca-7ece86f8ceaa",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "font_awesome",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "<i class=\"fas fa-dog\"></i>"
+    }, {
+      "id" : "fc7ccacb-f7d5-4ea4-2858-3427d614402d",
+      "name" : "link",
+      "display_width" : null,
+      "label" : "Icon Link:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "8fbaf1e2-72bc-c2cb-16a3-c33493274105",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "b759994a-5437-fc70-4178-693afbe8c44e",
+      "name" : "content",
+      "display_width" : null,
+      "label" : "Rich Text Editor:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "column_1" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    },
+    "column_2" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    },
+    "column_3" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    },
+    "column_4" : {
+      "icon_hs" : {
+        "name" : "angellist",
+        "unicode" : "f209",
+        "type" : "REGULAR"
+      },
+      "icon_upload" : {
+        "src" : "https://dl.dropboxusercontent.com/s/nf3uvduz627wre4/coffee-icon.png",
+        "alt" : "coffee-icon",
+        "width" : 60,
+        "height" : 60,
+        "loading" : "lazy"
+      },
+      "icon_fa" : "<i class=\"fas fa-dog\"></i>",
+      "link" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      },
+      "content" : "<h4>Headline Here</h4>\n<p>This is where you can add some extra copy.</p>"
+    }
+  }
+}, {
+  "id" : "0cc2165c-fe47-2678-2533-e43f5ff5e7f1",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9b509a4d-40d6-e9fe-c2c2-7cd3046a2b54",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "0edf4df5-6d6e-a906-3e64-2fe41cad3954",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "94312e8e-7029-c810-6c5e-5de8864ce21d",
+    "name" : "bg_type",
+    "display_width" : null,
+    "label" : "Select a Background Type",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "color"
+  }, {
+    "id" : "408dbe7c-c796-f280-0bce-b8785f2c3eca",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "help_text" : "Select the color you'd like for the entire background.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "94312e8e-7029-c810-6c5e-5de8864ce21d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "775ddda3-9cc0-0bc7-488a-4a0097d205ca",
+    "name" : "color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "94312e8e-7029-c810-6c5e-5de8864ce21d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "3342e3d7-0a8f-19ce-18bf-4b3976b1105c",
+    "name" : "color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "94312e8e-7029-c810-6c5e-5de8864ce21d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "8d54c86e-af3e-8a1d-b7c6-63caf89fd9d5",
+    "name" : "gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "94312e8e-7029-c810-6c5e-5de8864ce21d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "5cbfef7d-5c71-0512-b522-e5b6f489aeb8",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "55302c87-5df3-5927-c62b-01e032b836b0",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Custom Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "5cbfef7d-5c71-0512-b522-e5b6f489aeb8",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 100,
+    "max" : 2000,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "8ee14d64-9386-5f4b-3d83-53bf6955fd7f",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Want to add a subtle shadow?",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope, I'm cool." ], [ "inner", "Inner Shadow" ], [ "outer", "Outer Shadow" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "244702f3-2a78-f051-2518-4d1e9a0eaca3",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8ee14d64-9386-5f4b-3d83-53bf6955fd7f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 10
+    }
+  }, {
+    "id" : "96852e06-7c2c-4e5d-08d1-503e9f190e51",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8ee14d64-9386-5f4b-3d83-53bf6955fd7f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "0a1bd461-7039-c398-c91a-784edb252e96",
+    "name" : "content_alignment_desktop",
+    "display_width" : null,
+    "label" : "Content Alignment (Desktop):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "Please Select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "75b62bac-0358-29d2-16c6-d8d51de01325",
+    "name" : "content_alignment_mobile",
+    "display_width" : null,
+    "label" : "Content Alignment (Mobile):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "placeholder" : "Please Select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "c7181694-4fb4-a5aa-b9b4-912fb98b5ae3",
+    "name" : "add_wave_top",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Top): ",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the top of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "2dc93dde-aad2-7211-5ebc-2a6da67e24b4",
+    "name" : "wave_top",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (top)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c7181694-4fb4-a5aa-b9b4-912fb98b5ae3",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "d22d4e3c-fefd-4e1e-4172-b3d1a2b23f27",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "a7153a68-49aa-7a13-e263-278cac5a917b",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "d22d4e3c-fefd-4e1e-4172-b3d1a2b23f27",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "2099bd48-8891-0ed7-20d4-931108f0a994",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row above has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row above.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "7477dbc6-601f-5e61-1c47-8b461334e914",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "3ced5c2c-ffb5-e6c4-3d32-b202aab3fccc",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the base of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bb3300f1-f1e6-7d06-298b-f1d17126fe59",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Bottom)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "3ced5c2c-ffb5-e6c4-3d32-b202aab3fccc",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "6c932d74-fa9d-3f34-3c04-382aa9d5143e",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "8e6b5161-b6d8-a81f-c1f2-677ddcb75e07",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "6c932d74-fa9d-3f34-3c04-382aa9d5143e",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "55f78146-a9ba-a250-8cda-a9aba01e14e7",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row above has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "807fefc2-f8db-ec2d-f357-a71733bb2c05",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "abf2f301-ab6c-5d27-1682-fc3231b0d781",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d5e7a4cb-d430-5ec2-47cd-1433fc8c38c0",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "help_text" : "This is the amount of spacing that you would like above the content in the row.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "9c2f715f-0363-ccde-4470-3106d7db0bc4",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "help_text" : "This is the amount of spacing that you would like below the content in the row.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "eee9659b-c477-9224-92ce-8b4ac1e98ad5",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet):",
+      "help_text" : "This is the amount of spacing that you would like above the content in the row when viewing on a tablet in portrait mode.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "a6a717eb-4a53-d2ec-aba6-adedddcde8d5",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet):",
+      "help_text" : "This is the amount of spacing that you would like below the content in the row when viewing on a tablet in portrait mode.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "f71b998b-8ce6-89e6-2190-7b346c876ce4",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile):",
+      "help_text" : "This is the amount of spacing that you would like above the content in the row when viewing on a mobile phone in portrait mode.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "5daa90e2-a5b6-ba84-0046-e123002cecbd",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile):",
+      "help_text" : "This is the amount of spacing that you would like below the content in the row when viewing on a mobile phone in portrait mode.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "53a7bbc6-b939-4626-54af-5b2cf8c8cfc5",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on:",
+    "help_text" : "This section will let you control whether or not the row is visible on different devices.\n",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "f91db17f-6f1a-9871-be38-e2ebb07ea34a",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "4a2c314a-aa96-85bb-88c5-5978d46f3d3a",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "1aa51994-899c-899e-da8d-3bf72642874b",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "f814005a-83e5-ce0c-3759-6ce37b13dae1",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The Nerdy Stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "113f5ffc-2a0a-304d-5a44-7151fd47d803",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    }, {
+      "id" : "3727b27c-d386-b3ee-3348-b6b8391ce733",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_type" : "color",
+    "bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "color_1" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "color_2" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    },
+    "gradient_angle" : "45deg",
+    "content_width" : "container",
+    "set_width" : 600,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 10
+    },
+    "shadow_size" : 20,
+    "content_alignment_desktop" : "center",
+    "content_alignment_mobile" : "center",
+    "add_wave_top" : false,
+    "wave_top" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : { }
+  }
+} ]

@@ -1,0 +1,105 @@
+{# 
+ NAME: JOB LISTING TABLE
+ MODULE VERSION: 2.0.1
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/22
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-list-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-list-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-list-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+   {# END #}
+  
+   {# TABLE STYLE #}  
+  
+  #hs_cos_wrapper_{{ name }} .hhs-list-con {
+    border-top: 1px solid {{ module.row_settings.line_color.color }};
+    padding: 15px 0;
+  }
+  
+  {% if module.row_settings.custom_text_color %}
+    #hs_cos_wrapper_{{ name }} .hhs-list-mod h5,
+    #hs_cos_wrapper_{{ name }} .hhs-list-con span {
+      color: {{ module.row_settings.text_color.color }};
+     }
+    #hs_cos_wrapper_{{ name }} .hhs-list-con a {
+     color: rgba({{ module.row_settings.link_color.color|convert_rgb }}, {% if module.row_settings.link_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.link_color.opacity }}{% endif %}); 
+    } 
+    #hs_cos_wrapper_{{ name }} .hhs-list-con a:hover {
+     color: rgba({{ module.row_settings.link_color_hover.color|convert_rgb }}, {% if module.row_settings.link_color_hover.opacity == '100' %}1{% else %}0.{{ module.row_settings.link_color_hover.opacity }}{% endif %}); 
+    } 
+  {% endif %}
+  
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-list-mod  {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}" >
+  <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row hide-mobile">
+      <div class="col-lg-8 col-sm-12">
+        <h5>{{ module.start.col_1_title }}</h5>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+        <h5 class="text-right">{{ module.start.col_2_title }}</h5>
+      </div>
+    </div>
+    {% for item in module.job %}
+      {% set href = item.link_to.url.href %}
+      {% if item.link_to.url.type is equalto "EMAIL_ADDRESS" %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      <div class="row hhs-list-con">
+        <div class="col-lg-8 col-sm-12">
+          <a href="{{ href }}" {% if item.link_to.open_in_new_tab %}target="_blank"{% endif %} {% if item.link_to.no_follow %}rel="nofollow"{% endif %}>{% inline_text field="title" value="{{ item.title }}" %}</a>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <span class="text-right">{% inline_text field="location" value="{{ item.location }}" %}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+

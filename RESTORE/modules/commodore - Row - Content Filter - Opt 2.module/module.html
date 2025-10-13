@@ -1,0 +1,366 @@
+{# 
+ NAME: CONTENT FILTER OPT 2
+ MODULE VERSION: 2.0.2
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/22
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      text-align:  {{ module.style.filter_options.alignment }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {%- elif module.row_settings.shadow == 'inner' -%}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {%- endif -%}
+  
+  {# END #}
+  
+  {# CARD STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .content-desc {
+    background-color: rgba({{  module.style.content_card.card_bg_color.color|convert_rgb }},{% if module.style.content_card.card_bg_color.opacity == '100' %}1{% else %}0.{{  module.style.content_card.card_bg_color.opacity }}{% endif %});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .filter-opt-2 .content-card-opt2 {
+    height: {{ module.style.content_card.card_height }}px;
+  }
+  
+  @media (max-width: 768px) {
+    #hs_cos_wrapper_{{ name }} .filter-opt-2 .content-card-opt2 {
+      height: {{ module.style.content_card.card_height_tablet }}px;
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .filter-opt-2 .content-card-opt2 {
+      height: {{ module.style.content_card.card_height_mobile }}px;
+    }
+  }
+  
+  {# TEXT #}
+  
+  #hs_cos_wrapper_{{ name }} .content-desc h4 {
+    color: {{ module.style.content_card.title_color.color }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .content-desc h6 {
+    color: {{ module.style.content_card.type_color.color }};
+  }
+  
+  {# FILTER #}
+  
+  #hs_cos_wrapper_{{ name }} .contentFilter {text-align: {{ module.style.filter_options.alignment }};}
+  #hs_cos_wrapper_{{ name }} .contentFilter button {
+    border-bottom: 1px solid {{ module.row_settings.bg_color.color }};
+    {% if module.style.filter_options.custom_text_color %}
+      color: {{ module.style.filter_options.text_color.color }};
+    {% endif %}
+    
+  }
+  
+  #hs_cos_wrapper_{{ name }} .contentFilter button.is-checked {border-bottom: 1px solid {{ module.style.filter_options.active_color.color }};}
+
+</style>
+{% end_require_css %}
+
+
+<div id="{{ module.row_settings.code.section_id }}"
+     class="hhs-content-filter-mod
+            filter-opt-2
+            filter-button-group
+            {{ name }}_filter-button-group
+            {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %}
+            {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %}
+            {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} 
+            {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %}
+            {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %}
+            {{ module.row_settings.code.section_class }}">
+  <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col-md-4">
+        <input type="text"
+               class="quicksearch
+                      {{ name }}_quicksearch"
+               placeholder="Search" />
+      </div>
+      <div class="col-md-8 filters">
+        <div class="contentFilter
+                    {{ name }}_contentFilter
+                    clearfix
+                    button-group
+                    {{ name }}_button-group">
+          <button href="#"
+                  data-{{ name }}_filter="*"
+                  class="button
+                         is-checked">
+            All
+          </button>
+          {% for item in module.filters %}
+            <button href="#"
+                    class="button"
+                    data-{{ name }}_filter=".{{ item.filter_class }}" >
+              {{ item.filter_name }}
+          </button>     
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="contentContainer
+                    grid
+                    {{ name }}_grid">
+            <div class="gutter-sizer
+                        {{ name }}_gutter-sizer"></div> 
+            <div class="grid-sizer
+                        {{ name }}_grid-sizer"></div> 
+          {% for item in module.content_item %}
+          {% set href = item.link_card_to.url.href %}
+          {% if item.link_card_to.url.type is equalto "EMAIL_ADDRESS" %}
+          {% set href = "mailto:" + href %}
+          {% endif %}
+          {% set rel = [] %}
+          {% if item.link_card_to.no_follow %}
+          {% do rel.append("nofollow") %}
+          {% endif %}
+          {% if item.link_card_to.open_in_new_tab %}
+          {% do rel.append("noopener") %}
+          {% endif %}
+            <a href="{{ href }}"
+               {{ name }}_data-category="{{ item.content_class }}"
+               class="{{ item.content_class }}
+                      content-card-opt2
+                      element-item
+                      {{ name }}_element-item"
+               {% if item.link_card_to.open_in_new_tab %}target="_blank"{% endif %}
+               {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}>
+              <div class="content-desc">
+                {% if item.card_image.src %}
+                  {% set sizeAttrs = 'width="{{ item.card_image.width }}" height="{{ item.card_image.height }}"' %}
+                  {% if item.card_image.size_type == 'auto' %}
+                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                  {% elif item.card_image.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="{{ item.card_image.max_width }}" height="{{ item.card_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                  {% endif %}
+                   {% set loadingAttr = item.card_image.loading != 'disabled' ? 'loading="{{ item.card_image.loading }}"' : '' %}
+                  <img src="{{ item.card_image.src }}" alt="{{ item.card_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+                <div class="content-inner">
+                  <h6>{{ item.subtitle }}</h6>
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.summary_text }}</p>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-content-filter-opt2.css"), { async: true }) }}
+
+
+{% require_js %}
+<script defer>
+
+
+var buttonFilters = {};
+var buttonFilter;
+var qsRegex;
+
+// init Isotope
+var ${{ name }}_grid = $('.{{ name }}_grid').isotope({
+  itemSelector: '.{{ name }}_element-item',
+  filter: function() {
+    var $this = $(this);
+    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+    var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+    return searchResult && buttonResult;
+  },
+});
+
+// use value of search field to filter
+var ${{ name }}_quicksearch = $('.{{ name }}_quicksearch').keyup( debounce( function() {
+  qsRegex = new RegExp( ${{ name }}_quicksearch.val(), 'gi' );
+  ${{ name }}_grid.isotope();
+}) );
+  
+function UpdateQueryString(key, value, url) {
+    if (!url) url = window.location.href;
+    var re = new RegExp("([?&])" + key + "=.*?(&|#|$)(.*)", "gi"),
+        hash;
+
+    if (re.test(url)) {
+        if (typeof value !== 'undefined' && value !== null) {
+            return url.replace(re, '$1' + key + "=" + value + '$2$3');
+        } 
+        else {
+            hash = url.split('#');
+            url = hash[0].replace(re, '$1$3').replace(/(&|\?)$/, '');
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) {
+                url += '#' + hash[1];
+            }
+            return url;
+        }
+    }
+    else {
+        if (typeof value !== 'undefined' && value !== null) {
+            var separator = url.indexOf('?') !== -1 ? '&' : '?';
+            hash = url.split('#');
+            url = hash[0] + separator + key + '=' + value;
+            if (typeof hash[1] !== 'undefined' && hash[1] !== null) {
+                url += '#' + hash[1];
+            }
+            return url;
+        }
+        else {
+            return url;
+        }
+    }
+}
+  
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
+
+  
+// flatten object by concatting values
+function concatValues( obj ) {
+  var value = '';
+  for ( var prop in obj ) {
+    value += obj[ prop ];
+  }
+  return value;
+}
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    var args = arguments;
+    var _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
+}
+
+
+// FILTER WITH URL Query Param
+
+
+var {{ name }}_grid = document.querySelector('.{{ name }}_grid');
+var {{ name }}_filterButtonGroup = document.querySelector('.{{ name }}_filter-button-group');
+var {{ name }}_iso;
+
+function {{ name }}_onParamChange() {
+  var paramFilter = {{ name }}_getParamFilter();
+  if ( !paramFilter && {{ name }}_iso ) {
+    return;
+  }
+  if ( !{{ name }}_iso ) {
+    // init Isotope for first time
+    {{ name }}_iso = new Isotope( {{ name }}_grid, {
+      itemSelector: '.{{ name }}_element-item',
+      layoutMode: 'masonry',
+      filter: paramFilter || '',
+      masonry: {
+        // set to the element
+        columnWidth: '.{{ name }}_grid-sizer',
+        gutter: '.{{ name }}_gutter-sizer'
+      },
+    });
+  } else {
+    // just filter with hash
+    {{ name }}_iso.arrange({
+      filter: paramFilter
+    });
+  }
+  
+  // set selected class on button
+  if ( paramFilter ) {
+    var checkedButton  = {{ name }}_filterButtonGroup.querySelector('.is-checked');
+    if ( checkedButton ) {
+      checkedButton.classList.remove('is-checked');
+    }
+    {{ name }}_filterButtonGroup.querySelector('[data-{{ name }}_filter="' + paramFilter + '"]').classList.add('is-checked');
+  }
+}
+
+// bind filter button click
+{{ name }}_filterButtonGroup.addEventListener( 'click', function( event ) {
+  var filterAttr = event.target.getAttribute('data-{{ name }}_filter');
+  if ( !filterAttr ) {
+    return;
+  }
+  // Add filter to query params
+  history.pushState({}, null, UpdateQueryString('{{ name }}_filter', encodeURIComponent( filterAttr )));
+});
+
+function {{ name }}_getParamFilter() {
+  var matches = location.hash.match( /{{ name }}_filter=([^&]+)/i );
+    if (getQueryVariable('{{ name }}_filter')) {
+      return getQueryVariable('{{ name }}_filter')
+    } else {
+      return '*'
+    }
+}
+
+// Bind Main filter function to filter clicks
+document.querySelector('.{{ name }}_filter-button-group').addEventListener( 'click', {{ name }}_onParamChange );
+
+// trigger event handler to init Isotope
+{{ name }}_onParamChange();
+
+</script>
+{% end_require_js %}

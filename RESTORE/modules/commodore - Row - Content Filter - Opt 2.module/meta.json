@@ -1,0 +1,14 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/19522085/commodore-images/module-icons/icon-content-filter-opt-2.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 135503765654,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/isotope.js",
+    "name" : "isotope.js"
+  } ],
+  "label" : "Content Filter - Opt 2 - C6.2",
+  "is_available_for_new_content" : true
+}

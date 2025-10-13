@@ -1,0 +1,897 @@
+[ {
+  "id" : "61ac623a-90ec-205f-a6b4-034c784a40a5",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "4d7cb7eb-bdec-a1c1-9d17-d90f0c060226",
+    "name" : "img_col",
+    "display_width" : null,
+    "label" : "What side do you want the image on?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "2d1c29c5-da99-1ea9-7e2c-4495e52e9a4f",
+    "name" : "col_arrangement",
+    "display_width" : null,
+    "label" : "Column Arrangement:",
+    "help_text" : "",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "opt1", "6 | 6" ], [ "opt2", "4 | 8" ], [ "opt3", "8 | 4" ], [ "opt4", "5 | 7" ], [ "opt5", "7 | 5" ], [ "opt6", "9 | 3" ], [ "opt7", "3 | 9" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "opt1"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "img_col" : "left",
+    "col_arrangement" : "opt1"
+  }
+}, {
+  "id" : "fdf3c5d7-9b49-eb51-82b3-265834ceaadb",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Content Here",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "258bc40c-06be-838b-b8ea-9dbfe7253204",
+    "name" : "text",
+    "display_width" : null,
+    "label" : "Rich Text Editor:",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h3>This is space for an impactful Headline</h3>\n<p><span>Lorem ipsum dolor amet lumbersexual pitchfork dreamcatcher bitters cloud bread. Man bun beard pok pok pickled cliche palo santo raw denim paleo bespoke typewriter asymmetrical chillwave activated charcoal. Narwhal pour-over taiyaki palo santo, roof party four loko mumblecore chia taxidermy man braid waistcoat austin.</span></p>"
+  }, {
+    "id" : "b0488e4b-e7cb-5575-0c31-66822fced043",
+    "name" : "btn_pop",
+    "display_width" : null,
+    "label" : "Add button to trigger pop-up",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "c7fd4411-a997-9f5e-d1c6-2bcbbd9f41e4",
+    "name" : "btn_pop_opts",
+    "display_width" : null,
+    "label" : "Button with Pop-up Options:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "b0488e4b-e7cb-5575-0c31-66822fced043",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "f8f4f06e-61ac-d261-d9f6-dc78ca9e940b",
+      "name" : "button_label",
+      "display_width" : null,
+      "label" : "Button Label",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Button"
+    }, {
+      "id" : "809e1e8b-bddc-dc58-47a0-24477071fe77",
+      "name" : "btn_style",
+      "display_width" : null,
+      "label" : "Button Style",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "cta-primary", "Primary" ], [ "cta-secondary", "Secondary" ], [ "cta-tertiary", "Tertiary" ], [ "cta-four", "Four" ], [ "cta-five", "Five" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "cta-secondary"
+    }, {
+      "id" : "0e1ce1a2-4195-8438-11c8-f6c2e360407e",
+      "name" : "pop_up_content",
+      "display_width" : null,
+      "label" : "Pop-up Content:",
+      "required" : false,
+      "locked" : false,
+      "type" : "richtext",
+      "default" : "Add your content here."
+    }, {
+      "id" : "392e59e1-aa15-1291-d571-730c41cbdc4b",
+      "name" : "add_form",
+      "display_width" : null,
+      "label" : "Add Form",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "d856baab-9e2b-7b2c-3378-01c4fd953a2e",
+      "name" : "form_pop",
+      "display_width" : null,
+      "label" : "Select Form for Pop-Up",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "392e59e1-aa15-1291-d571-730c41cbdc4b",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "form",
+      "default" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      }
+    }, {
+      "id" : "38107b00-4922-834b-4597-ad5e86dbddc9",
+      "name" : "follow_up_type_simple",
+      "display_width" : null,
+      "label" : "Send follow up email:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "392e59e1-aa15-1291-d571-730c41cbdc4b",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "15ddb565-ddff-f20b-6003-102d21c2dede",
+      "name" : "simple_email_for_live_id",
+      "display_width" : null,
+      "label" : "Select Follow Up Email:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "38107b00-4922-834b-4597-ad5e86dbddc9",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "followupemail"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "button_label" : "Button",
+      "btn_style" : "cta-secondary",
+      "pop_up_content" : "Add your content here.",
+      "add_form" : false,
+      "form_pop" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    }
+  }, {
+    "id" : "6eef8bde-364d-4555-85ca-1ce542f0bfb5",
+    "name" : "text_padding_right_left",
+    "display_width" : null,
+    "label" : "Text Padding - Right/Left:",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 10,
+    "max" : 300,
+    "step" : 10,
+    "type" : "number",
+    "default" : 100
+  }, {
+    "id" : "4572a3f0-6db7-513e-6ad0-6ac0c8fffbe5",
+    "name" : "text_padding_right_left_tablet",
+    "display_width" : null,
+    "label" : "Text Padding - Right/Left (Tablet):",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 10,
+    "max" : 300,
+    "step" : 10,
+    "type" : "number",
+    "default" : 50
+  }, {
+    "id" : "2cfc14bb-1483-6a07-f20a-2fa22427c1be",
+    "name" : "text_padding_right_left_mobile",
+    "display_width" : null,
+    "label" : "Text Padding - Right/Left (Mobile):",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 5,
+    "max" : 100,
+    "step" : 10,
+    "type" : "number",
+    "default" : 50
+  }, {
+    "id" : "414fbbb2-8102-45ba-36b2-3c6ee5f8819b",
+    "name" : "text_align",
+    "display_width" : null,
+    "label" : "Text Alignment (Desktop):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "8ffc7ae1-19f4-1203-bc6c-68857ac51c4b",
+    "name" : "text_align_mobile",
+    "display_width" : null,
+    "label" : "Text Alignment (Mobile):",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left"
+  }, {
+    "id" : "e25fa66a-862f-e54e-3091-d3ce61cca3ae",
+    "name" : "image",
+    "display_width" : null,
+    "label" : "Upload Your Image:",
+    "help_text" : "This image will scale to fill the entire width and height of the column. Parts of the image may be cropped out to fill the entire space proportionally. If it's important that the image isn't cropped, I recommend using Row - Image and Text - Opt 2",
+    "inline_help_text" : "The edges of this image may be cropped out. See ( i ) for details.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "https://dl.dropboxusercontent.com/s/ph2ft4t1rh9nv01/palm-trees-bg.jpg",
+      "alt" : "palm-trees-bg",
+      "width" : 1500,
+      "height" : 1000,
+      "loading" : "lazy",
+      "size_type" : "auto"
+    }
+  }, {
+    "id" : "4d489d1a-2fd6-5555-089e-503074d3b11f",
+    "name" : "settings",
+    "display_width" : null,
+    "label" : "Settings:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "68dc6c21-02a7-28ec-fb90-0e6d65c55d42",
+      "name" : "img_first_mobile",
+      "display_width" : null,
+      "label" : "Show Image on Top (Mobile/Tablet): ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "4d7cb7eb-bdec-a1c1-9d17-d90f0c060226",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "right",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "26aba570-fbe8-d83e-cd42-97fbc395eb2e",
+      "name" : "text_first_mobile",
+      "display_width" : null,
+      "label" : "Show Text on Top (Mobile):",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "4d7cb7eb-bdec-a1c1-9d17-d90f0c060226",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "left",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "13acd211-4081-924a-95eb-7fb82f60f862",
+      "name" : "show_divider",
+      "display_width" : null,
+      "label" : "Show Divider Accent:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "96f8d9b8-ec06-79d1-3f55-fa2e2d90f3f1",
+      "name" : "custom_divider_color",
+      "display_width" : null,
+      "label" : "Custom Divider Color:",
+      "help_text" : "Flip this on if you'd like to use a different color divider than you've set as the global default.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "13acd211-4081-924a-95eb-7fb82f60f862",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "19baf16f-307b-d726-2a32-abef1e277282",
+      "name" : "divider_color",
+      "display_width" : null,
+      "label" : "Divider Color:",
+      "help_text" : "Set the color of the divider that sits above the content.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "96f8d9b8-ec06-79d1-3f55-fa2e2d90f3f1",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "810fe2e7-9568-b069-8da3-1319527a7b1f",
+      "name" : "animate_text",
+      "display_width" : null,
+      "label" : "Text Animation:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "none", "None" ], [ "fadeIn", "Fade In" ], [ "fadeInDown", "Fade In Down" ], [ "fadeInLeft", "Fade In Left" ], [ "fadeInRight", "Fade In Right" ], [ "fadeInUp", "Fade In Up" ], [ "bounceIn", "Bounce In" ], [ "bounceInDown", "Bounce In Down" ], [ "bounceInLeft", "Bounce In" ], [ "bounceInRight", "Bounce In Right" ], [ "bounceInUp", "Bounce In Up" ], [ "rollIn", "Roll In" ], [ "zoomIn", "Zoom In" ], [ "zoomInDown", "Zoom In Down" ], [ "zoomInLeft", "Zoom In Left" ], [ "zoomInRight", "Zoom In Right" ], [ "zoomInUp", "Zoom In Up" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "fadeIn"
+    }, {
+      "id" : "00cb418a-8555-47b5-69a8-f01d04361746",
+      "name" : "text_animation_delay",
+      "display_width" : null,
+      "label" : "Text Animation Delay:",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0", "None" ], [ "0.5s", "1/2 second" ], [ "1s", "1 second" ], [ "1.5s", "1 1/2 seconds" ], [ "2s", "2 seconds" ], [ "3s", "3 seconds" ], [ "4s", "4 seconds" ], [ "5s", "5 seconds" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "1s"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "img_first_mobile" : false,
+      "text_first_mobile" : false,
+      "show_divider" : true,
+      "custom_divider_color" : false,
+      "divider_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "animate_text" : "fadeIn",
+      "text_animation_delay" : "1s"
+    }
+  }, {
+    "id" : "abb01a72-9acc-f84b-ec7b-508197af2618",
+    "name" : "advanced",
+    "display_width" : null,
+    "label" : "//// Extra Design Elements (The geeky stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "3db02742-050a-6bce-9c91-63587c0e09fe",
+      "name" : "layer_img",
+      "display_width" : null,
+      "label" : "Layer Headline on Top of Image:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "e6d2a0f2-545c-f291-ea78-9455d6aaecd7",
+      "name" : "text_slider",
+      "display_width" : null,
+      "label" : "Overlap Text by (px):",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "3db02742-050a-6bce-9c91-63587c0e09fe",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 400,
+      "step" : 10,
+      "type" : "number",
+      "default" : 160
+    }, {
+      "id" : "61ef1d9c-c00a-96c5-cc41-3dc08e3ac390",
+      "name" : "header_cutout",
+      "display_width" : null,
+      "label" : "Text Cutout Image:",
+      "help_text" : "This is going to set the background color of the header text to the same color you have set for the row. This will give the illusion that the photo has a cutout where the text overlaps. Cool, huh?",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "3db02742-050a-6bce-9c91-63587c0e09fe",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "95b74e40-40c8-4d53-b828-27f88c3da495",
+      "name" : "cutout_size",
+      "display_width" : null,
+      "label" : "Cutout Size:",
+      "help_text" : "This is going to set a consistent padding around the headline.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "61ef1d9c-c00a-96c5-cc41-3dc08e3ac390",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 5,
+      "type" : "number",
+      "default" : 20
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "layer_img" : false,
+      "text_slider" : 160,
+      "header_cutout" : false,
+      "cutout_size" : 20
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "text" : "<h3>This is space for an impactful Headline</h3>\n<p><span>Lorem ipsum dolor amet lumbersexual pitchfork dreamcatcher bitters cloud bread. Man bun beard pok pok pickled cliche palo santo raw denim paleo bespoke typewriter asymmetrical chillwave activated charcoal. Narwhal pour-over taiyaki palo santo, roof party four loko mumblecore chia taxidermy man braid waistcoat austin.</span></p>",
+    "btn_pop" : false,
+    "btn_pop_opts" : {
+      "button_label" : "Button",
+      "btn_style" : "cta-secondary",
+      "pop_up_content" : "Add your content here.",
+      "add_form" : false,
+      "form_pop" : {
+        "response_type" : "inline",
+        "message" : "Thanks for submitting the form."
+      },
+      "follow_up_type_simple" : false
+    },
+    "text_padding_right_left" : 100,
+    "text_padding_right_left_tablet" : 50,
+    "text_padding_right_left_mobile" : 50,
+    "text_align" : "left",
+    "text_align_mobile" : "left",
+    "image" : {
+      "src" : "https://dl.dropboxusercontent.com/s/ph2ft4t1rh9nv01/palm-trees-bg.jpg",
+      "alt" : "palm-trees-bg",
+      "width" : 1500,
+      "height" : 1000,
+      "loading" : "lazy",
+      "size_type" : "auto"
+    },
+    "settings" : {
+      "img_first_mobile" : false,
+      "text_first_mobile" : false,
+      "show_divider" : true,
+      "custom_divider_color" : false,
+      "divider_color" : {
+        "color" : "#00a4bd",
+        "opacity" : 100
+      },
+      "animate_text" : "fadeIn",
+      "text_animation_delay" : "1s"
+    },
+    "advanced" : {
+      "layer_img" : false,
+      "text_slider" : 160,
+      "header_cutout" : false,
+      "cutout_size" : 20
+    }
+  }
+}, {
+  "id" : "e2b3f0c8-41ab-78e3-1ebe-6fa7c7c2036a",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "c6a5eb54-1e48-8dd4-30a5-62fe63b89097",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "93108ab9-3f75-da0f-2907-6d2450037fcc",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "d233bb36-cc35-f330-646a-f9ef371281f2",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "help_text" : "Select the background color of this row.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "1ca499b0-b0a9-6cde-de17-c8781aca75f4",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Do you want a subtle shadow?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "inner", "Inner" ], [ "outer", "Outer" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "5d1e927b-753a-c57c-0744-e9648da06c82",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "1ca499b0-b0a9-6cde-de17-c8781aca75f4",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 20
+    }
+  }, {
+    "id" : "d90c6e6a-56fd-e654-9930-57a90b1dfdc5",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "1ca499b0-b0a9-6cde-de17-c8781aca75f4",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "3400d3f5-236a-bcb9-aa92-99131d6d2e49",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "9fff87b4-c65f-2394-bfff-cfea66184139",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ], [ "350px", "XXL" ], [ "500px", "XXXL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "7dedc9e4-e15b-b562-b2d7-dd4ec18473c2",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ], [ "350px", "XXL" ], [ "500px", "XXXL" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "100px"
+    }, {
+      "id" : "c5b8c01d-997e-2bc4-b9b1-f5b260224ab7",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "582e7209-5d49-5d86-4727-d47b035b58a8",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "586b0a21-b49a-d435-faa9-9e03af0aa588",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "1d515846-7898-ecfb-5f57-77d4fc593775",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "placeholder" : "Please Select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "100px",
+      "padding_bottom" : "100px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "50px",
+      "padding_bottom_mobile" : "50px"
+    }
+  }, {
+    "id" : "2f24d78f-06cb-ef94-eaff-01cca7f5d3a8",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "dffec2ef-1d6d-e023-936d-5d4c9adf485d",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "help_text" : "By turning this off, the row will not be visible on desktop or devices with a larger screen real-estate. ",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "6c0dc8af-565b-0255-6fee-608ea7d55bb0",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "help_text" : "By turning this off, the row will not be visible on most tablets in portrait mode.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "c05a1904-2f14-bfe5-9695-b591320dabb9",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "help_text" : "By turning this off, the row will not be visible on mobile devices in portrait mode.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "e9d9f6db-55d1-4d87-47dd-2e36f5cfaa70",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The Nerdy Stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "962231fc-a5dc-abd9-3fe1-96e03d58d523",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "help_text" : "This is great when you want to create anchor links that zips someone to a certain section of the page.  There must be no spaces in the ID you choose. Use a dash (-) or underscore (_) instead.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "7a99e9dc-5538-d2df-963c-08882c3f93c3",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces. ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 20
+    },
+    "shadow_size" : 20,
+    "adv_settings" : {
+      "padding_top" : "100px",
+      "padding_bottom" : "100px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "50px",
+      "padding_bottom_mobile" : "50px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  }
+} ]

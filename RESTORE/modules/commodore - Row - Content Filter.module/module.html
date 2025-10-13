@@ -1,0 +1,151 @@
+{# 
+ NAME: CONTENT FILTER OPT 1
+ MODULE VERSION: 2.0.3
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 1/16/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  {# ROW STYLE #}
+  
+  .grid-sizer {width: 32%}
+  .gutter-sizer {width: 2%}
+
+  .content-card {
+    margin: 0 0 20px 0;
+    height: 250px;
+    width: 32%;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    overflow: hidden;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+   @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-content-filter-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      text-align:  {{ module.style.filter_options.alignment }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {%- elif module.row_settings.shadow == 'inner' -%}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {%- endif -%}
+  
+  {# END #}
+  
+  {# CARD STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .content-desc h4,
+  #hs_cos_wrapper_{{ name }} .content-desc h6 {
+    color: {{ module.style.content_card.text_color.color }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .content-card-overlay {
+    background-color: rgba({{  module.style.content_card.overlay_color.color|convert_rgb }},{% if module.style.content_card.overlay_color == '100' %}1{% else %}0.{{  module.style.content_card.overlay_color.opacity }}{% endif %});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .contentFilter {text-align: {{ module.style.filter_options.alignment }};}
+  #hs_cos_wrapper_{{ name }} .contentFilter button {
+    border-bottom: 1px solid {{ module.row_settings.bg_color.color }};
+    {% if module.style.filter_options.custom_text_color %}
+      color: {{ module.style.filter_options.text_color.color }};
+    {% endif %}
+  }
+  #hs_cos_wrapper_{{ name }} .contentFilter button.is-checked {border-bottom: 1px solid {{ module.style.filter_options.active_color.color }};}
+
+</style>
+{% end_require_css %}
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-content-filter-mod filter-button-group {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}">
+  <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col-12">
+        <div class="contentFilter clearfix">
+          {% if ! module.style.filter_options.hide_all_filter %}
+            <button href="#" data-filter="*" class="button is-checked">{{ module.style.filter_options.all_filter_label }}</button>
+          {% endif %}
+          {% for item in module.filters %}
+            <button href="#" class="button" data-filter=".{{ item.filter_class }}" >{{ item.filter_name }}</button>     
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="contentContainer grid">
+            <div class="gutter-sizer"></div> 
+            <div class="grid-sizer"></div> 
+          {% for item in module.content_item %}
+              {% set href = item.link.url.href %}
+              {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+             <a href="{{ href }}" {% if item.link.open_in_new_tab %}target="_blank"{% endif %} {% if item.link.no_follow %}rel="nofollow"{% endif %} data-category="{{ item.content_class }}" class="{{ item.content_class }} content-card element-item">
+               <div class="content-card-overlay"></div>
+               <div class="content-desc">
+                 <h4>{{ item.title }}</h4>
+                 <h6>{{ item.subtitle }}</h6>
+               </div>
+               
+               {% if item.background_image.src %}
+                {% set sizeAttrs = 'width="{{ item.background_image.width }}" height="{{ item.background_image.height }}"' %}
+                {% if item.background_image.size_type == 'auto' %}
+                  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif item.background_image.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ item.background_image.max_width }}" height="{{ item.background_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = item.background_image.loading != 'disabled' ? 'loading="{{ item.background_image.loading }}"' : '' %}
+                <img class="content-card-inner" src="{{ item.background_image.src }}" alt="{{ item.background_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# ASYNC CSS LOAD #}    
+{{ require_css(get_asset_url("../../css/modules/row-content-filter-opt1.css"), { async: true }) }}

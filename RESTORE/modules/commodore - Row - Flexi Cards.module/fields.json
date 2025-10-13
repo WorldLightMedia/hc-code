@@ -1,0 +1,3187 @@
+[ {
+  "id" : "0180a4c2-9200-6b0b-99dc-b695fb4b8b3e",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many people do you want to show?",
+    "help_text" : "",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "One" ], [ "2", "Two" ], [ "3", "Three" ], [ "4", "Four" ], [ "5", "Five" ], [ "6", "Six" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "3"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "3"
+  }
+}, {
+  "id" : "f7a95588-8330-d435-2921-3e50a38d5f4f",
+  "name" : "col_1",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 1",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "NOT_EMPTY",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "4a80c76e-88ad-f1ba-417e-b4c5574d2b48",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "0714846b-3d19-d9d7-2744-4fa04f4e6659",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "93709169-9d3a-9f4b-3674-04d0b820aa55",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "b9426eaa-516a-8570-fe6b-a26fa7f84ddb",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "93709169-9d3a-9f4b-3674-04d0b820aa55",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "53db6892-9b54-3287-86ee-9661b320cbd4",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "93709169-9d3a-9f4b-3674-04d0b820aa55",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "1d36146d-3911-6d70-2f60-819bdb1efd1e",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "53db6892-9b54-3287-86ee-9661b320cbd4",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "93709169-9d3a-9f4b-3674-04d0b820aa55",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "d6fc3c67-bcab-deca-fd21-4e0165c934c1",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "93709169-9d3a-9f4b-3674-04d0b820aa55",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "b2c0c052-00df-e0c0-089a-16ad4e46cb3e",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "34267525-71cc-b4f9-1e28-08e185ac8636",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "b79d5aa6-96d7-9e33-f755-ac81b0b54c99",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Link to:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "34267525-71cc-b4f9-1e28-08e185ac8636",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "71b9142b-5461-279a-2e8e-95614d1586ee",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "34267525-71cc-b4f9-1e28-08e185ac8636",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }
+}, {
+  "id" : "2a46a585-9476-de45-8d4c-d4b735632796",
+  "name" : "col_2",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 2",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[23456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "339475a3-7f11-3f42-238a-3fc25fc99e7d",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "35c1d826-6e04-8435-a2b0-0f9416f305a6",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "360cfd11-33aa-fda9-42c2-f14c26ca7b5d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "57bf0f22-0f3e-d835-df1e-60282c27af08",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "360cfd11-33aa-fda9-42c2-f14c26ca7b5d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "d5ec1b0b-ea44-9b1f-e28e-bec658ebd206",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "360cfd11-33aa-fda9-42c2-f14c26ca7b5d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "172f99ce-c909-02ca-71b9-8fdb548acc6f",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "d5ec1b0b-ea44-9b1f-e28e-bec658ebd206",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "360cfd11-33aa-fda9-42c2-f14c26ca7b5d",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "f9d11deb-2540-ebaa-a465-542068c253ec",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "360cfd11-33aa-fda9-42c2-f14c26ca7b5d",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "70097155-81bc-57f6-adbe-d2e103ffac2d",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "6800657e-bb3e-725b-bd1d-adbe0089f488",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "27e80f83-428b-42ea-53cc-4af52293868e",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Link to:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "6800657e-bb3e-725b-bd1d-adbe0089f488",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "fdeeca0d-a5e6-bd47-f0ab-82d88c609694",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "6800657e-bb3e-725b-bd1d-adbe0089f488",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "2e7728cc-03a8-9f50-4eb5-a0837d0d99fe",
+    "name" : "hide_this_card",
+    "display_width" : null,
+    "label" : "Hide this card:",
+    "inline_help_text" : "This will hide the card in this column while keeping the column intact.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    },
+    "hide_this_card" : false
+  }
+}, {
+  "id" : "a400d9b8-ae6b-95c0-d718-36711c22ae99",
+  "name" : "col_3",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 3",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[3456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "69c602a1-62cd-3ca2-3639-dcd47c6860c4",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "2ad4af65-cf66-e746-8ce2-0c1173069a93",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "073cf63c-1607-1cdc-e219-87c86e82780f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "d76e8f03-d369-213c-9f3d-65a73b3544d2",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "073cf63c-1607-1cdc-e219-87c86e82780f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "ad3bfc9a-7178-62e9-cd3e-6732e1cbdcdf",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "073cf63c-1607-1cdc-e219-87c86e82780f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "6aecc8d6-1473-81da-444e-c1bdb4b3a436",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "ad3bfc9a-7178-62e9-cd3e-6732e1cbdcdf",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "073cf63c-1607-1cdc-e219-87c86e82780f",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "c4ceb8c6-f406-2888-b0cb-b6357025ec02",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "073cf63c-1607-1cdc-e219-87c86e82780f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "81cfdca1-b781-5e4d-2c92-acbc20e8ce84",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "fb86db62-2566-1572-23b7-fea4403d478d",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "b83b1fa2-09dd-bd95-2da4-addb45a9fd9d",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Link to:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "fb86db62-2566-1572-23b7-fea4403d478d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "5c911a49-f3fe-5da2-ae6d-4b5c9f8376c3",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "fb86db62-2566-1572-23b7-fea4403d478d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "2452b747-f814-555e-0774-3443e875cd93",
+    "name" : "hide_this_card",
+    "display_width" : null,
+    "label" : "Hide this card:",
+    "inline_help_text" : "This will hide the card in this column while keeping the column intact.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    },
+    "hide_this_card" : false
+  }
+}, {
+  "id" : "3db5e1ec-6a9c-30bd-d0dc-4cc42ef0c325",
+  "name" : "col_4",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 4",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[456]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "1c9e2734-a195-6259-16b8-237f5e6d9738",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "9c8d84a4-3686-2c79-d6c3-bd4969f5a68d",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "c1774708-b812-092c-6eab-578f0df77704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "d479812e-16e1-9877-f5b4-8a6e16fffb1d",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "c1774708-b812-092c-6eab-578f0df77704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "c4980195-dd89-2b37-358b-d40df2289b97",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c1774708-b812-092c-6eab-578f0df77704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "1809bf25-1dbd-498f-380f-8ce07787e5ae",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "c4980195-dd89-2b37-358b-d40df2289b97",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "c1774708-b812-092c-6eab-578f0df77704",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "d44fa241-0815-6a1b-5241-1a72210d9dd7",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c1774708-b812-092c-6eab-578f0df77704",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "6bb4fbeb-dbc9-9cda-a2d8-d63721961e54",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "96fe1985-c43d-cb66-2f84-b8a85c75b04b",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "e22a034f-e713-a541-5c00-f90586ff1274",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Select Link:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "96fe1985-c43d-cb66-2f84-b8a85c75b04b",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "7b3520e0-f603-8c5b-b9e3-b03fcf4b118f",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "96fe1985-c43d-cb66-2f84-b8a85c75b04b",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "0a1ca621-da08-8755-ccf3-5560cfe57adf",
+    "name" : "hide_this_card",
+    "display_width" : null,
+    "label" : "Hide this card:",
+    "inline_help_text" : "This will hide the card in this column while keeping the column intact.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    },
+    "hide_this_card" : false
+  }
+}, {
+  "id" : "5f645c08-b1e4-3d48-c975-b32f91c9701c",
+  "name" : "col_5",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 5",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[56]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "37fc830e-94c8-2b77-afde-1df28dd58967",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "2bf35d11-e755-2da0-8e8f-4ae14a63683c",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "361ce042-fd73-36db-ef99-0dd3653b5f2e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "7e85d156-c9ed-c2d4-dfd2-727acbe7e1c8",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "361ce042-fd73-36db-ef99-0dd3653b5f2e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "ef78a55d-7e85-fcdb-d972-f451f37b68b1",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "361ce042-fd73-36db-ef99-0dd3653b5f2e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "3d8e1db0-525f-4430-bf90-0b454cbf3a68",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "ef78a55d-7e85-fcdb-d972-f451f37b68b1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "361ce042-fd73-36db-ef99-0dd3653b5f2e",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "26e65bca-4087-e5a3-a13d-966ae374a727",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich text: copy",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "361ce042-fd73-36db-ef99-0dd3653b5f2e",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "6d08b009-41f4-f99a-5752-d793f60db1b5",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a1b2f8a7-ff9f-c118-c63b-41e28d64cc74",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "c594d049-50d0-bd59-3bf6-9ad9165395e3",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Link to:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "a1b2f8a7-ff9f-c118-c63b-41e28d64cc74",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "1a08e5eb-8e4d-c402-5617-9170fbf34343",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "a1b2f8a7-ff9f-c118-c63b-41e28d64cc74",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "d33b18c4-f37f-b2b8-4b5f-bd39a2379a13",
+    "name" : "hide_this_card",
+    "display_width" : null,
+    "label" : "Hide this card:",
+    "inline_help_text" : "This will hide the card in this column while keeping the column intact.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    },
+    "hide_this_card" : false
+  }
+}, {
+  "id" : "1e92fa38-fd22-3ccd-d80f-54847c84065b",
+  "name" : "col_6",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Flexi Card 6",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "6",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "f0cd6919-a17f-7325-3c50-18e21df20871",
+    "name" : "photo",
+    "display_width" : null,
+    "label" : "Photo:",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "fdafeefc-69ff-811d-9a7a-231bf29b9b01",
+    "name" : "headline",
+    "display_width" : null,
+    "label" : "Headline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "6daa8b35-78aa-0e15-41d2-62405ab0b4d2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Headline"
+  }, {
+    "id" : "6f1191f5-975b-9921-09cd-4bc829eb55d8",
+    "name" : "subhead",
+    "display_width" : null,
+    "label" : "Subheadline:",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "6daa8b35-78aa-0e15-41d2-62405ab0b4d2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Subheadline"
+  }, {
+    "id" : "06c88893-2be6-0d3c-576d-ce16e124b09a",
+    "name" : "show_desc_text",
+    "display_width" : null,
+    "label" : "Show Descriptive Text:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "6daa8b35-78aa-0e15-41d2-62405ab0b4d2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "false",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bd1a8a39-6862-a549-eb54-e0805426ee8f",
+    "name" : "desc_text",
+    "display_width" : null,
+    "label" : "Descriptive Text",
+    "required" : false,
+    "locked" : false,
+    "validation_regex" : "",
+    "visibility" : {
+      "controlling_field" : "06c88893-2be6-0d3c-576d-ce16e124b09a",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "placeholder" : "Add brief bio text here...",
+    "allow_new_line" : false,
+    "show_emoji_picker" : false,
+    "type" : "text",
+    "default" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund."
+  }, {
+    "id" : "6daa8b35-78aa-0e15-41d2-62405ab0b4d2",
+    "name" : "use_rich_text",
+    "display_width" : null,
+    "label" : "Use Rich Text Instead:",
+    "help_text" : "This option will give you the standard rich text editor instead of the text inputs above which will give you a bit more control.",
+    "inline_help_text" : "Need more control? Flip this on.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "23639a66-2775-c5d2-383f-a0ec6b5ea7dc",
+    "name" : "rich_text",
+    "display_width" : null,
+    "label" : "Rich text: copy copy",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "6daa8b35-78aa-0e15-41d2-62405ab0b4d2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "richtext",
+    "default" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>"
+  }, {
+    "id" : "4be595dd-0cd9-03d3-ff86-5dd3f9c93a28",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Options:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "c408e84b-6c6e-3c53-4193-1f1797a87d58",
+      "name" : "choice",
+      "display_width" : null,
+      "label" : "Link Card To:",
+      "inline_help_text" : "Set to NOWHERE if you are including a CTA using the rich text editor.",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "page", "Another Page, File, Email, Etc." ], [ "anchor", "A Section of This Page" ], [ "none", "Nowhere" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "908e0b3b-7725-a333-0553-3324c6ff56b1",
+      "name" : "url",
+      "display_width" : null,
+      "label" : "Link to:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "c408e84b-6c6e-3c53-4193-1f1797a87d58",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "page",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+      "show_advanced_rel_options" : false,
+      "type" : "link",
+      "default" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }, {
+      "id" : "02bd5155-0032-aa3b-b60f-ceb8b53fe999",
+      "name" : "anchor",
+      "display_width" : null,
+      "label" : "Set Anchor Link:",
+      "help_text" : "To have the page scroll to a certain section, you'll need to give that section a unique ID in which you can do in that module's Row Settings in the \"Code (The Nerdy Stuff)\" options.  Then add that same ID here proceeding a hash-tag.  #like-this",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "visibility" : {
+        "controlling_field" : "c408e84b-6c6e-3c53-4193-1f1797a87d58",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "anchor",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "placeholder" : "#add-css-id-here",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    }
+  }, {
+    "id" : "af15b459-fb8d-d6ac-49d5-53f3a9a8d86a",
+    "name" : "hide_this_card",
+    "display_width" : null,
+    "label" : "Hide this card:",
+    "inline_help_text" : "This will hide the card in this column while keeping the column intact.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "photo" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "lazy"
+    },
+    "headline" : "Headline",
+    "subhead" : "Subheadline",
+    "show_desc_text" : false,
+    "desc_text" : "Lorem ipsum dolor amet prism banjo beard brooklyn vaporware vexillologist. Swag cardigan PBR&B affogato, health goth vice actually bespoke street art sartorial selfies trust fund.",
+    "use_rich_text" : false,
+    "rich_text" : "<h3>Headline</h3>\n<h5>Subheadline</h5>\n<p><span>Snackwave lyft cray sartorial. Everyday carry 8-bit kombucha chicharrones meh, cold-pressed XOXO poutine photo booth VHS small batch af direct trade literally pork belly.</span></p>",
+    "link" : {
+      "choice" : "none",
+      "url" : {
+        "url" : {
+          "content_id" : null,
+          "type" : "EXTERNAL",
+          "href" : ""
+        },
+        "open_in_new_tab" : false,
+        "no_follow" : false
+      }
+    },
+    "hide_this_card" : false
+  }
+}, {
+  "id" : "a7394332-4ee6-4ebb-a07c-c9e1516d315f",
+  "name" : "card_style",
+  "display_width" : null,
+  "label" : "██████ Flexi Card Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "50456201-e00c-0fba-5c36-08be170616f6",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "f3c16b18-af61-59df-e905-fd21d160c78c",
+    "name" : "text_align",
+    "display_width" : null,
+    "label" : "Text Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "868f5dfd-e6cb-a6c0-f519-73f15ebfaffc",
+    "name" : "custom_color",
+    "display_width" : null,
+    "label" : "Custom Text Color:",
+    "help_text" : "This will override the default color schedule. ",
+    "inline_help_text" : "Not needed if you're using the rich text editor.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "f7055e8c-13e0-0fd9-2e13-49cab940f7f5",
+    "name" : "headline_color",
+    "display_width" : null,
+    "label" : "Headline Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "868f5dfd-e6cb-a6c0-f519-73f15ebfaffc",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "eaff6de2-0693-4b4b-1fee-eed7c535f608",
+    "name" : "subhead_color",
+    "display_width" : null,
+    "label" : "Subheadline Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "868f5dfd-e6cb-a6c0-f519-73f15ebfaffc",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#CCCCCC",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "1bff8920-e8ed-55c9-7db0-2c5193375120",
+    "name" : "desc_color",
+    "display_width" : null,
+    "label" : "Text Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "868f5dfd-e6cb-a6c0-f519-73f15ebfaffc",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FEFEFE",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "5ac9caa5-7103-c494-ad7c-6d49e3a2338e",
+    "name" : "card_padding",
+    "display_width" : null,
+    "label" : "Card Padding",
+    "help_text" : "This will control the spacing around all the content inside of the card. ",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "dbfb1d1d-1117-de41-3bf1-1c67cd6f2c0e",
+    "name" : "card_text_padding",
+    "display_width" : null,
+    "label" : "Card Text Padding:",
+    "help_text" : "This will control the spacing around just the Headline, subheadline and text.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 50,
+    "step" : 1,
+    "type" : "number",
+    "default" : 25
+  }, {
+    "id" : "65567553-ca95-7e94-20e2-2c106b3b9213",
+    "name" : "add_shadow",
+    "display_width" : null,
+    "label" : "Add subtle shadow:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "eaae5b47-425f-e97f-b095-52de05731bad",
+    "name" : "photo_full",
+    "display_width" : null,
+    "label" : "Full Width Profile Photos",
+    "help_text" : "With this option turned on, the photo will take up the full with of the column no matter what size it is.  If you'd like to control the size of the photo with the settings when adding a photo, keep this off.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "bbbac55f-2bea-01d5-c5cf-e4bb96614719",
+    "name" : "rounded_corners",
+    "display_width" : null,
+    "label" : "Rounded Corners:",
+    "help_text" : "This will give you the ability to give the card rounded corners.  ",
+    "required" : true,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "a12d60fe-a477-2e29-6ce4-fc00fce61626",
+    "name" : "custom_font_size",
+    "display_width" : null,
+    "label" : "Custom Font Sizes",
+    "inline_help_text" : "Flip on if you want a font size different that the global styles set.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ab9f1f60-eca8-32f3-fc4a-c701cbbd1fef",
+    "name" : "headline_font_size",
+    "display_width" : null,
+    "label" : "Headline Font Size",
+    "help_text" : "This assumes the style properties for what you have set as your H4 in your theme settings.",
+    "inline_help_text" : "",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a12d60fe-a477-2e29-6ce4-fc00fce61626",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 10,
+    "max" : 50,
+    "step" : 1,
+    "type" : "number",
+    "default" : 18
+  }, {
+    "id" : "c9023df8-f46b-5633-4c80-8d288b1b4d9f",
+    "name" : "sub_headline_font_size",
+    "display_width" : null,
+    "label" : "Sub-Headline Font Size",
+    "help_text" : "This assumes the style properties for what you have set as your H5 in your theme settings.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a12d60fe-a477-2e29-6ce4-fc00fce61626",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 10,
+    "max" : 30,
+    "step" : 1,
+    "type" : "number",
+    "default" : 14
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "text_align" : "center",
+    "custom_color" : false,
+    "headline_color" : {
+      "color" : "#ffffff",
+      "opacity" : 100
+    },
+    "subhead_color" : {
+      "color" : "#CCCCCC",
+      "opacity" : 100
+    },
+    "desc_color" : {
+      "color" : "#FEFEFE",
+      "opacity" : 100
+    },
+    "card_padding" : 0,
+    "card_text_padding" : 25,
+    "add_shadow" : true,
+    "photo_full" : false,
+    "rounded_corners" : 0,
+    "custom_font_size" : false,
+    "headline_font_size" : 18,
+    "sub_headline_font_size" : 14
+  }
+}, {
+  "id" : "407efd93-e657-f262-0d72-254aac2c1a6e",
+  "name" : "style_opts",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "857e4dae-05d8-1de4-d4a3-45593d918c60",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "1b6ab185-9555-6ab7-405a-a71e3f90cce4",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+    "name" : "bg_type",
+    "display_width" : null,
+    "label" : "Select a Background Type:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ], [ "image", "Image" ], [ "video", "Video" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "color"
+  }, {
+    "id" : "578eb8aa-92db-b0ff-4e8f-94e11425c895",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "b113aa8a-cf4b-8690-2c8d-1a6a0c5fb3ac",
+    "name" : "color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "72bb82ad-8c74-8b54-cf42-48fa96fca32f",
+    "name" : "color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7cdc580c-cf63-f946-41ca-edec5d088bae",
+    "name" : "gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "874a5e5b-ea14-3643-1f8b-4f17514082bf",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Upload Your Background Image:",
+    "help_text" : "The recommended size is 1920 x 1280px",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "https://cdn2.hubspot.net/hubfs/19522085/bgs/coffee-bg-1.jpg",
+      "alt" : "coffee-bg-1",
+      "width" : 2000,
+      "height" : 1333
+    }
+  }, {
+    "id" : "3f91248e-015e-2251-167e-53256d0db310",
+    "name" : "image_loading",
+    "display_width" : null,
+    "label" : "Image Loading:",
+    "inline_help_text" : "Lazy image loading can improve performance if this module is lower on the page.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "lazy", "Lazy" ], [ "eager", "Eager" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "lazy"
+  }, {
+    "id" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax Scrolling:",
+    "help_text" : "If you turn this on, be sure that you have uploaded a background image with a large enough height so that there is room for the image to do its scrolling magic. \n\n1920 x 1280px will work great in most cases but it depends on the height of this content row. \n\nIMPORTANT: If you are not using a background image, it's BEST to keep this off.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "79253e18-240b-2877-68a6-956fa63a5251",
+    "name" : "parallax_on_mobile",
+    "display_width" : null,
+    "label" : "Parallax On Mobile",
+    "help_text" : "Enables Parallax On Mobile",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ce919dfd-6774-4ac9-570b-97c3377896a1",
+    "name" : "parallax_orientation",
+    "display_width" : null,
+    "label" : "Parallax Orientation",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up" ], [ "right", "Right" ], [ "down", "Down" ], [ "left", "Left" ], [ "up left", "Up Left" ], [ "up right", "Up Right" ], [ "down left", "Down Left" ], [ "down right", "Down Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "2526ceab-de19-3bcd-1368-01dba1ca75c6",
+    "name" : "parallax_transition",
+    "display_width" : null,
+    "label" : "Parallax Transition",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "linear", "Linear" ], [ "ease-in-out", "Ease-In-Out" ], [ "slinky", "Slinky" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "linear"
+  }, {
+    "id" : "7c3d9654-53e3-d97b-f4d0-200f63903d72",
+    "name" : "parallax_scale",
+    "display_width" : null,
+    "label" : "Parallax Scale",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 1,
+    "max" : 3,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 1.2
+  }, {
+    "id" : "85c3b8df-c520-f181-a214-4b9c73e6f4ad",
+    "name" : "parallax_delay",
+    "display_width" : null,
+    "label" : "Parallax Delay",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 1,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "1852c3fa-b5ae-3521-addd-a7855fb68a3e",
+    "name" : "bg_size",
+    "display_width" : null,
+    "label" : "Background Size:",
+    "help_text" : "Cover: Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges\n\nContain: Resize the background image to make sure the image is fully visible.\n\nInitial: Sets this property to its default value.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "initial", "Initial" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
+    "id" : "6012c69f-130d-a96a-25f6-106e3fb162b6",
+    "name" : "img_pos",
+    "display_width" : null,
+    "label" : "Image Position:",
+    "help_text" : "This will allow you to select which portion of the image you'd like to show.  \n\nSince this is a \"background image\" that needs to be responsive to a variety of screen sizes, there will ways be a portion of the photo cropped out. ",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left center"
+  }, {
+    "id" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "4e58f24c-a46c-f2fa-6c25-20403ee04546",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Custom Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Do you want to add a subtle shadow?",
+    "help_text" : "This will add a subtle inner or outer shadow on the entire row.",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "inner", "Inner" ], [ "outer", "Outer" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "03fbe648-ab0f-4d90-3ce5-0951efe014d8",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 10
+    }
+  }, {
+    "id" : "0b935188-d0b0-95e2-53f8-744cd71e182c",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+    "name" : "overlay_bg",
+    "display_width" : null,
+    "label" : "Do you want to add an overlay?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Color" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "cf86314b-25cb-790b-8b7b-1244f51b9bae",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#444444",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "195ad235-4e6c-b5fc-0877-a753832de169",
+    "name" : "overlay_color_1",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "c69de540-5c3d-75a4-246d-0fb14d959bf4",
+    "name" : "overlay_color_2",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "80a27bb0-2177-da1b-1669-dcc0099886d9",
+    "name" : "overlay_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "5b0aabea-db4c-5d44-995a-ed8222bd4c22",
+    "name" : "video_clip",
+    "display_width" : null,
+    "label" : "██████ Upload Video Clip(s)",
+    "help_text" : "With this video player you can add multiple smaller video clips that will get stitched together. This will help the page load much faster.  PRO-TIP:  Go to www.youcompress.com and compress your MP4 files so they are even faster to load.  Generally, you want between a 2 -3MB file size. ",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : null,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : null
+    },
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "picker" : "file",
+      "id" : "4e64c080-a9b0-eb60-5b4b-dd0ee894f0c0",
+      "name" : "mp4",
+      "display_width" : null,
+      "label" : "Video (mp4):",
+      "help_text" : "When uploading a video you want to keep the file size as small as possible so that it loads quickly.  Generally, you're going to want to keep it under 20MB.",
+      "required" : false,
+      "locked" : false,
+      "type" : "file"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : { }
+  }, {
+    "id" : "e284b872-585e-4d1d-a4d0-6c65e218c154",
+    "name" : "video_bg_color",
+    "display_width" : null,
+    "label" : "Video Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "video",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "49c88bc1-5d0f-1a31-86d2-137472df82f1",
+    "name" : "add_wave_top",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Top):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the top of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ea3ce510-2b2f-f65b-42ac-6fe9c2fe67ca",
+    "name" : "wave_top",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Top)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "49c88bc1-5d0f-1a31-86d2-137472df82f1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "3914726e-1c00-9f7e-f6bc-0a7a001303fb",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave Type:",
+      "required" : true,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : "NOT_EMPTY",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "229a062c-81d9-f69f-bff6-53f07d7c47d9",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "3914726e-1c00-9f7e-f6bc-0a7a001303fb",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "5ee0b195-41d0-a7b6-715d-30f62e2b826c",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row above has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row above.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "f9ce935f-b738-87cd-f9a5-969a10c5f57b",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "8d0a6685-a774-2879-44c9-bf2a7c2c1ddf",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the base of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "e91fd512-306c-4822-930c-fc924f86a529",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Bottom):",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8d0a6685-a774-2879-44c9-bf2a7c2c1ddf",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "d9701593-fb4d-2254-fc74-c358ce387371",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type:",
+      "required" : true,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : null,
+        "controlling_field_path" : null,
+        "controlling_value_regex" : null,
+        "property" : null,
+        "operator" : "NOT_EMPTY",
+        "access" : null
+      },
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "fe4ff9bf-e68b-d65e-e3f2-6afbb2a11a1e",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "d9701593-fb4d-2254-fc74-c358ce387371",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "619751f3-3e03-04d7-a38e-c4ced5e0bdee",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row below has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "4e2a0d52-91c2-e420-2bc9-a5652591b1ce",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "716bdec1-19e8-7754-cf8d-62ca7652a381",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e9c0cddb-4a15-3b1b-934d-725296a23ae5",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "2bf95a4b-7cd6-c196-c378-e8eb035c2883",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "eab4e593-0b4f-bf5f-e925-7dcf8cb18cd7",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "90612062-5878-5a7e-9f25-32098d2c9246",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "f8e41cc6-ad1d-3afa-b01d-dee28a9cd462",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "a6b6a170-9f30-09d4-11b1-3eb0f869e0a0",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "bbddaf57-5a31-761e-f7d6-fca2d66a834d",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d056e81c-27d1-9085-8e99-1cb06278d6cb",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "2e641f18-75b2-279c-48f9-9b531c16a118",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "0f303c0e-b995-cd70-48c8-e825295fc099",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "090c4aa2-a049-0edc-9ee9-c6cfd91d559f",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "██████ Style Options (They geeky design stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+      "name" : "pull_up",
+      "display_width" : null,
+      "label" : "Pull content over the row above:",
+      "help_text" : "This will give you the option to pull the content container up over the row above. This can be an awesome visual technique when used subtly.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "184d0c2f-ae10-c71a-0d57-707b87c48c20",
+      "name" : "content_bg_color",
+      "display_width" : null,
+      "label" : "Content Container Background Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "73bf10ea-7a97-8e6d-a42a-aedaf9faf804",
+      "name" : "pull_up_num_desktop",
+      "display_width" : null,
+      "label" : "Pull Up Content (Desktop):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 500,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "a73c6583-7ea3-3d51-08fb-a82cc3895a35",
+      "name" : "pull_up_num_mobile",
+      "display_width" : null,
+      "label" : "Pull Up Content (Mobile):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by on mobile devices.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "40120d81-c074-16a2-0f33-a018c94f786f",
+      "name" : "con_padding",
+      "display_width" : null,
+      "label" : "Container Padding:",
+      "help_text" : "It's a good idea to give the content a little breathing room. This is where you can set the padding. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "23a71245-c72f-70f7-6b33-b4f2625a899b",
+      "name" : "subtle_shadow",
+      "display_width" : null,
+      "label" : "Add Subtle Shadow:",
+      "help_text" : "This will add a slight glow around the content container to lift it of the page ever so elegantly.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "subtle_shadow" : false
+    }
+  }, {
+    "id" : "3cfe113c-9b56-aee3-87ea-28ecc8d1b76d",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The Nerdy Stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e6f4eb14-0b0c-5741-1a3b-034feb587e8e",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "help_text" : "This will place and ID on the row that you'll be able to set an anchor tag and have the user jump down to this section of the page.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "6f0e4f97-7515-26e4-1667-90a19e2f0592",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces.  ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_type" : "color",
+    "bg_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "color_1" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "color_2" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    },
+    "gradient_angle" : "45deg",
+    "bg_image" : {
+      "src" : "https://cdn2.hubspot.net/hubfs/19522085/bgs/coffee-bg-1.jpg",
+      "alt" : "coffee-bg-1",
+      "width" : 2000,
+      "height" : 1333
+    },
+    "image_loading" : "lazy",
+    "parallax" : false,
+    "parallax_on_mobile" : false,
+    "parallax_orientation" : "up",
+    "parallax_transition" : "linear",
+    "parallax_scale" : 1.2,
+    "parallax_delay" : 0,
+    "bg_size" : "cover",
+    "img_pos" : "left center",
+    "content_width" : "container",
+    "set_width" : 600,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 10
+    },
+    "shadow_size" : 20,
+    "overlay_bg" : "none",
+    "overlay_color" : {
+      "color" : "#444444",
+      "opacity" : 50
+    },
+    "overlay_color_1" : {
+      "color" : "#000000",
+      "opacity" : 50
+    },
+    "overlay_color_2" : {
+      "color" : "#000000",
+      "opacity" : 0
+    },
+    "overlay_angle" : "45deg",
+    "video_clip" : { },
+    "video_bg_color" : {
+      "color" : "#000000",
+      "opacity" : 100
+    },
+    "add_wave_top" : false,
+    "wave_top" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "style" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "subtle_shadow" : false
+    },
+    "code" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  }
+} ]

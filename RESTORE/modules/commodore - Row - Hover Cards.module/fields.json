@@ -1,0 +1,2448 @@
+[ {
+  "id" : "0180a4c2-9200-6b0b-99dc-b695fb4b8b3e",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many columns do you want?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "1", "One" ], [ "2", "Two" ], [ "3", "Three" ], [ "4", "Four" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "2"
+  }, {
+    "id" : "e24222da-9c29-c54c-74dc-8cf447b9afef",
+    "name" : "two_col_arrangement",
+    "display_width" : null,
+    "label" : "Column Arrangement",
+    "help_text" : "The grid is based on 12 columns.  The numbers in each choice represents the ratio of the grid that column will take up.  Give it a try. You'll see what I mean.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "2",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "opt1", "6 | 6" ], [ "opt2", "4 | 8" ], [ "opt3", "8 | 4" ], [ "opt4", "5 | 7" ], [ "opt5", "7 | 5" ], [ "opt6", "9 | 3" ], [ "opt7", "3 | 9" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "opt1"
+  }, {
+    "id" : "1386093e-7751-89c2-3f0c-1aaeb5a2977e",
+    "name" : "three_col_arrangement",
+    "display_width" : null,
+    "label" : "Column Arrangement",
+    "help_text" : "The grid is based on 12 columns.  The numbers in each choice represents the ratio of the grid that column will take up.  Give it a try. You'll see what I mean.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "3",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "opt1", "4 | 4 | 4" ], [ "opt2", "6 | 3 | 3" ], [ "opt3", "3 | 3 | 6" ], [ "opt4", "3 | 6 | 3" ], [ "opt5", "8 | 2 | 2" ], [ "opt6", "2 | 2 | 8" ], [ "opt7", "2 | 8 | 2" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "opt2"
+  }, {
+    "id" : "d2a30d4e-5a9c-ce1a-8026-50526b0bf20b",
+    "name" : "four_col_arrangement",
+    "display_width" : null,
+    "label" : "Column Arrangement ",
+    "help_text" : "The grid is based on 12 columns.  The numbers in each choice represents the ratio of the grid that column will take up.  Give it a try. You'll see what I mean.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "4",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "opt1", "3 | 3 | 3 | 3" ], [ "opt2", "6 | 2 | 2 | 2" ], [ "opt3", "2 | 2 | 2 | 6" ], [ "opt4", "5 | 3 | 2 | 2" ], [ "opt5", "2 | 2 | 3 | 5" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "opt2"
+  }, {
+    "id" : "5eb44243-202b-2d2a-d3f2-35a570bafa3a",
+    "name" : "card_height_desktop",
+    "display_width" : null,
+    "label" : "Card Height (Desktop)",
+    "inline_help_text" : "This sets the height for all cards in the row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 300
+  }, {
+    "id" : "07aca012-d6ea-d423-2c40-b17a86a6459d",
+    "name" : "card_height_tablet",
+    "display_width" : null,
+    "label" : "Card Height (Tablet)",
+    "inline_help_text" : "This sets the height for all cards in the row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 300
+  }, {
+    "id" : "9c59c01f-74dd-7dec-7753-e9656870581d",
+    "name" : "card_height_mobile",
+    "display_width" : null,
+    "label" : "Card Height (Mobile)",
+    "inline_help_text" : "This sets the height for all cards in the row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 100,
+    "max" : 800,
+    "step" : 10,
+    "type" : "number",
+    "default" : 500
+  }, {
+    "id" : "42f5757e-98f8-3652-fce5-0658e65bf7e4",
+    "name" : "rounded_corner_size",
+    "display_width" : null,
+    "label" : "Rounded Corner Size",
+    "inline_help_text" : "Set this to 0 if you want square corners.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 5
+  }, {
+    "id" : "2734c8b8-7e9c-2476-919e-4d7f9245c806",
+    "name" : "card_padding",
+    "display_width" : null,
+    "label" : "Card Padding:",
+    "inline_help_text" : "This is the space between the content and the edge of the card.",
+    "required" : false,
+    "locked" : false,
+    "display" : "slider",
+    "min" : 0,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 30
+  }, {
+    "id" : "5e2e5020-1107-2b1f-917e-1d761885df7e",
+    "name" : "remove_space",
+    "display_width" : null,
+    "label" : "Remove Space Between Cards",
+    "help_text" : "Pro-Tip. If you plan to use this option set the rounded corners to \"0\" otherwise it will just look weird.  ",
+    "inline_help_text" : "Removes white space between cards.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "1",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "2",
+    "two_col_arrangement" : "opt1",
+    "three_col_arrangement" : "opt2",
+    "four_col_arrangement" : "opt2",
+    "card_height_desktop" : 300,
+    "card_height_tablet" : 300,
+    "card_height_mobile" : 500,
+    "rounded_corner_size" : 5,
+    "card_padding" : 30,
+    "remove_space" : false
+  }
+}, {
+  "id" : "f7a95588-8330-d435-2921-3e50a38d5f4f",
+  "name" : "col_1",
+  "display_width" : null,
+  "label" : "██████ Card 1",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : null,
+    "property" : null,
+    "operator" : "NOT_EMPTY",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "d0dc9c66-27ae-acfe-b268-eee729e0c4c1",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Background Image:",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "1d9ca204-99b3-7978-86f2-d2fd5936f4cc",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color",
+    "inline_help_text" : "Adds an overlay to the background image so the text pops.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 40
+    }
+  }, {
+    "id" : "d3693060-1276-efed-3802-7dc32a57e037",
+    "name" : "hover_overlay_color",
+    "display_width" : null,
+    "label" : "Hover Overlay Color:",
+    "inline_help_text" : "Adds an overlay to the background image when a visitor hovers over the card.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "cbd41cf9-bc4e-e3ca-92a3-12fd96b75b00",
+    "name" : "show_second_image_on_hover",
+    "display_width" : null,
+    "label" : "Show Second Image on Hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "f9f5cd96-055f-c352-763b-f3f460a1e7a5",
+    "name" : "bg_image_hover",
+    "display_width" : null,
+    "label" : "Background Image (Hover)",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "col_1.show_second_image_on_hover",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "src" : ""
+    }
+  }, {
+    "id" : "20d2b149-4256-23cf-257e-35d05ad0a074",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Visible Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>"
+  }, {
+    "id" : "0bd74209-2129-2420-0237-9a1768572c5d",
+    "name" : "vert_align_vis",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "5d11bc37-e427-c0bc-9060-def3d76921de",
+    "name" : "hover_content",
+    "display_width" : null,
+    "label" : "Hover Content: ",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>"
+  }, {
+    "id" : "2e1afcfe-99a9-e8d3-42c8-266df84b8d5a",
+    "name" : "vert_align_hover",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "2b66c6cd-bc15-3af2-5b9b-9b46c1f73188",
+    "name" : "make_card_link",
+    "display_width" : null,
+    "label" : "Make Entire Card a Link",
+    "help_text" : "Using this feature will prevent people who use a touch device from seeing the Hover Content on this card which is normally displayed on tap. In this case, the tap will send the person to the link you set directly. ",
+    "inline_help_text" : "IMPORTANT: When using this feature, don't add a CTA or text link within the card content. Hover over the (i) icon above for more important things to know.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "42271180-d924-b357-d8cb-b711c8720e51",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Card to:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "2b66c6cd-bc15-3af2-5b9b-9b46c1f73188",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 40
+    },
+    "hover_overlay_color" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    },
+    "show_second_image_on_hover" : false,
+    "bg_image_hover" : {
+      "src" : ""
+    },
+    "content" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>",
+    "vert_align_vis" : "align-bottom",
+    "hover_content" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>",
+    "vert_align_hover" : "align-bottom",
+    "make_card_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "42e16709-ed3c-62c6-37b3-deec9d51f2b3",
+  "name" : "col_2",
+  "display_width" : null,
+  "label" : "██████ Card 2",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "1",
+    "property" : null,
+    "operator" : "NOT_EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "7bd7a5e1-5dca-bd1a-528c-34b9cf4f581f",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Background Image:",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "67238bbc-f3e4-3c38-840e-46946267d6a0",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color",
+    "inline_help_text" : "Adds an overlay to the background image so the text pops.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 40
+    }
+  }, {
+    "id" : "d176cfd8-8623-5390-63e9-eea4cd899ad8",
+    "name" : "hover_overlay_color",
+    "display_width" : null,
+    "label" : "Hover Overlay Color:",
+    "inline_help_text" : "Adds an overlay to the background image when a visitor hovers over the card.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "5f0507cf-6c73-ad32-27f0-5a3bcc1f45e5",
+    "name" : "show_second_image_on_hover",
+    "display_width" : null,
+    "label" : "Show Second Image on Hover copy",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "7dfa3858-7273-5a6b-5827-d73d7c4300d9",
+    "name" : "bg_image_hover",
+    "display_width" : null,
+    "label" : "Background Image (Hover)",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "col_2.show_second_image_on_hover",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "4d40b1c7-fcd9-5777-cbf4-420de3999194",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Visible Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>"
+  }, {
+    "id" : "c17139ad-1468-4d1d-ac5c-e3d26f49eaef",
+    "name" : "vert_align_vis",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "e463e230-7a6b-5dac-9d1e-54a576401cf6",
+    "name" : "hover_content",
+    "display_width" : null,
+    "label" : "Hover Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>"
+  }, {
+    "id" : "0369c7cf-2d5b-f353-2378-14c863618c62",
+    "name" : "vert_align_hover",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "8c7cd39e-6f57-00cb-bf5a-93861f459e48",
+    "name" : "make_card_link",
+    "display_width" : null,
+    "label" : "Make Entire Card a Link",
+    "help_text" : "Using this feature will prevent people who use a touch device from seeing the Hover Content on this card which is normally displayed on tap. In this case, the tap will send the person to the link you set directly. ",
+    "inline_help_text" : "IMPORTANT: When using this feature, don't add a CTA or text link within the card content. Hover over the (i) icon above for more important things to know.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "b6c9f4fa-c9d8-37e9-dbd3-29448a2857c4",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Card to:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "8c7cd39e-6f57-00cb-bf5a-93861f459e48",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 40
+    },
+    "hover_overlay_color" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    },
+    "show_second_image_on_hover" : false,
+    "bg_image_hover" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "content" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>",
+    "vert_align_vis" : "align-bottom",
+    "hover_content" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>",
+    "vert_align_hover" : "align-bottom",
+    "make_card_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "62c3cc0c-7b0e-9a57-7a6c-36ab82cd9398",
+  "name" : "col_3",
+  "display_width" : null,
+  "label" : "██████ Card 3",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[34]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "4b5bcee5-2286-9027-7cf2-d00f59a1633d",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Background Image:",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "fd090f17-92cb-f953-e635-1544259f0256",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color",
+    "inline_help_text" : "Adds an overlay to the background image so the text pops.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 40
+    }
+  }, {
+    "id" : "775b2a51-6f5e-ef07-e107-5345b5a555a7",
+    "name" : "hover_overlay_color",
+    "display_width" : null,
+    "label" : "Hover Overlay Color:",
+    "inline_help_text" : "Adds an overlay to the background image when a visitor hovers over the card.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "e386eb8b-9c0f-516f-0c15-04fe035bbd60",
+    "name" : "show_second_image_on_hover",
+    "display_width" : null,
+    "label" : "Show Second Image on Hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "20bdfe00-6116-1e17-8061-edf610791774",
+    "name" : "bg_image_hover",
+    "display_width" : null,
+    "label" : "Background Image (Hover)",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "col_3.show_second_image_on_hover",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "600ec094-e52e-c5c9-52c2-6dcbfced2446",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Visible Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>"
+  }, {
+    "id" : "b2bfcb6f-b965-ee07-5432-85b8d5fe549d",
+    "name" : "vert_align_vis",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "9bcdfbb3-d70b-6a41-7df6-e3c96e837d7c",
+    "name" : "hover_content",
+    "display_width" : null,
+    "label" : "Hover Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>"
+  }, {
+    "id" : "68386828-979a-d567-6717-2f0c906061a1",
+    "name" : "vert_align_hover",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "3b1ac628-2881-804b-8ca6-d95a092d5962",
+    "name" : "make_card_link",
+    "display_width" : null,
+    "label" : "Make Entire Card a Link",
+    "help_text" : "Using this feature will prevent people who use a touch device from seeing the Hover Content on this card which is normally displayed on tap. In this case, the tap will send the person to the link you set directly. ",
+    "inline_help_text" : "IMPORTANT: When using this feature, don't add a CTA or text link within the card content. Hover over the (i) icon above for more important things to know.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "e9ae2b16-d2f3-2bb6-bfc3-8b7c097bb886",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Card to:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "3b1ac628-2881-804b-8ca6-d95a092d5962",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 40
+    },
+    "hover_overlay_color" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    },
+    "show_second_image_on_hover" : false,
+    "bg_image_hover" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "content" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>",
+    "vert_align_vis" : "align-bottom",
+    "hover_content" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>",
+    "vert_align_hover" : "align-bottom",
+    "make_card_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "33db229b-c37d-004f-e8f7-1068b2e78d3b",
+  "name" : "col_4",
+  "display_width" : null,
+  "label" : "██████ Card 4",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "9b67acea-40b8-996d-a8ab-644a3b220ec9",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "[4]",
+    "property" : null,
+    "operator" : "MATCHES_REGEX",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "1ececbab-7d08-d5b3-9970-602bd190a93e",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Background Image:",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "82b1f86d-6e7c-d90f-c493-0113cb62939b",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color",
+    "inline_help_text" : "Adds an overlay to the background image so the text pops.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 40
+    }
+  }, {
+    "id" : "29a64f8e-a9ab-b2af-1fee-a7599a208902",
+    "name" : "hover_overlay_color",
+    "display_width" : null,
+    "label" : "Hover Overlay Color:",
+    "inline_help_text" : "Adds an overlay to the background image when a visitor hovers over the card.",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    }
+  }, {
+    "id" : "d24d305f-7757-1d9e-eecd-f86103a60057",
+    "name" : "show_second_image_on_hover",
+    "display_width" : null,
+    "label" : "Show Second Image on Hover",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "e0479f9e-e1bb-132f-3a29-a794c2f7053f",
+    "name" : "bg_image_hover",
+    "display_width" : null,
+    "label" : "Background Image (Hover)",
+    "inline_help_text" : "This will be set as a background image. Some of the edges may be cropped out depending upon the size of the cards you set.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "col_4.show_second_image_on_hover",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "default" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    }
+  }, {
+    "id" : "7040e4c8-f807-c72f-0897-40175296097b",
+    "name" : "content",
+    "display_width" : null,
+    "label" : "Visible Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>"
+  }, {
+    "id" : "5813bad5-08ae-14b2-8c5e-35e2873e8f9b",
+    "name" : "vert_align_vis",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "472c341e-74a9-1628-3489-d1ab74cb8bdb",
+    "name" : "hover_content",
+    "display_width" : null,
+    "label" : "Hover Content:",
+    "help_text" : "",
+    "inline_help_text" : "Turn on the dark text editor to see white text.",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "default" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>"
+  }, {
+    "id" : "69df27d5-7eb1-5180-c35e-53fd0888430e",
+    "name" : "vert_align_hover",
+    "display_width" : null,
+    "label" : "Content's Vertical Alignment:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "align-top", "Top" ], [ "align-middle", "Middle" ], [ "align-bottom", "Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "align-bottom"
+  }, {
+    "id" : "ab4de1f9-bb96-0d6c-a112-ad906f8d94f8",
+    "name" : "make_card_link",
+    "display_width" : null,
+    "label" : "Make Entire Card a Link",
+    "help_text" : "Using this feature will prevent people who use a touch device from seeing the Hover Content on this card which is normally displayed on tap. In this case, the tap will send the person to the link you set directly. ",
+    "inline_help_text" : "IMPORTANT: When using this feature, don't add a CTA or text link within the card content. Hover over the (i) icon above for more important things to know.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "6b86b77a-727a-50ea-a7de-72d1339beab6",
+    "name" : "link",
+    "display_width" : null,
+    "label" : "Link Card to:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ab4de1f9-bb96-0d6c-a112-ad906f8d94f8",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_image" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "overlay_color" : {
+      "color" : "#000000",
+      "opacity" : 40
+    },
+    "hover_overlay_color" : {
+      "color" : "#33475b",
+      "opacity" : 80
+    },
+    "show_second_image_on_hover" : false,
+    "bg_image_hover" : {
+      "size_type" : "auto",
+      "src" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/gfx/temp-image-high-five.jpg",
+      "alt" : "temp-image-high-five",
+      "loading" : "lazy",
+      "width" : 800,
+      "height" : 600,
+      "max_width" : 800,
+      "max_height" : 600
+    },
+    "content" : "<h4><span style=\"color: #ffffff;\">Headline</span></h4>",
+    "vert_align_vis" : "align-bottom",
+    "hover_content" : "<p><span style=\"color: #ffffff;\">Fanny pack ramps unicorn DIY cardigan, cronut marfa retro. Ennui mlkshk four loko scenester helvetica small batch.</span></p>\n<a href=\"#\" class=\"cta-primary\">Call to Action</a>",
+    "vert_align_hover" : "align-bottom",
+    "make_card_link" : false,
+    "link" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }
+}, {
+  "id" : "1e51a0a0-7fb7-a684-4086-a2864f76ed99",
+  "name" : "style_opts",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2d3cf83c-71b9-9cdc-eb87-d218327a2ba7",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "1b6ab185-9555-6ab7-405a-a71e3f90cce4",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+    "name" : "bg_type",
+    "display_width" : null,
+    "label" : "Select a Background Type:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "color", "Solid Color" ], [ "gradient", "Gradient" ], [ "image", "Image" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "color"
+  }, {
+    "id" : "578eb8aa-92db-b0ff-4e8f-94e11425c895",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "b113aa8a-cf4b-8690-2c8d-1a6a0c5fb3ac",
+    "name" : "color_1",
+    "display_width" : null,
+    "label" : "Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "72bb82ad-8c74-8b54-cf42-48fa96fca32f",
+    "name" : "color_2",
+    "display_width" : null,
+    "label" : "Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "7cdc580c-cf63-f946-41ca-edec5d088bae",
+    "name" : "gradient_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "874a5e5b-ea14-3643-1f8b-4f17514082bf",
+    "name" : "bg_image",
+    "display_width" : null,
+    "label" : "Upload Your Background Image:",
+    "help_text" : "The recommended size is 1920 x 1280px",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "b1435056-bffd-1188-ffaa-eec79b673baf",
+    "name" : "image_loading",
+    "display_width" : null,
+    "label" : "Image Loading:",
+    "inline_help_text" : "Lazy image loading can improve performance if this module is lower on the page.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "lazy", "Lazy" ], [ "eager", "Eager" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "lazy"
+  }, {
+    "id" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+    "name" : "parallax",
+    "display_width" : null,
+    "label" : "Parallax Scrolling:",
+    "help_text" : "If you turn this on, be sure that you have uploaded a background image with a large enough height so that there is room for the image to do its scrolling magic. \n\n1920 x 1280px will work great in most cases but it depends on the height of this content row. \n\nIMPORTANT: If you are not using a background image, it's BEST to keep this off.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "79253e18-240b-2877-68a6-956fa63a5251",
+    "name" : "parallax_on_mobile",
+    "display_width" : null,
+    "label" : "Parallax On Mobile",
+    "help_text" : "Enables Parallax On Mobile",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "ce919dfd-6774-4ac9-570b-97c3377896a1",
+    "name" : "parallax_orientation",
+    "display_width" : null,
+    "label" : "Parallax Orientation",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "up", "Up" ], [ "right", "Right" ], [ "down", "Down" ], [ "left", "Left" ], [ "up left", "Up Left" ], [ "up right", "Up Right" ], [ "down left", "Down Left" ], [ "down right", "Down Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "up"
+  }, {
+    "id" : "2526ceab-de19-3bcd-1368-01dba1ca75c6",
+    "name" : "parallax_transition",
+    "display_width" : null,
+    "label" : "Parallax Transition",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "linear", "Linear" ], [ "ease-in-out", "Ease-In-Out" ], [ "slinky", "Slinky" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "linear"
+  }, {
+    "id" : "7c3d9654-53e3-d97b-f4d0-200f63903d72",
+    "name" : "parallax_scale",
+    "display_width" : null,
+    "label" : "Parallax Scale",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 1,
+    "max" : 3,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 1.2
+  }, {
+    "id" : "85c3b8df-c520-f181-a214-4b9c73e6f4ad",
+    "name" : "parallax_delay",
+    "display_width" : null,
+    "label" : "Parallax Delay",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "60865b9c-7349-9d5e-7cc3-afe9595be8a7",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "text",
+    "min" : 0,
+    "max" : 1,
+    "step" : 0.1,
+    "type" : "number",
+    "default" : 0
+  }, {
+    "id" : "1852c3fa-b5ae-3521-addd-a7855fb68a3e",
+    "name" : "bg_size",
+    "display_width" : null,
+    "label" : "Background Size:",
+    "help_text" : "Cover: Resize the background image to cover the entire container, even if it has to stretch the image or cut a little bit off one of the edges\n\nContain: Resize the background image to make sure the image is fully visible.\n\nInitial: Sets this property to its default value.",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "cover", "Cover" ], [ "contain", "Contain" ], [ "initial", "Initial" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "cover"
+  }, {
+    "id" : "6012c69f-130d-a96a-25f6-106e3fb162b6",
+    "name" : "img_pos",
+    "display_width" : null,
+    "label" : "Image Position:",
+    "help_text" : "This will allow you to select which portion of the image you'd like to show.  \n\nSince this is a \"background image\" that needs to be responsive to a variety of screen sizes, there will ways be a portion of the photo cropped out. ",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "ff162361-0d2e-302c-8b41-f727ec12fcea",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left top", "Left Top" ], [ "left center", "Left Center" ], [ "left bottom", "Left Bottom" ], [ "right top", "Right Top" ], [ "right center", "Right Center" ], [ "center top", "Center Top" ], [ "center center", "Center Center" ], [ "center bottom", "Center Bottom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "left center"
+  }, {
+    "id" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width:",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "4c2c2a77-3997-8225-2fca-47318f80d956",
+    "name" : "edge_to_edge",
+    "display_width" : null,
+    "label" : "Edge to Edge",
+    "inline_help_text" : "Remove the space on the right and left of the row entirely. ",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "container-fluid",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "4e58f24c-a46c-f2fa-6c25-20403ee04546",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Custom Width:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "55452717-c22e-ae55-1cb1-a2b30123bead",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Do you want to add a subtle shadow?",
+    "help_text" : "This will add a subtle inner or outer shadow on the entire row.",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "inner", "Inner" ], [ "outer", "Outer" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "03fbe648-ab0f-4d90-3ce5-0951efe014d8",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 10
+    }
+  }, {
+    "id" : "0b935188-d0b0-95e2-53f8-744cd71e182c",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "d1ea8b64-f846-0472-f646-f42247fa79ca",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+    "name" : "overlay_bg",
+    "display_width" : null,
+    "label" : "Do you want to add an overlay?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "color", "Color" ], [ "gradient", "Gradient" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "cf86314b-25cb-790b-8b7b-1244f51b9bae",
+    "name" : "overlay_color",
+    "display_width" : null,
+    "label" : "Overlay Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "color",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#444444",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "195ad235-4e6c-b5fc-0877-a753832de169",
+    "name" : "overlay_color_1",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 1:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 50
+    }
+  }, {
+    "id" : "c69de540-5c3d-75a4-246d-0fb14d959bf4",
+    "name" : "overlay_color_2",
+    "display_width" : null,
+    "label" : "Overlay Gradient Color 2:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 0
+    }
+  }, {
+    "id" : "80a27bb0-2177-da1b-1669-dcc0099886d9",
+    "name" : "overlay_angle",
+    "display_width" : null,
+    "label" : "Gradient Angle:",
+    "required" : true,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "20d00c29-b6de-9dd8-1a0b-bff99b4b27a5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "gradient",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "select",
+    "choices" : [ [ "left", "Horizontal →" ], [ "top", "Vertical ↓" ], [ "-45deg", "Diagonal ↘" ], [ "45deg", "Diagonal ↗" ], [ "center", "Radial ○" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "45deg"
+  }, {
+    "id" : "c9fbac8d-dd80-7f3a-72ed-a89d77f98cb5",
+    "name" : "add_wave_top",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Top):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the top of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "653a2070-9db7-1236-5f76-278ca74f4fc6",
+    "name" : "wave_top",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Top)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "c9fbac8d-dd80-7f3a-72ed-a89d77f98cb5",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "238b2277-56ff-dc49-4c74-f4d7d8f85a42",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "8f737b2e-3b76-dc08-4795-4ed5d2c853b2",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "238b2277-56ff-dc49-4c74-f4d7d8f85a42",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "59aa0f13-e2a8-115a-5ad7-abc4461b5971",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row above has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row above.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "005d7a5b-8b17-95a9-abb8-4bbb228a7c9e",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "fd54b86b-4515-9d52-ce24-0976bad0acec",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the base of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "dfce2378-5a5e-5a52-9dd9-18b53e2833ed",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Bottom)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "fd54b86b-4515-9d52-ce24-0976bad0acec",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "adc40255-bfb0-7d60-34a2-f0ace0c9d317",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "da36c0cd-4881-d734-1c3c-3a124432baff",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "adc40255-bfb0-7d60-34a2-f0ace0c9d317",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "b592af5b-5304-17b8-fa44-703b4c32df71",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color:",
+      "help_text" : "If the row above has a white background you'll want to set the color of the way to white.",
+      "inline_help_text" : "Set this to the same color as the row above.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "40f6f166-c557-2df1-e808-a8c8dd89f6e4",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "716bdec1-19e8-7754-cf8d-62ca7652a381",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e9c0cddb-4a15-3b1b-934d-725296a23ae5",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "2bf95a4b-7cd6-c196-c378-e8eb035c2883",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "eab4e593-0b4f-bf5f-e925-7dcf8cb18cd7",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "90612062-5878-5a7e-9f25-32098d2c9246",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "f8e41cc6-ad1d-3afa-b01d-dee28a9cd462",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "a6b6a170-9f30-09d4-11b1-3eb0f869e0a0",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "bbddaf57-5a31-761e-f7d6-fca2d66a834d",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Row on:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "d056e81c-27d1-9085-8e99-1cb06278d6cb",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "2e641f18-75b2-279c-48f9-9b531c16a118",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "0f303c0e-b995-cd70-48c8-e825295fc099",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "090c4aa2-a049-0edc-9ee9-c6cfd91d559f",
+    "name" : "style",
+    "display_width" : null,
+    "label" : "██████ Style Options (The geeky design stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+      "name" : "pull_up",
+      "display_width" : null,
+      "label" : "Pull content over the row above:",
+      "help_text" : "This will give you the option to pull the content container up over the row above. This can be an awesome visual technique when used subtly.  IMPORTANT: Set the row's background color (above) to have 0% .",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "184d0c2f-ae10-c71a-0d57-707b87c48c20",
+      "name" : "content_bg_color",
+      "display_width" : null,
+      "label" : "Content Container Background Color:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "73bf10ea-7a97-8e6d-a42a-aedaf9faf804",
+      "name" : "pull_up_num_desktop",
+      "display_width" : null,
+      "label" : "Pull Up Content (Desktop):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 500,
+      "step" : 1,
+      "type" : "number",
+      "default" : 50
+    }, {
+      "id" : "f09286a1-3dd2-dcd9-b9cc-55672b246cba",
+      "name" : "pull_up_num_tablet",
+      "display_width" : null,
+      "label" : "Pull Up Content (Tablet):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 500,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "a73c6583-7ea3-3d51-08fb-a82cc3895a35",
+      "name" : "pull_up_num_mobile",
+      "display_width" : null,
+      "label" : "Pull Up Content (Mobile):",
+      "help_text" : "This will allow you to set how much you want the content container to overlap the row above by on mobile devices.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 200,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    }, {
+      "id" : "40120d81-c074-16a2-0f33-a018c94f786f",
+      "name" : "con_padding",
+      "display_width" : null,
+      "label" : "Container Padding (Desktop):",
+      "help_text" : "It's a good idea to give the content a little breathing room. This is where you can set the padding. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "fe5fc769-4687-9ca5-a962-92c5136611cf",
+      "name" : "con_padding_tablet",
+      "display_width" : null,
+      "label" : "Container Padding (Tablet):",
+      "help_text" : "It's a good idea to give the content a little breathing room. This is where you can set the padding. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 15
+    }, {
+      "id" : "08a3b958-2664-a75f-356b-b0e54b20f50d",
+      "name" : "con_padding_mobile",
+      "display_width" : null,
+      "label" : "Container Padding (mobile): ",
+      "help_text" : "It's a good idea to give the content a little breathing room. This is where you can set the padding. ",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "default" : 25
+    }, {
+      "id" : "23a71245-c72f-70f7-6b33-b4f2625a899b",
+      "name" : "subtle_shadow",
+      "display_width" : null,
+      "label" : "Add Subtle Shadow:",
+      "help_text" : "This will add a slight glow around the content container to lift it of the page ever so elegantly.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    }, {
+      "id" : "ba4eefab-ec3e-7ebe-7439-59e737b911cd",
+      "name" : "no_padding_btm",
+      "display_width" : null,
+      "label" : "Remove Padding Bottom:",
+      "help_text" : "This will remove the extra padding on the bottom. This is especially helpful when you're don't have the subtle shadow turned on.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "412a4b1a-e1e0-2946-4025-0db560770aff",
+      "name" : "pointer_event",
+      "display_width" : null,
+      "label" : "Allow Elements Under to be Clicked:",
+      "help_text" : "Toggle this option on when you're trying to float an image with a transparent background over the row above that has a CTA or links that need to be interacted with.",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "1e021b35-92b1-27a1-b572-6da7392d675d",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_tablet" : 0,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "con_padding_tablet" : 15,
+      "con_padding_mobile" : 25,
+      "subtle_shadow" : false,
+      "no_padding_btm" : true,
+      "pointer_event" : false
+    }
+  }, {
+    "id" : "3cfe113c-9b56-aee3-87ea-28ecc8d1b76d",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The Nerdy Stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "e6f4eb14-0b0c-5741-1a3b-034feb587e8e",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "help_text" : "This will place and ID on the row that you'll be able to set an anchor tag and have the user jump down to this section of the page.",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "6f0e4f97-7515-26e4-1667-90a19e2f0592",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces.  ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_type" : "color",
+    "bg_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "color_1" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "color_2" : {
+      "color" : "#00bda5",
+      "opacity" : 100
+    },
+    "gradient_angle" : "45deg",
+    "bg_image" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    },
+    "image_loading" : "lazy",
+    "parallax" : false,
+    "parallax_on_mobile" : false,
+    "parallax_orientation" : "up",
+    "parallax_transition" : "linear",
+    "parallax_scale" : 1.2,
+    "parallax_delay" : 0,
+    "bg_size" : "cover",
+    "img_pos" : "left center",
+    "content_width" : "container",
+    "edge_to_edge" : false,
+    "set_width" : 600,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 10
+    },
+    "shadow_size" : 20,
+    "overlay_bg" : "none",
+    "overlay_color" : {
+      "color" : "#444444",
+      "opacity" : 50
+    },
+    "overlay_color_1" : {
+      "color" : "#000000",
+      "opacity" : 50
+    },
+    "overlay_color_2" : {
+      "color" : "#000000",
+      "opacity" : 0
+    },
+    "overlay_angle" : "45deg",
+    "add_wave_top" : false,
+    "wave_top" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "50px",
+      "padding_bottom_tablet" : "50px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "style" : {
+      "pull_up" : false,
+      "content_bg_color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "pull_up_num_desktop" : 50,
+      "pull_up_num_tablet" : 0,
+      "pull_up_num_mobile" : 0,
+      "con_padding" : 25,
+      "con_padding_tablet" : 15,
+      "con_padding_mobile" : 25,
+      "subtle_shadow" : false,
+      "no_padding_btm" : true,
+      "pointer_event" : false
+    },
+    "code" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  }
+} ]

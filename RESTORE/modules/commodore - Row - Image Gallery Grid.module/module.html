@@ -1,0 +1,415 @@
+{# 
+ NAME: IMAGE GALLERY GRID
+ MODULE VERSION: 1.0.9
+ COMMODORE VERSION: Version updated 79
+ LAST UPDATED: 12/28/23
+ REMINDER: You Rock!
+#}
+
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-img-gallery-grid-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top }};
+      padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    {% if module.row_settings.bg_type == 'color' %}
+      background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+    {% endif %}
+    {% if module.row_settings.bg_type == 'gradient' %}
+      background-color: {{ module.row_settings.color_1.color }};
+      background: -moz-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: -webkit-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+    {% endif %}
+    {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False -%}
+      background-repeat: no-repeat;
+      background-size: {{ module.row_settings.bg_size }};
+      background-position: {{ module.row_settings.img_pos }};
+      {% if module.row_settings.image_loading == 'eager' %}
+        background-image: url("{{ module.row_settings.bg_image.src }}");
+      {% else %}
+        background-image: none;
+      {% endif %}
+    {%- endif -%}
+  }
+  {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False && module.row_settings.image_loading == 'lazy' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-grid-mod.lazy-background.visible {
+      background-image: url("{{ module.row_settings.bg_image.src }}");
+    }
+  {% endif %}
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-grid-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-grid-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {# LOAD MORE FEATURE #}
+  
+  {% if module.start.use_load_more %}
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-card {
+      display: none; 
+    }
+  {% endif %}
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# PARALLAX #}
+  
+  {% if module.row_settings.parallax %}
+  .para-background {
+      {# Fill parent #}
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.125s ease-in-out;
+    }
+
+    .para-background.simpleParallax,
+    .para-background--show-mobile {
+      opacity: 1;
+    }
+
+    #hs_cos_wrapper_{{ name }} .para-background__image {
+      display: block;
+      width: 100%;
+      height: 100% !important;
+      object-fit: {{ module.row_settings.bg_size }};
+    }
+  {% endif %}
+
+  {# OVERLAY #}
+  
+  {% if module.row_settings.overlay_bg != 'none' %}
+    #hs_cos_wrapper_{{ name }} .hhs-row-overlay {
+      {% if module.row_settings.overlay_bg == 'color' %}
+        background-color: rgba({{ module.row_settings.overlay_color.color|convert_rgb }}, {% if module.row_settings.overlay_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color.opacity }}{% endif %});
+      {% endif %}
+      {% if module.row_settings.overlay_bg == 'gradient' %}
+        background-color: {{ module.row_settings.overlay_color_1.color }};
+        background: -moz-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: -webkit-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      {% endif %}
+    }
+  {%- endif -%}
+   
+  
+  {# PULL UP #}
+  
+  {% if module.row_settings.style.pull_up %}
+    #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+      top: -{{ module.row_settings.style.pull_up_num_desktop }}px;
+      background-color: {{ module.row_settings.style.content_bg_color.color }};
+      padding: {{ module.row_settings.style.con_padding }}px;
+      z-index: 5;
+      position: relative;
+      {% if module.row_settings.style.subtle_shadow %}
+        -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+      {% endif %}
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+        top: -{{ module.row_settings.style.pull_up_num_mobile }}px;
+      }
+    }
+  {% endif %}
+  
+  {# WAVE #}
+  
+  {%- if module.row_settings.add_wave_btm -%}
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+      color:  rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+      bottom: -{{ module.row_settings.adv_settings.padding_bottom }};
+    }
+    {% if module.row_settings.wave.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con svg {
+        fill: rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con .hhs-wave-module svg {
+        transform: scale(1, 1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {%- if module.row_settings.add_wave_top -%} 
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+      color:  rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+      top: -{{ module.row_settings.adv_settings.padding_top }};
+    }
+    {% if module.row_settings.wave_top.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top svg {
+        fill: rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave_top.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave_top.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top .hhs-wave-module svg {
+        transform: scale(-1, -1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {# END #}
+  
+  {# IMAGE GRID STYLE #}
+  
+  {# IMAGE DROPSHADOW #}
+  {%- if module.style.add_drop_shadow -%}
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-card img {
+      -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+      box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
+      -webkit-transition: all 500ms ease-in-out;
+      -moz-transition: all 500ms ease-in-out;
+      -ms-transition: all 500ms ease-in-out;
+      -o-transition: all 500ms ease-in-out;
+      transition: all 500ms ease-in-out;
+      {% if module.style.img_100 %}
+        width: 100% !important;
+      {% endif %}
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-img-gallery-card img:hover {
+      -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+      box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+      -moz-transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+  {%- endif -%}
+  
+  
+</style>
+{% end_require_css %}
+
+
+{% if module.start.num_cols == '1' %}
+  {% set break = 'col-lg-12' %}
+{% endif %}
+{% if module.start.num_cols == '2' %}
+  {% set break = 'col-lg-6 col-md-6 col-sm-12' %}
+{% endif %}
+{% if module.start.num_cols == '3' %}
+  {% set break = 'col-lg-4 col-md-6 col-sm-12' %}
+{% endif %}
+{% if module.start.num_cols == '4' %}
+  {% set break = 'col-lg-3 col-md-6 col-sm-12' %}
+{% endif %}
+{% if module.start.num_cols == '6' %}
+  {% set break = 'col-lg-2 col-md-4 col-sm-12' %}
+{% endif %}
+
+  
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-img-gallery-grid-mod {% if module.row_settings.image_loading == 'lazy' %}lazy-background{% endif %} {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}">
+  {%- if module.row_settings.add_wave_top -%} 
+    <div class="hhs-wave-con-top">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave_top.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+  <div class="{{ module.row_settings.content_width }} {% if module.row_settings.style.pull_up %}hhs-pull-up{% endif %}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      {% for item in module.gallery %}
+        <div class="{{ break }} hhs-img-gallery-card">
+          {% if item.link_image %}
+            {% set href = item.link.url.href %}
+              {% if item.link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+              {% endif %}
+              {% set rel = [] %}
+              {% if item.link.no_follow %}
+                {% do rel.append("nofollow") %}
+              {% endif %}
+              {% if item.link.open_in_new_tab %}
+                {% do rel.append("noopener") %}
+              {% endif %}
+              <a href="{{ href }}"
+                {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if rel %}rel="{{ rel|join(" ") }}"{% endif %}
+                >
+                 {% if item.img.src %}
+                  {% set sizeAttrs = 'width="{{ item.img.width }}" height="{{ item.img.height }}"' %}
+                  {% if item.img.size_type == 'auto' %}
+                    {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                  {% elif item.img.size_type == 'auto_custom_max' %}
+                    {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.img.max_width }}px; max-height: {{ item.img.max_height }}px"' %}
+                  {% endif %}
+                   {% set loadingAttr = item.img.loading != 'disabled' ? 'loading="{{ item.img.loading }}"' : '' %}
+                  <img src="{{ item.img.src }}" alt="{{ item.img.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+                {% endif %}
+              </a>
+          {% else %}
+            {% if item.img.src %}
+              {% set sizeAttrs = 'width="{{ item.img.width }}" height="{{ item.img.height }}"' %}
+              {% if item.img.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.img.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: {{ item.img.max_width }}px; max-height: {{ item.img.max_height }}px"' %}
+              {% endif %}
+              {% set loadingAttr = item.img.loading != 'disabled' ? 'loading="{{ item.img.loading }}"' : '' %}
+              <img src="{{ item.img.src }}" alt="{{ item.img.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+          
+          
+          {% endif %}
+          {% if item.text_under_image %}
+            <div class="gallery-card-text">
+              {% inline_rich_text field="text_under_image" value="{{ item.text_under_image }}" %}
+            </div>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+    {% if module.start.use_load_more %}
+      <div class="row">
+        <div class="col">
+          <a href="#" id="loadMore" class="{{ module.start.load_more.button_style }} {{ module.start.load_more.button_alignment }}">{{ module.start.load_more.button_label }}</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% if module.row_settings.parallax %}
+    <div class="para-background
+                js-{{ name }}-parallax
+                {{ 'para-background--show-mobile' if module.row_settings.parallax_on_mobile == false }}">
+      <img class="para-background__image
+                  js-{{ name }}-parallax__background"   
+           src="{{ module.row_settings.bg_image.src }}" 
+           alt="{{ module.row_settings.bg_image.alt }}" 
+           loading="lazy" 
+           width="{{ module.row_settings.bg_image.width }}" 
+           height="{{ module.row_settings.bg_image.height }}" />
+    </div>
+  {% endif %}
+  {{ '<span class="hhs-row-overlay"></span>' if module.row_settings.overlay_bg != 'none'  }}
+  {%- if module.row_settings.add_wave_btm -%} 
+    <div class="hhs-wave-con">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% if module.row_settings.parallax == 'true' && module.row_settings.bg_type == 'image' %}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{% endif %}
+
+{% require_js %}
+{% if module.row_settings.parallax %}
+  <script defer>
+    {% unless module.row_settings.parallax_on_mobile %}
+      if (window.matchMedia('(min-width: 768px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax__background');
+          new simpleParallax(image, {
+            delay: {{ module.row_settings.parallax_delay }},
+            scale: {{ module.row_settings.parallax_scale }},
+            transition: "{{ module.row_settings.parallax_transition }}",
+            orientation: "{{ module.row_settings.parallax_orientation }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.row_settings.parallax_on_mobile %}
+      }
+    {% endunless %}
+  </script>
+{% endif %}
+{% if module.start.use_load_more %}
+  <script>
+    $(document).ready(function(){
+    $(".hhs-img-gallery-card").slice(0, {{ module.start.load_more.num_images }}).show();
+    $("#loadMore").on("click", function(e){
+      e.preventDefault();
+      $(".hhs-img-gallery-card:hidden").slice(0, {{ module.start.load_more.num_images_load }}).slideDown();
+      if($(".hhs-img-gallery-card:hidden").length == 0) {
+        $("#loadMore").text("hi").addClass("noContent");
+      }
+    });
+  })
+
+  </script>
+{% endif %}
+{% end_require_js %}
+

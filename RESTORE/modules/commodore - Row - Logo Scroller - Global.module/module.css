@@ -1,0 +1,56 @@
+.hhs-logo-mod {position: relative;}
+
+.hhs-logo-mod .slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.hhs-lead-in-text {
+ margin-bottom: 50px; 
+}
+{# Slider #}
+.logo-item img {display: none;}
+.slick-slider img{ display: block;} 
+
+
+.ourLogos-section{ padding:50px 0 90px; overflow:hidden;}
+.scrolling-logos.slick-slider .logo-item{ 
+  text-align:center; 
+  outline: none; 
+}
+.scrolling-logos.slick-slider .logo-item img {padding: 0 20px;}
+.scrolling-logos.slick-slider .logo-item img{ display:inline-block; vertical-align:middle;}
+
+.scrolling-logos .slick-arrow:focus{ outline: none;}
+.scrolling-logos .slick-arrow:hover{ opacity:0.4;}
+
+.scrolling-logos button.slick-prev,
+.scrolling-logos button.slick-next {
+   position: absolute;
+   top: 50%;
+   margin-top: -1%;
+}
+
+.scrolling-logos button.slick-prev { 
+  left: -30px; 
+  transform: rotate(45deg);
+ }
+.scrolling-logos button.slick-next { 
+  right: -30px; 
+  transform: rotate(-135deg);
+}
+.scrolling-logos button.slick-prev svg,
+.scrolling-logos button.slick-next svg {
+  display: none;
+}
+
+@media (max-width: 922px) {
+  .scrolling-logos button.slick-prev,
+  .scrolling-logos button.slick-next{ display: none !important;}
+}
+
+@media (max-width: 575px) {
+ .scrolling-logos.slick-slider .logo-item img {
+   padding: 0 10px;
+  }
+}
