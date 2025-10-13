@@ -1,0 +1,22 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://cdn2.hubspot.net/hubfs/19522085/commodore-images/module-icons/icon-image-grid.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135503765668,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/isotope.js",
+    "name" : "isotope.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/images-loaded.js",
+    "name" : "images-loaded.js"
+  }, {
+    "autoload" : true,
+    "path" : "../../js/simple-lightbox.js",
+    "name" : "simple-lightbox.js"
+  } ],
+  "label" : "Masonry Image Gallery (Pro)",
+  "is_available_for_new_content" : true
+}

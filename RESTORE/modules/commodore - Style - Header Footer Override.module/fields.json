@@ -1,0 +1,130 @@
+[ {
+  "id" : "347dabfe-6a61-6824-dd54-5ec1a563d2ac",
+  "name" : "use_alt_nav",
+  "display_width" : null,
+  "label" : "Use Sticky Nav Style:",
+  "help_text" : "By turning this on, your nav links will be set to the style you gave to the \"Sticky Nav\" in the Global Header Module.  ",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "dc1d9f47-326c-b2bd-c97e-fa7efa880dc3",
+  "name" : "nav_trans",
+  "display_width" : null,
+  "label" : "Make Nav Background Transparent:",
+  "help_text" : "This option will only work if you have the \"Sticky Nav Style\" turned on above.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "347dabfe-6a61-6824-dd54-5ec1a563d2ac",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "473227c5-4698-0c7a-3264-90f257756928",
+  "name" : "hide_nav",
+  "display_width" : null,
+  "label" : "Hide All Header Nav Links:",
+  "help_text" : "Use this option when you'd like to hide all the nav elements in the Global header but leave your logo in the top left corner.  This is primarily for the purpose of Landing Pages when you want to reduce the \"choice ratio\" on the page and increate conversion rates.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "c8f3c2d0-c8b5-99f7-30fd-5f14410074d3",
+  "name" : "hide_header_hat",
+  "display_width" : null,
+  "label" : "Hide Header Hat",
+  "help_text" : "",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "e1d3f117-0dfb-14b0-8e81-de19cf2c71eb",
+  "name" : "logo_center",
+  "display_width" : null,
+  "label" : "Center Align Logo:",
+  "help_text" : "This will only work if you have select to remove the navigation items by turning on the toggle above.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "473227c5-4698-0c7a-3264-90f257756928",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+}, {
+  "id" : "f4062787-0ce8-5fdf-9099-0fdce8fd431f",
+  "name" : "logo_mt",
+  "display_width" : null,
+  "label" : "Slide logo down:",
+  "help_text" : "This option will only work if you are hiding the nav items and have the center logo option turned on.",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "e1d3f117-0dfb-14b0-8e81-de19cf2c71eb",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "display" : "slider",
+  "min" : 0,
+  "max" : 250,
+  "step" : 1,
+  "type" : "number",
+  "default" : 0
+}, {
+  "id" : "927a0ea3-ada3-ec72-ce0b-cda42439d1d1",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "9848a2dc-1792-604f-be53-b3b5173a59c9",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "5f38dcfc-92c2-df05-06a5-98d12b38e4d2",
+  "name" : "hide_footer",
+  "display_width" : null,
+  "label" : "Hide All Footer Nav Links:",
+  "help_text" : "Use this option when you'd like to hide all the nav elements in the Global footer but leave your logo in the bottom left corner.  This is primarily for the purpose of Landing Pages when you want to reduce the \"choice ratio\" on the page and increate conversion rates.",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "default" : false
+} ]

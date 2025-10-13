@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "inline_help_text" : "Created by: <a href=\"https://bit.ly/3prVP5m\">WorldLight Media</a><br/>------------------------------<br/>\nHow to: <a href=\"https://bit.ly/41FY4zp\" >Tutorial</a><br/>Feedback: <a href=\"https://bit.ly/3oboBa7\" >Submit Ideas or Bugs</a></br>\nVersion: Beta 0.0.5",
+  "icon" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/commodore-images/module-icons/icon-content-slider.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135504259916,
+  "label" : "Content Slider (Pro)",
+  "is_available_for_new_content" : true
+}

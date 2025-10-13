@@ -1,0 +1,264 @@
+{# 
+ NAME: TESTIMONIAL SCROLLER
+ MODULE VERSION: 2.1.6
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 12/9/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  /* SHADOW */
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+     #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# END #}
+  
+  {# QUOTE STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .scrolling-testimonials button.slick-prev,
+  #hs_cos_wrapper_{{ name }} .scrolling-testimonials button.slick-next{ 
+    border-bottom: {{ module.style_options.scroller.arrow_thickness }}px solid {{ module.style_options.scroller.arrow_color.color }};
+    border-left: {{ module.style_options.scroller.arrow_thickness }}px solid {{ module.style_options.scroller.arrow_color.color }};
+    width: {{ module.style_options.scroller.arrow_size }}px;
+    height: {{ module.style_options.scroller.arrow_size }}px;
+    {% if module.style_options.scroller.show_arrows == 'false' %} 
+      display: none !important;
+    {% endif %}
+    border-radius: 0;
+    background: transparent;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .quote-con {
+    {% if module.style_options.custom_color %}
+      color: {{ module.style_options.quote_color.color }};
+    {% endif %}
+    font-size: {{ module.style_options.text_size }}px;
+    text-align: {{ module.style_options.text_align }} !important;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .scrolling-testimonials .slick-dots li {
+   background-color:  rgba({{ module.style_options.scroller.dot_color.color|convert_rgb }}, {% if module.style_options.scroller.dot_color.opacity == '100' %}1{% else %} 0.{{ module.style_options.scroller.dot_color.opacity }}{% endif %});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .scrolling-testimonials .slick-dots li.slick-active {
+   background-color:  rgba({{ module.style_options.scroller.dot_color_active.color|convert_rgb }}, {% if module.style_options.scroller.dot_color_active.opacity == '100' %}1{% else %} 0.{{ module.style_options.scroller.dot_color_active.opacity }}{% endif %});
+  }
+  
+  #hs_cos_wrapper_{{ name }} .test-name,
+  #hs_cos_wrapper_{{ name }} .test-title {
+    {% if module.style_options.custom_color %}
+      color: {{ module.style_options.name_color.color }};
+    {% endif %}
+    text-align: {{ module.style_options.text_align }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod i {
+    {% if module.style_options.custom_color %}
+      color: {{ module.style_options.quote_icon_color.color }};
+    {% endif %}
+    text-align: {{ module.style_options.text_align }};
+    display: block;
+    {% if module.style_options.text_align == 'center' %}
+      margin-left: auto; margin-right: auto;
+    {% endif %}
+    {% if module.style_options.text_align == 'right' %}
+      margin-left: auto; margin-right: 0;
+      text-align: right;
+    {% endif %}
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: {{ module.style_options.text_size }}px;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod .icon-con svg {
+    {% if module.style_options.custom_color %}
+      fill: {{ module.style_options.quote_icon_color.color }};
+    {% endif %}
+      width: {{ module.style_options.icon_size }}px;
+    text-align: {{ module.style_options.text_align }};
+    display: block;
+    {% if module.style_options.text_align == 'center' %}
+      margin-left: auto; margin-right: auto;
+    {% endif %}
+    {% if module.style_options.text_align == 'right' %}
+      margin-left: auto; margin-right: 0;
+      text-align: right;
+    {% endif %}
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod img {
+    width: {{ module.style_options.img_size }}px;
+    height: auto !important;
+    {% if module.style_options.image_shape == 'circle' %}
+      -webkit-border-radius: 100%;
+      border-radius: 100%;
+    {% endif %}
+    display: block;
+    {% if module.style_options.text_align == 'center' %}
+      margin-left: auto; margin-right: auto;
+    {% endif %}
+    {% if module.style_options.text_align == 'right' %}
+      margin-left: auto; margin-right: 0;
+      text-align: right;
+    {% endif %}
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  {# TABLET CSS #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+   {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-scroller-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .quote-con {
+      font-size: {{ module.style_options.text_size_mobile }}px;
+    }
+  }
+  
+</style>
+{% end_require_css %}
+
+
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-testimonial-scroller-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %}  {{ module.row_settings.code.section_class }}">
+  <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col-12 scrolling-testimonials">
+        {% for item in module.testimonial %}
+          <div class="content-group">
+            {% if module.style_options.show_icon %}
+              <div class="icon-con">
+                {% icon
+                  name="{{ module.style_options.quote_icon.name }}"
+                  style="{{ module.style_options.quote_icon.type }}"
+                  unicode="{{ module.style_options.quote_icon.unicode }}"
+                  icon_set="{{ module.style_options.quote_icon.icon_set }}"
+                %}
+              </div>
+            {% endif %}
+            <blockquote class="quote-con">{% inline_text field="testimonial.quote" value="{{ item.testimonial.quote }}" %}</blockquote>
+            {% if item.testimonial.image.src %}
+              {% set sizeAttrs = 'width="{{ item.testimonial.image.width }}" height="{{ item.testimonial.image.height }}"' %}
+              {% if item.testimonial.image.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.testimonial.image.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="{{ item.testimonial.image.max_width }}" height="{{ item.testimonial.image.max_height }}" style="max-width: 100%; height: auto;"' %}
+              {% endif %}
+               {% set loadingAttr = item.testimonial.image.loading != 'disabled' ? 'loading="{{ item.testimonial.image.loading }}"' : '' %}
+              <img src="{{ item.testimonial.image.src }}" alt="{{ item.testimonial.image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+            {% endif %}
+            <div class="test-name">{% inline_text field="testimonial.test_name" value="{{ item.testimonial.test_name }}" %}</div>
+            <div class="test-title">{% inline_text field="testimonial.test_title" value="{{ item.testimonial.test_title }}" %}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-testimonial-scroller.css"), { async: true }) }}
+
+{% require_js %}
+
+
+<script defer>
+  
+  function testimonialSlider(){   
+   $('#hs_cos_wrapper_{{ name }} .scrolling-testimonials').slick({
+      {% if module.style_options.scroller.show_dots %}
+        dots: true,
+      {% else %}
+        dots: false,
+     {% endif %}
+      infinite: true,
+      {% if module.style_options.scroller.auto_rotate %}
+        autoplay: true,
+        autoplaySpeed: {{ module.style_options.scroller.auto_rotate_speed }}000,
+      {% endif %}
+      adaptiveHeight: true,
+      slidesToShow: {{ module.style_options.scroller.num_show }},
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            arrows: false
+          }
+        }
+      ]
+    });  
+  }
+
+  testimonialSlider(); 
+  
+  
+  function equalizeHeight_{{ name }}(className) {
+    elements = document.querySelectorAll(className);
+    // SET ALL DIVS WITH THIS CSS CLASS TO HAVE THE HEIGHT "FIT-CONTENT"
+    for (var j = 0; j < elements.length; j++) {
+      if (elements[j].tagName.toLowerCase() === 'div') {
+        elements[j].style.height = 'fit-content';
+      }
+    }
+    // FIND MAXIMUM HEIGHT AMONGST THE DIVS WITH THIS CSS CLASS
+    maxHeight = 0;
+    for (var i = 0; i < elements.length; i++) {
+      height = elements[i].offsetHeight;
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    }
+    // SET ALL DIVS WITH THIS CSS CLASS TO HAVE THE HEIGHT OF THE TALLEST DIV WITH THIS CSS CLASS
+    for (var j = 0; j < elements.length; j++) {
+      if (elements[j].tagName.toLowerCase() === 'div') {
+        elements[j].style.height = maxHeight + "px";
+      }
+    }
+  }
+
+  function equalizeSlides_{{ name }}(){
+    equalizeHeight_{{ name }}("#hs_cos_wrapper_{{ name }} .content-group");
+  }
+  equalizeSlides_{{ name }}();
+  window.addEventListener('resize', equalizeSlides_{{ name }});
+
+  
+</script>
+{% end_require_js %}
+

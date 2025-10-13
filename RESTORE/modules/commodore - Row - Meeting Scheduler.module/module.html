@@ -1,0 +1,61 @@
+{# 
+ NAME: MEETING SCHEDULER
+ MODULE VERSION: 1.0.2
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 2/21/24
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-meeting-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+  }
+  
+  {# END #}
+  
+  {# ROW STYLE #}
+  
+  
+  {# TABLET CSS #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-meeting-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-meeting-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-meeting-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}" >  
+    <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col">
+        {% if module.meeting %}
+          <div class="meetings-iframe-container" data-src="{{ module.meeting }}?embed=true" data-ab="{{ content.ab }}" data-ab-status="{{ content.abStatus }}" data-content-id="{{ content.id }}"></div>
+          <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+        {% else %}
+        <div class="hs-meetings-placeholder">
+          <div class="hs-meetings-placeholder__inner">
+            <h3 class="hs-meetings-placeholder__title">{{ module.select_meeting_title }}</h3>
+            <p class="hs-meetings-placeholder__description">{{ module.select_meeting_description }}</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

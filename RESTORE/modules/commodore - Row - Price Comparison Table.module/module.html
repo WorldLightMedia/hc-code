@@ -1,0 +1,793 @@
+{# 
+ NAME: PRICE COMPARISON TABLE
+ MODULE VERSION: 2.2.5
+ COMMODORE VERSION: 
+ LAST UPDATED: 6/21/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  @media (max-width: 992px) {
+    #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  @media (min-width: 992px) {
+    #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod td, #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod th {
+      width: {{ module.style.table.feature_column_size }}px;
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod td+td, #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod th+th {
+      width: auto;
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# END #} 
+  {# TABLE STYLE #}
+
+  #hs_cos_wrapper_{{ name }} .tick i.fa-check {color: {{ module.style.icons.check_color.color }};}
+  #hs_cos_wrapper_{{ name }} .tick i.fa-times {color: {{ module.style.icons.times_color.color }};}
+  #hs_cos_wrapper_{{ name }} .tick span.open-text {color: {{ module.style.icons.open_text.color }};}
+  #hs_cos_wrapper_{{ name }} .tick span.na {color: {{ module.style.icons.na_color.color }}; font-weight: bold;font-size: 14px;}
+  #hs_cos_wrapper_{{ name }} .cta-primary,
+  #hs_cos_wrapper_{{ name }} .cta-secondary {padding-left: 18px; padding-right: 18px;}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod button,
+  #hs_cos_wrapper_{{ name }} .pack-title th,
+  #hs_cos_wrapper_{{ name }} .pack-feature{
+   {% if module.style.text.custom_text_color %}
+    color: {{ module.style.text.text_color.color }};
+   {% endif %}
+  }
+  #hs_cos_wrapper_{{ name }} .pack-price .txt-top,
+  #hs_cos_wrapper_{{ name }} .pack-price .txt-l{
+   {% if module.style.text.custom_text_color %}
+    color: {{ module.style.text.price_color.color }};
+   {% endif %}
+  }
+  #hs_cos_wrapper_{{ name }} .pack-price .txt-l{
+    font-size: {{ module.style.text.price_size }}px;
+    line-height: {{ module.style.text.price_size + 4 }}px;
+    font-weight: {{ module.style.text.price_font_weight }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod .pre-text,
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod .post-text {
+    color:  {{ module.style.text.sub_price_text_color.color }};
+    font-size: 14px;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod th { 
+    background-color: rgba({{ module.style.table.title_bg_color.color|convert_rgb }}, {{ module.style.table.title_bg_color.opacity * 0.01 }});
+  }
+  #hs_cos_wrapper_{{ name }} .sep {
+    background-color: rgba({{ module.style.table.section_title_bg_color.color|convert_rgb }}, {{ module.style.table.section_title_bg_color.opacity * 0.01 }});
+  }
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod button {
+    border: 1px solid {{ module.style.table.border_color.color }};
+    background-color: rgba({{ module.style.table.title_bg_color.color|convert_rgb }}, {{ module.style.table.title_bg_color.opacity * 0.01 }});
+  }
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod li:last-child {
+    border-right:1px solid {{ module.style.table.border_color.color }};
+  }  
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod td, #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod th {
+    border:1px solid {{ module.style.table.border_color.color }}; 
+  }
+  #hs_cos_wrapper_{{ name }} .hhs-price-compare-mod li.active button {
+    background-color: rgba({{ module.style.table.title_bg_color_active.color|convert_rgb }}, {{ module.style.table.title_bg_color_active.opacity * 0.01 }});
+  }
+  
+   {# END #} 
+  {# TOOL TIP #}
+  
+  #hs_cos_wrapper_{{ name }} .tooltip-wrapper .tooltip{
+   border-color:  {{ module.style.tooltip.accent_color.color }};
+   color: {{ module.style.tooltip.text_color.color }};
+   background-color: rgba({{ module.style.tooltip.bg_color.color|convert_rgb }}, {{ module.style.tooltip.bg_color.opacity * 0.01 }});
+  }
+  #hs_cos_wrapper_{{ name }} .tooltip-wrapper .tooltip:after{
+   border-top: solid 10px  {{ module.style.tooltip.accent_color.color }};
+   color: {{ module.style.tooltip.text_color.color }};
+  }
+  
+  
+   {# END #} 
+  
+  {# TOGGLE #}
+  
+  {% if module.start.price_toggle %}
+    #hs_cos_wrapper_{{ name }} .toggler-label-right,
+    #hs_cos_wrapper_{{ name }} .toggler-label-left {
+      color: {{ module.style.toggle.toggle_label_color.color }};
+      font-weight: {{ module.style.toggle.toggle_label_weight }};
+    }
+
+    #hs_cos_wrapper_{{ name }} .tgl-ios + .tgl-btn {
+      border: 2px solid {{ module.style.toggle.toggle_color.color }};
+    }
+    #hs_cos_wrapper_{{ name }} .tgl-ios + .tgl-btn:after {
+      background: {{ module.style.toggle.toggle_color.color }}; 
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-toggle-price .wrapper {
+      margin-bottom: 50px;
+    }
+    .price2_{{ name }} {
+        display: none;
+      }
+    .price1_{{ name }} {
+        display: block;
+      }
+  {% endif %}
+  
+</style>
+{% end_require_css %}
+
+
+{% if module.start.num_cols == "2" %}   
+  {% set colspan = "3" %}
+{% endif %}
+{% if module.start.num_cols == "3" %}   
+  {% set colspan = "4" %}
+{% endif %}
+{% if module.start.num_cols == "4" %}   
+  {% set colspan = "5" %}
+{% endif %}
+{% if module.start.num_cols == "5" %}   
+  {% set colspan = "6" %}
+{% endif %}
+
+{% require_js %}
+<script defer>
+
+$( "ul" ).on( "click", "li", function() {
+  var pos = $(this).index()+2;
+  $("tr").find('td:not(:eq(0))').hide();
+  $('td:nth-child('+pos+')').css('display','table-cell');
+  $("tr").find('th:not(:eq(0))').hide();
+  $('li').removeClass('active');
+  $(this).addClass('active');
+});
+
+  var mediaQuery = window.matchMedia('(min-width: 992px)');
+  
+  mediaQuery.addListener(doSomething);
+    // Function to do something with the media query
+  function doSomething(mediaQuery) {    
+    if (mediaQuery.matches) {
+      $('.sep').attr('colspan',{{ colspan }});
+    } else {
+      $('.sep').attr('colspan',2);
+    }
+  }
+  
+  // On load
+  doSomething(mediaQuery);
+  
+{% if module.start.price_toggle %}
+    $("#hs_cos_wrapper_{{ name }} .tgl:checkbox").click(function() {
+      var href1 = $($(this).attr('data-on'));
+      var href2 = $($(this).attr('data-off'));
+      $('#hs_cos_wrapper_{{ name }} .wrap').css('opacity', '0');
+      setTimeout(function(){
+        $('#hs_cos_wrapper_{{ name }} .wrap').css('opacity', '1');
+      },250);
+        if ( $( this ).prop( "checked" ) ) {
+          setTimeout(function(){
+            href1.hide();
+            href2.show();
+          },250)
+        } else {
+          setTimeout(function(){
+            href2.hide();
+            href1.show();
+          },250)
+        }
+    });
+{% endif %}
+</script>
+{% end_require_js %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-price-compare-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}">
+  <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      {% if module.start.price_toggle %}
+        <div class="hhs-toggle-price col-12">
+          <div class="wrapper">
+            <span class="toggler-label-left">{{ module.start.toggle_1 }}</span>
+            <div class="toggler">
+              <input type="checkbox" id="checkbox_{{ name }}" data-on=".price1_{{ name }}" data-off=".price2_{{ name }}" class="tgl tgl-ios"/>
+              <label for="checkbox_{{ name }}" class="tgl-btn"></label>
+            </div>
+            <span class="toggler-label-right">{{ module.start.toggle_2 }}</span>
+          </div>
+        </div>
+        {% endif %}
+      <div class="col-12">
+        <article>
+          <ul>
+            <li class="active" style="border-top: 3px solid {{ module.content.package_1.highlight_color.color }};">
+              <button>{{ module.content.package_1.title }}</button>
+            </li>
+            {% if module.start.num_cols >= '2' %}
+              <li style="border-top: 3px solid {{ module.content.package_2.highlight_color.color }};">
+                <button>{{ module.content.package_2.title }}</button>
+              </li>
+            {% endif %}
+            {% if module.start.num_cols >= '3' %}
+              <li style="border-top: 3px solid {{ module.content.package_3.highlight_color.color }};">
+                <button>{{ module.content.package_3.title }}</button>
+              </li>
+            {% endif %}
+            {% if module.start.num_cols >= '4' %}
+              <li  style="border-top: 3px solid {{ module.content.package_4.highlight_color.color }};">
+                <button>{{ module.content.package_4.title }}</button>
+              </li>
+            {% endif %}
+            {% if module.start.num_cols == '5' %}
+              <li style="border-top: 3px solid {{ module.content.package_5.highlight_color.color }};">
+                <button>{{ module.content.package_5.title }}</button>
+              </li>
+            {% endif %}
+          </ul>  
+
+          <table>
+            <thead>
+              <tr class="pack-title">
+                <th class="hide-cell"></th>
+                <th class="default" style="border-top: 3px solid {{ module.content.package_1.highlight_color.color }};">{{ module.content.package_1.title }}</th>
+                {% if module.start.num_cols >= '2' %}
+                  <th style="border-top: 3px solid {{ module.content.package_2.highlight_color.color }};">{{ module.content.package_2.title }}</th>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <th style="border-top: 3px solid {{ module.content.package_3.highlight_color.color }};">{{ module.content.package_3.title }}</th>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <th style="border-top: 3px solid {{ module.content.package_4.highlight_color.color }};">{{ module.content.package_4.title }}</th>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <th style="border-top: 3px solid {{ module.content.package_5.highlight_color.color }};">{{ module.content.package_5.title }}</th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+              {% if module.start.show_pricing_row %}
+                <tr class="pack-price">
+                  <td class="pack-feature">{{ module.start.price_row_title }}</td>
+                  <td class="default">
+                    <span class="pre-text {% if module.content.package_1.strike %}strike{% endif %}">{{ module.content.package_1.price_pre_text }}</span><br/>
+                    <span class="wrap">
+                      <span class="price1_{{ name }}">
+                        <span class="txt-top">{{ module.start.currency }}</span>
+                        <span class="txt-l">{{ module.content.package_1.price }}</span><br/>
+                      </span>
+                      {% if module.start.price_toggle %}
+                        <span class="price2_{{ name }}">
+                          <span class="txt-top">{{ module.start.currency }}</span>
+                          <span class="txt-l">{{ module.content.package_1.price_2 }}</span><br/>
+                        </span>
+                      {% endif %}
+                    </span>
+                    <span class="post-text">{{ module.content.package_1.price_post_text }}</span>
+                  </td>
+                  {% if module.start.num_cols >= '2' %}
+                  <td>
+                    <span class="pre-text {% if module.content.package_2.strike %}strike{% endif %}">{{ module.content.package_2.price_pre_text }}</span><br/>
+                    <span class="wrap">
+                      <span class="price1_{{ name }}">
+                        <span class="txt-top">{{ module.start.currency }}</span>
+                        <span class="txt-l">{{ module.content.package_2.price }}</span><br/>
+                      </span>
+                      {% if module.start.price_toggle %}
+                        <span class="price2_{{ name }}">
+                          <span class="txt-top">{{ module.start.currency }}</span>
+                          <span class="txt-l">{{ module.content.package_2.price_2 }}</span><br/>
+                        </span>
+                      {% endif %}
+                    </span>
+                    <span class="post-text">{{ module.content.package_2.price_post_text }}</span>
+                  </td>
+                  {% endif %}
+                  {% if module.start.num_cols >= '3' %}
+                    <td>
+                      <span class="pre-text {% if module.content.package_3.strike %}strike{% endif %}">{{ module.content.package_3.price_pre_text }}</span><br/>
+                    <span class="wrap">
+                      <span class="price1_{{ name }}">
+                        <span class="txt-top">{{ module.start.currency }}</span>
+                        <span class="txt-l">{{ module.content.package_3.price }}</span><br/>
+                      </span>
+                      {% if module.start.price_toggle %}
+                        <span class="price2_{{ name }}">
+                          <span class="txt-top">{{ module.start.currency }}</span>
+                          <span class="txt-l">{{ module.content.package_3.price_2 }}</span><br/>
+                        </span>
+                      {% endif %}
+                    </span>
+                    <span class="post-text">{{ module.content.package_3.price_post_text }}</span>
+                  </td>
+                  {% endif %}
+                  {% if module.start.num_cols >= '4' %}
+                    <td>
+                      <span class="pre-text {% if module.content.package_4.strike %}strike{% endif %}">{{ module.content.package_4.price_pre_text }}</span><br/>
+                      <span class="wrap">
+                        <span class="price1_{{ name }}">
+                          <span class="txt-top">{{ module.start.currency }}</span>
+                          <span class="txt-l">{{ module.content.package_4.price }}</span><br/>
+                        </span>
+                        {% if module.start.price_toggle %}
+                          <span class="price2_{{ name }}">
+                            <span class="txt-top">{{ module.start.currency }}</span>
+                            <span class="txt-l">{{ module.content.package_4.price_2 }}</span><br/>
+                          </span>
+                        {% endif %}
+                      </span>
+                      <span class="post-text">{{ module.content.package_4.price_post_text }}</span>
+                  </td>
+                  {% endif %}
+                  {% if module.start.num_cols == '5' %}
+                    <td>
+                      <span class="pre-text {% if module.content.package_5.strike %}strike{% endif %}">{{ module.content.package_5.price_pre_text }}</span><br/>
+                      <span class="wrap">
+                        <span class="price1_{{ name }}">
+                          <span class="txt-top">{{ module.start.currency }}</span>
+                          <span class="txt-l">{{ module.content.package_5.price }}</span><br/>
+                        </span>
+                        {% if module.start.price_toggle %}
+                          <span class="price2_{{ name }}">
+                            <span class="txt-top">{{ module.start.currency }}</span>
+                            <span class="txt-l">{{ module.content.package_5.price_2 }}</span><br/>
+                          </span>
+                        {% endif %}
+                      </span>
+                      <span class="post-text">{{ module.content.package_5.price_post_text }}</span>
+                  </td>
+                  {% endif %}
+                </tr>
+              {% endif %}
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_1.title }}</td>
+              </tr>
+             {% for item in module.feature_section_1.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td ><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+
+              {% if module.feat_section_2_on == 'true' %} 
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_2.title }}</td>
+              </tr>
+              {% for item in module.feature_section_2.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+              {% endif %}
+
+              {% if module.feat_section_3_on %}
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_3.title }}</td>
+              </tr>
+              {% for item in module.feature_section_3.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+              {% endif %}
+
+              {% if module.feat_section_4_on %}
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_4.title }}</td>
+              </tr>
+              {% for item in module.feature_section_4.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na'  %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+              {% endif %}
+
+              {% if module.feat_section_5_on %}
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_5.title }}</td>
+              </tr>
+              {% for item in module.feature_section_5.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na'  %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+              {% endif %}
+
+              {% if module.feat_section_6_on %}
+              <tr>
+                <td colspan="{{ colspan }}" class="sep pack-feature">{{ module.feature_section_6.title }}</td>
+              </tr>
+              {% for item in module.feature_section_6.feature_row %}
+              <tr>
+                <td class="pack-feature">{{ item.feature }} {% if item.tooltip %}<div onclick="" class="tooltip-wrapper"><i class="far fa-question-circle"></i><div class="tooltip">{{ item.extra_info }}</div></div>{% endif %}</td>
+                <td class="default"><span class="tick">{% if item.package_1 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_1 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_1 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_1" value="{{ item.open_text_1 }}" %}</span>{% endif %}</span></td>
+                {% if module.start.num_cols >= '2' %}
+                  <td><span class="tick">{% if item.package_2 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_2 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_2 == 'na'  %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_2" value="{{ item.open_text_2 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '3' %}
+                  <td><span class="tick">{% if item.package_3 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_3 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_3 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_3" value="{{ item.open_text_3 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols >= '4' %}
+                  <td><span class="tick">{% if item.package_4 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_4 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_4 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_4" value="{{ item.open_text_4 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+                {% if module.start.num_cols == '5' %}
+                  <td><span class="tick">{% if item.package_5 == 'yes' %}<i class="fas fa-check"></i>{% elif item.package_5 == 'no' %}<i class="fas fa-times"></i>{% elif item.package_5 == 'na' %}<span class="na">N/A</span>{% else %}<span class="open-text">{% inline_text field="open_text_5" value="{{ item.open_text_5 }}" %}</span>{% endif %}</span></td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+              {% endif %}
+              {% if module.start.show_ctas %}
+                <tr>
+                  <td style="border: none;">&nbsp;</td>
+                  <td class="default">
+                    {% if !module.content.package_1.use_std_btns %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_1.cta }}" %}</span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_1.cta_2 }}" %}</span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% else %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">
+                              {% set href = module.content.package_1.std_btn_1.link_field.url.href %}
+                              {% if module.content.package_1.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                              {% endif %}
+                              <a href="{{ href }}"
+                                class="{{ module.content.package_1.std_btn_1.style }}" 
+                                {% if module.content.package_1.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if module.content.package_1.std_btn_1.link_field.rel %}rel="{{ module.content.package_1.std_btn_1.link_field.rel }}"{% endif %}
+                                >
+                                {{ module.content.package_1.std_btn_1.btn_label }}
+                              </a>
+                            </span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                           <span class="cta-con">
+                            {% set href = module.content.package_1.std_btn_2.link_field.url.href %}
+                            {% if module.content.package_1.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                              {% set href = "mailto:" + href %}
+                            {% endif %}
+                            <a href="{{ href }}"
+                              class="{{ module.content.package_1.std_btn_2.style }}" 
+                              {% if module.content.package_1.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                              {% if module.content.package_1.std_btn_2.link_field.rel %}rel="{{ module.content.package_1.std_btn_2.link_field.rel }}"{% endif %}
+                              >
+                              {{ module.content.package_1.std_btn_2.btn_label }}
+                            </a>
+                           </span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% endif %}
+                  </td>
+                  {% if module.start.num_cols >= '2' %}
+                    <td>
+                       {% if !module.content.package_2.use_std_btns %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_2.cta }}" %}</span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_2.cta_2 }}" %}</span>
+                         </span>
+                         {% endif %}
+                      </span>
+                      {% else %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">
+                              {% set href = module.content.package_2.std_btn_1.link_field.url.href %}
+                              {% if module.content.package_2.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                              {% endif %}
+                              <a href="{{ href }}"
+                                class="{{ module.content.package_2.std_btn_1.style }}" 
+                                {% if module.content.package_2.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if module.content.package_2.std_btn_1.link_field.rel %}rel="{{ module.content.package_2.std_btn_1.link_field.rel }}"{% endif %}
+                                >
+                                {{ module.content.package_2.std_btn_1.btn_label }}
+                              </a>
+                            </span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                           <span class="cta-con">
+                            {% set href = module.content.package_2.std_btn_2.link_field.url.href %}
+                            {% if module.content.package_2.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                              {% set href = "mailto:" + href %}
+                            {% endif %}
+                            <a href="{{ href }}"
+                              class="{{ module.content.package_2.std_btn_2.style }}" 
+                              {% if module.content.package_2.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                              {% if module.content.package_2.std_btn_2.link_field.rel %}rel="{{ module.content.package_2.std_btn_2.link_field.rel }}"{% endif %}
+                              >
+                              {{ module.content.package_2.std_btn_2.btn_label }}
+                            </a>
+                           </span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% endif %}
+                    </td>
+                  {% endif %}
+                  {% if module.start.num_cols >= '3' %}
+                    <td>
+                     {% if !module.content.package_3.use_std_btns %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_3.cta }}" %}</span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_3.cta_2 }}" %}</span>
+                         </span>
+                         {% endif %}
+                      </span>
+                      {% else %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">
+                              {% set href = module.content.package_3.std_btn_1.link_field.url.href %}
+                              {% if module.content.package_3.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                              {% endif %}
+                              <a href="{{ href }}"
+                                class="{{ module.content.package_3.std_btn_1.style }}" 
+                                {% if module.content.package_3.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if module.content.package_3.std_btn_1.link_field.rel %}rel="{{ module.content.package_3.std_btn_1.link_field.rel }}"{% endif %}
+                                >
+                                {{ module.content.package_3.std_btn_1.btn_label }}
+                              </a>
+                            </span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                           <span class="cta-con">
+                            {% set href = module.content.package_3.std_btn_2.link_field.url.href %}
+                            {% if module.content.package_3.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                              {% set href = "mailto:" + href %}
+                            {% endif %}
+                            <a href="{{ href }}"
+                              class="{{ module.content.package_3.std_btn_2.style }}" 
+                              {% if module.content.package_3.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                              {% if module.content.package_3.std_btn_2.link_field.rel %}rel="{{ module.content.package_3.std_btn_2.link_field.rel }}"{% endif %}
+                              >
+                              {{ module.content.package_3.std_btn_2.btn_label }}
+                            </a>
+                           </span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% endif %}
+                  </td>
+                  {% endif %}
+                  {% if module.start.num_cols >= '4' %}
+                    <td>
+                     {% if !module.content.package_4.use_std_btns %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_4.cta }}" %}</span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_4.cta_2 }}" %}</span>
+                         </span>
+                         {% endif %}
+                      </span>
+                      {% else %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">
+                              {% set href = module.content.package_4.std_btn_1.link_field.url.href %}
+                              {% if module.content.package_4.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                              {% endif %}
+                              <a href="{{ href }}"
+                                class="{{ module.content.package_4.std_btn_1.style }}" 
+                                {% if module.content.package_4.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if module.content.package_4.std_btn_1.link_field.rel %}rel="{{ module.content.package_4.std_btn_1.link_field.rel }}"{% endif %}
+                                >
+                                {{ module.content.package_4.std_btn_1.btn_label }}
+                              </a>
+                            </span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                           <span class="cta-con">
+                            {% set href = module.content.package_4.std_btn_2.link_field.url.href %}
+                            {% if module.content.package_4.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                              {% set href = "mailto:" + href %}
+                            {% endif %}
+                            <a href="{{ href }}"
+                              class="{{ module.content.package_4.std_btn_2.style }}" 
+                              {% if module.content.package_4.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                              {% if module.content.package_4.std_btn_2.link_field.rel %}rel="{{ module.content.package_4.std_btn_2.link_field.rel }}"{% endif %}
+                              >
+                              {{ module.content.package_4.std_btn_2.btn_label }}
+                            </a>
+                           </span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% endif %}
+                  </td>
+                  {% endif %}
+                  {% if module.start.num_cols == '5' %}
+                    <td>
+                     {% if !module.content.package_5.use_std_btns %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_5.cta }}" %}</span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                            <span class="cta-con">{% cta guid="{{ module.content.package_5.cta_2 }}" %}</span>
+                         </span>
+                         {% endif %}
+                      </span>
+                      {% else %}
+                       <span class="wrap">
+                          <span class="price1_{{ name }}">
+                            <span class="cta-con">
+                              {% set href = module.content.package_5.std_btn_1.link_field.url.href %}
+                              {% if module.content.package_5.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                                {% set href = "mailto:" + href %}
+                              {% endif %}
+                              <a href="{{ href }}"
+                                class="{{ module.content.package_5.std_btn_1.style }}" 
+                                {% if module.content.package_5.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                                {% if module.content.package_5.std_btn_1.link_field.rel %}rel="{{ module.content.package_5.std_btn_1.link_field.rel }}"{% endif %}
+                                >
+                                {{ module.content.package_5.std_btn_1.btn_label }}
+                              </a>
+                            </span>
+                         </span>
+                        {% if module.start.price_toggle %}
+                         <span class="price2_{{ name }}">
+                           <span class="cta-con">
+                            {% set href = module.content.package_5.std_btn_2.link_field.url.href %}
+                            {% if module.content.package_5.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                              {% set href = "mailto:" + href %}
+                            {% endif %}
+                            <a href="{{ href }}"
+                              class="{{ module.content.package_5.std_btn_2.style }}" 
+                              {% if module.content.package_5.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                              {% if module.content.package_5.std_btn_2.link_field.rel %}rel="{{ module.content.package_5.std_btn_2.link_field.rel }}"{% endif %}
+                              >
+                              {{ module.content.package_5.std_btn_2.btn_label }}
+                            </a>
+                           </span>
+                         </span>
+                         {% endif %}
+                      </span>
+                    {% endif %}
+                    </td>
+                  {% endif %}
+                </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-price-comparison.css"), { async: true }) }}
+

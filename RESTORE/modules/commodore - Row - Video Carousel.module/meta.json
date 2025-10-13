@@ -1,0 +1,14 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/19522085/commodore-images/module-icons/icon-video-carousel.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 135503765673,
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "../../js/slider-flickity.js",
+    "name" : "slider-flickity.js"
+  } ],
+  "label" : "Video Carousel (Pro)",
+  "is_available_for_new_content" : true
+}

@@ -1,0 +1,752 @@
+{# 
+ NAME: PRICE TABLE
+ MODULE VERSION: 3.0.7
+ COMMODORE VERSION: v79
+ LAST UPDATED: 1/8/24
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-price-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# PULL UP #}
+  
+  {% if module.row_settings.style.pull_up %}
+    #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+      margin-top: -{{ module.row_settings.style.pull_up_num_desktop }}px;
+      background-color:  rgba({{ module.row_settings.style.content_bg_color.color|convert_rgb }}, {% if module.row_settings.style.content_bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.style.content_bg_color.opacity }}{% endif %});
+      padding: {{ module.row_settings.style.con_padding }}px;
+      padding-bottom: 0px;
+      z-index: 5;
+      position: relative;
+      {% if module.row_settings.style.subtle_shadow %}
+        -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+      {% endif %}
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .col-sm-12 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  {% endif %}
+  
+  {# WAVE #}
+  
+  {%- if module.row_settings.add_wave_btm -%}
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+      color:  rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+      bottom: -{{ module.row_settings.adv_settings.padding_bottom }};
+    }
+    {% if module.row_settings.wave.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con svg {
+        fill: rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con .hhs-wave-module svg {
+        transform: scale(1, 1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 992px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {%- if module.row_settings.add_wave_top -%} 
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+      color:  rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+      top: -{{ module.row_settings.adv_settings.padding_top }};
+    }
+    {% if module.row_settings.wave_top.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top svg {
+        fill: rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave_top.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave_top.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top .hhs-wave-module svg {
+        transform: scale(-1, -1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 992px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_mobile }};
+      }
+    }
+  {%- endif -%}
+    
+  {# END #}
+  {# ALL COLUMNS #}
+  {% if module.row_settings.style.border_radius %}
+     #hs_cos_wrapper_{{ name }} .hhs-price-inner {
+       -webkit-border-radius: {{ module.row_settings.style.border_radius }}px;
+       border-radius: {{ module.row_settings.style.border_radius }}px;
+     } 
+  {% endif %}
+  {# END #}
+  
+  {# COLUMN 1 #}
+  
+  {# TEXT #}
+  
+  {% if module.content.package_1.custom_text_color %}
+    #hs_cos_wrapper_{{ name }} .pack-1, #hs_cos_wrapper_{{ name }} .pack-1 h2, #hs_cos_wrapper_{{ name }} .pack-1 h3, #hs_cos_wrapper_{{ name }} .pack-1 h4, #hs_cos_wrapper_{{ name }} .pack-1 h5, #hs_cos_wrapper_{{ name }} .pack-1 h6, #hs_cos_wrapper_{{ name }} .pack-1 p, #hs_cos_wrapper_{{ name }} .pack-1 li, #hs_cos_wrapper_{{ name }} .pack-1 span {
+      color: rgba({{ module.content.package_1.text_color.color|convert_rgb }}, {{ module.content.package_1.text_color.opacity * 0.01 }});
+    }
+  {% endif %}
+  
+  {# DROP SHADOW #}
+  
+  {%- if module.content.package_1.shadow -%}
+     #hs_cos_wrapper_{{ name }} .drop-shadow-1 {
+     -webkit-box-shadow: 0 0 30px 1px rgba({{ module.content.package_1.drop_shadow.color|covert_rgb }}, {% if module.content.package_1.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_1.drop_shadow.opacity }}{% endif %});
+      box-shadow: 0 0 30px 1px rgba({{ module.content.package_1.drop_shadow.color|convert_rgb }}, {% if module.content.package_1.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_1.drop_shadow.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {%- endif -%}
+  
+  {# HIGHLIGHT #}
+  
+  {%- if module.content.package_1.highlight_package -%}
+     #hs_cos_wrapper_{{ name }} h5.col-1-highlight {
+       background-color: rgba({{ module.content.package_1.highlight_bg_color.color|convert_rgb }}, {{ module.content.package_1.highlight_bg_color.opacity * 0.01 }});
+       color: rgba({{ module.content.package_1.highlight_title_color.color|convert_rgb }}, {{ module.content.package_1.highlight_title_color.opacity * 0.01 }});
+       {% if module.row_settings.style.border_radius %}
+         -webkit-border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+         border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+       {% endif %}
+    }
+    {% if module.row_settings.style.border_radius %}
+       #hs_cos_wrapper_{{ name }} .hhs-price-inner.pack-1 {
+         -webkit-border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+         border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+       } 
+    {% endif %}
+  {%- endif -%}
+  
+  {# END #}
+  {# COLUMN 2 #}
+  
+  {% if module.start.num_cols >= '2' %}
+  
+    {# TEXT #}
+
+    {% if module.content.package_2.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .pack-2, #hs_cos_wrapper_{{ name }} .pack-2 h2, #hs_cos_wrapper_{{ name }} .pack-2 h3, #hs_cos_wrapper_{{ name }} .pack-2 h4, #hs_cos_wrapper_{{ name }} .pack-2 h5, #hs_cos_wrapper_{{ name }} .pack-2 h6, #hs_cos_wrapper_{{ name }} .pack-2 p, #hs_cos_wrapper_{{ name }} .pack-2 li, #hs_cos_wrapper_{{ name }} .pack-2 span {
+        color: rgba({{ module.content.package_2.text_color.color|convert_rgb }}, {{ module.content.package_2.text_color.opacity * 0.01 }});
+      }
+    {% endif %}
+
+    {# DROP SHADOW #}
+
+    {%- if module.content.package_2.shadow -%}
+       #hs_cos_wrapper_{{ name }} .drop-shadow-2 {
+       -webkit-box-shadow: 0 0 30px 1px rgba({{ module.content.package_2.drop_shadow.color|covert_rgb }}, {% if module.content.package_2.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_2.drop_shadow.opacity }}{% endif %});
+        box-shadow: 0 0 30px 1px rgba({{ module.content.package_2.drop_shadow.color|convert_rgb }}, {% if module.content.package_2.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_2.drop_shadow.opacity }}{% endif %});   
+        z-index: 1;
+        position: relative;
+      }
+    {%- endif -%}
+
+    {# HIGHLIGHT #}
+
+    {%- if module.content.package_2.highlight_package -%}
+      #hs_cos_wrapper_{{ name }} h5.col-2-highlight {
+        background-color: rgba({{ module.content.package_2.highlight_bg_color.color|convert_rgb }}, {{ module.content.package_2.highlight_bg_color.opacity * 0.01 }});
+        color: rgba({{ module.content.package_2.highlight_title_color.color|convert_rgb }}, {{ module.content.package_2.highlight_title_color.opacity * 0.01 }});
+      {% if module.row_settings.style.border_radius %}
+         -webkit-border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+         border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+       {% endif %}
+    }
+    {% if module.row_settings.style.border_radius %}
+       #hs_cos_wrapper_{{ name }} .hhs-price-inner.pack-2 {
+         -webkit-border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+         border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+       } 
+    {% endif %}
+    {%- endif -%}
+  
+  {%- endif -%}
+  
+  {# END #}
+  {# COLUMN 3 #}
+  
+  {% if module.start.num_cols >= '3' %}
+  
+    {# TEXT #}
+
+    {% if module.content.package_3.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .pack-3, #hs_cos_wrapper_{{ name }} .pack-3 h2, #hs_cos_wrapper_{{ name }} .pack-3 h3, #hs_cos_wrapper_{{ name }} .pack-3 h4, #hs_cos_wrapper_{{ name }} .pack-3 h5, #hs_cos_wrapper_{{ name }} .pack-3 h6, #hs_cos_wrapper_{{ name }} .pack-3 p, #hs_cos_wrapper_{{ name }} .pack-3 li, #hs_cos_wrapper_{{ name }} .pack-3 span {
+        color: rgba({{ module.content.package_3.text_color.color|convert_rgb }}, {{ module.content.package_3.text_color.opacity * 0.01 }});
+      }
+    {% endif %}
+
+    {# HIGHLIGHT #}
+
+    {%- if module.content.package_3.highlight_package -%}
+      #hs_cos_wrapper_{{ name }} h5.col-3-highlight {
+        background-color: rgba({{ module.content.package_3.highlight_bg_color.color|convert_rgb }}, {{ module.content.package_3.highlight_bg_color.opacity * 0.01 }});
+        color: rgba({{ module.content.package_3.highlight_title_color.color|convert_rgb }}, {{ module.content.package_3.highlight_title_color.opacity * 0.01 }});
+      {% if module.row_settings.style.border_radius %}
+         -webkit-border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+         border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+       {% endif %}
+      }
+      {% if module.row_settings.style.border_radius %}
+         #hs_cos_wrapper_{{ name }} .hhs-price-inner.pack-3 {
+           -webkit-border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+           border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+         } 
+      {% endif %}
+    {%- endif -%}
+
+    {# DROP SHADOW #}
+
+    {%- if module.content.package_3.shadow -%}
+       #hs_cos_wrapper_{{ name }} .drop-shadow-3 {
+       -webkit-box-shadow: 0 0 30px 1px rgba({{ module.content.package_3.drop_shadow.color|covert_rgb }}, {% if module.content.package_3.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_3.drop_shadow.opacity }}{% endif %});
+        box-shadow: 0 0 30px 1px rgba({{ module.content.package_3.drop_shadow.color|convert_rgb }}, {% if module.content.package_3.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_3.drop_shadow.opacity }}{% endif %});   
+        z-index: 1;
+        position: relative;
+      }
+    {%- endif -%}
+  {%- endif -%}
+  
+  
+  {# END #}
+  
+  {# COLUMN 4 #}
+  
+  {% if module.start.num_cols == '4' %}
+  
+    {# TEXT #}
+
+    {% if module.content.package_4.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .pack-4, #hs_cos_wrapper_{{ name }} .pack-4 h2, #hs_cos_wrapper_{{ name }} .pack-4 h3, #hs_cos_wrapper_{{ name }} .pack-4 h4, #hs_cos_wrapper_{{ name }} .pack-4 h5, #hs_cos_wrapper_{{ name }} .pack-4 h6, #hs_cos_wrapper_{{ name }} .pack-4 p, #hs_cos_wrapper_{{ name }} .pack-4 li, #hs_cos_wrapper_{{ name }} .pack-4 span {
+        color: rgba({{ module.content.package_4.text_color.color|convert_rgb }}, {{ module.content.package_4.text_color.opacity * 0.01 }});
+      }
+    {% endif %}
+
+    {# HIGHLIGHT #}
+
+    {%- if module.content.package_4.highlight_package -%}
+      #hs_cos_wrapper_{{ name }} h5.col-4-highlight {
+        background-color: rgba({{ module.content.package_4.highlight_bg_color.color|convert_rgb }}, {{ module.content.package_4.highlight_bg_color.opacity * 0.01 }});
+        color: rgba({{ module.content.package_4.highlight_title_color.color|convert_rgb }}, {{ module.content.package_4.highlight_title_color.opacity * 0.01 }});
+      {% if module.row_settings.style.border_radius %}
+         -webkit-border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+         border-radius: {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px 0 0;
+       {% endif %}
+      }
+      {% if module.row_settings.style.border_radius %}
+         #hs_cos_wrapper_{{ name }} .hhs-price-inner.pack-4 {
+           -webkit-border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+           border-radius: 0 0 {{ module.row_settings.style.border_radius }}px {{ module.row_settings.style.border_radius }}px;
+         } 
+      {% endif %}
+    {%- endif -%}
+
+    {# SHADOW #}
+
+    {%- if module.content.package_4.shadow -%}
+       #hs_cos_wrapper_{{ name }} .drop-shadow-4 {
+       -webkit-box-shadow: 0 0 30px 1px rgba({{ module.content.package_4.drop_shadow.color|covert_rgb }}, {% if module.content.package_4.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_4.drop_shadow.opacity }}{% endif %});
+        box-shadow: 0 0 30px 1px rgba({{ module.content.package_4.drop_shadow.color|convert_rgb }}, {% if module.content.package_4.drop_shadow.opacity == '100' %}1{% else %}0.{{ module.content.package_4.drop_shadow.opacity }}{% endif %});   
+        z-index: 1;
+        position: relative;
+      }
+    {%- endif -%}
+  {%- endif -%}
+  
+  {# END #}
+  
+ 
+  
+  {# TOGGLE #}
+  
+  {% if module.start.price_toggle %}
+    #hs_cos_wrapper_{{ name }} .toggler-label-right,
+    #hs_cos_wrapper_{{ name }} .toggler-label-left {
+      color: rgba({{ module.row_settings.style.toggle_label_color.color|convert_rgb }}, {{ module.row_settings.style.toggle_label_color.opacity * 0.01 }});
+      font-weight: {{ module.row_settings.style.toggle_label_weight }};
+    }
+
+    #hs_cos_wrapper_{{ name }} .tgl-ios + .tgl-btn {
+      border: 2px solid {{ module.row_settings.style.toggle_color.color }};
+    }
+    #hs_cos_wrapper_{{ name }} .tgl-ios + .tgl-btn:after {
+      background-color: rgba({{ module.row_settings.style.toggle_color.color|convert_rgb }}, {{ module.row_settings.style.toggle_color.opacity * 0.01 }});
+    }
+  
+    {% if module.content.package_1.highlight_package or module.content.package_2.highlight_package or module.content.package_3.highlight_package or module.content.package_4.highlight_package %}
+      #hs_cos_wrapper_{{ name }} .hhs-toggle-price .wrapper {
+        margin-bottom: 75px;
+      }
+    {% endif %}
+  {% endif %}
+  
+  {# TABLET CSS #}
+  @media (max-width: 992px) {
+    #hs_cos_wrapper_{{ name }} .hhs-pricie-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-price-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+    {% if module.row_settings.style.pull_up %}
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+        margin-top: -{{ module.row_settings.style.pull_up_num_mobile }}px;
+        padding: {{ module.row_settings.style.con_padding_mobile }}px;
+      }
+    {% endif %}
+  }
+</style>
+{% end_require_css %}
+
+{% if module.start.num_cols == '1' %}
+  {% set col_size = "col-sm-12" %}
+{% endif %}
+{% if module.start.num_cols == '2' %}
+  {% set col_size = "col-lg-6 col-sm-12" %}
+{% endif %}
+{% if module.start.num_cols == '3' %}
+  {% set col_size = "col-lg-4 col-md-12" %}
+{% endif %}
+{% if module.start.num_cols == '4' %}
+  {% set col_size = "col-lg-3 col-md-6 col-sm-12" %}
+{% endif %}
+
+
+
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-price-mod {{ module.row_settings.code.section_class }} {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}">
+  {%- if module.row_settings.add_wave_top -%} 
+    <div class="hhs-wave-con-top">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave_top.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+  <div class="{{ module.row_settings.content_width }} {% if module.row_settings.style.pull_up %}hhs-pull-up{% endif %}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      {% if module.start.price_toggle %}
+        <div class="hhs-toggle-price col-12">
+          <div class="wrapper">
+            <span class="toggler-label-left">{{ module.start.toggle_1 }}</span>
+            <div class="toggler">
+              <input type="checkbox" id="checkbox1_{{ name }}" data-on=".price1_toggle_{{ name }}" data-off=".price2_toggle_{{ name }}" class="tgl tgl-ios toggle_{{ name }}"/>
+              <label for="checkbox1_{{ name }}" class="tgl-btn"></label>
+            </div>
+            <span class="toggler-label-right">{{ module.start.toggle_2 }}</span>
+          </div>
+        </div>
+        {% endif %}
+      <div class="{{ col_size }} flex-col {% if module.content.package_1.animate_col != 'none' %}wow {{ module.content.package_1.animate_col }}{% endif %}" {% if module.content.package_1.animate_col != 'none' %}data-wow-delay="{{ module.content.package_1.animation_delay }}"{% endif %}>
+        <div class="hhs-price-inner pack-1 {% if module.content.package_1.highlight_package %}highlight-pack{% endif %} {% if module.content.package_1.shadow %}drop-shadow-1{% endif %}" style="background-color: {{ module.content.package_1.col_bg_color.color }}">
+          {% if module.content.package_1.highlight_package %}
+            <h5 class="col-1-highlight">{{ module.content.package_1.highlight_title }}</h5>
+          {% endif %}
+          {% if module.content.package_1.title %}
+            <h4>{{ module.content.package_1.title }}</h4>
+          {% endif %}
+          {% if module.content.package_1.sub_title %}
+            <p>{{ module.content.package_1.sub_title }}</p>
+          {% endif %}
+          <div class="price-con">
+            <div class="wrap">
+              <h2 class="price1 price1_toggle_{{ name }}">{{ module.content.package_1.price }}</h2>
+              {% if module.start.price_toggle %}
+                <h2 class="price2 price2_toggle_{{ name }}">{{ module.content.package_1.price_2 }}</h2>
+              {% endif %}
+            </div>
+            {% if module.content.package_1.price_sub %}
+              <p class="small">{{ module.content.package_1.price_sub }}</p>
+            {% endif %}
+          </div>
+            {% if module.content.package_1.cta_button_position == 'bottom' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_1.desc" value="{{ module.content.package_1.desc }}" %}
+              </div>
+            {% endif %}
+            <div class="wrap">
+              {% if !module.content.package_1.use_std_btns %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_1.cta }}" %}
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_1.cta_2 }}" %}
+                </div>
+              {% else %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% set href = module.content.package_1.std_btn_1.link_field.url.href %}
+                  {% if module.content.package_1.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_1.std_btn_1.style }}"
+                    {% if module.content.package_1.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_1.std_btn_1.link_field.rel %}rel="{{ module.content.package_1.std_btn_1.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_1.std_btn_1.button_label }}
+                  </a>
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% set href = module.content.package_1.std_btn_2.link_field.url.href %}
+                  {% if module.content.package_1.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_1.std_btn_2.style }}" 
+                    {% if module.content.package_1.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_1.std_btn_2.link_field.rel %}rel="{{ module.content.package_1.std_btn_2.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_1.std_btn_2.button_label }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          {% if module.content.package_1.cta_button_position == 'center' %}
+            <div class="col-desc">
+              {% inline_rich_text field="content.package_1.desc" value="{{ module.content.package_1.desc }}" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    
+      {% if module.start.num_cols >= '2' %}   
+        <div class="{{ col_size }} flex-col {% if module.content.package_2.animate_col != 'none' %}wow {{ module.content.package_2.animate_col }}{% endif %}" {% if module.content.package_2.animate_col != 'none' %}data-wow-delay="{{ module.content.package_2.animation_delay }}"{% endif %}>
+          <div class="hhs-price-inner pack-2 {% if module.content.package_2.highlight_package %}highlight-pack{% endif %}  {% if module.content.package_2.shadow %}drop-shadow-2{% endif %}" style="background-color: {{ module.content.package_2.col_bg_color.color }}">
+            {% if module.content.package_2.highlight_package %}
+              <h5 class="col-2-highlight">{{ module.content.package_2.highlight_title }}</h5>
+            {% endif %}
+            {% if module.content.package_2.title %}
+              <h4>{{ module.content.package_2.title }}</h4>
+            {% endif %}
+            {% if module.content.package_2.sub_title %}
+              <p>{{ module.content.package_2.sub_title }}</p>
+            {% endif %}
+            <div class="price-con">
+              <div class="wrap">
+                <h2 class="price1 price1_toggle_{{ name }}">{{ module.content.package_2.price }}</h2>
+                {% if module.start.price_toggle %}
+                  <h2 class="price2 price2_toggle_{{ name }}">{{ module.content.package_2.price_2 }}</h2>
+                {% endif %}
+               </div>
+              {% if module.content.package_2.price_sub %}
+                <p class="small">{{ module.content.package_2.price_sub }}</p>
+              {% endif %}
+            </div>
+            {% if module.content.package_2.cta_button_position == 'bottom' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_2.desc" value="{{ module.content.package_2.desc }}" %}
+              </div>
+            {% endif %}
+            <div class="wrap">
+              {% if !module.content.package_2.use_std_btns %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_2.cta }}" %}
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_2.cta_2 }}" %}
+                </div>
+              {% else %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% set href = module.content.package_2.std_btn_1.link_field.url.href %}
+                  {% if module.content.package_2.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_2.std_btn_1.style }}"
+                    {% if module.content.package_2.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_2.std_btn_1.link_field.rel %}rel="{{ module.content.package_2.std_btn_1.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_2.std_btn_1.button_label }}
+                  </a>
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% set href = module.content.package_2.std_btn_2.link_field.url.href %}
+                  {% if module.content.package_2.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_2.std_btn_2.style }}" 
+                    {% if module.content.package_2.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_2.std_btn_2.link_field.rel %}rel="{{ module.content.package_2.std_btn_2.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_2.std_btn_2.button_label }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+            {% if module.content.package_2.cta_button_position == 'center' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_2.desc" value="{{ module.content.package_2.desc }}" %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if module.start.num_cols >= '3' %}   
+        <div class="{{ col_size }} flex-col {% if module.content.package_3.animate_col != 'none' %}wow {{ module.content.package_3.animate_col }}{% endif %}" {% if module.content.package_3.animate_col != 'none' %}data-wow-delay="{{ module.content.package_3.animation_delay }}"{% endif %}>
+          <div class="hhs-price-inner pack-3 {% if module.content.package_3.highlight_package %}highlight-pack{% endif %}  {% if module.content.package_3.shadow %}drop-shadow-3{% endif %}" style="background-color: {{ module.content.package_3.col_bg_color.color }}" >
+            {% if module.content.package_3.highlight_package %}
+              <h5 class="col-3-highlight">{{ module.content.package_3.highlight_title }}</h5>
+            {% endif %}
+            {% if module.content.package_3.title %}
+              <h4>{{ module.content.package_3.title }}</h4>
+            {% endif %}
+            {% if module.content.package_3.sub_title %}
+              <p>{{ module.content.package_3.sub_title }}</p>
+            {% endif %}
+            <div class="price-con">
+              <div class="wrap">
+                <h2 class="price1 price1_toggle_{{ name }}">{{ module.content.package_3.price }}</h2>
+                {% if module.start.price_toggle %}
+                  <h2 class="price2 price2_toggle_{{ name }}">{{ module.content.package_3.price_2 }}</h2>
+                {% endif %}
+               </div>
+              {% if module.content.package_3.price_sub %}
+                <p class="small">{{ module.content.package_3.price_sub }}</p>
+              {% endif %}
+            </div>
+            {% if module.content.package_3.cta_button_position == 'bottom' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_3.desc" value="{{ module.content.package_3.desc }}" %}
+              </div>
+            {% endif %}
+            <div class="wrap">
+              {% if !module.content.package_3.use_std_btns %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_3.cta }}" %}
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_3.cta_2 }}" %}
+                </div>
+              {% else %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% set href = module.content.package_3.std_btn_1.link_field.url.href %}
+                  {% if module.content.package_3.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_3.std_btn_1.style }}"
+                    {% if module.content.package_3.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_3.std_btn_1.link_field.rel %}rel="{{ module.content.package_3.std_btn_1.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_3.std_btn_1.button_label }}
+                  </a>
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% set href = module.content.package_3.std_btn_2.link_field.url.href %}
+                  {% if module.content.package_3.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_3.std_btn_2.style }}" 
+                    {% if module.content.package_3.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_3.std_btn_2.link_field.rel %}rel="{{ module.content.package_3.std_btn_2.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_3.std_btn_2.button_label }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+            {% if module.content.package_3.cta_button_position == 'center' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_3.desc" value="{{ module.content.package_3.desc }}" %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if module.start.num_cols == '4' %}   
+        <div class="{{ col_size }} flex-col {% if module.content.package_4.animate_col != 'none' %}wow {{ module.content.package_4.animate_col }}{% endif %}" {% if module.content.package_4.animate_col != 'none' %}data-wow-delay="{{ module.content.package_4.animation_delay }}"{% endif %}>
+          <div class="hhs-price-inner pack-4 {% if module.content.package_4.highlight_package %}highlight-pack{% endif %} {% if module.content.package_4.shadow %}drop-shadow-4{% endif %}" style="background-color: {{ module.content.package_4.col_bg_color.color }}">
+            {% if module.content.package_4.highlight_package %}
+              <h5 class="col-4-highlight">{{ module.content.package_4.highlight_title }}</h5>
+            {% endif %}
+            {% if module.content.package_4.title %}
+              <h4>{{ module.content.package_4.title }}</h4>
+            {% endif %}
+            {% if module.content.package_4.sub_title %}
+              <p>{{ module.content.package_4.sub_title }}</p>
+            {% endif %}
+            <div class="price-con">
+              <div class="wrap">
+                <h2 class="price1 price1_toggle_{{ name }}">{{ module.content.package_4.price }}</h2>
+                {% if module.start.price_toggle %}
+                  <h2 class="price2 price2_toggle_{{ name }}">{{ module.content.package_4.price_2 }}</h2>
+                {% endif %}
+               </div>
+              {% if module.content.package_4.price_sub %}
+                <p class="small">{{ module.content.package_4.price_sub }}</p>
+              {% endif %}
+            </div>
+            {% if module.content.package_4.cta_button_position == 'bottom' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_4.desc" value="{{ module.content.package_4.desc }}" %}
+              </div>
+            {% endif %}
+            <div class="wrap">
+              {% if !module.content.package_4.use_std_btns %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_4.cta }}" %}
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% cta guid="{{ module.content.package_4.cta_2 }}" %}
+                </div>
+              {% else %}
+                <div class="col-cta price1 price1_toggle_{{ name }}">
+                  {% set href = module.content.package_4.std_btn_1.link_field.url.href %}
+                  {% if module.content.package_4.std_btn_1.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_4.std_btn_1.style }}"
+                    {% if module.content.package_4.std_btn_1.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_4.std_btn_1.link_field.rel %}rel="{{ module.content.package_4.std_btn_1.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_4.std_btn_1.button_label }}
+                  </a>
+                </div>
+                <div class="col-cta price2 price2_toggle_{{ name }}">
+                  {% set href = module.content.package_4.std_btn_2.link_field.url.href %}
+                  {% if module.content.package_4.std_btn_2.link_field.url.type is equalto "EMAIL_ADDRESS" %}
+                    {% set href = "mailto:" + href %}
+                  {% endif %}
+                  <a href="{{ href }}"
+                    class="{{ module.content.package_4.std_btn_2.style }}" 
+                    {% if module.content.package_4.std_btn_2.link_field.open_in_new_tab %}target="_blank"{% endif %}
+                    {% if module.content.package_4.std_btn_2.link_field.rel %}rel="{{ module.content.package_4.std_btn_2.link_field.rel }}"{% endif %}
+                    >
+                    {{ module.content.package_4.std_btn_2.button_label }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+            {% if module.content.package_4.cta_button_position == 'center' %}
+              <div class="col-desc">
+                {% inline_rich_text field="content.package_4.desc" value="{{ module.content.package_4.desc }}" %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {%- if module.row_settings.add_wave_btm -%} 
+    <div class="hhs-wave-con">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-price-table.css"), { async: true }) }}
+
+
+{% if module.start.price_toggle %}
+{% require_js %}
+<script defer>
+    $(".toggle_{{ name }}:checkbox").click(function() {
+      var href1 = $($(this).attr('data-on'));
+      var href2 = $($(this).attr('data-off'));
+      $('.wrap').css('opacity', '1');
+      setTimeout(function(){
+        $('.wrap').css('opacity', '1');
+      },250);
+        if ( $( this ).prop( "checked" ) ) {
+          setTimeout(function(){
+            href1.hide();
+            href2.show();
+          },250)
+        } else {
+          setTimeout(function(){
+            href2.hide();
+            href1.show();
+          },250)
+        }
+    });
+</script>
+{% end_require_js %}
+{% endif %}
+

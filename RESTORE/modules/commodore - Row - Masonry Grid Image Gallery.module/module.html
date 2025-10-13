@@ -1,0 +1,419 @@
+{# 
+ NAME: MASONRY GRID IMAGE GALLERY
+ MODULE VERSION: 2.0.1
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/23
+ REMINDER: You Rock!
+#}
+
+
+
+{% require_css %}
+<style>
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-masonry-gallery-mod {
+		padding-top: {{ module.row_settings.adv_settings.padding_top }};
+		padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+		{% if module.row_settings.bg_type == 'color' %}
+		background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+		{% endif %}
+		{% if module.row_settings.bg_type == 'gradient' %}
+		background-color: {{ module.row_settings.color_1.color }};
+		background: -moz-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+		background: -webkit-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+		background: linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+		{% endif %}
+
+		{%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False -%}
+      background-repeat: no-repeat;
+      background-size: {{ module.row_settings.bg_size }};
+      background-position: {{ module.row_settings.img_pos }};
+      {% if module.row_settings.image_loading == 'eager' %}
+        background-image: url("{{ module.row_settings.bg_image.src }}");
+      {% else %}
+        background-image: none;
+      {% endif %}
+    {%- endif -%}
+	}
+  {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False && module.row_settings.image_loading == 'lazy' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-masonry-gallery-mod.lazy-background.visible {
+      background-image: url("{{ module.row_settings.bg_image.src }}");
+    }
+  {% endif %}
+  
+	@media (max-width: 922px) {
+		#hs_cos_wrapper_{{ name }} .hhs-masonry-gallery-mod {
+			padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+			padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+		}
+	}
+  
+	@media (max-width: 575px) {
+		#hs_cos_wrapper_{{ name }} .hhs-masonry-gallery-mod {
+			padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+			padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+		}
+	}
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+      -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# OVERLAY #}
+  
+  {%- if module.row_settings.overlay_bg != 'none' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-row-overlay {
+      {% if module.row_settings.overlay_bg == 'color' %}
+      background-color: rgba({{ module.row_settings.overlay_color.color|convert_rgb }}, {% if module.row_settings.overlay_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color.opacity }}{% endif %});
+      {% endif %}
+      {% if module.row_settings.overlay_bg == 'gradient' %}
+      background-color: {{ module.row_settings.overlay_color_1.color }};
+      background: -moz-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      background: -webkit-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      background: linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      {% endif %}
+    }
+  {%- endif -%}
+
+  {# END #}
+  {# IMAGE GRID #}
+	{# Image cards #}
+	{% set gutters = 1 * module.start.num_cols|add(-1)|int %}
+	{% set conWidth = 100 - gutters %}
+	{% set numCols = conWidth / module.start.num_cols 	%}
+
+	#hs_cos_wrapper_{{ name }} .gallery-item {
+		width: {{ numCols }}%;
+	}
+	
+	#hs_cos_wrapper_{{ name }} .gallery-sizer {
+		width: 1%;
+	}
+	#hs_cos_wrapper_{{ name }} .gallery-image  {
+		width: {{ numCols }}%;
+		margin-bottom: 0.5rem;
+		display: block;
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+	#hs_cos_wrapper_{{ name }} .loaded .gallery-image {
+		opacity: 1;
+	}
+	.gallery-image img {
+		width: 100%;
+	}
+	
+	.image-gallery {
+		display: block;
+		z-index: 100;
+	}
+	.image-gallery:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.gallery-image.style1 img {
+		box-shadow: 0 0 0 transparent;
+		transition: box-shadow 0.25s ease;
+	}
+	.gallery-image.style2 img {
+		border: 5px solid #fff;
+		box-shadow: 0 2px 4px rgba(0,0,0,.25);
+		transition: box-shadow .25s ease;
+	}
+	
+	#hs_cos_wrapper_{{ name }} .gallery-item.style3 {
+		width: {{ conWidth / module.start.num_cols }}%;
+	}
+	#hs_cos_wrapper_{{ name }} .gallery-sizer.style3 {
+		width: 0;
+	}
+	#hs_cos_wrapper_{{ name }} .gallery-image.style3{
+		width: {{ conWidth / module.start.num_cols }}%;
+		margin-bottom: 0;
+	}
+	.gallery-image.style3 img {
+		box-shadow: 0 0 0 transparent;
+		transition: box-shadow 0.25s ease;
+	}
+
+	.gallery-image.style1:hover img,
+	.gallery-image.style2:hover img {
+		box-shadow: 0 10px 20px rgba(0,0,0,.25);
+	}
+	.gallery-image.style3:hover  {
+		z-index: 100;
+	}
+	.gallery-image.style3:hover img  {
+		box-shadow: 0 10px 20px rgba(0,0,0,.5);
+	}
+
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-masonry-gallery-mod {% if module.row_settings.image_loading == 'lazy' %}lazy-background{% endif %} {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}  {% if module.row_settings.parallax %}parallax{% endif %}">
+	<div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+		{% if module.start.add_filter %}
+      <div class="filter-layout-container">
+        <div class="filter-container {{ module.style.filter.align }}">
+          <div class="filter-label">
+            {{ module.start.filter.filter_label }}
+          </div>
+
+          <div class="select-container">
+            <form class="filters">
+              <select class="select">
+                <option value="*">{{ module.start.filter.all_label }}</option>
+              </select>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+        
+    <div class="image-gallery">
+			<div class="gallery-item {{ module.gallery_styles.image_style }}"></div> 
+			<div class="gallery-sizer {{ module.gallery_styles.image_style }}"></div> 
+         
+				{% for item in module.images %}
+				{% if item.images.src %}
+          {% set sizeAttrs = 'width="{{ item.images.width }}" height="{{ item.images.height }}"' %}
+            {% if item.images.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+            {% elif item.images.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.images.max_width }}" height="{{ item.images.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = item.images.loading != 'disabled' ? 'loading="{{ item.images.loading }}"' : '' %}
+					<a class="gallery-image filter-card {{ module.gallery_styles.image_style }}" 
+						href="{{ resize_image_url(item.images.src,1200) }}" {% if module.start.add_filter %}id="{{ name }}_{{ loop.index }}{% for class in item.filter_classes %} {{ class.filter_class.replace(" ", "----") }}{% endfor %}"{% endif %}>
+              <img src="{{ resize_image_url(item.images.src,800) }}" alt="{{ item.images.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+					</a>
+				{% endif %}
+        
+			{% endfor %}
+              
+		</div>
+    {% if module.start.add_filter %}
+      </div>
+    {% endif %}
+  
+	</div>
+	{% if module.row_settings.parallax %}
+    <div class="para-background
+                js-{{ name }}-parallax
+                {{ 'para-background--show-mobile' if module.row_settings.parallax_on_mobile == false }}">
+      <img class="para-background__image
+                  js-{{ name }}-parallax__background"   
+           src="{{ module.row_settings.bg_image.src }}" 
+           alt="{{ module.row_settings.bg_image.alt }}" 
+           loading="lazy" 
+           width="{{ module.row_settings.bg_image.width }}" 
+           height="{{ module.row_settings.bg_image.height }}" />
+    </div>
+  {% endif %}
+	{{ '<span class="hhs-row-overlay"></span>' if module.row_settings.overlay_bg != 'none'  }}
+</div>
+
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-masonry-grid-gallery.css"), { async: true }) }}
+{{ require_css(get_asset_url("../../css/3rd-party/simple-lightbox.css"), { async: true }) }}
+
+
+{% if module.row_settings.parallax == 'true' && module.row_settings.bg_type == 'image' %}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{% endif %}
+
+{% require_js %}
+<script defer>
+  $(window).on('load', function(){
+		$('.image-gallery').addClass('loaded')
+		var $grid = $('.image-gallery.loaded');
+
+		$grid.isotope({
+			percentPosition: true,
+			itemSelector: '.gallery-image',
+			{{ 'originTop: false,' if module.start.col_dir == 'up' }}
+			masonry: {
+				columnWidth: '.gallery-item',
+				gutter: '.gallery-sizer'
+			}
+		});
+		$grid.imagesLoaded().progress( function() {
+			$grid.isotope();
+		});
+		var lightbox = $('.image-gallery a').simpleLightbox();
+    
+    
+    {% if module.start.add_filter %}
+      // JAVASCRIPT FOR CREATING ALL THE POSSIBLE OPTIONS FOR THE FILTER
+      function createOptions_{{ name }}() {
+        const gridItems = document.querySelectorAll('#hs_cos_wrapper_{{ name }} .filter-card');
+        let classNames = [];
+
+        gridItems.forEach(function(item) {
+          const classes = item.id.split(' ');
+          classes.splice(0, 1);
+          for (className of classes) {
+            item.className += " " + className;
+          }
+
+          classes.forEach(function(className) {
+            if (!classNames.includes(className)) {
+              classNames.push(className);
+            }
+          });
+        });
+
+        const select = document.querySelector('#hs_cos_wrapper_{{ name }} .select');
+          classNames.forEach(function(className) {
+          const option = document.createElement('option');
+          option.className = "{{ name }}";
+          option.value = '.' + className;
+          className = className.replace(/----/g, ' ')
+          option.textContent = className;
+
+          select.appendChild(option);
+        });
+      }
+
+      createOptions_{{ name }}()
+    
+      $("#hs_cos_wrapper_{{ name }} .select").on("change", function() {
+        // get filter value from option value
+        var filterValue = this.value;
+        $grid.isotope({ filter: filterValue });
+      });
+    {% endif %}
+  
+	})
+</script>
+
+{% if module.row_settings.parallax %}
+  <script defer>
+    {% unless module.row_settings.parallax_on_mobile %}
+      if (window.matchMedia('(min-width: 768px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax__background');
+          new simpleParallax(image, {
+            delay: {{ module.row_settings.parallax_delay }},
+            scale: {{ module.row_settings.parallax_scale }},
+            transition: "{{ module.row_settings.parallax_transition }}",
+            orientation: "{{ module.row_settings.parallax_orientation }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.row_settings.parallax_on_mobile %}
+      }
+    {% endunless %}
+  </script>
+{% endif %}
+{% end_require_js %}
+
+
+
+{% if module.start.add_filter %}
+{% require_css %}
+<style>
+  {% scope_css %}
+      .image-gallery {
+        padding-top: 15px;
+      }
+      .filter-container {
+        position: relative;
+        display: flex;
+        width: fit-contetnt;
+        margin-left: 15px;
+        margin-bottom: 0px;
+      }
+      .filter-label {
+        {{ module.style.filter.filter_label_font.css }}
+        display: flex;
+        align-items: center;
+      }
+      .filters {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        {{ module.style.filter.dropdown_border.css }}
+      }
+      .filters:after {
+        content:'';
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: rgba({{ module.style.filter.dropdown_arrow.color|convert_rgb }}, {{ module.style.filter.dropdown_arrow.opacity * 0.01 }}) transparent transparent transparent;
+      }
+      .select {
+        {{ module.style.filter.select_filter_font.css }}
+        min-width: 150px;
+        border: none;
+        border-radius: 0px !important;
+        cursor: pointer;
+        background: none;
+      }
+      .select option {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 15px !important;
+        padding-right: 30px !important;
+        font-size: 20px;
+        position: relative;
+      }
+      .select-container {
+        position: relative;
+        padding-left: 20px;
+      }
+      .filter-layout-container {
+        width: 100%;
+      }
+      .portfolio-grid {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+      }
+      .left {
+        justify-content: left;
+      }
+      .center {
+        justify-content: center;
+      }
+      .right {
+        justify-content: right;
+      }
+    
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+{# 
+ NAME: SOCIAL SHARE
+ MODULE VERSION: 2.0.3
+ COMMODORE VERSION: 79
+ LAST UPDATED: 12/19/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-social-share-mod {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+  }
+  
+  {# END #}
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-share-icon i {
+    font-size: {{ module.style.icon_size }}px; 
+  }
+  
+  {% if module.style.custom_text %}
+    #hs_cos_wrapper_{{ name }} h6 {
+     color:  {{ module.style.text_color.color }};
+    }
+  {% endif %}
+  
+  {% if module.style.custom_icon %} 
+    #hs_cos_wrapper_{{ name }} .hhs-share-icon i {
+      color: {{ module.style.icon_color.color }};
+    }
+  {% else %}
+    .hhs-share-icon.fb i {color: #3C5A99;}
+    .hhs-share-icon.tw i {color: #00aced;}
+    .hhs-share-icon.in i {color: #0077B5;} 
+  {% endif %}
+  
+  {# TABLET CSS #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-social-share-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  {# MOBILE CSS #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-social-share-mod  {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-social-share-mod {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}" >  
+    <div class="{{ module.row_settings.content_width }}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col">
+        <h6>
+          {{ module.start.share_label }} 
+        </h6>
+        {% if module.start.facebook %}
+          <a class="hhs-share-icon fb" rel="noreferrer" href="https://www.facebook.com/sharer/sharer.php?u={{ content.absolute_url|urlencode }}" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        {% endif %}
+        {% if module.start.twitter %}
+          <a class="hhs-share-icon tw" rel="noreferrer" href="https://twitter.com/intent/tweet?url={{ content.absolute_url|urlencode }}&text={{ page_meta.html_title|urlencode }}" target="_blank"  title="Share on Twitter">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        {% endif %}
+        {% if module.start.linkedin %}    
+          <a class="hhs-share-icon in" rel="noreferrer" href="https://www.linkedin.com/sharing/share-offsite?url={{ content.absolute_url|urlencode }}" target="_blank" title="Share on Linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        
+        
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-social-share.css"), { async: true }) }}

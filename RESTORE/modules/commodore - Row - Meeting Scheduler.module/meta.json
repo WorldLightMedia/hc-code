@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "icon" : "https://19522085.fs1.hubspotusercontent-na1.net/hubfs/19522085/icon-meeting-schedule.svg",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 135504259910,
+  "label" : "Meeting Scheduler (Pro)",
+  "is_available_for_new_content" : true
+}

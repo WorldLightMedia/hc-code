@@ -1,0 +1,1095 @@
+[ {
+  "id" : "8c341e21-87d1-2925-2d29-2f0c93b92daf",
+  "name" : "start",
+  "display_width" : null,
+  "label" : "════╣ ▼ START HERE ▼ ╠════",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "63441118-288e-74f0-cae9-7d882982f82a",
+    "name" : "num_cols",
+    "display_width" : null,
+    "label" : "How many columns do you want?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "2", "Two" ], [ "3", "Three" ], [ "4", "Four" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "3"
+  }, {
+    "id" : "80c37ded-0b72-4630-88e2-dc7bda08ccd0",
+    "name" : "count_up_numbers_once",
+    "display_width" : null,
+    "label" : "Count Up Numbers Only Once",
+    "inline_help_text" : "Turning this off will count up the numbers each time they are scrolled into view.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "type" : "group",
+  "default" : {
+    "num_cols" : "3",
+    "count_up_numbers_once" : true
+  }
+}, {
+  "id" : "1fd49d7c-774e-cada-1f7f-4fa793a7b705",
+  "name" : "content",
+  "display_width" : null,
+  "label" : "██████ Add & Edit Content Here",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "2619ba7c-bca1-2a0e-bdae-a39f6ec42000",
+    "name" : "col_1",
+    "display_width" : null,
+    "label" : "Column 1:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "60bfe3a7-d031-e6e8-11a3-f6cb4db78cf7",
+      "name" : "number",
+      "display_width" : null,
+      "label" : "Number:",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 340
+    }, {
+      "id" : "7680011e-9754-84d0-f824-180bf6468dc0",
+      "name" : "desc",
+      "display_width" : null,
+      "label" : "Description:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Add Description here"
+    }, {
+      "id" : "7f6cacaa-0b6f-4c22-d23f-ee32c87c2eae",
+      "name" : "symbol",
+      "display_width" : null,
+      "label" : "Want to add a symbol?",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope" ], [ "dollar", "$" ], [ "pound", "£" ], [ "euro", "€" ], [ "hash", "#" ], [ "percent", "%" ], [ "tilde", "~" ], [ "plus", "+" ], [ "greater", ">" ], [ "less", "<" ], [ "k", "K" ], [ "m", "M" ], [ "b", "B" ], [ "t", "T" ], [ "x", "X" ], [ "x-lower", "x" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "3a7def22-9b02-92e0-04fc-0c795aedc8e0",
+      "name" : "decimal_points",
+      "display_width" : null,
+      "label" : "How many decimal points?",
+      "help_text" : "If the number you want to add doesn't have any decimals, just select 0.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 10,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    }
+  }, {
+    "id" : "90ab0cc4-b600-a131-08b5-1a137932fddf",
+    "name" : "col_2",
+    "display_width" : null,
+    "label" : "Column 2:",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "23cd95ce-21b9-c4b2-d364-cc9aa5695627",
+      "name" : "number",
+      "display_width" : null,
+      "label" : "Number:",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 340
+    }, {
+      "id" : "303c0315-8018-6252-4338-179c565c206d",
+      "name" : "desc",
+      "display_width" : null,
+      "label" : "Description:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Add Description here"
+    }, {
+      "id" : "c9639681-1c4b-5014-2c1e-3a906f103503",
+      "name" : "symbol",
+      "display_width" : null,
+      "label" : "Want to add a symbol?",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope" ], [ "dollar", "$" ], [ "pound", "£" ], [ "euro", "€" ], [ "hash", "#" ], [ "percent", "%" ], [ "tilde", "~" ], [ "plus", "+" ], [ "greater", ">" ], [ "less", "<" ], [ "k", "K" ], [ "m", "M" ], [ "b", "B" ], [ "t", "T" ], [ "x", "X" ], [ "x-lower", "x" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "2b8083a0-e74e-3291-f86e-1ec9cfa632be",
+      "name" : "decimal_points",
+      "display_width" : null,
+      "label" : "How many decimal points?",
+      "help_text" : "If the number you want to add doesn't have any decimals, just select 0.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 10,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    }
+  }, {
+    "id" : "870321d6-f15f-66ea-36e7-fac6b0d41efa",
+    "name" : "col_3",
+    "display_width" : null,
+    "label" : "Column 3:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "63441118-288e-74f0-cae9-7d882982f82a",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "[34]",
+      "property" : null,
+      "operator" : "MATCHES_REGEX",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "0fc8afc7-0896-e9a6-1c49-861ad56909c4",
+      "name" : "number",
+      "display_width" : null,
+      "label" : "Number:",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 340
+    }, {
+      "id" : "7055c422-e4f7-fbd6-cea3-35d13da2e3bc",
+      "name" : "desc",
+      "display_width" : null,
+      "label" : "Description:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Add Description here"
+    }, {
+      "id" : "52c3d21b-3507-ecb5-26bc-23d47eb021e7",
+      "name" : "symbol",
+      "display_width" : null,
+      "label" : "Want to add a symbol?",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope" ], [ "dollar", "$" ], [ "pound", "£" ], [ "euro", "€" ], [ "hash", "#" ], [ "percent", "%" ], [ "tilde", "~" ], [ "plus", "+" ], [ "greater", ">" ], [ "less", "<" ], [ "k", "K" ], [ "m", "M" ], [ "b", "B" ], [ "t", "T" ], [ "x", "X" ], [ "x-lower", "x" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "cda6ccd3-b505-038e-b871-ddfd69434243",
+      "name" : "decimal_points",
+      "display_width" : null,
+      "label" : "How many decimal points?",
+      "help_text" : "If the number you want to add doesn't have any decimals, just select 0.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 10,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    }
+  }, {
+    "id" : "83a90b33-8d2d-39ef-ecfa-0eddb0f8694c",
+    "name" : "col_4",
+    "display_width" : null,
+    "label" : "Column 4:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "63441118-288e-74f0-cae9-7d882982f82a",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "4",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "b01830b4-7e94-f78e-c9b9-b822104dc272",
+      "name" : "number",
+      "display_width" : null,
+      "label" : "Number:",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "default" : 340
+    }, {
+      "id" : "f596bb8c-da4e-1b06-c10f-6b200fa6e5cd",
+      "name" : "desc",
+      "display_width" : null,
+      "label" : "Description:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : "Add Description here"
+    }, {
+      "id" : "381b3326-08f6-1639-824c-77ca14e288db",
+      "name" : "symbol",
+      "display_width" : null,
+      "label" : "Want to add a symbol?",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "none", "Nope" ], [ "dollar", "$" ], [ "pound", "£" ], [ "euro", "€" ], [ "hash", "#" ], [ "percent", "%" ], [ "tilde", "~" ], [ "plus", "+" ], [ "greater", ">" ], [ "less", "<" ], [ "k", "K" ], [ "m", "M" ], [ "b", "B" ], [ "t", "T" ], [ "x", "X" ], [ "x-lower", "x" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "none"
+    }, {
+      "id" : "011afe3e-fbba-3f02-0307-eac959740653",
+      "name" : "decimal_points",
+      "display_width" : null,
+      "label" : "How many decimal points?",
+      "help_text" : "If the number you want to add doesn't have any decimals, just select 0.",
+      "required" : false,
+      "locked" : false,
+      "display" : "slider",
+      "min" : 0,
+      "max" : 10,
+      "step" : 1,
+      "type" : "number",
+      "default" : 0
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "col_1" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    },
+    "col_2" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    },
+    "col_3" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    },
+    "col_4" : {
+      "number" : 340,
+      "desc" : "Add Description here",
+      "symbol" : "none",
+      "decimal_points" : 0
+    }
+  }
+}, {
+  "id" : "a70e308f-3eb3-899b-aa39-89fcc12b1575",
+  "name" : "style_settings",
+  "display_width" : null,
+  "label" : "██████ Style Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "69add50e-efb3-34bd-5626-6b9f66bf1186",
+    "name" : "align_desktop",
+    "display_width" : null,
+    "label" : "Content Alignment (Desktop)",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "79178e64-fa6b-4bde-97c4-b1f8244cc353",
+    "name" : "align_mobile",
+    "display_width" : null,
+    "label" : "Content Alignment (Mobile)",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "center", "Center" ], [ "left", "Left" ], [ "right", "Right" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "center"
+  }, {
+    "id" : "b4656057-e097-4705-936a-1b5a14cb6cf2",
+    "name" : "custom_color",
+    "display_width" : null,
+    "label" : "Give Numbers a Custom Color:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : true
+  }, {
+    "id" : "b94bd42a-7d84-8d4e-9fb9-bd84d950badc",
+    "name" : "color",
+    "display_width" : null,
+    "label" : "Number Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "b4656057-e097-4705-936a-1b5a14cb6cf2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "4fcc43c4-d832-be55-29e9-ac1ccd11a30f",
+    "name" : "custom_color_text",
+    "display_width" : null,
+    "label" : "Give Text a Custom Color:",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "3506b5df-dd59-4a7c-876c-1ad3948999d1",
+    "name" : "color_text",
+    "display_width" : null,
+    "label" : "Text Color:",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "4fcc43c4-d832-be55-29e9-ac1ccd11a30f",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#FEFEFE",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "356fa93e-b7e1-c4ed-feda-0a4048719473",
+    "name" : "custom_size",
+    "display_width" : null,
+    "label" : "Custom Font Size (Numbers)",
+    "help_text" : "This will control the size of the font for each of the numbers. It won't control the description size.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "a21dd021-99c5-7df2-0196-518ef700aaa6",
+    "name" : "size",
+    "display_width" : null,
+    "label" : "Custom Size",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "356fa93e-b7e1-c4ed-feda-0a4048719473",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 18,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 50
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "align_desktop" : "center",
+    "align_mobile" : "center",
+    "custom_color" : true,
+    "color" : {
+      "color" : "#00a4bd",
+      "opacity" : 100
+    },
+    "custom_color_text" : false,
+    "color_text" : {
+      "color" : "#FEFEFE",
+      "opacity" : 100
+    },
+    "custom_size" : false,
+    "size" : 50
+  }
+}, {
+  "id" : "f0acfad2-a35e-67a1-46dd-c0c015d35104",
+  "name" : "style",
+  "display_width" : null,
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "bd9c1507-e912-4b14-d0e5-5cd607ab2f5a",
+    "name" : "test",
+    "display_width" : null,
+    "label" : "Test:",
+    "inline_help_text" : "This is currently a test. Please disregard.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "test" : false
+  }
+}, {
+  "id" : "379ed83f-6c05-1ba4-3112-03b3b02de86b",
+  "name" : "row_settings",
+  "display_width" : null,
+  "label" : "██████ Row Settings",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "dc406f96-4afa-37cf-b245-9f24534cade6",
+    "name" : "bg_color",
+    "display_width" : null,
+    "label" : "Background Color",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "default" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    }
+  }, {
+    "id" : "16b6d2b6-57f3-7fb6-a854-d3c501bb0ad2",
+    "name" : "content_width",
+    "display_width" : null,
+    "label" : "Content Width",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "container", "Standard" ], [ "container-fluid", "Full" ], [ "container-slim", "Slim" ], [ "custom", "Custom" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "container"
+  }, {
+    "id" : "d2e04d7e-f2b0-8c42-414b-752a9e9273e7",
+    "name" : "set_width",
+    "display_width" : null,
+    "label" : "Set Width",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "16b6d2b6-57f3-7fb6-a854-d3c501bb0ad2",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "custom",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 100,
+    "max" : 1600,
+    "step" : 1,
+    "type" : "number",
+    "default" : 600
+  }, {
+    "id" : "a4268fa1-c660-3a58-711f-03a748a063c1",
+    "name" : "shadow",
+    "display_width" : null,
+    "label" : "Do you want to add a subtle shadow?",
+    "required" : true,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "none", "Nope. I'm cool." ], [ "inner", "Inner" ], [ "outer", "Outer" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "default" : "none"
+  }, {
+    "id" : "841a43cb-cca0-1ab5-75f2-371c3a5baf30",
+    "name" : "shadow_color",
+    "display_width" : null,
+    "label" : "Shadow Color",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a4268fa1-c660-3a58-711f-03a748a063c1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "type" : "color",
+    "default" : {
+      "color" : "#000000",
+      "opacity" : 20
+    }
+  }, {
+    "id" : "3801da0e-4b9b-30b7-1674-bb8695ad6f23",
+    "name" : "shadow_size",
+    "display_width" : null,
+    "label" : "Shadow Size",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "a4268fa1-c660-3a58-711f-03a748a063c1",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "none",
+      "property" : null,
+      "operator" : "NOT_EQUAL",
+      "access" : null
+    },
+    "display" : "slider",
+    "min" : 1,
+    "max" : 100,
+    "step" : 1,
+    "type" : "number",
+    "default" : 20
+  }, {
+    "id" : "f809dc9e-f2cc-c65a-f992-bfc97f3d573c",
+    "name" : "add_wave_top",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Top):",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the top of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "cfa272e1-350d-0874-b14c-9853d7e3deb3",
+    "name" : "wave_top",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (top)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "f809dc9e-f2cc-c65a-f992-bfc97f3d573c",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "0b38a6d8-26db-0e30-17e1-e1ddc7b56e17",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "40e5548c-4be7-860d-dbf8-5be1275aeec1",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "0b38a6d8-26db-0e30-17e1-e1ddc7b56e17",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 10,
+      "max" : 100,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "d62e8ef6-d9c8-9c55-5c4d-3e9ab0c0b333",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color",
+      "help_text" : "If the row above has a white background you'll want to set the color to white.",
+      "inline_help_text" : "Set this to the same color as the row above.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "9791ef4c-f24b-1b26-c21b-2b911b68ce55",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "cf16d8bc-4021-49ec-dafe-b4fa6fa89fce",
+    "name" : "add_wave_btm",
+    "display_width" : null,
+    "label" : "Add Wave/Angle Border (Bottom)",
+    "help_text" : "This is a cool page design element that can give your page a sense of flow and movement.",
+    "inline_help_text" : "Add wave border at the base of this row.",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "default" : false
+  }, {
+    "id" : "662541c3-42e5-cffd-3519-884a9fc52567",
+    "name" : "wave",
+    "display_width" : null,
+    "label" : "Wave/Angle Style Settings (Bottom)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "cf16d8bc-4021-49ec-dafe-b4fa6fa89fce",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "c7aac6bb-59f6-3f03-0065-d20dcd567028",
+      "name" : "type",
+      "display_width" : null,
+      "label" : "Wave/Angle Type",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "opt_1", "Opt 1 - Wave" ], [ "opt_2", "Opt 2 - Wave" ], [ "opt_3", "Opt 3 - Wave" ], [ "opt_4", "Opt 4 - Wave" ], [ "opt_5", "Opt 5 - Wave" ], [ "opt_6", "Opt 6 - Angle" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "opt_1"
+    }, {
+      "id" : "ad908d1e-5215-b8ae-eb2f-1964fd65b3d9",
+      "name" : "angle_height",
+      "display_width" : null,
+      "label" : "Angle Height:",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "c7aac6bb-59f6-3f03-0065-d20dcd567028",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "opt_6",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "slider",
+      "min" : 100,
+      "max" : 1000,
+      "step" : 10,
+      "suffix" : "px",
+      "type" : "number",
+      "default" : 100
+    }, {
+      "id" : "c45f9b9a-e797-bc73-50d5-681b25258ae3",
+      "name" : "color",
+      "display_width" : null,
+      "label" : "Color",
+      "help_text" : "If the row above has a white background you'll want to set the color to white.",
+      "inline_help_text" : "Set this to the same color as the row below.",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "e156b784-bcc5-4a5c-5224-9f689cf31bae",
+      "name" : "flip_wave",
+      "display_width" : null,
+      "label" : "Flip Wave/Angle Direction",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    }
+  }, {
+    "id" : "7c89e13c-9985-ee90-6498-2f09b3c37160",
+    "name" : "adv_settings",
+    "display_width" : null,
+    "label" : "██████ Spacing Options",
+    "help_text" : "A good thing to remember is \"everyone needs to breathe.\" Especially content on a page. Here you can adjust the top and bottom spacing across devices.",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a0132a83-2d75-0de1-7289-6250587f52d2",
+      "name" : "padding_top",
+      "display_width" : null,
+      "label" : "Padding Top (Desktop)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "8cc9dc24-67c2-cc8b-0630-4597a67de50e",
+      "name" : "padding_bottom",
+      "display_width" : null,
+      "label" : "Padding Bottom (Desktop):",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "50px"
+    }, {
+      "id" : "b970b402-01cd-bffa-0c15-ce6c39b6a38b",
+      "name" : "padding_top_tablet",
+      "display_width" : null,
+      "label" : "Padding Top (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "eef9132c-e543-9d8b-2d4b-5082c3bbb304",
+      "name" : "padding_bottom_tablet",
+      "display_width" : null,
+      "label" : "Padding Bottom (Tablet)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "89879e4b-9ce8-aec2-3534-8f0e2e24c7fa",
+      "name" : "padding_top_mobile",
+      "display_width" : null,
+      "label" : "Padding Top (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    }, {
+      "id" : "c4afc6d1-0f65-4b55-e650-71414f04c152",
+      "name" : "padding_bottom_mobile",
+      "display_width" : null,
+      "label" : "Padding Bottom (Mobile)",
+      "required" : true,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "0px", "None" ], [ "10px", "XX-Small" ], [ "25px", "X-Small" ], [ "50px", "Small" ], [ "100px", "Medium" ], [ "150px", "Large" ], [ "200px", "X-Large" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "default" : "25px"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "25px",
+      "padding_bottom_tablet" : "25px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    }
+  }, {
+    "id" : "de7d2025-9c15-40ab-200f-4801f92b4c22",
+    "name" : "visibility",
+    "display_width" : null,
+    "label" : "██████ Show this Module on",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "821d6649-caf4-acbc-69d4-9542f3af1d08",
+      "name" : "vis_desktop",
+      "display_width" : null,
+      "label" : "Desktop:",
+      "help_text" : "By turning this off, the row will not be visible on desktop or devices with a larger screen real-estate. ",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "81e06d56-047e-60ef-1ff7-264024d07755",
+      "name" : "vis_tablet",
+      "display_width" : null,
+      "label" : "Tablet:",
+      "help_text" : "By turning this off, the row will not be visible on most tablets in portrait mode.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    }, {
+      "id" : "a83e733e-8582-8636-f934-8d58fc27cabc",
+      "name" : "vis_phone",
+      "display_width" : null,
+      "label" : "Mobile:",
+      "help_text" : "By turning this off, the row will not be visible on mobile devices in portrait mode.",
+      "required" : false,
+      "locked" : false,
+      "display" : "checkbox",
+      "type" : "boolean",
+      "default" : true
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    }
+  }, {
+    "id" : "fc3d3eb7-f30e-cde3-60f6-774ae1da0e46",
+    "name" : "code",
+    "display_width" : null,
+    "label" : "██████ Code (The nerdy stuff)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "a1e672ff-bd7b-9853-3734-196e55d5d1bb",
+      "name" : "section_id",
+      "display_width" : null,
+      "label" : "CSS ID:",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    }, {
+      "id" : "7e097a05-c193-75fb-a62e-067375901c3f",
+      "name" : "section_class",
+      "display_width" : null,
+      "label" : "CSS Class:",
+      "help_text" : "This is helpful if you know just a enough of CSS to be dangerous.  Make sure that class names don't have spaces.  ",
+      "required" : false,
+      "locked" : false,
+      "validation_regex" : "",
+      "allow_new_line" : false,
+      "show_emoji_picker" : false,
+      "type" : "text",
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "type" : "group",
+    "default" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "type" : "group",
+  "default" : {
+    "bg_color" : {
+      "color" : "#FFFFFF",
+      "opacity" : 100
+    },
+    "content_width" : "container",
+    "set_width" : 600,
+    "shadow" : "none",
+    "shadow_color" : {
+      "color" : "#000000",
+      "opacity" : 20
+    },
+    "shadow_size" : 20,
+    "add_wave_top" : false,
+    "wave_top" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "add_wave_btm" : false,
+    "wave" : {
+      "type" : "opt_1",
+      "angle_height" : 100,
+      "color" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      },
+      "flip_wave" : false
+    },
+    "adv_settings" : {
+      "padding_top" : "50px",
+      "padding_bottom" : "50px",
+      "padding_top_tablet" : "25px",
+      "padding_bottom_tablet" : "25px",
+      "padding_top_mobile" : "25px",
+      "padding_bottom_mobile" : "25px"
+    },
+    "visibility" : {
+      "vis_desktop" : true,
+      "vis_tablet" : true,
+      "vis_phone" : true
+    },
+    "code" : {
+      "section_id" : "",
+      "section_class" : ""
+    }
+  }
+} ]

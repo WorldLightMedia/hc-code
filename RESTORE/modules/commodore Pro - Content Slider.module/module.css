@@ -1,0 +1,71 @@
+.c-slider-container {
+  width: 100%;
+}
+
+.c-slider {
+  width: 100%;
+}
+
+.c-lottie-slide {
+  display:flex;
+  justify-content:center;
+  align-items:baseline; 
+}
+@media (min-width: 992px) {
+   .c-lottie-slide {
+    display:block;
+  }
+}
+
+
+.slick-slide.hidden {
+  display: none !important;
+}
+
+{# THIS IS THE SLICK SLIDER CSS FOR FUNCTIONALITY #}
+.c-slider .slick-dots li {
+  width: 30px;
+  height: 3px;
+  border-radius: 0;
+}
+
+.c-slider .slick-dots li.is-selected { 
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.c-slider .slick-dots {
+  position: static;
+  margin-top: 25px;
+}
+
+.c-slider .slick-arrow:focus{ outline: none;}
+.c-slider .slick-arrow:hover{ opacity:0.4;}
+
+.c-slider button.slick-prev,
+.c-slider button.slick-next {
+  position: absolute;
+  top: 50%;
+  margin-top: -31px;
+  border-radius: 0;
+  background: transparent;
+}
+
+
+.c-slider button.slick-prev { 
+  left: -60px; 
+  transform: rotate(45deg);
+}
+.c-slider button.slick-next { 
+  right: -60px; 
+  transform: rotate(-135deg);
+}
+
+.c-slider button.slick-prev svg,
+.c-slider button.slick-next svg {
+  display: none; 
+}
+    

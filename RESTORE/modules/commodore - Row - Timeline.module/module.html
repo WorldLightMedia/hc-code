@@ -1,0 +1,443 @@
+{# 
+ NAME: TIMELINE
+ MODULE VERSION: 1.0.3
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 2/8/23
+ REMINDER: You Rock!
+#}
+
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-timeline-mod {
+    padding-top: {{ module.style.adv_settings.padding_top }};
+    padding-bottom:  {{ module.style.adv_settings.padding_bottom }};
+    {%- if module.style.bg_type == 'color' -%}
+      background-color: rgba({{ module.style.bg_color.color|convert_rgb }}, {% if module.style.bg_color.opacity == '100' %}1{% else %}0.{{ module.style.bg_color.opacity }}{% endif %});
+    {%- elif module.style.bg_type == 'gradient' -%}
+      background: {{ module.style.bg_gradient.css }};
+    {% endif %}
+    {% if module.style.bg_type == 'image' && module.style.parallax == False %}
+      background-repeat: no-repeat;
+      {{ module.style.bg_image.css }}
+    {%- endif -%}
+  }
+  
+  {% if module.style.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }}  {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.style.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+    -webkit-box-shadow:inset 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+    box-shadow:inset 0 0 {{ module.style.shadow_size }}px 1px rgba({{ module.style.shadow_color.color|convert_rgb }}, {% if module.style.shadow_color.opacity == '100' %}1{% else %}0.{{ module.style.shadow_color.opacity }}{% endif %});
+  }
+  {% endif %}
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-timeline-mod {
+      padding-top: {{ module.style.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.style.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-timeline-mod {
+      padding-top: {{ module.style.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.style.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {# PARALLAX #}
+  
+  {% if module.style.parallax && module.style.bg_type == 'image' %}
+  .para-background {
+      {# Fill parent #}
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.125s ease-in-out;
+    }
+
+    .para-background.simpleParallax,
+    .para-background--show-mobile {
+      opacity: 1;
+    }
+
+    #hs_cos_wrapper_{{ name }} .para-background__image {
+      {# Fit image to background block #}
+      display: block;
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+    }
+  {% endif %}
+  
+  {# HERO OVERLAY COLOR #}
+  
+  {%- if module.style.overlay_bg != 'none' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-row-overlay {
+      {% if module.style.overlay_bg == 'color' %}
+        background-color: rgba({{ module.style.overlay_color.color|convert_rgb }}, {% if module.style.overlay_color.opacity == '100' %}1{% else %}0.{{ module.style.overlay_color.opacity }}{% endif %});
+      {% endif %}
+      {% if module.style.overlay_bg == 'gradient' %}
+        background: {{ module.style.overlay_gradient.css }};
+      {% endif %}
+    }
+  {%- endif -%}
+  
+  {# WAVE #}
+  
+  {%- if module.style.add_wave_btm -%}
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+      color:  rgba({{ module.style.wave.color.color|convert_rgb }}, {% if module.style.wave.color.opacity == '100' %}1{% else %}0.{{ module.style.wave.color.opacity }}{% endif %});
+      bottom: -{{ module.style.adv_settings.padding_bottom }};
+    }
+    {% if module.style.wave.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con svg {
+        fill: rgba({{ module.style.wave.color.color|convert_rgb }}, {% if module.style.wave.color.opacity == '100' %}1{% else %}0.{{ module.style.wave.color.opacity }}{% endif %});
+        height: {{ module.style.wave.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.style.wave.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con .hhs-wave-module svg {
+        transform: scale(1, 1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.style.adv_settings.padding_bottom_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.style.adv_settings.padding_bottom_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {%- if module.style.add_wave_top -%} 
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+      color:  rgba({{ module.style.wave_top.color.color|convert_rgb }}, {% if module.style.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.style.wave_top.color.opacity }}{% endif %});
+      top: -{{ module.style.adv_settings.padding_top }};
+    }
+    {% if module.style.wave_top.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top svg {
+        fill: rgba({{ module.style.wave_top.color.color|convert_rgb }}, {% if module.style.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.style.wave_top.color.opacity }}{% endif %});
+        height: {{ module.style.wave_top.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.style.wave_top.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top .hhs-wave-module svg {
+        transform: scale(-1, -1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.style.adv_settings.padding_top_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.style.adv_settings.padding_top_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {# END #}
+  
+  {# TIMELINE STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-continue::after {
+    background: rgba({{ module.style.timeline.line_color.color|convert_rgb }}, {{ module.style.timeline.line_color.opacity * 0.01 }}); 
+  }
+  
+  {# BIG BUBBLE #}
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-end p,
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-start p,
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-year p {
+    background: {{  module.style.timeline.big_bubble.bg_color.css }};
+    color: rgba({{ module.style.timeline.big_bubble.text_color.color|convert_rgb }}, {{ module.style.timeline.big_bubble.text_color.opacity * 0.01 }}); 
+    font-size: {{ module.style.timeline.big_bubble.text_size }}px;
+    width: {{ module.style.timeline.big_bubble.size }}px;
+    height: {{ module.style.timeline.big_bubble.size }}px;
+    -webkit-border-radius: {{ module.style.timeline.big_bubble.size }}px;
+    border-radius: {{ module.style.timeline.big_bubble.size }}px;
+    font-weight: {{ module.style.timeline.big_bubble.font_weight }};
+    border: 1px solid rgba({{ module.style.timeline.big_bubble.border_color.color|convert_rgb }}, {{ module.style.timeline.big_bubble.border_color.opacity * 0.01 }}); 
+  }
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-end,
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-start,
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-year {
+    width: {{ module.style.timeline.big_bubble.size }}px;
+  }
+  
+  {# LITTLE BUBBLE #}
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-date::after {
+    background: {{ module.style.timeline.little_bubble.bg_color.css }};
+    width: {{ module.style.timeline.little_bubble.size }}px;
+    height: {{ module.style.timeline.little_bubble.size }}px;
+    -webkit-border-radius: {{ module.style.timeline.little_bubble.size }}px;
+    border-radius: {{ module.style.timeline.little_bubble.size }}px;
+  }
+  
+  #hs_cos_wrapper_{{ name }} .timeline .row.timeline-left .timeline-date::after {
+    left: calc(-{{ module.style.timeline.little_bubble.size }}px * .5);
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .row.timeline-right .timeline-date::after {
+    right: calc(-{{ module.style.timeline.little_bubble.size }}px * .5);
+  }
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-date {
+    font-size: {{ module.style.timeline.little_bubble.text_size }}px;
+    font-weight: {{ module.style.timeline.little_bubble.font_weight }};
+    line-height: {{ module.style.timeline.little_bubble.text_size }}px;
+    color: rgba({{ module.style.timeline.little_bubble.text_color.color|convert_rgb }}, {{ module.style.timeline.little_bubble.text_color.opacity * 0.01 }}); 
+  }
+  
+  
+  {# DESCRIPTION #}
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-box, 
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-launch .timeline-box {
+    border-color: rgba({{ module.style.timeline.desc.border_color.color|convert_rgb }}, {{ module.style.timeline.desc.border_color.opacity * 0.01 }}); 
+    background: rgba({{ module.style.timeline.desc.bg_color.color|convert_rgb }}, {{ module.style.timeline.desc.bg_color.opacity * 0.01 }}); 
+  }
+  
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-box::after {
+    border-color: transparent transparent transparent rgba({{ module.style.timeline.desc.bg_color.color|convert_rgb }}, {{ module.style.timeline.desc.bg_color.opacity * 0.01 }});
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-box::before {
+    border-color: transparent transparent transparent rgba({{ module.style.timeline.desc.border_color.color|convert_rgb }}, {{ module.style.timeline.desc.border_color.opacity * 0.01 }});
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .row.timeline-right .timeline-box::after {
+    border-color: transparent rgba({{ module.style.timeline.desc.bg_color.color|convert_rgb }}, {{ module.style.timeline.desc.bg_color.opacity * 0.01 }}) transparent transparent;
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .row.timeline-right .timeline-box::before {
+    border-color: transparent rgba({{ module.style.timeline.desc.border_color.color|convert_rgb }}, {{ module.style.timeline.desc.border_color.opacity * 0.01 }}) transparent transparent;
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-launch .timeline-box::after {
+    border-color: transparent transparent rgba({{ module.style.timeline.desc.border_color.color|convert_rgb }}, {{ module.style.timeline.desc.border_color.opacity * 0.01 }}) transparent;
+  }
+
+  #hs_cos_wrapper_{{ name }} .timeline .timeline-launch .timeline-box::before {
+    border-color: transparent transparent rgba({{ module.style.timeline.desc.bg_color.color|convert_rgb }}, {{ module.style.timeline.desc.bg_color.opacity * 0.01 }}) transparent;
+  }
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-left .timeline-box::after {
+      border-color: transparent rgba({{ module.style.timeline.desc.bg_color.color|convert_rgb }}, {{ module.style.timeline.desc.bg_color.opacity * 0.01 }}) transparent transparent;
+    }
+
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-left .timeline-box::before {
+      border-color: transparent rgba({{ module.style.timeline.desc.border_color.color|convert_rgb }}, {{ module.style.timeline.desc.border_color.opacity * 0.01 }}) transparent transparent;
+    }
+    
+    
+    #hs_cos_wrapper_{{ name }} .timeline .timeline-continue::after {
+      left: calc({{ module.style.timeline.big_bubble.size }}px / 2);
+    }
+    
+    #hs_cos_wrapper_{{ name }} .timeline .timeline-launch .timeline-box {
+      margin-left: calc({{ module.style.timeline.big_bubble.size }}px / 10);
+    }
+    
+    #hs_cos_wrapper_{{ name }} .timeline .timeline-box, 
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-right .timeline-date,
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-left .timeline-date {
+      margin-left: calc({{ module.style.timeline.big_bubble.size }}px / 1.8);
+    }
+    
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-left .timeline-date::after, 
+    #hs_cos_wrapper_{{ name }} .timeline .row.timeline-right .timeline-date::after {
+       left: calc({{ module.style.timeline.big_bubble.size }}px / 2.2);
+    }
+  }
+
+  
+  {# END #}
+  
+ 
+  
+  
+</style>
+{% end_require_css %}
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-timeline-mod timeline  {% if module.style.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.style.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.style.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.style.shadow == 'inner' %}inner-shadow{% endif %} {% if module.style.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.style.parallax %}parallax{% endif %}">
+  {%- if module.style.add_wave_top -%} 
+    <div class="hhs-wave-con-top">
+      <div class="hhs-wave-module">
+        {%- if module.style.wave_top.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.style.wave_top.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.style.wave_top.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.style.wave_top.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.style.wave_top.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.style.wave_top.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+  <div class="{{ module.style.content_width }} timeline-con" style="{% if module.style.content_width == 'custom' %} max-width: {{ module.style.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="timeline-container">
+          <div class="timeline-end">
+            <p>{{ module.content.starting_point }}</p>
+          </div>
+          <div class="timeline-continue">
+            {% for item in module.content.timeline_events %}
+              {% if item.type == 'event' %}
+                {% if item.side_for_desc == 'right' %}
+                  <div class="row timeline-right">
+                    <div class="col-md-6">
+                      <p class="timeline-date">
+                        {{ item.date_time }}
+                      </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                      <div class="timeline-box">
+                        <div class="timeline-text">
+                          {{ item.event }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="row timeline-left">
+                    <div class="col-lg-6 col-md-12 d-lg-none d-block">
+                      <p class="timeline-date">
+                        {{ item.date_time }}
+                      </p>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                      <div class="timeline-box">
+                        <div class="timeline-text">
+                          {{ item.event }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 d-lg-block d-none">
+                      <p class="timeline-date">
+                        {{ item.date_time }}
+                      </p>
+                    </div>
+                  </div>
+              {% endif %}
+              {% else %}
+                <div class="row">
+                  <div class="col-12">
+                    <div class="timeline-year">
+                      <p>{{ item.date_time }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="timeline-start">
+            <p>{{ module.content.end_point }}</p>
+          </div>
+          <div class="timeline-launch">
+            <div class="timeline-box">
+              <div class="timeline-text">
+                {{ module.content.ending_text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  {% if module.style.parallax && module.style.bg_type == 'image' %}
+    <div class="para-background
+           js-{{ name }}-parallax
+           {{ 'para-background--show-mobile' if module.style.parallax_on_mobile == false }}">
+      <img class="para-background__image
+           js-{{ name }}-parallax__background"   
+           src="{{ module.style.bg_image.src }}" 
+           alt="{{ module.style.bg_image.alt }}" 
+           loading="lazy" 
+           width="{{ module.style.bg_image.width }}" 
+           height="{{ module.style.bg_image.height }}" />
+    </div>
+  {% endif %}
+  {% if module.style.overlay_bg != 'none' %}
+    <span class="hhs-row-overlay"></span>
+  {% endif %}
+  {%- if module.style.add_wave_btm -%} 
+    <div class="hhs-wave-con">
+      <div class="hhs-wave-module">
+        {%- if module.style.wave.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.style.wave.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.style.wave.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.style.wave.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.style.wave.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.style.wave.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-timeline.css"), { async: true }) }}
+
+{% if module.row_settings.parallax == 'true' && module.row_settings.bg_type == 'image' %}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{% endif %}
+
+{% require_js %}
+{% if module.style.parallax && module.style.bg_type == 'image' %}
+  <script defer>
+    {% unless module.style.parallax_on_mobile %}
+      if (window.matchMedia('(min-width: 768px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax__background');
+          new simpleParallax(image, {
+            delay: {{ module.style.parallax_delay }},
+            scale: {{ module.style.parallax_scale }},
+            transition: "{{ module.style.parallax_transition }}",
+            orientation: "{{ module.style.parallax_orientation }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.style.parallax_on_mobile %}
+      }
+    {% endunless %}
+  </script>
+{% endif %}
+{%- end_require_js -%}
+

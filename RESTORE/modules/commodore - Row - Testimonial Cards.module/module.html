@@ -1,0 +1,512 @@
+{# 
+ NAME: TESTIMONIAL CARDS
+ MODULE VERSION: 3.0.6
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 2/23/23
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+   
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-card-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top }};
+      padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    {% if module.row_settings.bg_type == 'color' %}
+      background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+    {% endif %}
+    {% if module.row_settings.bg_type == 'gradient' %}
+      background-color: {{ module.row_settings.color_1.color }};
+      background: -moz-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: -webkit-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+    {% endif %} 
+    {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False -%}
+      background-repeat: no-repeat;
+      background-size: {{ module.row_settings.bg_size }};
+      background-position: {{ module.row_settings.img_pos }};
+      {% if module.row_settings.image_loading == 'eager' %}
+        background-image: url("{{ module.row_settings.bg_image.src }}");
+      {% else %}
+        background-image: none;
+      {% endif %}
+    {%- endif -%}
+  }
+  {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False && module.row_settings.image_loading == 'lazy' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card-mod.lazy-background.visible {
+      background-image: url("{{ module.row_settings.bg_image.src }}");
+    }
+  {% endif %}
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# PARALLAX #}
+  
+  {% if module.row_settings.parallax %}
+  .para-background {
+      {# Fill parent #}
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.125s ease-in-out;
+    }
+
+    .para-background.simpleParallax,
+    .para-background--show-mobile {
+      opacity: 1;
+    }
+
+    #hs_cos_wrapper_{{ name }} .para-background__image {
+      {# Fit image to background block #}
+      display: block;
+      width: 100%;
+      height: 100% !important;
+      object-fit: {{ module.row_settings.bg_size }};
+    }
+  {% endif %}
+
+   {# OVERLAY #}
+  
+  {% if module.row_settings.overlay_bg != 'none' %}
+    #hs_cos_wrapper_{{ name }} .hhs-row-overlay {
+      {% if module.row_settings.overlay_bg == 'color' %}
+        background-color: rgba({{ module.row_settings.overlay_color.color|convert_rgb }}, {% if module.row_settings.overlay_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color.opacity }}{% endif %});
+      {% endif %}
+      {% if module.row_settings.overlay_bg == 'gradient' %}
+        background-color: {{ module.row_settings.overlay_color_1.color }};
+        background: -moz-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: -webkit-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      {% endif %}
+    }
+  {%- endif -%}
+
+  {# PULL UP #}
+  
+  {% if module.row_settings.style.pull_up %}
+  #hs_cos_wrapper_name_{{ name }} .hhs-testimonial-card-mod {z-index: 2;}
+    #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+      top: -{{ module.row_settings.style.pull_up_num_desktop }}px;
+      background-color:  rgba({{ module.row_settings.style.content_bg_color.color|convert_rgb }}, {% if module.row_settings.style.content_bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.style.content_bg_color.opacity }}{% endif %});
+      padding: {{ module.row_settings.style.con_padding }}px;
+      z-index: 5;
+      position: relative;
+      {% if module.row_settings.style.subtle_shadow %}
+        -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+      {% endif %}
+    }
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+        top: -{{ module.row_settings.style.pull_up_num_tablet }}px;
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+        top: -{{ module.row_settings.style.pull_up_num_mobile }}px;
+      }
+    }
+  {% endif %}
+  
+  {# WAVE #}
+  
+  {%- if module.row_settings.add_wave_btm -%}
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+      color:  rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+      bottom: -{{ module.row_settings.adv_settings.padding_bottom }};
+    }
+    {% if module.row_settings.wave.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con svg {
+        fill: rgba({{ module.row_settings.wave.color.color|convert_rgb }}, {% if module.row_settings.wave.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con .hhs-wave-module svg {
+        transform: scale(1, 1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con {
+        bottom: -{{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+  {%- if module.row_settings.add_wave_top -%} 
+    #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+      color:  rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+      top: -{{ module.row_settings.adv_settings.padding_top }};
+    }
+    {% if module.row_settings.wave_top.type == 'opt_6' %}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top svg {
+        fill: rgba({{ module.row_settings.wave_top.color.color|convert_rgb }}, {% if module.row_settings.wave_top.color.opacity == '100' %}1{% else %}0.{{ module.row_settings.wave_top.color.opacity }}{% endif %});
+        height: {{ module.row_settings.wave_top.angle_height }}px;
+      }
+    {% endif %}
+    {%- if module.row_settings.wave_top.flip_wave -%}
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top .hhs-wave-module svg {
+        transform: scale(-1, -1) !important;
+      }
+    {%- endif -%}
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_tablet }};
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-wave-con-top {
+        top: -{{ module.row_settings.adv_settings.padding_top_mobile }};
+      }
+    }
+  {%- endif -%}
+  
+ 
+  
+  {# END #}
+  
+  {# CARD STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-card {
+    background: rgba({{ module.card_style.bg_color.color|convert_rgb }}, {% if module.card_style.bg_color.opacity == '100' %}1{% else %}0.{{module.card_style.bg_color.opacity }}{% endif %});
+    padding: {{ module.card_style.card_padding }}px;
+    {% if module.card_style.add_shadow %}
+      -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+    {% endif %}
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-testimonial-content {
+   padding: {{ module.card_style.card_text_padding }}px;
+   {% if module.col_1.social.show_email or module.col_1.social.show_social %}
+      padding-bottom: calc({{ module.card_style.card_text_padding }} * 3px);
+   {% endif %}
+    text-align: {{ module.card_style.text_align }};
+  }
+  
+  {% if module.card_style.custom_color %}
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card h5, #hs_cos_wrapper_{{ name }} .hhs-testimonial-card h5 a {color: {{ module.card_style.name_color.color }};}
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card h6 {color: {{ module.card_style.title_color.color }};}
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card blockquote {color: {{ module.card_style.quote_color.color }};}
+  {% endif %}
+   #hs_cos_wrapper_{{ name }} .hhs-testimonial-card blockquote {font-size: {{ module.card_style.quote_font_size }}px;}
+  
+    #hs_cos_wrapper_{{ name }} .hhs-testimonial-card img {
+      {% if module.card_style.photo_full %}
+      width: 100%; 
+      {% endif %}
+      {% if module.card_style.photo_full == 'false' and module.card_style.circle == 'true' %}
+      -webkit-border-radius: 100%;
+      border-radius: 100%;
+      {% endif %}
+      text-align: center;
+      display: block;
+      margin: 0 auto {{ module.card_style.card_padding }}px;
+  }
+
+  {# STAR RATING #}
+  #hs_cos_wrapper_{{ name }} .star-rating .star-solid {
+    color: #f1a604;
+  }
+  #hs_cos_wrapper_{{ name }} .star-rating .star-outline {
+    color: #ccc;
+  }
+
+</style>
+{% end_require_css %}
+
+
+{% if module.start.num_cols == '1' %}
+  {% set break = 'col-lg-12' %}
+{% endif %}
+{% if module.start.num_cols == '2' %}
+  {% set break = 'col-lg-6 col-sm-12' %}
+{% endif %}
+{% if module.start.num_cols == '3' %}
+  {% set break = 'col-lg-4 col-sm-12' %}
+{% endif %}
+{% if module.start.num_cols == '4' %}
+  {% set break = 'col-lg-3 col-md-6 col-sm-12' %}
+{% endif %}
+
+{#- THIS SETS EACH OF THE LINKS -#}
+{% set href1 = module.col_1.link.url.href %}
+{% if module.col_1.link.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href1 = "mailto:" + href %}
+{% endif %}
+{% set href2 = module.col_2.link.url.href %}
+{% if module.col_2.link.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href2 = "mailto:" + href %}
+{% endif %}
+{% set href3 = module.col_3.link.url.href %}
+{% if module.col_3.link.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href3 = "mailto:" + href %}
+{% endif %}
+{% set href4 = module.col_4.link.url.href %}
+{% if module.col_4.link.url.type is equalto "EMAIL_ADDRESS" %}
+	{% set href4 = "mailto:" + href %}
+{% endif %}
+
+
+  
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-testimonial-card-mod {% if module.row_settings.image_loading == 'lazy' %}lazy-background{% endif %} {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}">
+  {%- if module.row_settings.add_wave_top -%} 
+    <div class="hhs-wave-con-top">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave_top.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave_top.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+  <div class="{{ module.row_settings.content_width }} {% if module.row_settings.style.pull_up %}hhs-pull-up{% endif %}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div class="{{ break }}">
+        <div class="hhs-testimonial-card">
+         {% if module.col_1.photo.src %}
+            {% if module.col_1.card_link %}<a href="{{ href1 }}" {% if module.col_1.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_1.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}
+              {% if module.col_1.photo.src %}
+                {% set sizeAttrs = 'width="{{ module.col_1.photo.width }}" height="{{ module.col_1.photo.height }}"' %}
+                {% if module.col_1.photo.size_type == 'auto' %}
+                  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.col_1.photo.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ module.col_1.photo.max_width }}" height="{{ module.col_1.photo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = module.col_1.photo.loading != 'disabled' ? 'loading="{{ module.col_1.photo.loading }}"' : '' %}
+                <img src="{{ module.col_1.photo.src }}" alt="{{ module.col_1.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+            {% if module.col_1.card_link %}</a>{% endif %}
+          {% endif %}
+          <div class="hhs-testimonial-content">
+            <blockquote>{{ module.col_1.quote }}</blockquote>
+            <h5>{% if module.col_1.card_link %}<a href="{{ href1 }}" {% if module.col_1.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_1.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}{{ module.col_1.full_name }}{% if module.col_1.card_link %}</a>{% endif %}</h5>
+            <h6>{{ module.col_1.title }}</h6>
+            {% if module.col_1.show_stars %}
+              <div class="star-rating">
+                {% if module.col_1.star_rating == '1' %}<span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_1.star_rating == '2' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_1.star_rating == '3' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_1.star_rating == '4' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_1.star_rating == '5' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if module.start.num_cols >= '2' %}
+      <div class="{{ break }}">
+        <div class="hhs-testimonial-card" {% if module.col_2.hide_testimonial_card %}style="display: none;"{% endif %}>
+         {% if module.col_2.photo.src %}
+            {% if module.col_2.card_link %}<a href="{{ href2 }}" {% if module.col_2.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_2.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}
+              {% if module.col_2.photo.src %}
+                {% set sizeAttrs = 'width="{{ module.col_2.photo.width }}" height="{{ module.col_2.photo.height }}"' %}
+                {% if module.col_2.photo.size_type == 'auto' %}
+                  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.col_2.photo.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ module.col_2.photo.max_width }}" height="{{ module.col_2.photo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = module.col_2.photo.loading != 'disabled' ? 'loading="{{ module.col_2.photo.loading }}"' : '' %}
+                <img src="{{ module.col_2.photo.src }}" alt="{{ module.col_2.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+            {% if module.col_2.card_link %}</a>{% endif %}
+          {% endif %}
+          <div class="hhs-testimonial-content">
+            <blockquote>{{ module.col_2.quote }}</blockquote>
+            <h5>{% if module.col_2.card_link %}<a href="{{ href2 }}" {% if module.col_2.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_2.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}{{ module.col_2.full_name }}{% if module.col_2.card_link %}</a>{% endif %}</h5>
+            <h6>{{ module.col_2.title }}</h6>
+            {% if module.col_2.show_stars %}
+              <div class="star-rating">
+                {% if module.col_2.star_rating == '1' %}<span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_2.star_rating == '2' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_2.star_rating == '3' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_2.star_rating == '4' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_2.star_rating == '5' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if module.start.num_cols >= '3' %}
+      <div class="{{ break }}">
+        <div class="hhs-testimonial-card" {% if module.col_3.hide_testimonial_card %}style="display: none;"{% endif %}>
+         {% if module.col_3.photo.src %}
+            {% if module.col_3.card_link %}<a href="{{ href3 }}" {% if module.col_3.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_3.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}
+              {% if module.col_3.photo.src %}
+                {% set sizeAttrs = 'width="{{ module.col_3.photo.width }}" height="{{ module.col_3.photo.height }}"' %}
+                {% if module.col_3.photo.size_type == 'auto' %}
+                  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.col_3.photo.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ module.col_3.photo.max_width }}" height="{{ module.col_3.photo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = module.col_3.photo.loading != 'disabled' ? 'loading="{{ module.col_3.photo.loading }}"' : '' %}
+                <img src="{{ module.col_3.photo.src }}" alt="{{ module.col_3.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+            {% if module.col_3.card_link %}</a>{% endif %}
+          {% endif %}
+          <div class="hhs-testimonial-content">
+            <blockquote>{{ module.col_3.quote }}</blockquote>
+            <h5>{% if module.col_3.card_link %}<a href="{{ href3 }}" {% if module.col_3.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_3.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}{{ module.col_3.full_name }}{% if module.col_3.card_link %}</a>{% endif %}</h5>
+            <h6>{{ module.col_3.title }}</h6>
+            {% if module.col_3.show_stars %}
+              <div class="star-rating">
+                {% if module.col_3.star_rating == '1' %}<span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_3.star_rating == '2' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_3.star_rating == '3' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_3.star_rating == '4' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_3.star_rating == '5' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if module.start.num_cols >= '4' %}
+      <div class="{{ break }}">
+        <div class="hhs-testimonial-card" {% if module.col_4.hide_testimonial_card %}style="display: none;"{% endif %}>
+         {% if module.col_4.photo.src %}
+            {% if module.col_4.card_link %}<a href="{{ href4 }}" {% if module.col_4.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_4.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}
+              {% if module.col_4.photo.src %}
+                {% set sizeAttrs = 'width="{{ module.col_4.photo.width }}" height="{{ module.col_4.photo.height }}"' %}
+                {% if module.col_4.photo.size_type == 'auto' %}
+                  {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                {% elif module.col_4.photo.size_type == 'auto_custom_max' %}
+                  {% set sizeAttrs = 'width="{{ module.col_4.photo.max_width }}" height="{{ module.col_4.photo.max_height }}" style="max-width: 100%; height: auto;"' %}
+                {% endif %}
+                 {% set loadingAttr = module.col_4.photo.loading != 'disabled' ? 'loading="{{ module.col_4.photo.loading }}"' : '' %}
+                <img src="{{ module.col_4.photo.src }}" alt="{{ module.col_4.photo.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+              {% endif %}
+            {% if module.col_4.card_link %}</a>{% endif %}
+          {% endif %}
+          <div class="hhs-testimonial-content">
+            <blockquote>{{ module.col_4.quote }}</blockquote>
+            <h5>{% if module.col_4.card_link %}<a href="{{ href4 }}" {% if module.col_4.link.open_in_new_tab %}target="_blank"{% endif %} {% if module.col_4.link.no_follow %}rel="nofollow"{% endif %} >{% endif %}{{ module.col_4.full_name }}{% if module.col_4.card_link %}</a>{% endif %}</h5>
+            <h6>{{ module.col_4.title }}</h6>
+            {% if module.col_4.show_stars %}
+              <div class="star-rating">
+                {% if module.col_4.star_rating == '1' %}<span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_4.star_rating == '2' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_4.star_rating == '3' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_4.star_rating == '4' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-outline">☆</span>{% endif %}
+                {% if module.col_4.star_rating == '5' %}<span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span><span class="star-solid">★</span>{% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}  
+    </div>
+  </div>
+  {% if module.row_settings.parallax %}
+    <div class="para-background
+                js-{{ name }}-parallax
+                {{ 'para-background--show-mobile' if module.row_settings.parallax_on_mobile == false }}">
+      <img class="para-background__image
+                  js-{{ name }}-parallax__background"   
+           src="{{ module.row_settings.bg_image.src }}" 
+           alt="{{ module.row_settings.bg_image.alt }}" 
+           loading="lazy" 
+           width="{{ module.row_settings.bg_image.width }}" 
+           height="{{ module.row_settings.bg_image.height }}" />
+    </div>
+  {% endif %}
+  {{ '<span class="hhs-row-overlay"></span>' if module.row_settings.overlay_bg != 'none'  }}
+  {%- if module.row_settings.add_wave_btm -%} 
+    <div class="hhs-wave-con">
+      <div class="hhs-wave-module">
+        {%- if module.row_settings.wave.type == 'opt_1' -%}
+          <svg id="opt_1" data-name="opt 1" xmlns="http://www.w3.org/2000/svg" width="1366" height="128" viewBox="0 0 1366 128" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-1"><path id="Rectangle" class="cls-1" d="M0,0C623,0,667,151.4614,1366,121.6993V128H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_2' -%}
+          <svg id="opt_2" data-name="opt 2" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle-Copy-6" class="cls-1" d="M0,64H1366V62.9663C1240.4894,64.6734,669.439,0,299,0H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_3' -%}
+          <svg id="opt_3" data-name="opt 3" xmlns="http://www.w3.org/2000/svg" width="1366" height="88" viewBox="0 0 1366 88" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-2"><path id="Rectangle" class="cls-1" d="M0,47.8021c307.5088,0,483.3828,29.3677,656.8125,29.3677S1028.2269,6.8806,1366,0V88H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_4' -%}
+          <svg id="opt_4" data-name="opt 4" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-4"><path id="Rectangle-Copy-6" class="cls-1" d="M1366,64H0V.0337c205,0,709,55.6648,1366,55.6648Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_5' -%}
+          <svg id="opt_5" data-name="opt 5" xmlns="http://www.w3.org/2000/svg" width="1366" height="64" viewBox="0 0 1366 64" preserveAspectRatio="none"><defs><style>.cls-1{fill:currentColor;fill-rule:evenodd;}</style></defs><g id="Wave-7"><path id="Rectangle" class="cls-1" d="M0,61.49C623,61.49,699,13.1117,1366,0V64H0Z"></path></g></svg>
+        {%- elif module.row_settings.wave.type == 'opt_6' -%}
+          <svg id="opt_6" data-name="opt 6" viewBox="0 0 200 200" preserveAspectRatio="none"><polygon points="0,200 200,0 200,200" /></svg>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% if module.row_settings.parallax == 'true' && module.row_settings.bg_type == 'image' %}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{% endif %}
+
+{% require_js %}
+{% if module.row_settings.parallax %}
+  <script defer>
+    {% unless module.row_settings.parallax_on_mobile %}
+      if (window.matchMedia('(min-width: 768px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax__background');
+          new simpleParallax(image, {
+            delay: {{ module.row_settings.parallax_delay }},
+            scale: {{ module.row_settings.parallax_scale }},
+            transition: "{{ module.row_settings.parallax_transition }}",
+            orientation: "{{ module.row_settings.parallax_orientation }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.row_settings.parallax_on_mobile %}
+      }
+    {% endunless %}
+  </script>
+{% endif %}
+{%- end_require_js -%}
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-testimonial-cards.css"), { async: true }) }}

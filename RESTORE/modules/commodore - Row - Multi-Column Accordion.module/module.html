@@ -1,0 +1,708 @@
+{# 
+ NAME: MULTI-COLUMN ACCORDION
+ MODULE VERSION: 2.1.4
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/14/23
+ REMINDER: You Rock!
+#}
+
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-accordion-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top }};
+      padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    {% if module.row_settings.bg_type == 'color' %}
+      background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {% if module.row_settings.bg_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.bg_color.opacity }}{% endif %});
+    {% endif %}
+    {% if module.row_settings.bg_type == 'gradient' %}
+      background-color: {{ module.row_settings.color_1.color }};
+      background: -moz-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: -webkit-linear-gradient({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+      background: linear-gradient ({{ module.row_settings.gradient_angle }}, {{ module.row_settings.color_1.color }} 0%, {{ module.row_settings.color_2.color }} 100%);
+    {% endif %}
+    {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False -%}
+      background-repeat: no-repeat;
+      background-size: {{ module.row_settings.bg_size }};
+      background-position: {{ module.row_settings.img_pos }};
+      {% if module.row_settings.image_loading == 'eager' %}
+        background-image: url("{{ module.row_settings.bg_image.src }}");
+      {% else %}
+        background-image: none;
+      {% endif %}
+    {%- endif -%}
+  }
+  {%- if module.row_settings.bg_type == 'image' && module.row_settings.parallax == False && module.row_settings.image_loading == 'lazy' -%}
+    #hs_cos_wrapper_{{ name }} .hhs-accordion-mod.lazy-background.visible {
+      background-image: url("{{ module.row_settings.bg_image.src }}");
+    }
+  {% endif %}
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-accordion-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-accordion-mod {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      text-align: {{ module.col_1.settings.align_mobile }};
+    }
+  }
+  
+  {# SHADOW #}
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }} {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+       -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+        box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+        z-index: 1;
+        position: relative;
+      }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+      -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }},{% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    }
+  {% endif %} 
+  
+  {# PARALLAX #}
+  
+  {% if module.row_settings.parallax %}
+  .para-background {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.125s ease-in-out;
+    }
+
+    .para-background.simpleParallax,
+    .para-background--show-mobile {
+      opacity: 1;
+    }
+
+    #hs_cos_wrapper_{{ name }} .para-background__image {
+      {# Fit image to background block #}
+      display: block;
+      width: 100%;
+      height: 100% !important;
+      object-fit: {{ module.row_settings.bg_size }};
+    }
+  {% endif %}
+
+  {# OVERLAY #}
+  
+  {% if module.row_settings.overlay_bg != 'none' %}
+    #hs_cos_wrapper_{{ name }} .hhs-row-overlay {
+      {% if module.row_settings.overlay_bg == 'color' %}
+        background-color: rgba({{ module.row_settings.overlay_color.color|convert_rgb }}, {% if module.row_settings.overlay_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color.opacity }}{% endif %});
+      {% endif %}
+      {% if module.row_settings.overlay_bg == 'gradient' %}
+        background-color: {{ module.row_settings.overlay_color_1.color }};
+        background: -moz-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: -webkit-linear-gradient({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+        background: linear-gradient ({{ module.row_settings.overlay_angle }}, rgba({{ module.row_settings.overlay_color_1.color|convert_rgb }},{% if module.row_settings.overlay_color_1.opacity == '100' %}1{% else %}0.{{ module.row_settings.overlay_color_1.opacity }}{% endif %}) 0%, rgba({{ module.row_settings.overlay_color_2.color|convert_rgb }},{% if module.row_settings.overlay_color_2.opacity == '100' %}1{% else %} 0.{{ module.row_settings.overlay_color_2.opacity }}{% endif %}) 100%);
+      {% endif %}
+    }
+  {%- endif -%}
+  
+  {# PULL UP #}
+  
+  {% if module.row_settings.style.pull_up %}
+    #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+      top: -{{ module.row_settings.style.pull_up_num_desktop }}px;
+      background-color: {{ module.row_settings.style.content_bg_color.color }};
+      padding: {{ module.row_settings.style.con_padding }}px;
+      padding-bottom: 0px;
+      z-index: 5;
+      position: relative;
+      {% if module.row_settings.style.subtle_shadow %}
+        -webkit-box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+        box-shadow: 0 0 15px 0 rgba(0,0,0,0.1);
+      {% endif %}
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-pull-up .row {
+        top: -{{ module.row_settings.style.pull_up_num_mobile }}px;
+        padding: {{ module.row_settings.style.con_padding_mobile }}px;
+      }
+    }
+  {% endif %}
+  
+  {# END #}
+  {# COLUMN 1 #}
+  {# TEXT #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 li, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 blockquote {
+    {% if module.col_1.settings.custom_text_color %}
+      color:  {{ module.col_1.settings.text_color.color }};
+    {% endif %}
+    text-align: {{ module.col_1.settings.align_desktop }};
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 a.accordion-title h4 {
+    {% if module.col_1.settings.custom_text_color %}
+    color: {{ module.col_1.settings.accordion_title_color.color }};
+    {% endif %}
+    font-size: {{ module.col_1.settings.accordion_title_size }}px;
+  }
+  
+  {% if module.col_1.settings.custom_text_color %}
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 p a {
+      color: {{ module.col_1.settings.link_color.color }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 p a:hover {
+      color: {{ module.col_1.settings.link_color_hover.color }};
+    }
+  {% endif %}
+  
+  #hs_cos_wrapper_{{ name }} .c1 .hhs-accordion-1 a.accordion-title:hover {
+   background-color: rgba({{ module.col_1.settings.title_bg_color.color|convert_rgb }}, {% if module.col_1.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.col_1.settings.title_bg_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }} .c1 .hhs-accordion-1 li {
+    border-bottom: 1px solid rgba({{ module.col_1.settings.line_color.color|convert_rgb }}, {% if module.col_1.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_1.settings.line_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }} .c1 .hhs-accordion-1  {
+    border-top: 1px solid rgba({{ module.col_1.settings.line_color.color|convert_rgb }}, {% if module.col_1.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_1.settings.line_color.opacity }}{% endif %});
+  }
+  #hs_cos_wrapper_{{ name }} .c1 .hhs-accordion-1 a.accordion-title:after {
+    border-right: 1px solid rgba({{ module.col_1.settings.arrow_color.color|convert_rgb }}, {% if module.col_1.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_1.settings.arrow_color.opacity }}{% endif %});
+    border-bottom: 1px solid rgba({{ module.col_1.settings.arrow_color.color|convert_rgb }}, {% if module.col_1.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_1.settings.arrow_color.opacity }}{% endif %});
+  }
+  
+  {# DIVIDER #}
+  
+  {%- if module.col_1.settings.show_divider -%}
+    #hs_cos_wrapper_{{ name }} .c1 .hhs-divider{
+      border-color: {{ module.col_1.settings.divider_color.color }};
+      {% if module.col_1.settings.align_desktop == 'center' %}
+       margin-right: auto; margin-left: auto;
+      {% endif %}
+      {% if module.col_1.settings.align_desktop == 'left' %}
+        margin-right: 50px; margin-left: 0px;
+      {% endif %}
+      {% if module.col_1.settings.align_desktop == 'right' %}
+        float: right;
+      {% endif %}
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .c1 .hhs-divider{
+        {% if module.col_1.settings.align_mobile == 'center' %}
+          margin-right: auto !important;
+          margin-left: auto !important;
+          float: none;
+        {% endif %}
+        {% if module.col_1.settings.align_mobile == 'left' %}
+          margin-left: 0 !important;
+          float: none;
+        {% endif %}
+        {% if module.col_1.settings.align_mobile == 'right' %}
+          float: right !important;
+        {% endif %}
+      }
+    }
+  {% endif -%}
+  
+  {# END #}
+  {# COLUMN 2 #}
+  
+  {% if module.start.num_cols >= '2' %}
+    {# TEXT #}
+
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 li, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 blockquote {
+      {% if module.col_2.settings.custom_text_color %}
+        color:  {{ module.col_2.settings.text_color.color }};
+      {% endif %}
+      text-align: {{ module.col_2.settings.align_desktop }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 a.accordion-title h4 {
+      {% if module.col_2.settings.custom_text_color %}
+        color: {{ module.col_2.settings.accordion_title_color.color }};
+      {% endif %}
+      font-size: {{ module.col_2.settings.accordion_title_size }}px;
+    }
+    {% if module.col_2.settings.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 p a {
+        color: {{ module.col_2.settings.link_color.color }};
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 p a:hover {
+        color: {{ module.col_2.settings.link_color_hover.color }};
+      }
+    {% endif %}
+
+    #hs_cos_wrapper_{{ name }} .c2 .hhs-accordion-1 a.accordion-title:hover {
+     background-color: rgba({{ module.col_2.settings.title_bg_color.color|convert_rgb }}, {% if module.col_2.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.col_2.settings.title_bg_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c2 .hhs-accordion-1 li {
+      border-bottom: 1px solid rgba({{ module.col_2.settings.line_color.color|convert_rgb }}, {% if module.col_2.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_2.settings.line_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c2 .hhs-accordion-1  {
+      border-top: 1px solid rgba({{ module.col_2.settings.line_color.color|convert_rgb }}, {% if module.col_2.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_2.settings.line_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c2 .hhs-accordion-1 a.accordion-title:after {
+      border-right: 1px solid rgba({{ module.col_2.settings.arrow_color.color|convert_rgb }}, {% if module.col_2.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_2.settings.arrow_color.opacity }}{% endif %});
+      border-bottom: 1px solid rgba({{ module.col_2.settings.arrow_color.color|convert_rgb }}, {% if module.col_2.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_2.settings.arrow_color.opacity }}{% endif %});
+    }
+
+    {# DIVIDER #}
+    {%- if module.col_2.settings.show_divider -%}
+      #hs_cos_wrapper_{{ name }} .c2 .hhs-divider{
+        border-color: {{ module.col_2.settings.divider_color.color }};
+        {% if module.col_2.settings.align_desktop == 'center' %}
+          margin-right: auto; margin-left: auto;
+        {% endif %}
+        {% if module.col_2.settings.align_desktop == 'left' %}
+          margin-right: 50px; margin-left: 0px;
+        {% endif %}
+        {% if module.col_2.settings.align_desktop == 'right' %}
+          float: right;
+        {% endif %}
+      }
+      @media (max-width: 575px) {
+        #hs_cos_wrapper_{{ name }} .c2 .hhs-divider{
+          {% if module.col_2.settings.align_mobile == 'center' %}
+            margin-right: auto !important;
+            margin-left: auto !important;
+            float: none;
+          {% endif %}
+          {% if module.col_2.settings.align_mobile == 'left' %}
+            margin-left: 0 !important;
+            float: none;
+          {% endif %}
+          {% if module.col_2.settings.align_mobile == 'right' %}
+            float: right !important;
+          {% endif %}
+        }
+      }
+    {%- endif -%}
+  
+  {% endif %}
+  
+  {# END #}
+  {# COLUMN 3 #}
+  
+  {% if module.start.num_cols >= '3' %}
+  
+    {# TEXT #}
+
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 li, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 blockquote {
+      {% if module.col_3.settings.custom_text_color %}
+        color:  {{ module.col_3.settings.text_color.color }};
+      {% endif %}
+      text-align: {{ module.col_3.settings.align_desktop }};
+    }
+
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 a.accordion-title h4 {
+      {% if module.col_3.settings.custom_text_color %}
+      color: {{ module.col_3.settings.accordion_title_color.color }};
+      {% endif %}
+      font-size: {{ module.col_3.settings.accordion_title_size }}px;
+    }
+    {% if module.col_3.settings.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 p a {
+        color: {{ module.col_3.settings.link_color.color }};
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 p a:hover {
+        color: {{ module.col_3.settings.link_color_hover.color }};
+      }
+    {% endif %}
+
+      #hs_cos_wrapper_{{ name }} .c3 .hhs-accordion-1 a.accordion-title:hover {
+       background-color: rgba({{ module.col_3.settings.title_bg_color.color|convert_rgb }}, {% if module.col_3.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.col_3.settings.title_bg_color.opacity }}{% endif %});
+      }
+      #hs_cos_wrapper_{{ name }} .c3 .hhs-accordion-1 li {
+        border-bottom: 1px solid rgba({{ module.col_3.settings.line_color.color|convert_rgb }}, {% if module.col_3.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_3.settings.line_color.opacity }}{% endif %});
+      }
+      #hs_cos_wrapper_{{ name }} .c3 .hhs-accordion-1  {
+        border-top: 1px solid rgba({{ module.col_3.settings.line_color.color|convert_rgb }}, {% if module.col_3.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_3.settings.line_color.opacity }}{% endif %});
+      }
+      #hs_cos_wrapper_{{ name }} .c3 .hhs-accordion-1 a.accordion-title:after {
+        border-right: 1px solid rgba({{ module.col_3.settings.arrow_color.color|convert_rgb }}, {% if module.col_3.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_3.settings.arrow_color.opacity }}{% endif %});
+        border-bottom: 1px solid rgba({{ module.col_3.settings.arrow_color.color|convert_rgb }}, {% if module.col_3.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_3.settings.arrow_color.opacity }}{% endif %});
+      }
+
+    {# DIVIDER #}
+
+    {%- if module.col_3.settings.show_divider -%}
+      #hs_cos_wrapper_{{ name }} .c3 .hhs-divider{
+        border-color: {{ module.col_3.settings.divider_color.color }};
+        {% if module.col_3.settings.align_desktop == 'center' %}
+          margin-right: auto; margin-left: auto;
+        {% endif %}
+        {% if module.col_3.settings.align_desktop == 'left' %}
+         margin-right: 50px; margin-left: 0px;
+        {% endif %}
+        {% if module.col_3.settings.align_desktop == 'right' %}
+          float: right;
+        {% endif %}
+      }
+      @media (max-width: 575px) {
+        #hs_cos_wrapper_{{ name }} .c3 .hhs-divider{
+          {% if module.col_3.settings.align_mobile == 'center' %}
+            margin-right: auto !important;
+            margin-left: auto !important;
+            float: none;
+          {% endif %}
+          {% if module.col_3.settings.align_mobile == 'left' %}
+            margin-left: 0 !important;
+            float: none;
+          {% endif %}
+          {% if module.col_3.settings.align_mobile == 'right' %}
+            float: right !important;
+          {% endif %}
+        }
+      }
+    {%- endif -%}
+  
+  {% endif %}
+  
+  {# END #}
+  {# COLUMN 4 #}
+  
+  {% if module.start.num_cols == '4' %}
+    {# TEXT #}
+
+     #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 li, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 blockquote {
+      {% if module.col_4.settings.custom_text_color %}
+        color:  {{ module.col_4.settings.text_color.color }};
+      {% endif %}
+      text-align: {{ module.col_4.settings.align_desktop }};
+    }
+
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 a.accordion-title h4 {
+      {% if module.col_4.settings.custom_text_color %}
+        color: {{ module.col_4.settings.accordion_title_color.color }};
+      {% endif %}
+      font-size: {{ module.col_4.settings.accordion_title_size }}px;
+    }
+    {% if module.col_4.settings.custom_text_color %}
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 p a {
+        color: {{ module.col_4.settings.link_color.color }};
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 p a:hover {
+        color: {{ module.col_4.settings.link_color_hover.color }};
+      }
+    {% endif %}
+
+    #hs_cos_wrapper_{{ name }} .c4 .hhs-accordion-1 a.accordion-title:hover {
+     background-color: rgba({{ module.col_4.settings.title_bg_color.color|convert_rgb }}, {% if module.col_4.settings.title_bg_color.opacity == '100' %}1{% else %}0.{{ module.col_4.settings.title_bg_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c4 .hhs-accordion-1 li {
+      border-bottom: 1px solid rgba({{ module.col_4.settings.line_color.color|convert_rgb }}, {% if module.col_4.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_4.settings.line_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c4 .hhs-accordion-1  {
+      border-top: 1px solid rgba({{ module.col_4.settings.line_color.color|convert_rgb }}, {% if module.col_4.settings.line_color.opacity == '100' %}1{% else %}0.{{ module.col_4.settings.line_color.opacity }}{% endif %});
+    }
+    #hs_cos_wrapper_{{ name }} .c4 .hhs-accordion-1 a.accordion-title:after {
+      border-right: 1px solid rgba({{ module.col_4.settings.arrow_color.color|convert_rgb }}, {% if module.col_4.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_4.settings.arrow_color.opacity }}{% endif %});
+      border-bottom: 1px solid rgba({{ module.col_4.settings.arrow_color.color|convert_rgb }}, {% if module.col_4.settings.arrow_color.opacity == '100' %}1{% else %}0.{{ module.col_4.settings.arrow_color.opacity }}{% endif %});
+    }
+
+    {# DIVIDER #}
+
+    {%- if module.col_4.settings.show_divider -%}
+      #hs_cos_wrapper_{{ name }} .c4 .hhs-divider{
+        border-color: {{ module.col_4.settings.divider_color.color }};
+        {% if module.col_4.settings.align_desktop == 'center' %}
+          margin-right: auto; margin-left: auto;
+        {% endif %}
+        {% if module.col_4.settings.align_desktop == 'left' %}
+         margin-right: 50px; margin-left: 0px;
+        {% endif %}
+        {% if module.col_4.settings.align_desktop == 'right' %}
+          float: right;
+        {% endif %}
+      }
+      @media (max-width: 575px) {
+        #hs_cos_wrapper_{{ name }} .c4 .hhs-divider{
+          {% if module.col_4.settings.align_mobile == 'center' %}
+            margin-right: auto !important;
+            margin-left: auto !important;
+            float: none;
+          {% endif %}
+          {% if module.col_4.settings.align_mobile == 'left' %}
+            margin-left: 0 !important;
+            float: none;
+          {% endif %}
+          {% if module.col_4.settings.align_mobile == 'right' %}
+            float: right !important;
+          {% endif %}
+        }
+      }
+    {%- endif -%}
+  
+  {% endif %}
+
+  {# END #}
+  {# MOBILE TEXT ALIGNMENT #}
+  
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c1 li {
+      text-align: {{ module.col_1.settings.align_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c2 li {
+      text-align: {{ module.col_2.settings.align_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c3 li {
+      text-align: {{ module.col_3.settings.align_mobile }};
+    }
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 p, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 span, #hs_cos_wrapper_{{ name }} .hhs-rich-text.c4 li {
+      text-align: {{ module.col_4.settings.align_mobile }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+
+{% if module.start.num_cols == '1' %}
+  {% set col_1_size = "col-sm-12" %}
+{% endif %}
+
+
+{% if module.start.num_cols == '2' %}
+  {% if module.start.two_col_arrangement == "opt1" %}
+    {% set col_1_size = "col-lg-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt2" %}
+    {% set col_1_size = "col-lg-4 col-sm-12" %}
+    {% set col_2_size = "col-lg-8 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt3" %}
+    {% set col_1_size = "col-lg-8 col-sm-12" %}
+    {% set col_2_size = "col-lg-4 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt4" %}
+    {% set col_1_size = "col-lg-5 col-sm-12" %}
+    {% set col_2_size = "col-lg-7 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt5" %}
+    {% set col_1_size = "col-lg-7 col-sm-12" %}
+    {% set col_2_size = "col-lg-5 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt6" %}
+    {% set col_1_size = "col-lg-9 col-sm-12" %}
+    {% set col_2_size = "col-lg-3 col-sm-12" %}
+  {% endif %}
+  {% if module.start.two_col_arrangement == "opt7" %}
+    {% set col_1_size = "col-lg-3 col-sm-12" %}
+    {% set col_2_size = "col-lg-9 col-sm-12" %}
+  {% endif %}
+{% endif %}
+
+{% if module.start.num_cols == '3' %}
+  {% if module.start.three_col_arrangement == "opt1" %}
+    {% set col_1_size = "col-lg-4 col-md-12" %}
+    {% set col_2_size = "col-lg-4 col-md-12" %}
+    {% set col_3_size = "col-lg-4 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt2" %}
+    {% set col_1_size = "col-lg-6 col-md-12" %}
+    {% set col_2_size = "col-lg-3 col-md-12" %}
+    {% set col_3_size = "col-lg-3 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt3" %}
+    {% set col_1_size = "col-lg-3 col-md-12" %}
+    {% set col_2_size = "col-lg-3 col-md-12" %}
+    {% set col_3_size = "col-lg-6 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt4" %}
+    {% set col_1_size = "col-lg-3 col-md-12" %}
+    {% set col_2_size = "col-lg-6 col-md-12" %}
+    {% set col_3_size = "col-lg-3 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt5" %}
+    {% set col_1_size = "col-lg-8 col-md-12" %}
+    {% set col_2_size = "col-lg-2 col-md-12" %}
+    {% set col_3_size = "col-lg-2 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt6" %}
+    {% set col_1_size = "col-lg-2 col-md-12" %}
+    {% set col_2_size = "col-lg-2 col-md-12" %}
+    {% set col_3_size = "col-lg-8 col-md-12" %}
+  {% endif %}
+  {% if module.start.three_col_arrangement == "opt7" %}
+    {% set col_1_size = "col-lg-2 col-md-12" %}
+    {% set col_2_size = "col-lg-8 col-md-12" %}
+    {% set col_3_size = "col-lg-2 col-md-12" %}
+  {% endif %}
+{% endif %}
+
+
+{% if module.start.num_cols == '4' %}
+  {% if module.start.four_col_arrangement == "opt1" %}
+    {% set col_1_size = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_3_size = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_4_size = "col-lg-3 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt2" %}
+    {% set col_1_size = "col-lg-6 col-md-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_3_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_4_size = "col-lg-2 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt3" %}
+    {% set col_1_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_3_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_4_size = "col-lg-6 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt4" %}
+    {% set col_1_size = "col-lg-5 col-md-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_3_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_4_size = "col-lg-2 col-md-6 col-sm-12" %}
+  {% endif %}
+  {% if module.start.four_col_arrangement == "opt5" %}
+    {% set col_1_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_2_size = "col-lg-2 col-md-6 col-sm-12" %}
+    {% set col_3_size = "col-lg-3 col-md-6 col-sm-12" %}
+    {% set col_4_size = "col-lg-5 col-md-6 col-sm-12" %}
+  {% endif %}
+{% endif %}
+
+  
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-accordion-mod {% if module.row_settings.image_loading == 'lazy' %}lazy-background{% endif %} {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %} {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }} {% if module.row_settings.parallax %}parallax{% endif %}">
+  <div class="{{ module.row_settings.content_width }} {% if module.row_settings.style.pull_up %}hhs-pull-up{% endif %}" style="{% if module.row_settings.content_width == 'custom' %} max-width: {{ module.row_settings.set_width }}px; margin: auto;{% endif %}">
+    <div class="row">
+      <div {% if module.col_1.settings.animate_text != 'none' %}data-wow-delay="{{ module.col_1.settings.animation_delay }}"{% endif %} class="{% if module.col_1.settings.animate_text != 'none' %}wow{% endif %} {{ module.col_1.settings.animate_text }} {{ col_1_size }} c1" >
+        {% if module.col_1.settings.show_divider %}<div class="hhs-divider" >&nbsp;</div>{% endif %}
+        <div class="hhs-rich-text-in">
+          <div class="hhs-rich-text c1">
+            {{ module.col_1.content }}
+            {% if module.col_1.accordions %}
+              <ul class="hhs-accordion-1 accordion-controls" aria-label="Accordion Control Group Buttons">
+                {% for item in module.col_1.accordions %}
+                  <li>
+                    <a href="#" id="accordion-control-1-{{ loop.index }}" data-id="{{ item.accordion_item_id }}" class="accordion-title {{'active' if item.open_by_default }}" aria-controls="content-1-{{ loop.index }}" aria-expanded="false"><h4>{% inline_text field="title" value="{{ item.title }}" %}</h4></a>
+                    <div id="content-1-{{ loop.index }}" class="hhs-accordion-content" {{'style="display:block;"' if item.open_by_default }} aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if module.start.num_cols >= '2' %}
+        <div {% if module.col_2.settings.animate_text != 'none' %}data-wow-delay="{{ module.col_2.settings.animation_delay }}"{% endif %} class="{% if module.col_2.settings.animate_text != 'none' %}wow{% endif %} {{ module.col_2.settings.animate_text }} {{ col_2_size }} c2" >
+          {% if module.col_2.settings.show_divider %}<div class="hhs-divider" >&nbsp;</div>{% endif %}
+          <div class="hhs-rich-text-in">
+            <div class="hhs-rich-text c2">
+              {{ module.col_2.content }}
+              {% if module.col_2.accordions %}
+                <ul class="hhs-accordion-1 accordion-controls" aria-label="Accordion Control Group Buttons">
+                  {% for item in module.col_2.accordions %}
+                    <li>
+                      <a href="#" id="accordion-control-2-{{ loop.index }}"  data-id="{{ item.accordion_item_id }}"  class="accordion-title {{'active' if item.open_by_default }}" aria-controls="content-2-{{ loop.index }}" aria-expanded="false"><h4>{% inline_text field="title" value="{{ item.title }}" %}</h4></a>
+                      <div id="content-2-{{ loop.index }}" class="hhs-accordion-content" {{'style="display:block;"' if item.open_by_default }} aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if module.start.num_cols >= '3' %}
+        <div {% if module.col_3.settings.animate_text != 'none' %}data-wow-delay="{{ module.col_3.settings.animation_delay }}"{% endif %} class="{% if module.col_3.settings.animate_text != 'none' %}wow{% endif %} {{ module.col_3.settings.animate_text }} {{ col_3_size }} c3" >
+          {% if module.col_3.settings.show_divider %}<div class="hhs-divider" >&nbsp;</div>{% endif %}
+          <div class="hhs-rich-text-in">
+            <div class="hhs-rich-text c3">
+              {{ module.col_3.content }}
+              {% if module.col_3.accordions %}
+                <ul class="hhs-accordion-1 accordion-controls" aria-label="Accordion Control Group Buttons">
+                  {% for item in module.col_3.accordions %}
+                    <li>
+                      <a href="#" id="accordion-control-3-{{ loop.index }}"  data-id="{{ item.accordion_item_id }}"  class="accordion-title {{'active' if item.open_by_default }}" aria-controls="content-3-{{ loop.index }}" aria-expanded="false"><h4>{% inline_text field="title" value="{{ item.title }}" %}</h4></a>
+                      <div id="content-3-{{ loop.index }}" class="hhs-accordion-content" {{'style="display:block;"' if item.open_by_default }} aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if module.start.num_cols >= '4' %}
+        <div {% if module.col_4.settings.animate_text != 'none' %}data-wow-delay="{{ module.col_4.settings.animation_delay }}"{% endif %} class="{% if module.col_4.settings.animate_text != 'none' %}wow{% endif %} {{ module.col_4.settings.animate_text }} {{ col_4_size }} c4" >
+          {% if module.col_4.settings.show_divider %}<div class="hhs-divider" >&nbsp;</div>{% endif %}
+          <div class="hhs-rich-text-in">
+            <div class="hhs-rich-text c4" >
+              {{ module.col_4.content }}
+              {% if module.col_4.accordions %}
+                <ul class="hhs-accordion-1 accordion-controls" aria-label="Accordion Control Group Buttons">
+                  {% for item in module.col_4.accordions %}
+                    <li>
+                      <a href="#" id="accordion-control-4-{{ loop.index }}"  data-id="{{ item.accordion_item_id }}"  class="accordion-title {{'active' if item.open_by_default }}" aria-controls="content-4-{{ loop.index }}" aria-expanded="false"><h4>{% inline_text field="title" value="{{ item.title }}" %}</h4></a>
+                      <div id="content-4-{{ loop.index }}" class="hhs-accordion-content" {{'style="display:block;"' if item.open_by_default }} aria-hidden="true">{% inline_rich_text field="content" value="{{ item.content }}" %}</div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}  
+    </div>
+  </div> 
+  {% if module.row_settings.parallax %}
+    <div class="para-background
+                js-{{ name }}-parallax
+                {{ 'para-background--show-mobile' if module.row_settings.parallax_on_mobile == false }}">
+      <img class="para-background__image
+                  js-{{ name }}-parallax__background"   
+           src="{{ module.row_settings.bg_image.src }}" 
+           alt="{{ module.row_settings.bg_image.alt }}" 
+           loading="lazy" 
+           width="{{ module.row_settings.bg_image.width }}" 
+           height="{{ module.row_settings.bg_image.height }}" />
+    </div>
+  {% endif %}
+  {{ '<span class="hhs-row-overlay"></span>' if module.row_settings.overlay_bg != 'none'  }}
+</div>
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-multi-column-accordion.css"), { async: true }) }}
+
+{% if module.row_settings.parallax == 'true' && module.row_settings.bg_type == 'image' %}
+  {{ require_js(get_asset_url("../../js/parallax.js")) }}
+{% endif %}
+
+{% require_js %}
+{% if module.row_settings.parallax %}
+  <script defer>
+    {% unless module.row_settings.parallax_on_mobile %}
+      if (window.matchMedia('(min-width: 768px)').matches) {  
+    {% endunless %}
+          var image = document.getElementsByClassName('js-{{ name }}-parallax__background');
+          new simpleParallax(image, {
+            delay: {{ module.row_settings.parallax_delay }},
+            scale: {{ module.row_settings.parallax_scale }},
+            transition: "{{ module.row_settings.parallax_transition }}",
+            orientation: "{{ module.row_settings.parallax_orientation }}",
+            customWrapper: ".js-{{ name }}-parallax",
+          });
+    {% unless module.row_settings.parallax_on_mobile %}
+      }
+    {% endunless %}
+  </script>
+{% endif %}
+{%- end_require_js -%}

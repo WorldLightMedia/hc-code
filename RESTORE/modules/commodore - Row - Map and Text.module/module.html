@@ -1,0 +1,215 @@
+{# 
+ NAME: MAP AND TEXT
+ MODULE VERSION: 2.0.1
+ COMMODORE VERSION: 6.2
+ LAST UPDATED: 6/1/21
+ REMINDER: You Rock!
+#}
+
+{% require_css %}
+<style>
+  
+  {# ROW STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-map-text-mod {
+    background-color: rgba({{ module.row_settings.bg_color.color|convert_rgb }}, {{ module.row_settings.bg_color.opacity * 0.01 }});
+  }
+  
+  {% if module.row_settings.shadow == 'outer' %}
+    #hs_cos_wrapper_{{ name }}  {
+      position: relative;
+      z-index: 1;
+    }
+    #hs_cos_wrapper_{{ name }} .outer-shadow {
+     -webkit-box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+      box-shadow: 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});   
+      z-index: 1;
+      position: relative;
+    }
+  {% elif module.row_settings.shadow == 'inner' %}
+    #hs_cos_wrapper_{{ name }} .inner-shadow {
+    -webkit-box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+    box-shadow:inset 0 0 {{ module.row_settings.shadow_size }}px 1px rgba({{ module.row_settings.shadow_color.color|convert_rgb }}, {% if module.row_settings.shadow_color.opacity == '100' %}1{% else %}0.{{ module.row_settings.shadow_color.opacity }}{% endif %});
+  }
+  {% endif %}
+  
+  {# END #}
+  
+  {# TEXT COLUMN STYLE #}
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+    padding-top: {{ module.row_settings.adv_settings.padding_top }};
+    padding-bottom:  {{ module.row_settings.adv_settings.padding_bottom }};
+    padding-right: {{ module.content.text_padding_right_left }}px;
+    padding-left: {{ module.content.text_padding_right_left }}px;
+  }
+  
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_tablet }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_tablet }};
+      padding-right: {{ module.content.text_padding_right_left_tablet }}px;
+      padding-left: {{ module.content.text_padding_right_left_tablet }}px;
+    }
+  }
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text {
+      padding-top: {{ module.row_settings.adv_settings.padding_top_mobile }};
+      padding-bottom: {{ module.row_settings.adv_settings.padding_bottom_mobile }};
+      padding-right: {{ module.content.text_padding_right_left_mobile }}px;
+      padding-left: {{ module.content.text_padding_right_left_mobile }}px;
+    }
+  }
+  
+  #hs_cos_wrapper_{{ name }} .hhs-rich-text h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text p, #hs_cos_wrapper_{{ name }} .hhs-rich-text span, #hs_cos_wrapper_{{ name }} .hhs-rich-text li {
+    {% if module.content.custom_text_color %}color:  {{ module.content.text_color.color }};{% endif %}
+    text-align: {{ module.content.text_align }};
+  }
+  
+  {%- if module.content.advanced.layer_img -%}
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img {
+     position: relative;
+     z-index: 10;
+    }
+
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+      z-index: 10;
+      position: relative;
+      margin-{{ module.start.img_col }}: -{{ module.content.advanced.text_slider }}px;
+      {% if module.content.advanced.header_cutout %}
+        background-color: {{ module.row_settings.bg_color.color }};
+        padding: {{ module.content.advanced.cutout_size }}px; 
+        {% if module.start.img_col == 'right' %}
+          padding-left: 0px;
+        {% endif %}
+      {% endif %}
+    }
+
+    #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+      margin-{{ module.start.img_col }}: -{{ module.content.advanced.text_slider }}px !important;
+      text-align: {{ module.start.img_col }};
+    }
+  
+    @media (max-width: 922px) {
+      #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+        margin-{{ module.start.img_col }}: unset !important;
+        text-align: {{ module.content.text_align_mobile }};
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+        z-index: 1;
+        position: relative;
+        margin-{{ module.start.img_col }}: unset;
+        background-color: none;
+        padding: 0 !important; 
+      }
+    }
+    @media (max-width: 575px) {
+      #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img.overlay-img h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text.overlay-img h6 {
+        z-index: 1;
+        position: relative;
+        margin-{{ module.start.img_col }}: unset;
+        background-color: none;
+        padding: 0 !important; 
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+        margin-{{ module.start.img_col }}: unset;
+        text-align: {{ module.content.text_align_mobile }};
+      }
+      #hs_cos_wrapper_{{ name }} .hhs-divider.overlay-img {
+        margin-{{ module.start.img_col }}: unset !important;
+      }
+    }
+  {%- endif -%}
+  
+  {# DIVIDER #}
+  
+  {%- if module.content.settings.show_divider -%}
+    {% if module.content.settings.custom_divider_color %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider{
+        border-color: {{ module.content.settings.divider_color.color }};
+      }
+    {% endif %}
+    {% if module.content.text_align == 'center' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {margin: 0 auto 50px;}
+    {% elif module.content.text_align == 'left' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {margin: 0 0 50px;}
+    {% elif module.content.text_align == 'right' %}
+      #hs_cos_wrapper_{{ name }} .hhs-divider {float: right;}
+    {% endif %}
+    @media (max-width: 575px) {
+      {% if module.content.text_align_mobile == 'center' %}
+        #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: auto; margin-left: auto; float: none;}
+      {% elif module.content.text_align_mobile == 'left' %}
+        #hs_cos_wrapper_{{ name }} .hhs-divider {margin-right: 50px; margin-left: 0px; float: none;}
+      {% elif module.content.text_align_mobile == 'right' %}
+        #hs_cos_wrapper_{{ name }} .hhs-divider {float: right;}
+      {% endif %}
+    }
+  {%- endif -%}
+  
+  
+  {# TABLET #}
+  @media (max-width: 922px) {
+    #hs_cos_wrapper_{{ name }} .hhs-google-map {
+      height: {{ module.content.settings.map_height_mobile }}px; 
+    } 
+    {% if module.content.settings.map_first_mobile %}
+     #hs_cos_wrapper_{{ name }} .order-1-mobile {order: 1;}
+     #hs_cos_wrapper_{{ name }} .order-2-mobile {order: 2;}
+    {% endif %}
+  }
+  
+  {# MOBILE #}
+  @media (max-width: 575px) {
+    #hs_cos_wrapper_{{ name }} .hhs-rich-text h1, #hs_cos_wrapper_{{ name }} .hhs-rich-text h2,#hs_cos_wrapper_{{ name }} .hhs-rich-text h3, #hs_cos_wrapper_{{ name }} .hhs-rich-text h4, #hs_cos_wrapper_{{ name }} .hhs-rich-text h5, #hs_cos_wrapper_{{ name }} .hhs-rich-text h6, #hs_cos_wrapper_{{ name }} .hhs-rich-text p, #hs_cos_wrapper_{{ name }} .hhs-rich-text span, #hs_cos_wrapper_{{ name }} .hhs-rich-text li {
+      text-align: {{ module.content.text_align_mobile }};
+    }
+  }
+</style>
+{% end_require_css %}
+
+
+{% if module.start.col_arrangement == "opt1" %}
+  {% set col_1_size = "col-lg-6 col-md-12" %}
+  {% set col_2_size = "col-lg-6 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt2" %}
+  {% set col_1_size = "col-lg-4 col-md-12" %}
+  {% set col_2_size = "col-lg-8 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt3" %}
+  {% set col_1_size = "col-lg-8 col-md-12" %}
+  {% set col_2_size = "col-lg-4 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt4" %}
+  {% set col_1_size = "col-lg-5 col-md-12" %}
+  {% set col_2_size = "col-lg-7 col-md-12" %}
+{% endif %}
+{% if module.start.col_arrangement == "opt5" %}
+  {% set col_1_size = "col-lg-7 col-md-12" %}
+  {% set col_2_size = "col-lg-5 col-md-12" %}
+{% endif %}
+
+
+<div id="{{ module.row_settings.code.section_id }}" class="hhs-map-text-mod  {% if module.row_settings.visibility.vis_phone %}show-mobile{% else %}hide-mobile{% endif %} {% if module.row_settings.visibility.vis_tablet %}show-tablet{% else %}hide-tablet{% endif %} {% if module.row_settings.visibility.vis_desktop %}show-desktop{% else %}hide-desktop{% endif %}  {% if module.row_settings.shadow == 'inner' %}inner-shadow{% endif %} {% if module.row_settings.shadow == 'outer' %}outer-shadow{% endif %} {{ module.row_settings.code.section_class }}">
+  <div class="container-fluid no-gutters">
+    <div class="row no-gutters">
+      <div class="{% if module.start.img_col == 'left' %}{{ col_2_size }} order-2{% else %}{{ col_1_size }}{% endif %} {{ col_1_order }} order-2-mobile">
+        <div class="hhs-rich-text {% if module.content.settings.animate_text != 'none' %}wow {{ module.content.settings.animate_text }}{% endif %} {% if module.content.advanced.layer_img %}overlay-img{% endif %}" {% if module.content.settings.animate_text != 'none' %}data-wow-delay="{{ module.content.settings.text_animation_delay }}"{% endif %}>
+          {% if module.content.settings.show_divider %}<div class="hhs-divider {{ divider_align }} {% if module.content.advanced.layer_img %}overlay-img{% endif %}" >&nbsp;</div>{% endif %}
+          <div class="hhs-rich-text-in">
+            {{ module.content.text }}
+          </div>
+        </div>
+      </div>
+      <div class="hhs-google-map {% if module.start.img_col == 'left' %}{{ col_1_size }} order-1{% else %}{{ col_2_size }}{% endif %}  order-1-mobile no-padding">
+        {{ module.content.map }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{# ASYNC CSS LOAD #}
+{{ require_css(get_asset_url("../../css/modules/row-map-text.css"), { async: true }) }}
+

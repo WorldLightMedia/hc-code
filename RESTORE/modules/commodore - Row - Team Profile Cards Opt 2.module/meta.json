@@ -1,0 +1,9 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE" ],
+  "icon" : "https://f.hubspotusercontent30.net/hubfs/19522085/commodore-images/module-icons/icon-team-cards-opt-2.svg",
+  "host_template_types" : [ "PAGE" ],
+  "module_id" : 135503765671,
+  "label" : "Team Profile Cards - Opt 2 (Pro)",
+  "is_available_for_new_content" : true
+}
